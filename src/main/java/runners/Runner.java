@@ -10,9 +10,8 @@ import org.junit.runner.RunWith;
 	monochrome = true, // For code readability.
 	strict = true, // Always set to true to check every undefined/pending steps.
 	dryRun = false, // Checking of steps if implemented or not.
-	tags = { "@WIP" }, // @WIP = Work in Progress. @Regression = For Repeating Testing. Comment this
-	// line for testing multiple feature files.
-	features = "src/main/resources/features/WIP.feature" // Feature file to use for WIP.
+	tags = { "@Regression" }, // @WIP = Work in Progress. @Regression = For Repeating Testing. Comment this line for testing multiple feature files.
+	features = "src/test/resources/features/WIP.feature" // Feature file to use for WIP.
 // features = "src/main/resources/features/Regression/SampleModule/" // Feature file to use for Regression.
 )
 

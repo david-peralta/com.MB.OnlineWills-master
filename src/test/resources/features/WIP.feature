@@ -1,13 +1,24 @@
-Feature: Sample
-	I want to use this feature file for testing WIP user stories
+Feature: TST-1: Login
 
-	@WIP
-	Scenario Outline: TASK-123: SAMPLE DESCRIPTION
-		# Scenario 1: SAMPLE TITLE
+	@Regression
+	Scenario Outline: 1: Successful Login
 		Given user opens browser
-		When user becomes inactive for "<Test1>" minutes
-		Then user is on "<Test2>" page
+		Then user is on "Facebook - Log In or Sign Up" page
+		When user enters the "<username>" and "<password>" for the login credentials
+		Then user is on "Facebook" page
 
 		Examples: 
-			| Test1 | Test2  |
-			| 123   | SAMPLE |
+			| username                       | password       |
+			| bahalakasabuhaymo530@gmail.com | fakeaccount123 |
+
+	@Regression
+	Scenario Outline: 2: Invalid Login
+		Given user opens browser
+		Then user is on "Facebook - Log In or Sign Up" page
+		When user enters the "<username>" and "<password>" for the login credentials
+		Then user is on "Log into Facebook | Facebook" page
+		And user sees error message "The password you’ve entered is incorrect. "
+
+		Examples: 
+			| username                       | password    |
+			| bahalakasabuhaymo530@gmail.com | wrongString |

@@ -23,7 +23,16 @@ public class CommonFunctions extends Base {
 
 	}
 
-	// Helper Functions
+	// ================================================== Helper Functions ==================================================
+	public static void attachToUploadElement(WebElement we, String filePaths) {
+		try {
+			we.sendKeys(filePaths);
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+	}
+
 	public static void clearThenEnterElementValue(WebElement we, String value) {
 		try {
 			waitElementVisibility(we);
@@ -119,7 +128,7 @@ public class CommonFunctions extends Base {
 				Calendar calendar = Calendar.getInstance();
 				SimpleDateFormat sdtf = new SimpleDateFormat("MM.dd.yyyy_HHmm");
 
-				FileUtils.copyFile(fileSource, new File("target/failedscreenshots/" + scenario.getName().substring(0, scenario.getName().indexOf(":")) + "-" + sdtf.format(calendar.getTime()) + ".png"));
+				FileUtils.copyFile(fileSource, new File("target/failedscreenshots/" + scenario.getId().substring(0, scenario.getId().split(";")[0].indexOf(":")).toUpperCase() + "_S" + scenario.getName().substring(0, scenario.getName().indexOf(":")) + "-" + sdtf.format(calendar.getTime()) + ".png"));
 				LogFunctions.info("Test Failed. Screenshot taken.");
 			}
 		}
@@ -214,6 +223,22 @@ public class CommonFunctions extends Base {
 		}
 	}
 
+	public static String assembleFilePathsToUpload(String filePaths, String filePathToBeAdded) {
+		try {
+			if (filePaths.isBlank()) {
+				filePaths = filePathToBeAdded;
+			}
+			else {
+				filePaths = filePaths + "\n" + filePathToBeAdded;
+			}
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+
+		return filePaths;
+	}
+
 	public static String getElementXPath(WebElement we) {
 		String xPath = "";
 
@@ -294,7 +319,7 @@ public class CommonFunctions extends Base {
 		return we;
 	}
 
-	// Assert Functions
+	// ================================================== Assert Functions ==================================================
 	public static void checkAlertIsNotDisplayed() {
 		Boolean result = true;
 
@@ -384,6 +409,7 @@ public class CommonFunctions extends Base {
 
 	public static void checkIfCheckboxIsNotToggled(WebElement we) {
 		Boolean result = true;
+
 		waitElementVisibility(we);
 		waitElementNotSelected(we);
 
@@ -449,18 +475,18 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributeContains(WebElement we, String attribute, String expectedValue) {
+	public static void elementAttributeContains(WebElement we, String attribute, String value) {
 		Boolean result = true;
 
-		waitAttributeContains(we, attribute, expectedValue);
+		waitAttributeContains(we, attribute, value);
 
-		if (we.getAttribute(attribute).contains(expectedValue)) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" contains the value \"" + expectedValue + "\".");
+		if (we.getAttribute(attribute).contains(value) || (value == "" && (we.getAttribute(attribute).contains("") || we.getAttribute(attribute).contains(null)))) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" contains the value \"" + value + "\".");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" does not contain the value \"" + expectedValue + "\".");
+			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" does not contain the value \"" + value + "\".");
 		}
 
 		Assert.assertTrue(result);
@@ -469,7 +495,7 @@ public class CommonFunctions extends Base {
 	public static void elementAttributeDoesNotContains(WebElement we, String attribute, String value) {
 		Boolean result = true;
 
-		if (!we.getAttribute(attribute).contains(value)) {
+		if (!we.getAttribute(attribute).contains(value) || (value == "" && (!we.getAttribute(attribute).contains("") || !we.getAttribute(attribute).contains(null)))) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" does not contain the value \"" + value + "\".");
 		}
 		else {
@@ -481,18 +507,18 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributeEqualsTo(WebElement we, String attribute, String expectedValue) {
+	public static void elementAttributeEqualsTo(WebElement we, String attribute, String value) {
 		Boolean result = true;
 
-		waitAttributeContains(we, attribute, expectedValue);
+		waitAttributeContains(we, attribute, value);
 
-		if (we.getAttribute(attribute).equals(expectedValue)) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is equals to value \"" + expectedValue + "\".");
+		if (we.getAttribute(attribute).equals(value) || (value == "" && (we.getAttribute(attribute).equals("") || we.getAttribute(attribute).equals(null)))) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is equals to value \"" + value + "\".");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is not equals to value \"" + expectedValue + "\".");
+			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is not equals to value \"" + value + "\".");
 		}
 
 		Assert.assertTrue(result);
@@ -501,7 +527,7 @@ public class CommonFunctions extends Base {
 	public static void elementAttributeDoesNotEqualsTo(WebElement we, String attribute, String value) {
 		Boolean result = true;
 
-		if (!we.getAttribute(attribute).equals(value)) {
+		if (!we.getAttribute(attribute).equals(value) || (value == "" && (!we.getAttribute(attribute).equals("") || !we.getAttribute(attribute).equals(null)))) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is not equals to value \"" + value + "\".");
 		}
 		else {
@@ -543,16 +569,16 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void elementCssValueContains(WebElement we, String property, String expectedValue) {
+	public static void elementCssValueContains(WebElement we, String property, String value) {
 		Boolean result = true;
 
-		if (we.getCssValue(property).contains(expectedValue)) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that contains the css value \"" + expectedValue + "\".");
+		if (we.getCssValue(property).contains(value)) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that contains the css value \"" + value + "\".");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" that does not contain the css value \"" + expectedValue + "\".");
+			LogFunctions.error("Element \"" + getElementXPath(we) + "\" that does not contain the css value \"" + value + "\".");
 		}
 
 		Assert.assertTrue(result);
@@ -568,7 +594,7 @@ public class CommonFunctions extends Base {
 			text = "blank";
 		}
 
-		if (webElementText.contains(text) || (text == "" && (webElementText == null || webElementText == ""))) {
+		if (webElementText.contains(text) || (text.contains("") && (webElementText.contains("") || webElementText.contains(null)))) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that partially contains the text \"" + text + "\" is found.");
 		}
 		else {
@@ -590,7 +616,7 @@ public class CommonFunctions extends Base {
 			text = "blank";
 		}
 
-		if (webElementText.equals(text) || (text == "" && (webElementText == null || webElementText == ""))) {
+		if (webElementText.equals(text) || (text.equals("") && (webElementText.equals("") || webElementText.equals(null)))) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that contains the text \"" + text + "\" is found.");
 		}
 		else {
@@ -716,7 +742,7 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	// Wait Functions
+	// =================================================== Wait Functions ===================================================
 	public static void waitAlertIsPresent() {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.alertIsPresent());
 	}

@@ -1,393 +1,291 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/main/resources/features/Contracts.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/test/resources/features/WIP.feature");
 formatter.feature({
   "line": 1,
-  "name": "APT - Sprint 08",
-  "description": "I want to use this feature file for testing APT - Sprint 08 user stories",
-  "id": "apt---sprint-08",
+  "name": "TST-2: Upload Sample",
+  "description": "",
+  "id": "tst-2:-upload-sample",
   "keyword": "Feature"
 });
-formatter.before({
-  "duration": 205125915,
-  "status": "passed"
-});
-formatter.scenario({
-  "line": 780,
-  "name": "APT-1645: 01. As a Product team member, I want to view PRICE information for a selected contract",
+formatter.scenarioOutline({
+  "line": 4,
+  "name": "1: Upload Images",
   "description": "",
-  "id": "apt---sprint-08;apt-1645:-01.-as-a-product-team-member,-i-want-to-view-price-information-for-a-selected-contract",
-  "type": "scenario",
-  "keyword": "Scenario",
+  "id": "tst-2:-upload-sample;1:-upload-images",
+  "type": "scenario_outline",
+  "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 779,
-      "name": "@Regression1"
+      "line": 3,
+      "name": "@WIP"
     }
   ]
 });
 formatter.step({
-  "comments": [
-    {
-      "line": 781,
-      "value": "# Additional Scenario: APT-1655: 04. As a Product team member, I want to indicate that Non-Commission has been specified for a price in a contract"
-    },
-    {
-      "line": 782,
-      "value": "# Additional Scenario: APT-1656: 05. As a Product team member, I want action icons to be displayed in a cell in the price table when I hover on the cell"
-    },
-    {
-      "line": 783,
-      "value": "# Additional Scenario: APT-1657: 06. As a Product team member, I want to navigate between pages in Price Tables in contract prices accordion"
-    },
-    {
-      "line": 784,
-      "value": "# Scenario 1:"
-    },
-    {
-      "line": 785,
-      "value": "# And Scenario 3:"
-    },
-    {
-      "line": 786,
-      "value": "# And Scenario 4:"
-    },
-    {
-      "line": 787,
-      "value": "# And Scenario 5:"
-    },
-    {
-      "line": 788,
-      "value": "# And Scenario 6:"
-    },
-    {
-      "line": 789,
-      "value": "# And Scenario 7:"
-    }
-  ],
-  "line": 790,
+  "line": 5,
   "name": "user opens browser",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 791,
-  "name": "user logs into app",
+  "line": 6,
+  "name": "user enters the \"\u003cusername\u003e\" and \"\u003cpassword\u003e\" for the login credentials",
   "keyword": "When "
 });
 formatter.step({
-  "line": 792,
-  "name": "user navigates to contracts page",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 793,
-  "name": "user searches for a contract by id",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 794,
-  "name": "user updates the contract",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 795,
-  "name": "user sees the buttons of the contract price section",
+  "line": 7,
+  "name": "user is on \"Facebook\" page",
   "keyword": "Then "
 });
 formatter.step({
-  "line": 796,
-  "name": "user sorts the first contract price category data",
+  "line": 8,
+  "name": "user decides to create a new post",
   "keyword": "When "
 });
 formatter.step({
-  "line": 797,
-  "name": "user uses column filters to filter the first contract price category",
+  "line": 9,
+  "name": "user puts \"Test Upload\" as the text contents for the post",
   "keyword": "And "
 });
 formatter.step({
-  "line": 798,
-  "name": "user sees the first contract price category accordion expanded and its contents",
-  "keyword": "Then "
-});
-formatter.step({
-  "line": 799,
-  "name": "user expands the second contract price category",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 800,
-  "name": "user sees the second contract price category contents",
-  "keyword": "Then "
-});
-formatter.step({
-  "line": 801,
-  "name": "user sees the price that is non commission with a coloured dot and also the legend explaining the coloured dot means",
+  "line": 10,
+  "name": "user selects \"C:\\\\Users\\\\Jerome.Amores\\\\Downloads\\\\1.PNG\" as the photo/video to be uploaded",
   "keyword": "And "
 });
 formatter.step({
-  "line": 802,
-  "name": "user collapses the second contract price category",
-  "keyword": "When "
+  "line": 11,
+  "name": "user selects \"C:\\\\Users\\\\Jerome.Amores\\\\Downloads\\\\2.PNG\" as the photo/video to be uploaded",
+  "keyword": "And "
 });
 formatter.step({
-  "line": 803,
-  "name": "user does not see the second contract price category contents",
+  "line": 12,
+  "name": "user selects \"C:\\\\Users\\\\Jerome.Amores\\\\Downloads\\\\3.PNG\" as the photo/video to be uploaded",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 13,
+  "name": "user shares the new post",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 14,
+  "name": "user sees the new \"Test Upload1\" post with the photos/videos",
   "keyword": "Then "
 });
-formatter.step({
-  "line": 804,
-  "name": "user hovers over a certain cell that is not empty in the contract prices table",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 805,
-  "name": "user sees the edit and delete icons beside the contract price data",
-  "keyword": "Then "
-});
-formatter.step({
-  "comments": [
+formatter.examples({
+  "line": 16,
+  "name": "",
+  "description": "",
+  "id": "tst-2:-upload-sample;1:-upload-images;",
+  "rows": [
     {
-      "line": 806,
-      "value": "# Scenario 2:"
+      "cells": [
+        "username",
+        "password"
+      ],
+      "line": 17,
+      "id": "tst-2:-upload-sample;1:-upload-images;;1"
+    },
+    {
+      "cells": [
+        "bahalakasabuhaymo530@gmail.com",
+        "fakeaccount123"
+      ],
+      "line": 18,
+      "id": "tst-2:-upload-sample;1:-upload-images;;2"
     }
   ],
-  "line": 807,
-  "name": "user is on \"ContractDetails\" page",
+  "keyword": "Examples"
+});
+formatter.before({
+  "duration": 169996300,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 18,
+  "name": "1: Upload Images",
+  "description": "",
+  "id": "tst-2:-upload-sample;1:-upload-images;;2",
+  "type": "scenario",
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "line": 3,
+      "name": "@WIP"
+    }
+  ]
+});
+formatter.step({
+  "line": 5,
+  "name": "user opens browser",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 808,
-  "name": "user logs out of the app",
+  "line": 6,
+  "name": "user enters the \"bahalakasabuhaymo530@gmail.com\" and \"fakeaccount123\" for the login credentials",
+  "matchedColumns": [
+    0,
+    1
+  ],
   "keyword": "When "
 });
 formatter.step({
-  "line": 809,
-  "name": "user with view rights logs into app",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 810,
-  "name": "user navigates to contracts page",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 811,
-  "name": "user searches for a contract by id",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 812,
-  "name": "user views the contract",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 813,
-  "name": "user uses column filters to filter the first contract price category",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 814,
-  "name": "user sees the contract price section and its contents without the write options",
+  "line": 7,
+  "name": "user is on \"Facebook\" page",
   "keyword": "Then "
 });
 formatter.step({
-  "line": 815,
-  "name": "user hovers over a certain cell that is not empty in the contract prices table",
+  "line": 8,
+  "name": "user decides to create a new post",
   "keyword": "When "
 });
 formatter.step({
-  "line": 816,
-  "name": "user sees the view icon beside the contract price data",
+  "line": 9,
+  "name": "user puts \"Test Upload\" as the text contents for the post",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 10,
+  "name": "user selects \"C:\\\\Users\\\\Jerome.Amores\\\\Downloads\\\\1.PNG\" as the photo/video to be uploaded",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 11,
+  "name": "user selects \"C:\\\\Users\\\\Jerome.Amores\\\\Downloads\\\\2.PNG\" as the photo/video to be uploaded",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 12,
+  "name": "user selects \"C:\\\\Users\\\\Jerome.Amores\\\\Downloads\\\\3.PNG\" as the photo/video to be uploaded",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 13,
+  "name": "user shares the new post",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 14,
+  "name": "user sees the new \"Test Upload1\" post with the photos/videos",
   "keyword": "Then "
 });
 formatter.match({
   "location": "StepDefinitions.user_opens_browser()"
 });
 formatter.result({
-  "duration": 24621642348,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_logs_into_app()"
-});
-formatter.result({
-  "duration": 9042963046,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_navigates_to_contracts_page()"
-});
-formatter.result({
-  "duration": 8677574919,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_searches_for_a_contract_by_id()"
-});
-formatter.result({
-  "duration": 3012248175,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_updates_the_contract()"
-});
-formatter.result({
-  "duration": 16885464495,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_sees_the_buttons_of_the_contract_price_section()"
-});
-formatter.result({
-  "duration": 325844672,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_sorts_the_first_contract_price_category_data()"
-});
-formatter.result({
-  "duration": 2711384544,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_uses_column_filters_to_filter_the_first_contract_price_category()"
-});
-formatter.result({
-  "duration": 8607902547,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_sees_the_first_contract_price_category_accordion_expanded_and_its_contents()"
-});
-formatter.result({
-  "duration": 6726878797,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_expands_the_second_contract_price_category()"
-});
-formatter.result({
-  "duration": 2647725327,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_sees_the_second_contract_price_category_contents()"
-});
-formatter.result({
-  "duration": 30339537254,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_sees_the_price_that_is_non_commission_with_a_coloured_dot_and_also_the_legend_explaining_the_coloured_dot_means()"
-});
-formatter.result({
-  "duration": 123075663,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_collapses_the_second_contract_price_category()"
-});
-formatter.result({
-  "duration": 2575322858,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_does_not_see_the_second_contract_price_category_contents()"
-});
-formatter.result({
-  "duration": 30343243564,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_hovers_over_a_certain_cell_that_is_not_empty_in_the_contract_prices_table()"
-});
-formatter.result({
-  "duration": 2593729822,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_sees_the_edit_and_delete_icons_beside_the_contract_price_data()"
-});
-formatter.result({
-  "duration": 121595414,
+  "duration": 12723304900,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
-      "val": "ContractDetails",
+      "val": "bahalakasabuhaymo530@gmail.com",
+      "offset": 17
+    },
+    {
+      "val": "fakeaccount123",
+      "offset": 54
+    }
+  ],
+  "location": "StepDefinitions.user_enters_the_and_for_the_login_credentials(String,String)"
+});
+formatter.result({
+  "duration": 5728646200,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "Facebook",
       "offset": 12
     }
   ],
   "location": "StepDefinitions.user_is_on_page(String)"
 });
 formatter.result({
-  "duration": 19231284,
+  "duration": 46187700,
   "status": "passed"
 });
 formatter.match({
-  "location": "StepDefinitions.user_logs_out_of_the_app()"
+  "location": "StepDefinitions.user_decides_to_create_a_new_post()"
 });
 formatter.result({
-  "duration": 20837052633,
+  "duration": 696788500,
   "status": "passed"
 });
 formatter.match({
-  "location": "StepDefinitions.user_with_view_rights_logs_into_app()"
+  "arguments": [
+    {
+      "val": "Test Upload",
+      "offset": 11
+    }
+  ],
+  "location": "StepDefinitions.user_puts_as_the_text_contents_for_the_post(String)"
 });
 formatter.result({
-  "duration": 8774014073,
+  "duration": 2365944300,
   "status": "passed"
 });
 formatter.match({
-  "location": "StepDefinitions.user_navigates_to_contracts_page()"
+  "arguments": [
+    {
+      "val": "C:\\\\Users\\\\Jerome.Amores\\\\Downloads\\\\1.PNG",
+      "offset": 14
+    }
+  ],
+  "location": "StepDefinitions.user_selects_as_the_photo_video_to_be_uploaded(String)"
 });
 formatter.result({
-  "duration": 8679884038,
+  "duration": 82500,
   "status": "passed"
 });
 formatter.match({
-  "location": "StepDefinitions.user_searches_for_a_contract_by_id()"
+  "arguments": [
+    {
+      "val": "C:\\\\Users\\\\Jerome.Amores\\\\Downloads\\\\2.PNG",
+      "offset": 14
+    }
+  ],
+  "location": "StepDefinitions.user_selects_as_the_photo_video_to_be_uploaded(String)"
 });
 formatter.result({
-  "duration": 3029410979,
+  "duration": 58000,
   "status": "passed"
 });
 formatter.match({
-  "location": "StepDefinitions.user_views_the_contract()"
+  "arguments": [
+    {
+      "val": "C:\\\\Users\\\\Jerome.Amores\\\\Downloads\\\\3.PNG",
+      "offset": 14
+    }
+  ],
+  "location": "StepDefinitions.user_selects_as_the_photo_video_to_be_uploaded(String)"
 });
 formatter.result({
-  "duration": 22122044268,
+  "duration": 70300,
   "status": "passed"
 });
 formatter.match({
-  "location": "StepDefinitions.user_uses_column_filters_to_filter_the_first_contract_price_category()"
+  "location": "StepDefinitions.user_shares_the_new_post()"
 });
 formatter.result({
-  "duration": 9654793200,
+  "duration": 15218460000,
   "status": "passed"
 });
 formatter.match({
-  "location": "StepDefinitions.user_sees_the_contract_price_section_and_its_contents_without_the_write_options()"
+  "arguments": [
+    {
+      "val": "Test Upload1",
+      "offset": 19
+    }
+  ],
+  "location": "StepDefinitions.user_sees_the_new_post_with_the_photos_videos(String)"
 });
 formatter.result({
-  "duration": 2187853885,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_hovers_over_a_certain_cell_that_is_not_empty_in_the_contract_prices_table()"
-});
-formatter.result({
-  "duration": 2680228784,
-  "status": "passed"
-});
-formatter.match({
-  "location": "StepDefinitions.user_sees_the_view_icon_beside_the_contract_price_data()"
-});
-formatter.result({
-  "duration": 95390124,
-  "status": "passed"
+  "duration": 16810700,
+  "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//p[text() \u003d \u0027Test Upload1\u0027]//ancestor::div[contains(@class, \u0027userContentWrapper\u0027)]//div[@data-testid \u003d \u0027post_message\u0027]\"}\n  (Session info: chrome\u003d75.0.3770.100)\n  (Driver info: chromedriver\u003d74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform\u003dWindows NT 10.0.18362 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.14.0\u0027, revision: \u0027aacccce0\u0027, time: \u00272018-08-02T20:19:58.91Z\u0027\nSystem info: host: \u0027DESKTOP-14FGF5A\u0027, ip: \u0027172.18.0.86\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002711.0.2\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 74.0.3729.6 (255758eccf3d24..., userDataDir: C:\\Users\\JEROME~1.AMO\\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:60467}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 75.0.3770.100, webStorageEnabled: true}\nSession ID: 98f716ce171a303893f9e22476c8d664\n*** Element info: {Using\u003dxpath, value\u003d//p[text() \u003d \u0027Test Upload1\u0027]//ancestor::div[contains(@class, \u0027userContentWrapper\u0027)]//div[@data-testid \u003d \u0027post_message\u0027]}\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)\r\n\tat org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)\r\n\tat org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)\r\n\tat org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)\r\n\tat org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)\r\n\tat org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:424)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)\r\n\tat steps.StepDefinitions.user_sees_the_new_post_with_the_photos_videos(StepDefinitions.java:148)\r\n\tat ✽.Then user sees the new \"Test Upload1\" post with the photos/videos(src/test/resources/features/WIP.feature:14)\r\n",
+  "status": "failed"
 });
 formatter.after({
-  "duration": 717406231,
+  "duration": 1091368600,
   "status": "passed"
 });
 });
