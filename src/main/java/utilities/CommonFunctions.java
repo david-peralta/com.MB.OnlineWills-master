@@ -106,7 +106,7 @@ public class CommonFunctions extends Base {
 		LogFunctions.info("Finished entering value \"" + value + "\" into \"" + getElementXPath(we) + "\".");
 	}
 
-	public static void hoverElement(WebElement we) {
+	public static void hoverOverElement(WebElement we) {
 		try {
 			waitElementVisibility(we);
 
@@ -158,14 +158,14 @@ public class CommonFunctions extends Base {
 		LogFunctions.info("Scrolled to top.");
 	}
 
-	public static void selectValueFromDropdown(WebElement we, String value) {
+	public static void selectValueFromDropdown(WebElement dropdownElement, String value) {
 		try {
-			waitElementClickable(we);
+			waitElementClickable(dropdownElement);
 
-			Select dropdown = new Select(we);
+			Select dropdown = new Select(dropdownElement);
 
 			dropdown.selectByVisibleText(value);
-			LogFunctions.info("Value \"" + value + "\" selected for \"" + getElementXPath(we) + "\" dropdown.");
+			LogFunctions.info("Value \"" + value + "\" selected for \"" + getElementXPath(dropdownElement) + "\" dropdown.");
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -351,6 +351,28 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
+	public static void checkDropdownOptionsAvailable(WebElement dropdownElement, String[] expectedOptions) {
+		Boolean result = true;
+		List<WebElement> options = dropdownElement.findElements(By.xpath(".//option"));
+		int index = 0;
+
+		for (WebElement option: options) {
+			if (!option.getText().equals(expectedOptions[index])) {
+				result = false;
+
+				LogFunctions.error("Option \"" + option.getText() + "\" is not in \"" + getElementXPath(dropdownElement) + "\" dropdown.");
+
+				break;
+			}
+
+			index = index + 1;
+		}
+
+		LogFunctions.error("All options given are in \"" + getElementXPath(dropdownElement) + "\" dropdown.");
+
+		Assert.assertTrue(result);
+	}
+
 	public static void checkFeedbackMessageDisplayedContainsString(String feedbackMessage) {
 		Boolean result = true;
 		WebElement we = driver.findElement(By.xpath("//span[contains(text(), '" + feedbackMessage + "')]"));
@@ -407,37 +429,37 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void checkIfCheckboxIsNotToggled(WebElement we) {
+	public static void checkIfCheckboxIsNotToggled(WebElement checkboxElement) {
 		Boolean result = true;
 
-		waitElementVisibility(we);
-		waitElementNotSelected(we);
+		waitElementVisibility(checkboxElement);
+		waitElementNotSelected(checkboxElement);
 
-		if (!we.isSelected()) {
-			LogFunctions.info("Checkbox \"" + getElementXPath(we) + "\" is not toggled.");
+		if (!checkboxElement.isSelected()) {
+			LogFunctions.info("Checkbox \"" + getElementXPath(checkboxElement) + "\" is not toggled.");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Checkbox \"" + getElementXPath(we) + "\" is toggled.");
+			LogFunctions.error("Checkbox \"" + getElementXPath(checkboxElement) + "\" is toggled.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void checkIfCheckboxIsToggled(WebElement we) {
+	public static void checkIfCheckboxIsToggled(WebElement checkboxElement) {
 		Boolean result = true;
 
-		waitElementVisibility(we);
-		waitElementSelected(we);
+		waitElementVisibility(checkboxElement);
+		waitElementSelected(checkboxElement);
 
-		if (we.isSelected()) {
-			LogFunctions.info("Checkbox \"" + getElementXPath(we) + "\" is toggled.");
+		if (checkboxElement.isSelected()) {
+			LogFunctions.info("Checkbox \"" + getElementXPath(checkboxElement) + "\" is toggled.");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Checkbox \"" + getElementXPath(we) + "\" is not toggled.");
+			LogFunctions.error("Checkbox \"" + getElementXPath(checkboxElement) + "\" is not toggled.");
 		}
 
 		Assert.assertTrue(result);
@@ -475,10 +497,10 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributeContains(WebElement we, String attribute, String value) {
+	public static void elementAttributeValueContains(WebElement we, String attribute, String value) {
 		Boolean result = true;
 
-		waitAttributeContains(we, attribute, value);
+		waitElementAttributeContains(we, attribute, value);
 
 		if (we.getAttribute(attribute).contains(value) || (value == "" && (we.getAttribute(attribute).contains("") || we.getAttribute(attribute).contains(null)))) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" contains the value \"" + value + "\".");
@@ -492,7 +514,7 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributeDoesNotContains(WebElement we, String attribute, String value) {
+	public static void elementAttributeValueDoesNotContains(WebElement we, String attribute, String value) {
 		Boolean result = true;
 
 		if (!we.getAttribute(attribute).contains(value) || (value == "" && (!we.getAttribute(attribute).contains("") || !we.getAttribute(attribute).contains(null)))) {
@@ -507,10 +529,10 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributeEqualsTo(WebElement we, String attribute, String value) {
+	public static void elementAttributeValueEqualsTo(WebElement we, String attribute, String value) {
 		Boolean result = true;
 
-		waitAttributeContains(we, attribute, value);
+		waitElementAttributeContains(we, attribute, value);
 
 		if (we.getAttribute(attribute).equals(value) || (value == "" && (we.getAttribute(attribute).equals("") || we.getAttribute(attribute).equals(null)))) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is equals to value \"" + value + "\".");
@@ -524,7 +546,7 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributeDoesNotEqualsTo(WebElement we, String attribute, String value) {
+	public static void elementAttributeValueDoesNotEqualsTo(WebElement we, String attribute, String value) {
 		Boolean result = true;
 
 		if (!we.getAttribute(attribute).equals(value) || (value == "" && (!we.getAttribute(attribute).equals("") || !we.getAttribute(attribute).equals(null)))) {
@@ -679,7 +701,7 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void elementNotExistingByXPath(String xPath) {
+	public static void elementXPathNotExisting(String xPath) {
 		Boolean result = true;
 		List<WebElement> wes = driver.findElements(By.xpath(xPath));
 
@@ -747,7 +769,7 @@ public class CommonFunctions extends Base {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.alertIsPresent());
 	}
 
-	public static void waitAttributeContains(WebElement we, String attribute, String value) {
+	public static void waitElementAttributeContains(WebElement we, String attribute, String value) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.attributeContains(we, attribute, value));
 	}
 

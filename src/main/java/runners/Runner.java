@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 	dryRun = false, // Checking of steps if implemented or not.
 	tags = { "@Regression" }, // @WIP = Work in Progress. @Regression = For Repeating Testing. Comment this line for testing multiple feature files.
 	features = "src/test/resources/features/WIP.feature" // Feature file to use for WIP.
-// features = "src/main/resources/features/Regression/SampleModule/" // Feature file to use for Regression.
+// features = "src/test/resources/features/Regression/" // Feature file to use for Regression.
 )
 
 public class Runner {

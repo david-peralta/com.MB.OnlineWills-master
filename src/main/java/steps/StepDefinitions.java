@@ -42,7 +42,6 @@ public class StepDefinitions extends Base {
 
 	@Then("^user is on \"([^\"]*)\" page$")
 	public void user_is_on_page(String arg1) throws Throwable {
-		CommonFunctions.waitTitleIs(arg1);
 		CommonFunctions.checkPageTitle(arg1);
 	}
 
@@ -171,6 +170,6 @@ public class StepDefinitions extends Base {
 
 	@Then("^user does not see the new \"([^\"]*)\" post with the photos/videos$")
 	public void user_does_not_see_the_new_post_with_the_photos_videos(String arg1) throws Throwable {
-		CommonFunctions.elementNotExistingByXPath("//div[contains(@class, 'userContentWrapper')]//div[@data-testid = 'post_message']//p[text() = '" + arg1 + "']");
+		CommonFunctions.elementXPathNotExisting("//div[contains(@class, 'userContentWrapper')]//div[@data-testid = 'post_message']//p[text() = '" + arg1 + "']");
 	}
 }
