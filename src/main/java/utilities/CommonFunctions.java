@@ -141,20 +141,23 @@ public class CommonFunctions extends Base {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		wait(2500, false);
 		LogFunctions.info("Scrolled to bottom.");
 	}
 
 	public static void scrollToElement(WebElement we) {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 
-		jse.executeScript("arguments[0].scrollIntoView(true);", we);
-		LogFunctions.info("Scrolled to element \"" + getElementXPath(we) + "\".");
+		js.executeScript("window.scrollTo(" + we.getLocation().getX() + ", " + (we.getLocation().getY() - 100) + ")");
+		wait(2500, false);
+		LogFunctions.info("Scrolled to top.");
 	}
 
 	public static void scrollToTopOfPage() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		js.executeScript("window.scrollTo(0,0)");
+		wait(2500, false);
 		LogFunctions.info("Scrolled to top.");
 	}
 
