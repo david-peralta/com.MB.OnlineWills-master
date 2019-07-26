@@ -6,7 +6,6 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import pages.HomePage;
 import pages.LoginPage;
@@ -109,67 +108,5 @@ public class StepDefinitions extends Base {
 	@When("^user hits the enter key$")
 	public void user_hits_the_enter_key() throws Throwable {
 		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
-	}
-
-	// ================================================== Login Page Functions ==================================================
-	@When("^user enters the \"([^\"]*)\" and \"([^\"]*)\" for the login credentials$")
-	public void user_enters_the_and_for_the_login_credentials(String arg1, String arg2) throws Throwable {
-		loginPage.setEmailInput(arg1);
-		loginPage.setPasswordInput(arg2);
-
-		homePage = loginPage.clickLoginButton();
-	}
-
-	// =================================================== Home Page Functions ==================================================
-	@When("^user decides to create a new post$")
-	public void user_decides_to_create_a_new_post() throws Throwable {
-		homePage.clickCreatePostButton();
-	}
-
-	@When("^user selects \"([^\"]*)\" as the photo/video to be uploaded$")
-	public void user_selects_as_the_photo_video_to_be_uploaded(String arg1) throws Throwable {
-		filePathsForUpload = CommonFunctions.assembleFilePathsToUpload(filePathsForUpload, arg1);
-	}
-
-	@When("^user puts \"([^\"]*)\" as the text contents for the post$")
-	public void user_puts_as_the_text_contents_for_the_post(String arg1) throws Throwable {
-		homePage.setNewPostTextInput(arg1);
-	}
-
-	@When("^user shares the new post$")
-	public void user_shares_the_new_post() throws Throwable {
-		homePage.clickShareNewPostButton(filePathsForUpload);
-	}
-
-	@Then("^user sees the new \"([^\"]*)\" post with the photos/videos$")
-	public void user_sees_the_new_post_with_the_photos_videos(String arg1) throws Throwable {
-		String[] filePaths = filePathsForUpload.split("\\r\\n|\\r|\\n");
-		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("//p[text() = '" + arg1 + "']//ancestor::div[contains(@class, 'userContentWrapper')]//div[@data-testid = 'post_message']")));
-		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//p[text() = '" + arg1 + "']//ancestor::div[contains(@class, 'userContentWrapper')]//div[@data-testid = 'post_message']//following-sibling::div//a)[" + filePaths.length + "]")));
-	}
-
-	@When("^user decides to delete the new \"([^\"]*)\" post with the photos/videos$")
-	public void user_decides_to_delete_the_new_post_with_the_photos_videos(String arg1) throws Throwable {
-		CommonFunctions.clickElement(driver.findElement(By.xpath("//p[text() = 'Test Upload']//ancestor::div[contains(@class, 'userContentWrapper')]//a[@aria-label = 'Story options']")));
-		CommonFunctions.wait(2500, false);
-		CommonFunctions.clickElement(driver.findElement(By.xpath("//span[text() = 'Delete']//ancestor::a")));
-		CommonFunctions.wait(2500, false);
-		CommonFunctions.switchFrameByXPath("//*[text() = 'Delete Post?']");
-	}
-
-	@Then("^user sees the delete post confirmation message$")
-	public void user_sees_the_delete_post_confirmation_message() throws Throwable {
-		CommonFunctions.textVisibleInPage("Delete Post?");
-	}
-
-	@When("^user confirms the deletion of the post$")
-	public void user_confirms_the_deletion_of_the_post() throws Throwable {
-		CommonFunctions.clickElement(driver.findElement(By.xpath("//button[text() = 'Delete']")));
-		CommonFunctions.wait(2500, false);
-	}
-
-	@Then("^user does not see the new \"([^\"]*)\" post with the photos/videos$")
-	public void user_does_not_see_the_new_post_with_the_photos_videos(String arg1) throws Throwable {
-		CommonFunctions.elementXPathNotExisting("//div[contains(@class, 'userContentWrapper')]//div[@data-testid = 'post_message']//p[text() = '" + arg1 + "']");
 	}
 }
