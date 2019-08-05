@@ -51,7 +51,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user sees feedback message \"([^\"]*)\"$")
 	public void user_sees_feedback_message(String arg1) throws Throwable {
-		CommonFunctions.checkFeedbackMessageDisplayedEqualsToString(arg1);
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString(arg1);
 	}
 
 	@Then("^user does not see feedback message \"([^\"]*)\"$")

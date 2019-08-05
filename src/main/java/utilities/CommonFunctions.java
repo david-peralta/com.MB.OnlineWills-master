@@ -56,7 +56,7 @@ public class CommonFunctions extends Base {
 		}
 	}
 
-	public static void clickKeys(String keys) {
+	public static void clickKeys(String keys) { // Use Keys.chord(KEY1, KEY2, ...) for the value to be passed.
 		Actions action = new Actions(driver);
 
 		action.sendKeys(keys).perform();
@@ -120,6 +120,20 @@ public class CommonFunctions extends Base {
 		}
 	}
 
+	public static void rightClickElement(WebElement we) {
+		try {
+			waitElementClickable(we);
+
+			Actions action = new Actions(driver).contextClick(we);
+
+			action.build().perform();
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" clicked.");
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+	}
+
 	public static void screenshotFailedTest(Scenario scenario) {
 		try {
 			if (scenario.isFailed()) {
@@ -141,7 +155,7 @@ public class CommonFunctions extends Base {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-		wait(2500, false);
+		wait(5000, false);
 		LogFunctions.info("Scrolled to bottom.");
 	}
 
@@ -149,7 +163,7 @@ public class CommonFunctions extends Base {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		js.executeScript("window.scrollTo(" + we.getLocation().getX() + ", " + (we.getLocation().getY() - 100) + ")");
-		wait(2500, false);
+		wait(5000, false);
 		LogFunctions.info("Scrolled to top.");
 	}
 
@@ -157,7 +171,7 @@ public class CommonFunctions extends Base {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		js.executeScript("window.scrollTo(0,0)");
-		wait(2500, false);
+		wait(5000, false);
 		LogFunctions.info("Scrolled to top.");
 	}
 
@@ -175,7 +189,7 @@ public class CommonFunctions extends Base {
 		}
 	}
 
-	public static void switchFrameByXPath(String xPath) {
+	public static void switchFrameByXPath(String xPath) { // Provide a unique xPath for the desired frame.
 		try {
 			Integer numberOfFrames = driver.findElements(By.tagName("iframe")).size();
 
@@ -224,6 +238,48 @@ public class CommonFunctions extends Base {
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
 		}
+	}
+
+	public static WebElement getElementDisplayedInListByXPath(String xPath) {
+		WebElement we = null;
+
+		try {
+			List<WebElement> wes = driver.findElements(By.xpath(xPath));
+
+			for (int i = 1; i <= wes.size(); i++) {
+				WebElement weDisplayed = wes.get(i - 1);
+
+				if (weDisplayed.isDisplayed()) {
+					we = weDisplayed;
+
+					LogFunctions.info("Element with XPath \"" + getElementXPath(we) + "\" visible.");
+					break;
+				}
+			}
+
+			if (we == null) {
+				LogFunctions.info("XPath \"" + xPath + "\" not existing.");
+			}
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+
+		return we;
+	}
+
+	public static WebElement getLastElementInListByXPath(String xPath) {
+		WebElement we = null;
+
+		try {
+			List<WebElement> wes = driver.findElements(By.xpath(xPath));
+			we = wes.get(wes.size() - 1);
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+
+		return we;
 	}
 
 	public static String assembleFilePathsToUpload(String filePaths, String filePathToBeAdded) {
@@ -278,48 +334,6 @@ public class CommonFunctions extends Base {
 		}
 
 		return result;
-	}
-
-	public static WebElement getElementDisplayedInListByXPath(String xPath) {
-		WebElement we = null;
-
-		try {
-			List<WebElement> wes = driver.findElements(By.xpath(xPath));
-
-			for (int i = 1; i <= wes.size(); i++) {
-				WebElement weDisplayed = wes.get(i - 1);
-
-				if (weDisplayed.isDisplayed()) {
-					we = weDisplayed;
-
-					LogFunctions.info("Element with XPath \"" + getElementXPath(we) + "\" visible.");
-					break;
-				}
-			}
-
-			if (we == null) {
-				LogFunctions.info("XPath \"" + xPath + "\" not existing.");
-			}
-		}
-		catch (Exception e) {
-			LogFunctions.error("Error found: " + e);
-		}
-
-		return we;
-	}
-
-	public static WebElement getLastElementInListByXPath(String xPath) {
-		WebElement we = null;
-
-		try {
-			List<WebElement> wes = driver.findElements(By.xpath(xPath));
-			we = wes.get(wes.size() - 1);
-		}
-		catch (Exception e) {
-			LogFunctions.error("Error found: " + e);
-		}
-
-		return we;
 	}
 
 	// ================================================== Assert Functions ==================================================
@@ -379,25 +393,6 @@ public class CommonFunctions extends Base {
 	public static void checkFeedbackMessageDisplayedContainsString(String feedbackMessage) {
 		Boolean result = true;
 		WebElement we = driver.findElement(By.xpath("//span[contains(text(), '" + feedbackMessage + "')]"));
-
-		waitElementVisibility(we);
-
-		if (we.isDisplayed()) {
-			LogFunctions.info("Feedback message \"" + feedbackMessage + "\" found.");
-		}
-		else {
-			result = false;
-
-			LogFunctions.error("Feedback message \"" + feedbackMessage + "\" not found.");
-		}
-
-		Assert.assertTrue(result);
-	}
-
-	public static void checkFeedbackMessageDisplayedEqualsToString(String feedbackMessage) {
-		Boolean result = true;
-
-		WebElement we = driver.findElement(By.xpath("//span[text() = '" + feedbackMessage + "']"));
 
 		waitElementVisibility(we);
 
@@ -473,7 +468,7 @@ public class CommonFunctions extends Base {
 
 		waitTitleIs(expectedTitle);
 
-		if (driver.getTitle().equals(expectedTitle)) {
+		if (driver.getTitle().contains(expectedTitle)) {
 			LogFunctions.info("Page title \"" + expectedTitle + "\" is displayed.");
 		}
 		else {
@@ -488,7 +483,7 @@ public class CommonFunctions extends Base {
 	public static void checkPopupOnPage(String expectedPageTitle, String popupHeader) {
 		Boolean result = true;
 
-		if (driver.getTitle().equals(expectedPageTitle) && driver.findElement(By.xpath("//*[contains(text(), '" + popupHeader + "')]")).isDisplayed()) {
+		if (driver.getTitle().contains(expectedPageTitle) && driver.findElement(By.xpath("//*[contains(text(), '" + popupHeader + "')]")).isDisplayed()) {
 			LogFunctions.info("Popup with header \"" + popupHeader + "\" on page \"" + expectedPageTitle + "\" is displayed.");
 		}
 		else {
@@ -527,38 +522,6 @@ public class CommonFunctions extends Base {
 			result = false;
 
 			LogFunctions.error("Element " + getElementXPath(we) + " attribute " + attribute + " contains value " + value + ".");
-		}
-
-		Assert.assertTrue(result);
-	}
-
-	public static void elementAttributeValueEqualsTo(WebElement we, String attribute, String value) {
-		Boolean result = true;
-
-		waitElementAttributeContains(we, attribute, value);
-
-		if (we.getAttribute(attribute).equals(value) || (value == "" && (we.getAttribute(attribute).equals("") || we.getAttribute(attribute).equals(null)))) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is equals to value \"" + value + "\".");
-		}
-		else {
-			result = false;
-
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is not equals to value \"" + value + "\".");
-		}
-
-		Assert.assertTrue(result);
-	}
-
-	public static void elementAttributeValueDoesNotEqualsTo(WebElement we, String attribute, String value) {
-		Boolean result = true;
-
-		if (!we.getAttribute(attribute).equals(value) || (value == "" && (!we.getAttribute(attribute).equals("") || !we.getAttribute(attribute).equals(null)))) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is not equals to value \"" + value + "\".");
-		}
-		else {
-			result = false;
-
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is equals to value \"" + value + "\".");
 		}
 
 		Assert.assertTrue(result);
@@ -626,28 +589,6 @@ public class CommonFunctions extends Base {
 			result = false;
 
 			LogFunctions.error("Element \"" + getElementXPath(we) + "\" that partially contains the text \"" + text + "\" is not found.");
-		}
-
-		Assert.assertTrue(result);
-	}
-
-	public static void elementEqualsToText(WebElement we, String text) {
-		Boolean result = true;
-		String webElementText = we.getText().toString();
-
-		waitTextToBePresentInElement(we, text);
-
-		if (text.isBlank()) {
-			text = "blank";
-		}
-
-		if (webElementText.equals(text) || (text.equals("") && (webElementText.equals("") || webElementText.equals(null)))) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that contains the text \"" + text + "\" is found.");
-		}
-		else {
-			result = false;
-
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" that contains the text \"" + text + "\" is not found.");
 		}
 
 		Assert.assertTrue(result);
