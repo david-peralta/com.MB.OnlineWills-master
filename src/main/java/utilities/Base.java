@@ -39,9 +39,7 @@ public class Base {
 
 			driver = new ChromeDriver(options);
 		}
-		else if (browserName.equals("ie")) { // Need to put TabProcGrowth with value 0 in
-			// HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main in
-			// Registry.
+		else if (browserName.equals("ie")) { // Need to put TabProcGrowth with value 0 in HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main in Registry.
 			InternetExplorerOptions options = new InternetExplorerOptions();
 
 			options.setCapability(InternetExplorerDriver.FORCE_CREATE_PROCESS, true);
@@ -55,7 +53,8 @@ public class Base {
 
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+		// driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); // Not recommended.
 		driver.get(prop.getProperty("url"));
 
 		if (browserName.equals("ie")) {

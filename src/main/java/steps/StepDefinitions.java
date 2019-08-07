@@ -14,7 +14,6 @@ import utilities.CommonFunctions;
 import utilities.LogFunctions;
 
 public class StepDefinitions extends Base {
-	String filePathsForUpload = "";
 	LoginPage loginPage;
 	HomePage homePage;
 
@@ -51,12 +50,12 @@ public class StepDefinitions extends Base {
 
 	@Then("^user sees feedback message \"([^\"]*)\"$")
 	public void user_sees_feedback_message(String arg1) throws Throwable {
-		CommonFunctions.checkFeedbackMessageDisplayedContainsString(arg1);
+		CommonFunctions.checkFeedbackMessageDisplayed(arg1);
 	}
 
 	@Then("^user does not see feedback message \"([^\"]*)\"$")
 	public void user_does_not_see_feedback_message(String arg1) throws Throwable {
-		CommonFunctions.checkFeedbackMessageHidden(arg1);
+		CommonFunctions.checkFeedbackMessageNotDisplayed(arg1);
 	}
 
 	@When("^user becomes inactive for \"([^\"]*)\" minutes$")
@@ -66,7 +65,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user sees no results in the table$")
 	public void user_sees_no_results_in_the_table() throws Throwable {
-		CommonFunctions.textVisibleInPage("No matching records found.");
+		CommonFunctions.textDisplayedInPage("No matching records found.");
 	}
 
 	@When("^user sees alert message \"([^\"]*)\" and clicks on \"([^\"]*)\"$")
@@ -85,14 +84,14 @@ public class StepDefinitions extends Base {
 		CommonFunctions.checkAlertIsNotDisplayed();
 	}
 
-	@Then("^user sees error message \"([^\"]*)\"$")
-	public void user_sees_error_message(String arg1) throws Throwable {
-		CommonFunctions.textVisibleInPage(arg1);
+	@Then("^user sees message \"([^\"]*)\"$")
+	public void user_sees_message(String arg1) throws Throwable {
+		CommonFunctions.textDisplayedInPage(arg1);
 	}
 
-	@Then("^user does not see the error message \"([^\"]*)\"$")
-	public void user_does_not_see_the_error_message(String arg1) throws Throwable {
-		CommonFunctions.textNotInPage(arg1);
+	@Then("^user does not see the message \"([^\"]*)\"$")
+	public void user_does_not_see_the_message(String arg1) throws Throwable {
+		CommonFunctions.textNotDisplayedInPage(arg1);
 	}
 
 	@When("^user hits the tab key$")

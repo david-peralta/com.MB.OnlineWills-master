@@ -2,6 +2,8 @@ package utilities;
 
 import cucumber.api.Scenario;
 import java.io.File;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -19,11 +21,15 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CommonFunctions extends Base {
+	static Actions action = new Actions(driver);
+	static JavascriptExecutor js = (JavascriptExecutor) driver;
+	static WebDriverWait wait = new WebDriverWait(driver, 30);
+
 	public CommonFunctions(WebDriver dr) {
 
 	}
 
-	// ================================================== Helper Functions ==================================================
+	// ================================================== Input Functions ==================================================
 	public static void attachToUploadElement(WebElement we, String filePaths) {
 		try {
 			we.sendKeys(filePaths);
@@ -35,7 +41,7 @@ public class CommonFunctions extends Base {
 
 	public static void clearThenEnterElementValue(WebElement we, String value) {
 		try {
-			waitElementVisibility(we);
+			elementDisplayed(we);
 			we.clear();
 			LogFunctions.info("Value in \"" + getElementXPath(we) + "\" element cleared.");
 			enterElementValue(we, value);
@@ -47,9 +53,13 @@ public class CommonFunctions extends Base {
 
 	public static void clickElement(WebElement we) {
 		try {
-			waitElementClickable(we);
-			we.click();
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" clicked.");
+			if (wait.until(ExpectedConditions.elementToBeClickable(we)) != null) {
+				we.click();
+				LogFunctions.info("Element \"" + getElementXPath(we) + "\" clicked.");
+			}
+			else {
+				LogFunctions.info("Element \"" + getElementXPath(we) + "\" not clicked.");
+			}
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -57,10 +67,13 @@ public class CommonFunctions extends Base {
 	}
 
 	public static void clickKeys(String keys) { // Use Keys.chord(KEY1, KEY2, ...) for the value to be passed.
-		Actions action = new Actions(driver);
-
-		action.sendKeys(keys).perform();
-		LogFunctions.info("\"" + keys + "\" keys pressed.");
+		try {
+			action.sendKeys(keys).perform();
+			LogFunctions.info("\"" + keys + "\" keys pressed.");
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
 	}
 
 	public static void clickOnPopUp(String option) {
@@ -84,12 +97,25 @@ public class CommonFunctions extends Base {
 
 	public static void doubleClickOnElement(WebElement we) {
 		try {
-			waitElementClickable(we);
+			if (wait.until(ExpectedConditions.elementToBeClickable(we)) != null) {
+				action.doubleClick(we).build().perform();
+				LogFunctions.info("Element \"" + getElementXPath(we) + "\" double clicked.");
+			}
+			else {
+				LogFunctions.info("Element \"" + getElementXPath(we) + "\" not double clicked.");
+			}
 
-			Actions action = new Actions(driver).doubleClick(we);
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+	}
 
-			action.build().perform();
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" double clicked.");
+	public static void dragAndDrop(WebElement sourceWE, WebElement destinationWE) {
+		try {
+			if (wait.until(ExpectedConditions.elementToBeClickable(sourceWE)) != null && wait.until(ExpectedConditions.elementToBeClickable(destinationWE)) != null) {
+				action.clickAndHold(sourceWE).pause(2500).moveToElement(destinationWE).release().build().perform();
+			}
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -97,21 +123,34 @@ public class CommonFunctions extends Base {
 	}
 
 	public static void enterElementValue(WebElement we, String value) {
-		waitElementVisibility(we);
+		try {
+			elementDisplayed(we);
 
-		for (int i = 0; i < value.length(); i++) {
-			we.sendKeys(value.substring(i, i + 1));
+			for (int i = 0; i < value.length(); i++) {
+				we.sendKeys(value.substring(i, i + 1));
+			}
+
+			LogFunctions.info("Finished entering value \"" + value + "\" into \"" + getElementXPath(we) + "\".");
 		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+	}
 
-		LogFunctions.info("Finished entering value \"" + value + "\" into \"" + getElementXPath(we) + "\".");
+	public static void highlightElement(WebElement we) { // Implement for step by step readbility.
+		try {
+			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", we);
+			Thread.sleep(500);
+			js.executeScript("arguments[0].setAttribute('style','border: solid 2px white');", we);
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
 	}
 
 	public static void hoverOverElement(WebElement we) {
 		try {
-			waitElementVisibility(we);
-
-			Actions action = new Actions(driver);
-
+			elementDisplayed(we);
 			action.moveToElement(we).build().perform();
 			LogFunctions.info("Hovered over \"" + getElementXPath(we) + "\" element.");
 		}
@@ -122,12 +161,13 @@ public class CommonFunctions extends Base {
 
 	public static void rightClickElement(WebElement we) {
 		try {
-			waitElementClickable(we);
-
-			Actions action = new Actions(driver).contextClick(we);
-
-			action.build().perform();
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" clicked.");
+			if (wait.until(ExpectedConditions.elementToBeClickable(we)) != null) {
+				action.contextClick(we).build().perform();
+				LogFunctions.info("Element \"" + getElementXPath(we) + "\" right clicked.");
+			}
+			else {
+				LogFunctions.info("Element \"" + getElementXPath(we) + "\" not right clicked.");
+			}
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -152,59 +192,60 @@ public class CommonFunctions extends Base {
 	}
 
 	public static void scrollToBottomOfPage() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		wait(5000, false);
 		LogFunctions.info("Scrolled to bottom.");
 	}
 
 	public static void scrollToElement(WebElement we) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-
+		// js.executeScript("arguments[0].scrollIntoView(true);", we);
 		js.executeScript("window.scrollTo(" + we.getLocation().getX() + ", " + (we.getLocation().getY() - 100) + ")");
 		wait(5000, false);
 		LogFunctions.info("Scrolled to top.");
 	}
 
 	public static void scrollToTopOfPage() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-
 		js.executeScript("window.scrollTo(0,0)");
 		wait(5000, false);
 		LogFunctions.info("Scrolled to top.");
 	}
 
-	public static void selectValueFromDropdown(WebElement dropdownElement, String value) {
+	public static void selectValueFromDropdown(WebElement we, String value) {
 		try {
-			waitElementClickable(dropdownElement);
+			if (wait.until(ExpectedConditions.elementToBeClickable(we)) != null) {
+				Select dropdown = new Select(we);
 
-			Select dropdown = new Select(dropdownElement);
+				dropdown.selectByVisibleText(value);
+				LogFunctions.info("Value \"" + value + "\" selected for \"" + getElementXPath(we) + "\" dropdown.");
+			}
+			else {
+				LogFunctions.info("Dropdown element \"" + getElementXPath(we) + "\" not clickable.");
+			}
 
-			dropdown.selectByVisibleText(value);
-			LogFunctions.info("Value \"" + value + "\" selected for \"" + getElementXPath(dropdownElement) + "\" dropdown.");
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
 		}
 	}
 
-	public static void switchFrameByXPath(String xPath) { // Provide a unique xPath for the desired frame.
+	public static void switchFrameByXPath(WebElement we) { // String xPath <- Provide a unique xPath for the desired frame.
 		try {
-			Integer numberOfFrames = driver.findElements(By.tagName("iframe")).size();
+			// Integer numberOfFrames = driver.findElements(By.tagName("iframe")).size();
+			//
+			// for (int i = 0; i <= numberOfFrames; i++) {
+			// driver.switchTo().frame(i);
+			//
+			// if (driver.findElements(By.xpath(xPath)).size() > 0) {
+			// LogFunctions.info("Switched to frame \"" + i + "\".");
+			// break;
+			// }
+			// else {
+			// driver.switchTo().parentFrame();
+			// LogFunctions.info("Frame not switched.");
+			// }
+			// }
 
-			for (int i = 0; i <= numberOfFrames; i++) {
-				driver.switchTo().frame(i);
-
-				if (driver.findElements(By.xpath(xPath)).size() > 0) {
-					LogFunctions.info("Switched to frame \"" + i + "\".");
-					break;
-				}
-				else {
-					driver.switchTo().parentFrame();
-					LogFunctions.info("Frame not switched.");
-				}
-			}
+			wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(we));
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -225,6 +266,32 @@ public class CommonFunctions extends Base {
 		}
 	}
 
+	public static void verifyLinks() {
+		try {
+			List<WebElement> links = driver.findElements(By.tagName("a"));
+
+			for (int i = 0; i < links.size(); i++) {
+				WebElement ele = links.get(i);
+				String link = ele.getAttribute("href");
+				URL url = new URL(link);
+				HttpURLConnection httpURLConnect = (HttpURLConnection) url.openConnection();
+
+				httpURLConnect.setConnectTimeout(3000);
+				httpURLConnect.connect();
+
+				if (httpURLConnect.getResponseCode() == 200) {
+					System.out.println(link + " - " + httpURLConnect.getResponseMessage());
+				}
+				if (httpURLConnect.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
+					System.out.println(link + " - " + httpURLConnect.getResponseMessage() + " - " + HttpURLConnection.HTTP_NOT_FOUND);
+				}
+			}
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+	}
+
 	public static void wait(Integer duration, Boolean isMinutes) {
 		try {
 			if (isMinutes) {
@@ -238,6 +305,60 @@ public class CommonFunctions extends Base {
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
 		}
+	}
+
+	public static String assembleFilePathsToUpload(String filePaths, String filePathToBeAdded) {
+		try {
+			if (filePaths.isBlank()) {
+				filePaths = filePathToBeAdded;
+			}
+			else {
+				filePaths = filePaths + "\n" + filePathToBeAdded;
+			}
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+
+		return filePaths;
+	}
+
+	public static String getElementXPath(WebElement we) {
+		String xPath = "";
+
+		try {
+			return (String) ((JavascriptExecutor) driver).executeScript("function absoluteXPath(element) {" + "var comp, comps = [];" + "var parent = null;" + "var xpath = '';" + "var getPos = function(element) {" + "var position = 1, curNode;" + "if (element.nodeType == Node.ATTRIBUTE_NODE) {" + "return null;" + "}" + "for (curNode = element.previousSibling; curNode; curNode = curNode.previousSibling) {" + "if (curNode.nodeName == element.nodeName) {" + "++position;" + "}" + "}" + "return position;" + "};" +
+
+				"if (element instanceof Document) {" + "return '/';" + "}" +
+
+				"for (; element && !(element instanceof Document); element = element.nodeType == Node.ATTRIBUTE_NODE ? element.ownerElement : element.parentNode) {" + "comp = comps[comps.length] = {};" + "switch (element.nodeType) {" + "case Node.TEXT_NODE:" + "comp.name = 'text()';" + "break;" + "case Node.ATTRIBUTE_NODE:" + "comp.name = '@' + element.nodeName;" + "break;" + "case Node.PROCESSING_INSTRUCTION_NODE:" + "comp.name = 'processing-instruction()';" + "break;" + "case Node.COMMENT_NODE:" + "comp.name = 'comment()';" + "break;" + "case Node.ELEMENT_NODE:" + "comp.name = element.nodeName;" + "break;" + "}" + "comp.position = getPos(element);" + "}" +
+
+				"for (var i = comps.length - 1; i >= 0; i--) {" + "comp = comps[i];" + "xpath += '/' + comp.name.toLowerCase();" + "if (comp.position !== null) {" + "xpath += '[' + comp.position + ']';" + "}" + "}" +
+
+				"return xpath;" +
+
+				"} return absoluteXPath(arguments[0]);", we);
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+
+		return xPath;
+	}
+
+	public static String stringAppendDateTime(String value) {
+		String result = "";
+
+		try {
+			Calendar calendar = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("_MMddyy_HHmm");
+			result = value + sdf.format(calendar.getTime());
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+
+		return result;
 	}
 
 	public static WebElement getElementDisplayedInListByXPath(String xPath) {
@@ -282,65 +403,26 @@ public class CommonFunctions extends Base {
 		return we;
 	}
 
-	public static String assembleFilePathsToUpload(String filePaths, String filePathToBeAdded) {
-		try {
-			if (filePaths.isBlank()) {
-				filePaths = filePathToBeAdded;
-			}
-			else {
-				filePaths = filePaths + "\n" + filePathToBeAdded;
-			}
-		}
-		catch (Exception e) {
-			LogFunctions.error("Error found: " + e);
-		}
-
-		return filePaths;
-	}
-
-	public static String getElementXPath(WebElement we) {
-		String xPath = "";
-
-		try {
-			return (String) ((JavascriptExecutor) driver).executeScript("function absoluteXPath(we) {" + "var comp, comps = [];" + "var parent = null;" + "var xpath = '';" + "var getPos = function(we) {" + "var position = 1, curNode;" + "if (we.nodeType == Node.ATTRIBUTE_NODE) {" + "return null;" + "}" + "for (curNode = we.previousSibling; curNode; curNode = curNode.previousSibling) {" + "if (curNode.nodeName == we.nodeName) {" + "++position;" + "}" + "}" + "return position;" + "};" +
-
-				"if (we instanceof Document) {" + "return '/';" + "}" +
-
-				"for (; we && !(we instanceof Document); we = we.nodeType == Node.ATTRIBUTE_NODE ? we.ownerElement : we.parentNode) {" + "comp = comps[comps.length] = {};" + "switch (we.nodeType) {" + "case Node.TEXT_NODE:" + "comp.name = 'text()';" + "break;" + "case Node.ATTRIBUTE_NODE:" + "comp.name = '@' + we.nodeName;" + "break;" + "case Node.PROCESSING_INSTRUCTION_NODE:" + "comp.name = 'processing-instruction()';" + "break;" + "case Node.COMMENT_NODE:" + "comp.name = 'comment()';" + "break;" + "case Node.ELEMENT_NODE:" + "comp.name = we.nodeName;" + "break;" + "}" + "comp.position = getPos(we);" + "}" +
-
-				"for (var i = comps.length - 1; i >= 0; i--) {" + "comp = comps[i];" + "xpath += '/' + comp.name.toLowerCase();" + "if (comp.position !== null) {" + "xpath += '[' + comp.position + ']';" + "}" + "}" +
-
-				"return xpath;" +
-
-				"} return absoluteXPath(arguments[0]);", we);
-		}
-		catch (Exception e) {
-			LogFunctions.error("Error found: " + e);
-		}
-
-		return xPath;
-	}
-
-	public static String stringAppendDateTime(String value) {
-		String result = "";
-
-		try {
-			Calendar calendar = Calendar.getInstance();
-			SimpleDateFormat sdf = new SimpleDateFormat("_MMddyy_HHmm");
-			result = value + sdf.format(calendar.getTime());
-		}
-		catch (Exception e) {
-			LogFunctions.error("Error found: " + e);
-		}
-
-		return result;
-	}
-
 	// ================================================== Assert Functions ==================================================
+	public static void checkAlertIsDisplayed() {
+		Boolean result = true;
+
+		if (wait.until(ExpectedConditions.alertIsPresent()) != null) {
+			LogFunctions.info("Alert is displayed.");
+		}
+		else {
+			result = false;
+
+			LogFunctions.error("Alert is not displayed.");
+		}
+
+		Assert.assertTrue(result);
+	}
+
 	public static void checkAlertIsNotDisplayed() {
 		Boolean result = true;
 
-		if (new WebDriverWait(driver, 10).until(ExpectedConditions.alertIsPresent()) == null) {
+		if (wait.until(ExpectedConditions.alertIsPresent()) == null) {
 			LogFunctions.info("Alert is not displayed.");
 		}
 		else {
@@ -352,32 +434,35 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void checkAlertMessageIsDisplayed(String expectedAlertMessage) {
+	public static void checkAlertMessageIsDisplayed(String expectedValue) {
 		Boolean result = true;
-		String alertMessage = driver.switchTo().alert().getText();
 
-		if (alertMessage.contains(expectedAlertMessage)) {
-			LogFunctions.info("Alert message \"" + expectedAlertMessage + "\" is displayed.");
+		checkAlertIsDisplayed();
+
+		if (driver.switchTo().alert().getText().contains(expectedValue)) {
+			LogFunctions.info("Alert message \"" + expectedValue + "\" is displayed.");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Alert message \"" + expectedAlertMessage + "\" is not displayed.");
+			LogFunctions.error("Alert message \"" + expectedValue + "\" is not displayed.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void checkDropdownOptionsAvailable(WebElement dropdownElement, String[] expectedOptions) {
+	public static void checkDropdownOptionsAvailable(WebElement we, String[] expectedValues) {
 		Boolean result = true;
-		List<WebElement> options = dropdownElement.findElements(By.xpath(".//option"));
+		List<WebElement> options = we.findElements(By.xpath(".//option"));
 		int index = 0;
 
+		elementDisplayed(we);
+
 		for (WebElement option: options) {
-			if (!option.getText().equals(expectedOptions[index])) {
+			if (!option.getText().equals(expectedValues[index])) {
 				result = false;
 
-				LogFunctions.error("Option \"" + option.getText() + "\" is not in \"" + getElementXPath(dropdownElement) + "\" dropdown.");
+				LogFunctions.error("Option \"" + option.getText() + "\" is not in \"" + getElementXPath(we) + "\" dropdown.");
 
 				break;
 			}
@@ -385,210 +470,211 @@ public class CommonFunctions extends Base {
 			index = index + 1;
 		}
 
-		LogFunctions.error("All options given are in \"" + getElementXPath(dropdownElement) + "\" dropdown.");
-
-		Assert.assertTrue(result);
-	}
-
-	public static void checkFeedbackMessageDisplayedContainsString(String feedbackMessage) {
-		Boolean result = true;
-		WebElement we = driver.findElement(By.xpath("//span[contains(text(), '" + feedbackMessage + "')]"));
-
-		waitElementVisibility(we);
-
-		if (we.isDisplayed()) {
-			LogFunctions.info("Feedback message \"" + feedbackMessage + "\" found.");
-		}
-		else {
-			result = false;
-
-			LogFunctions.error("Feedback message \"" + feedbackMessage + "\" not found.");
+		if (result) {
+			LogFunctions.info("All options given are in \"" + getElementXPath(we) + "\" dropdown.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void checkFeedbackMessageHidden(String feedbackMessage) {
+	public static void checkFeedbackMessageDisplayed(String expectedValue) {
 		Boolean result = true;
+		WebElement we = driver.findElement(By.xpath("//span[contains(text(), '" + expectedValue + "')]"));
 
-		WebElement we = driver.findElement(By.xpath("//span[text() = '" + feedbackMessage + "']"));
-
-		waitElementInvisible(we);
-
-		if (!we.isDisplayed()) {
-			LogFunctions.info("Feedback message \"" + feedbackMessage + "\" not found.");
+		if (wait.until(ExpectedConditions.visibilityOf(we)) != null) {
+			LogFunctions.info("Feedback message \"" + expectedValue + "\" displayed.");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Feedback message \"" + feedbackMessage + "\" found.");
+			LogFunctions.error("Feedback message \"" + expectedValue + "\" not displayed.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void checkIfCheckboxIsNotToggled(WebElement checkboxElement) {
+	public static void checkFeedbackMessageNotDisplayed(String expectedValue) {
 		Boolean result = true;
+		List<WebElement> wes = driver.findElements(By.xpath("//span[contains(text(), '" + expectedValue + "')]"));
 
-		waitElementVisibility(checkboxElement);
-		waitElementNotSelected(checkboxElement);
+		if (wes.size() > 0) {
+			for (int i = 1; i <= wes.size(); i++) {
+				WebElement we = wes.get(i - 1);
 
-		if (!checkboxElement.isSelected()) {
-			LogFunctions.info("Checkbox \"" + getElementXPath(checkboxElement) + "\" is not toggled.");
+				if (we.isDisplayed()) {
+					result = false;
+
+					LogFunctions.error("Feedback message \"" + expectedValue + "\" displayed.");
+					break;
+				}
+			}
 		}
-		else {
-			result = false;
 
-			LogFunctions.error("Checkbox \"" + getElementXPath(checkboxElement) + "\" is toggled.");
+		if (result) {
+			LogFunctions.info("Feedback message \"" + expectedValue + "\" not displayed.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void checkIfCheckboxIsToggled(WebElement checkboxElement) {
+	public static void checkIfCheckboxIsNotToggled(WebElement we) {
 		Boolean result = true;
 
-		waitElementVisibility(checkboxElement);
-		waitElementSelected(checkboxElement);
-
-		if (checkboxElement.isSelected()) {
-			LogFunctions.info("Checkbox \"" + getElementXPath(checkboxElement) + "\" is toggled.");
+		if (!wait.until(ExpectedConditions.elementToBeSelected(we))) {
+			LogFunctions.info("Checkbox \"" + getElementXPath(we) + "\" is not toggled.");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Checkbox \"" + getElementXPath(checkboxElement) + "\" is not toggled.");
+			LogFunctions.error("Checkbox \"" + getElementXPath(we) + "\" is toggled.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void checkPageTitle(String expectedTitle) {
+	public static void checkIfCheckboxIsToggled(WebElement we) {
 		Boolean result = true;
 
-		waitTitleIs(expectedTitle);
-
-		if (driver.getTitle().contains(expectedTitle)) {
-			LogFunctions.info("Page title \"" + expectedTitle + "\" is displayed.");
+		if (wait.until(ExpectedConditions.elementToBeSelected(we))) {
+			LogFunctions.info("Checkbox \"" + getElementXPath(we) + "\" is toggled.");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Page title \"" + expectedTitle + "\" is not displayed.");
+			LogFunctions.error("Checkbox \"" + getElementXPath(we) + "\" is not toggled.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void checkPopupOnPage(String expectedPageTitle, String popupHeader) {
+	public static void checkPageTitle(String expected) {
 		Boolean result = true;
 
-		if (driver.getTitle().contains(expectedPageTitle) && driver.findElement(By.xpath("//*[contains(text(), '" + popupHeader + "')]")).isDisplayed()) {
-			LogFunctions.info("Popup with header \"" + popupHeader + "\" on page \"" + expectedPageTitle + "\" is displayed.");
+		if (wait.until(ExpectedConditions.titleContains(expected))) {
+			LogFunctions.info("Page title \"" + expected + "\" is displayed.");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Popup with header \"" + popupHeader + "\" on page \"" + expectedPageTitle + "\" is not displayed.");
+			LogFunctions.error("Page title \"" + expected + "\" is not displayed.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributeValueContains(WebElement we, String attribute, String value) {
+	public static void checkPopupOnPage(String expectedPageTitle, String expectedPopupHeader) {
 		Boolean result = true;
 
-		waitElementAttributeContains(we, attribute, value);
+		if (wait.until(ExpectedConditions.titleContains(expectedPageTitle))) {
+			if (wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(), '" + expectedPopupHeader + "')]")))).isDisplayed()) {
+				LogFunctions.info("Popup with header \"" + expectedPopupHeader + "\" on page \"" + expectedPageTitle + "\" is displayed.");
+			}
+			else {
+				result = false;
 
-		if (we.getAttribute(attribute).contains(value) || (value == "" && (we.getAttribute(attribute).contains("") || we.getAttribute(attribute).contains(null)))) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" contains the value \"" + value + "\".");
+				LogFunctions.error("Popup with header \"" + expectedPopupHeader + "\" on page \"" + expectedPageTitle + "\" is not displayed.");
+			}
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" does not contain the value \"" + value + "\".");
+			LogFunctions.error("Not on page \"" + expectedPageTitle + "\".");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributeValueDoesNotContains(WebElement we, String attribute, String value) {
+	public static void elementAttributeContainsValue(WebElement we, String expectedAttribute, String expectedValue) {
 		Boolean result = true;
 
-		if (!we.getAttribute(attribute).contains(value) || (value == "" && (!we.getAttribute(attribute).contains("") || !we.getAttribute(attribute).contains(null)))) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" does not contain the value \"" + value + "\".");
+		if (wait.until(ExpectedConditions.attributeContains(we, expectedAttribute, expectedValue))) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + expectedAttribute + "\" contains the value \"" + expectedValue + "\".");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Element " + getElementXPath(we) + " attribute " + attribute + " contains value " + value + ".");
+			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + expectedAttribute + "\" does not contain the value \"" + expectedValue + "\".");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributeIsNotPresent(WebElement we, String attribute) {
+	public static void elementAttributeDoesNotContainValue(WebElement we, String expectedAttribute, String expectedValue) {
 		Boolean result = true;
 
-		if (we.getAttribute(attribute) == null) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is not present.");
+		if (!wait.until(ExpectedConditions.attributeContains(we, expectedAttribute, expectedValue))) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + expectedAttribute + "\" does not contain the value \"" + expectedValue + "\".");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is present.");
+			LogFunctions.error("Element " + getElementXPath(we) + " attribute " + expectedAttribute + " contains value " + expectedValue + ".");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void elementAttributePresent(WebElement we, String attribute) {
+	public static void elementAttributeIsNotPresent(WebElement we, String expectedAttribute) {
 		Boolean result = true;
 
-		if (we.getAttribute(attribute) != null) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is present.");
+		elementDisplayed(we);
+
+		if (we.getAttribute(expectedAttribute) == null) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + expectedAttribute + "\" is not present.");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + attribute + "\" is not present.");
+			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + expectedAttribute + "\" is present.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void elementCssValueContains(WebElement we, String property, String value) {
+	public static void elementAttributePresent(WebElement we, String expectedAttribute) {
 		Boolean result = true;
 
-		if (we.getCssValue(property).contains(value)) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that contains the css value \"" + value + "\".");
+		elementDisplayed(we);
+
+		if (we.getAttribute(expectedAttribute) != null) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + expectedAttribute + "\" is present.");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" that does not contain the css value \"" + value + "\".");
+			LogFunctions.error("Element \"" + getElementXPath(we) + "\" attribute \"" + expectedAttribute + "\" is not present.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	public static void elementContainsText(WebElement we, String text) {
+	public static void elementCssValueContains(WebElement we, String expectedProperty, String expectedValue) {
 		Boolean result = true;
-		String webElementText = we.getText().toString();
 
-		waitTextToBePresentInElement(we, text);
+		elementDisplayed(we);
 
-		if (text.isBlank()) {
-			text = "blank";
-		}
-
-		if (webElementText.contains(text) || (text.contains("") && (webElementText.contains("") || webElementText.contains(null)))) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that partially contains the text \"" + text + "\" is found.");
+		if (we.getCssValue(expectedProperty).contains(expectedValue)) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that contains the css \"" + expectedProperty + "\" value \"" + expectedValue + "\".");
 		}
 		else {
 			result = false;
 
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" that partially contains the text \"" + text + "\" is not found.");
+			LogFunctions.error("Element \"" + getElementXPath(we) + "\" that does not contain the css \"" + expectedProperty + "\" value \"" + expectedValue + "\".");
+		}
+
+		Assert.assertTrue(result);
+	}
+
+	public static void elementContainsText(WebElement we, String expectedValue) {
+		Boolean result = true;
+
+		if (wait.until(ExpectedConditions.textToBePresentInElement(we, expectedValue))) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that contains the text \"" + expectedValue + "\" is found.");
+		}
+		else {
+			result = false;
+
+			LogFunctions.error("Element \"" + getElementXPath(we) + "\" that contains the text \"" + expectedValue + "\" is not found.");
 		}
 
 		Assert.assertTrue(result);
@@ -597,9 +683,7 @@ public class CommonFunctions extends Base {
 	public static void elementDisplayed(WebElement we) {
 		Boolean result = true;
 
-		waitElementVisibility(we);
-
-		if (we.isDisplayed()) {
+		if (wait.until(ExpectedConditions.visibilityOf(we)).isDisplayed()) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" is displayed.");
 		}
 		else {
@@ -614,9 +698,7 @@ public class CommonFunctions extends Base {
 	public static void elementEnabled(WebElement we) {
 		Boolean result = true;
 
-		waitElementClickable(we);
-
-		if (we.isEnabled()) {
+		if (wait.until(ExpectedConditions.visibilityOf(we)).isEnabled()) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" is enabled.");
 		}
 		else {
@@ -628,128 +710,72 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
-	public static void elementInvisible(WebElement we) {
+	public static void elementHidden(WebElement we) { // Experimental.
 		Boolean result = true;
 
-		waitElementInvisible(we);
-
-		if (!we.isDisplayed()) {
-			LogFunctions.info("Element \"" + getElementXPath(we) + "\" hidden in page.");
-		}
-		else {
-			result = false;
-
-			LogFunctions.error("Element \"" + getElementXPath(we) + "\" found in page.");
-		}
-
-		Assert.assertTrue(result);
-	}
-
-	public static void elementXPathNotExisting(String xPath) {
-		Boolean result = true;
-		List<WebElement> wes = driver.findElements(By.xpath(xPath));
-
-		if (wes.size() == 0) {
-			LogFunctions.info("Element with xpath \"" + xPath + "\" not found.");
-		}
-		else {
-			result = false;
-
-			LogFunctions.error("Element with xpath \"" + xPath + "\" found.");
-		}
-
-		Assert.assertTrue(result);
-	}
-
-	public static void textNotInPage(String value) {
-		Boolean result = true;
-		List<WebElement> wes = driver.findElements(By.xpath("//*[contains(text(), '" + value + "')]"));
-
-		for (int i = 1; i <= wes.size(); i++) {
-			WebElement we = wes.get(i - 1);
-
+		try {
 			if (we.isDisplayed()) {
 				result = false;
 
-				LogFunctions.error("Text \"" + value + "\" visible.");
-				break;
+				LogFunctions.error("Element \"" + getElementXPath(we) + "\" displayed in page.");
+			}
+			else {
+				LogFunctions.info("Element \"" + getElementXPath(we) + "\" not displayed in page.");
 			}
 		}
-
-		if (result) {
-			LogFunctions.info("Text \"" + value + "\" hidden.");
+		catch (Exception e) {
+			LogFunctions.info("Element \"" + getElementXPath(we) + "\" not displayed in page.");
 		}
-
-		Assert.assertTrue(result);
+		finally {
+			Assert.assertTrue(result);
+		}
 	}
 
-	public static void textVisibleInPage(String value) {
+	public static void textDisplayedInPage(String expectedValue) {
 		Boolean result = false;
-		String xPath = "//*[contains(text(), '" + value + "')]";
-		List<WebElement> wes = driver.findElements(By.xpath(xPath));
+		List<WebElement> wes = driver.findElements(By.xpath("//*[contains(text(), '" + expectedValue + "')]"));
 
-		waitPresenceOfElement(xPath);
+		if (wes.size() > 0) {
+			for (int i = 1; i <= wes.size(); i++) {
+				WebElement we = wes.get(i - 1);
 
-		for (int i = 1; i <= wes.size(); i++) {
-			WebElement we = wes.get(i - 1);
+				if (we.isDisplayed()) {
+					result = true;
 
-			if (we.isDisplayed()) {
-				result = true;
-
-				LogFunctions.info("Text \"" + value + "\" visible.");
-				break;
+					LogFunctions.info("Text \"" + expectedValue + "\" displayed.");
+					break;
+				}
 			}
 		}
 
 		if (!result) {
-			LogFunctions.error("Text \"" + value + "\" hidden.");
+			LogFunctions.error("Text \"" + expectedValue + "\" not displayed.");
 		}
 
 		Assert.assertTrue(result);
 	}
 
-	// =================================================== Wait Functions ===================================================
-	public static void waitAlertIsPresent() {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.alertIsPresent());
-	}
+	public static void textNotDisplayedInPage(String expectedValue) {
+		Boolean result = true;
+		List<WebElement> wes = driver.findElements(By.xpath("//*[contains(text(), '" + expectedValue + "')]"));
 
-	public static void waitElementAttributeContains(WebElement we, String attribute, String value) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.attributeContains(we, attribute, value));
-	}
+		if (wes.size() > 0) {
+			for (int i = 1; i <= wes.size(); i++) {
+				WebElement we = wes.get(i - 1);
 
-	public static void waitElementClickable(WebElement we) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(we));
-	}
+				if (we.isDisplayed()) {
+					result = false;
 
-	public static void waitElementInvisible(WebElement we) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(we)));
-	}
+					LogFunctions.error("Text \"" + expectedValue + "\" displayed.");
+					break;
+				}
+			}
+		}
 
-	public static void waitElementNotClickable(WebElement we) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(we)));
-	}
+		if (result) {
+			LogFunctions.info("Text \"" + expectedValue + "\" not displayed.");
+		}
 
-	public static void waitElementNotSelected(WebElement we) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementSelectionStateToBe(we, false));
-	}
-
-	public static void waitElementSelected(WebElement we) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementSelectionStateToBe(we, true));
-	}
-
-	public static void waitElementVisibility(WebElement we) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(we));
-	}
-
-	public static void waitPresenceOfElement(String xPath) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xPath)));
-	}
-
-	public static void waitTextToBePresentInElement(WebElement we, String text) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.textToBePresentInElement(we, text));
-	}
-
-	public static void waitTitleIs(String title) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.titleIs(title));
+		Assert.assertTrue(result);
 	}
 }
