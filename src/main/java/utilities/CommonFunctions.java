@@ -1,12 +1,17 @@
 package utilities;
 
 import cucumber.api.Scenario;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -23,7 +28,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CommonFunctions extends Base {
 	static Actions action = new Actions(driver);
 	static JavascriptExecutor js = (JavascriptExecutor) driver;
-	static WebDriverWait wait = new WebDriverWait(driver, 30);
+	static WebDriverWait wait;
 
 	public CommonFunctions(WebDriver dr) {
 
@@ -52,6 +57,8 @@ public class CommonFunctions extends Base {
 	}
 
 	public static void clickElement(WebElement we) {
+		wait = new WebDriverWait(driver, 30);
+
 		try {
 			if (wait.until(ExpectedConditions.elementToBeClickable(we)) != null) {
 				we.click();
@@ -96,6 +103,8 @@ public class CommonFunctions extends Base {
 	}
 
 	public static void doubleClickOnElement(WebElement we) {
+		wait = new WebDriverWait(driver, 30);
+
 		try {
 			if (wait.until(ExpectedConditions.elementToBeClickable(we)) != null) {
 				action.doubleClick(we).build().perform();
@@ -112,6 +121,8 @@ public class CommonFunctions extends Base {
 	}
 
 	public static void dragAndDrop(WebElement sourceWE, WebElement destinationWE) {
+		wait = new WebDriverWait(driver, 30);
+
 		try {
 			if (wait.until(ExpectedConditions.elementToBeClickable(sourceWE)) != null && wait.until(ExpectedConditions.elementToBeClickable(destinationWE)) != null) {
 				action.clickAndHold(sourceWE).pause(2500).moveToElement(destinationWE).release().build().perform();
@@ -137,11 +148,10 @@ public class CommonFunctions extends Base {
 		}
 	}
 
-	public static void highlightElement(WebElement we) { // Implement for step by step readbility.
+	public static void highlightElement(WebElement we) {
 		try {
 			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", we);
 			Thread.sleep(500);
-			js.executeScript("arguments[0].setAttribute('style','border: solid 2px white');", we);
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -160,6 +170,8 @@ public class CommonFunctions extends Base {
 	}
 
 	public static void rightClickElement(WebElement we) {
+		wait = new WebDriverWait(driver, 30);
+
 		try {
 			if (wait.until(ExpectedConditions.elementToBeClickable(we)) != null) {
 				action.contextClick(we).build().perform();
@@ -177,12 +189,17 @@ public class CommonFunctions extends Base {
 	public static void screenshotFailedTest(Scenario scenario) {
 		try {
 			if (scenario.isFailed()) {
-				TakesScreenshot ts = (TakesScreenshot) driver;
-				File fileSource = ts.getScreenshotAs(OutputType.FILE);
 				Calendar calendar = Calendar.getInstance();
 				SimpleDateFormat sdtf = new SimpleDateFormat("MM.dd.yyyy_HHmm");
 
-				FileUtils.copyFile(fileSource, new File("target/failedscreenshots/" + scenario.getId().substring(0, scenario.getId().split(";")[0].indexOf(":")).toUpperCase() + "_S" + scenario.getName().substring(0, scenario.getName().indexOf(":")) + "-" + sdtf.format(calendar.getTime()) + ".png"));
+				// TakesScreenshot ts = (TakesScreenshot) driver;
+				// File fileSource = ts.getScreenshotAs(OutputType.FILE);
+				// FileUtils.copyFile(fileSource, new File("target/failedscreenshots/" + scenario.getId().substring(0, scenario.getId().split(";")[0].indexOf(":")).toUpperCase() + "_S" +
+				// scenario.getName().substring(0, scenario.getName().indexOf(":")) + "-" + sdtf.format(calendar.getTime()) + ".png"));
+
+				BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+				ImageIO.write(image, "png", new File("target/failedscreenshots/" + scenario.getId().substring(0, scenario.getId().split(";")[0].indexOf(":")).toUpperCase() + "_S" + scenario.getName().substring(0, scenario.getName().indexOf(":")) + "-" + sdtf.format(calendar.getTime()) + ".png"));
+
 				LogFunctions.info("Test Failed. Screenshot taken.");
 			}
 		}
@@ -211,6 +228,8 @@ public class CommonFunctions extends Base {
 	}
 
 	public static void selectValueFromDropdown(WebElement we, String value) {
+		wait = new WebDriverWait(driver, 30);
+
 		try {
 			if (wait.until(ExpectedConditions.elementToBeClickable(we)) != null) {
 				Select dropdown = new Select(we);
@@ -229,6 +248,8 @@ public class CommonFunctions extends Base {
 	}
 
 	public static void switchFrameByXPath(WebElement we) { // String xPath <- Provide a unique xPath for the desired frame.
+		wait = new WebDriverWait(driver, 30);
+
 		try {
 			// Integer numberOfFrames = driver.findElements(By.tagName("iframe")).size();
 			//
@@ -260,6 +281,16 @@ public class CommonFunctions extends Base {
 			else {
 				LogFunctions.info("TEST - PASSED");
 			}
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+	}
+
+	public static void unhighlightElement(WebElement we) {
+		try {
+			js.executeScript("arguments[0].setAttribute('style','border: solid 2px white');", we);
+			Thread.sleep(500);
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -406,6 +437,7 @@ public class CommonFunctions extends Base {
 	// ================================================== Assert Functions ==================================================
 	public static void checkAlertIsDisplayed() {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (wait.until(ExpectedConditions.alertIsPresent()) != null) {
 			LogFunctions.info("Alert is displayed.");
@@ -421,6 +453,7 @@ public class CommonFunctions extends Base {
 
 	public static void checkAlertIsNotDisplayed() {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (wait.until(ExpectedConditions.alertIsPresent()) == null) {
 			LogFunctions.info("Alert is not displayed.");
@@ -479,9 +512,9 @@ public class CommonFunctions extends Base {
 
 	public static void checkFeedbackMessageDisplayed(String expectedValue) {
 		Boolean result = true;
-		WebElement we = driver.findElement(By.xpath("//span[contains(text(), '" + expectedValue + "')]"));
+		wait = new WebDriverWait(driver, 30);
 
-		if (wait.until(ExpectedConditions.visibilityOf(we)) != null) {
+		if (wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//span[contains(text(), '" + expectedValue + "')]")))) != null) {
 			LogFunctions.info("Feedback message \"" + expectedValue + "\" displayed.");
 		}
 		else {
@@ -519,6 +552,7 @@ public class CommonFunctions extends Base {
 
 	public static void checkIfCheckboxIsNotToggled(WebElement we) {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (!wait.until(ExpectedConditions.elementToBeSelected(we))) {
 			LogFunctions.info("Checkbox \"" + getElementXPath(we) + "\" is not toggled.");
@@ -534,6 +568,7 @@ public class CommonFunctions extends Base {
 
 	public static void checkIfCheckboxIsToggled(WebElement we) {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (wait.until(ExpectedConditions.elementToBeSelected(we))) {
 			LogFunctions.info("Checkbox \"" + getElementXPath(we) + "\" is toggled.");
@@ -549,6 +584,7 @@ public class CommonFunctions extends Base {
 
 	public static void checkPageTitle(String expected) {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (wait.until(ExpectedConditions.titleContains(expected))) {
 			LogFunctions.info("Page title \"" + expected + "\" is displayed.");
@@ -564,6 +600,7 @@ public class CommonFunctions extends Base {
 
 	public static void checkPopupOnPage(String expectedPageTitle, String expectedPopupHeader) {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (wait.until(ExpectedConditions.titleContains(expectedPageTitle))) {
 			if (wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(), '" + expectedPopupHeader + "')]")))).isDisplayed()) {
@@ -586,6 +623,7 @@ public class CommonFunctions extends Base {
 
 	public static void elementAttributeContainsValue(WebElement we, String expectedAttribute, String expectedValue) {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (wait.until(ExpectedConditions.attributeContains(we, expectedAttribute, expectedValue))) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + expectedAttribute + "\" contains the value \"" + expectedValue + "\".");
@@ -601,6 +639,7 @@ public class CommonFunctions extends Base {
 
 	public static void elementAttributeDoesNotContainValue(WebElement we, String expectedAttribute, String expectedValue) {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (!wait.until(ExpectedConditions.attributeContains(we, expectedAttribute, expectedValue))) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" attribute \"" + expectedAttribute + "\" does not contain the value \"" + expectedValue + "\".");
@@ -667,6 +706,7 @@ public class CommonFunctions extends Base {
 
 	public static void elementContainsText(WebElement we, String expectedValue) {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (wait.until(ExpectedConditions.textToBePresentInElement(we, expectedValue))) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" that contains the text \"" + expectedValue + "\" is found.");
@@ -682,6 +722,7 @@ public class CommonFunctions extends Base {
 
 	public static void elementDisplayed(WebElement we) {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (wait.until(ExpectedConditions.visibilityOf(we)).isDisplayed()) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" is displayed.");
@@ -697,6 +738,7 @@ public class CommonFunctions extends Base {
 
 	public static void elementEnabled(WebElement we) {
 		Boolean result = true;
+		wait = new WebDriverWait(driver, 30);
 
 		if (wait.until(ExpectedConditions.visibilityOf(we)).isEnabled()) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" is enabled.");

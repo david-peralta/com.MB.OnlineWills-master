@@ -8,17 +8,11 @@ import utilities.CommonFunctions;
 
 public class HomePage extends Base {
 	// ========================================================== Page Objects ===========================================================
-	@FindBy(xpath = "//span[text() = 'Create Post']")
-	WebElement button_CreatePost;
+	@FindBy(xpath = "//div[contains(@id, 'LoginInfo_username')]")
+	WebElement accordion_UserFullName;
 
-	@FindBy(xpath = "//*[text() = 'Share']//parent::button")
-	WebElement button_ShareNewPost;
-
-	@FindBy(xpath = "//input[@type = 'file' and @aria-label='Add Photo or Video']")
-	WebElement button_UploadPhotoVideo;
-
-	@FindBy(xpath = "//div[contains(@aria-label, 'What') and contains(@aria-label, 's on your mind,')]//div//div//div")
-	WebElement input_NewPostText;
+	@FindBy(xpath = "//a[contains(text(), 'Logout')]")
+	WebElement link_UserFullNameAccordion_Logout;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public HomePage() {
@@ -26,21 +20,14 @@ public class HomePage extends Base {
 	}
 
 	// ============================================================= Actions =============================================================
-	public void clickCreatePostButton() {
-		CommonFunctions.clickElement(button_CreatePost);
+	public void containsValueUserFullNameAccordion(String userFullName) {
+		CommonFunctions.elementContainsText(accordion_UserFullName, userFullName);
 	}
 
-	public void clickShareNewPostButton(String filePaths) {
-		if (filePaths != "") {
-			CommonFunctions.attachToUploadElement(button_UploadPhotoVideo, filePaths);
-		}
+	public LoginPage clickUserFullNameAccordionLogoutLink() {
+		CommonFunctions.clickElement(accordion_UserFullName);
+		CommonFunctions.clickElement(link_UserFullNameAccordion_Logout);
 
-		CommonFunctions.clickElement(button_ShareNewPost);
-		CommonFunctions.wait(15000, false);
-	}
-
-	public void setNewPostTextInput(String textPost) {
-		CommonFunctions.clickElement(input_NewPostText);
-		CommonFunctions.clickKeys(textPost);
+		return new LoginPage();
 	}
 }

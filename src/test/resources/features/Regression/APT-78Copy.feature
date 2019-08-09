@@ -1,6 +1,6 @@
-Feature: APT-78: As a User, I want to login to Oxy Admin portal so that I can access and use the portal
+Feature: APT-78Copy: As a User, I want to login again to Oxy Admin portal so that I can access and use the portal
 
-	@WIP
+	@Regression
 	Scenario Outline: 1 and 2: Successful Login
 		Given user opens browser
 		When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -13,7 +13,7 @@ Feature: APT-78: As a User, I want to login to Oxy Admin portal so that I can ac
 			| email                    | password        |
 			| test_user@aptours.com.au | admin67testUser |
 
-	@WIP
+	@Regression
 	Scenario Outline: 3: Invalid Login
 		Given user opens browser
 		When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -21,4 +21,4 @@ Feature: APT-78: As a User, I want to login to Oxy Admin portal so that I can ac
 
 		Examples: 
 			| email                    | password    |
-			| test_user@aptours.com.au | admin67testUser |
+			| test_user@aptours.com.au | wrongString |

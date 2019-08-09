@@ -21,6 +21,8 @@ public class StepDefinitions extends Base {
 	@Before
 	public void setup(Scenario scenario) {
 		LogFunctions.startLog(scenario);
+
+		Base.initialization();
 	}
 
 	@After
@@ -29,12 +31,11 @@ public class StepDefinitions extends Base {
 		CommonFunctions.screenshotFailedTest(scenario);
 		LogFunctions.endLog(scenario);
 		driver.quit();
+		driver = null;
 	}
 
 	@Given("^user opens browser$")
-	public void user_opens_browser() throws Throwable {
-		Base.initialization();
-
+	public void user_opens_browser() throws Throwable { // Always the start page.
 		loginPage = new LoginPage();
 	}
 
@@ -107,5 +108,24 @@ public class StepDefinitions extends Base {
 	@When("^user hits the enter key$")
 	public void user_hits_the_enter_key() throws Throwable {
 		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+	}
+
+	// ================================================== Login Page Functions ==================================================
+	@When("^user logs into app with the \"([^\"]*)\" and \"([^\"]*)\" as the login credentials$")
+	public void user_logs_into_app_with_the_and_as_the_login_credentials(String arg1, String arg2) throws Throwable {
+		loginPage.setEmailInput(arg1);
+		loginPage.setPasswordInput(arg2);
+
+		homePage = loginPage.clickLoginButton();
+	}
+
+	@Then("^user validates his account is logged in$")
+	public void user_validates_his_account_is_logged_in() throws Throwable {
+		homePage.containsValueUserFullNameAccordion(prop.getProperty("primaryAccountFirstName"));
+	}
+
+	@When("^user logs out of the app$")
+	public void user_logs_out_of_the_app() throws Throwable {
+		loginPage = homePage.clickUserFullNameAccordionLogoutLink();
 	}
 }

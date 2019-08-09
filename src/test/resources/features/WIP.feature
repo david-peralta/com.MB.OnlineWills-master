@@ -1,24 +1,24 @@
-Feature: TST-1: Login
+Feature: APT-78: As a User, I want to login to Oxy Admin portal so that I can access and use the portal
 
-	@Regression
-	Scenario Outline: 1: Successful Login
+	@WIP
+	Scenario Outline: 1 and 2: Successful Login
 		Given user opens browser
-		Then user is on "Facebook - Log In or Sign Up" page
-		When user enters the "<username>" and "<password>" for the login credentials
-		Then user is on "Facebook" page
+		When user logs into app with the "<email>" and "<password>" as the login credentials
+		Then user is on "HomePage" page
+		And user validates his account is logged in
+		When user logs out of the app
+		Then user is on "Login" page
 
 		Examples: 
-			| username                       | password       |
-			| bahalakasabuhaymo530@gmail.com | fakeaccount123 |
+			| email                    | password        |
+			| test_user@aptours.com.au | admin67testUser |
 
-	@Regression
-	Scenario Outline: 2: Invalid Login
+	@WIP
+	Scenario Outline: 3: Invalid Login
 		Given user opens browser
-		Then user is on "Facebook - Log In or Sign Up" page
-		When user enters the "<username>" and "<password>" for the login credentials
-		Then user is on "Log into Facebook | Facebook" page
-		And user sees error message "The password you’ve entered is incorrect. "
+		When user logs into app with the "<email>" and "<password>" as the login credentials
+		Then user sees feedback message "Invalid User Credentials"
 
 		Examples: 
-			| username                       | password    |
-			| bahalakasabuhaymo530@gmail.com | wrongString |
+			| email                    | password    |
+			| test_user@aptours.com.au | admin67testUser |

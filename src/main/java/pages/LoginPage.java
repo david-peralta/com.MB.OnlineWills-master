@@ -8,13 +8,13 @@ import utilities.CommonFunctions;
 
 public class LoginPage extends Base {
 	// ========================================================== Page Objects ===========================================================
-	@FindBy(xpath = "//input[@value = 'Log In']")
-	WebElement button_LogIn;
+	@FindBy(xpath = "//input[contains(@id, 'LoginButton')]")
+	WebElement button_Login;
 
-	@FindBy(xpath = "//input[@id = 'email']")
+	@FindBy(xpath = "//input[contains(@id, 'UserNameInput')]")
 	WebElement input_Email;
 
-	@FindBy(xpath = "//input[@id = 'pass']")
+	@FindBy(xpath = "//input[contains(@id, 'PasswordInput')]")
 	WebElement input_Password;
 
 	// ================================================== Initializing the Page Objects ==================================================
@@ -32,7 +32,7 @@ public class LoginPage extends Base {
 	}
 
 	public HomePage clickLoginButton() {
-		CommonFunctions.clickElement(button_LogIn);
+		CommonFunctions.clickElement(button_Login);
 
 		return new HomePage();
 	}
