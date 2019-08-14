@@ -48,6 +48,7 @@ public class CommonFunctions extends Base {
 		try {
 			elementDisplayed(we);
 			we.clear();
+			wait(1000, false);
 			LogFunctions.info("Value in \"" + getElementXPath(we) + "\" element cleared.");
 			enterElementValue(we, value);
 		}
