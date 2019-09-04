@@ -490,8 +490,6 @@ public class CommonFunctions extends Base {
 		List<WebElement> options = we.findElements(By.xpath(".//option"));
 		int index = 0;
 
-		elementDisplayed(we);
-
 		for (WebElement option: options) {
 			if (!option.getText().equals(expectedValues[index])) {
 				result = false;
