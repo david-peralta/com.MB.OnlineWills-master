@@ -620,6 +620,24 @@ public class CommonFunctions extends Base {
 		Assert.assertTrue(result);
 	}
 
+	public static void checkSingleSelectDropdownSelectedOption(WebElement we, String expectedValue) {
+		Boolean result = true;
+		Select dropdown = new Select(we);
+		WebElement selectedOption = dropdown.getFirstSelectedOption();
+		String selectedOptionText = selectedOption.getText();
+
+		if (selectedOptionText.equals(expectedValue)) {
+			LogFunctions.info("Option \"" + expectedValue + "\" is selected in \"" + getElementXPath(we) + "\" dropdown.");
+		}
+		else {
+			result = false;
+
+			LogFunctions.info("Option \"" + expectedValue + "\" is not selected in \"" + getElementXPath(we) + "\" dropdown.");
+		}
+
+		Assert.assertTrue(result);
+	}
+
 	public static void elementAttributeContainsValue(WebElement we, String expectedAttribute, String expectedValue) {
 		Boolean result = true;
 		wait = new WebDriverWait(driver, 30);
