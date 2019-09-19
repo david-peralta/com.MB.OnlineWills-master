@@ -187,28 +187,6 @@ public class CommonFunctions extends Base {
 		}
 	}
 
-	public static void screenshotFailedTest(Scenario scenario) {
-		try {
-			if (scenario.isFailed()) {
-				Calendar calendar = Calendar.getInstance();
-				SimpleDateFormat sdtf = new SimpleDateFormat("MM.dd.yyyy_HHmm");
-
-				// TakesScreenshot ts = (TakesScreenshot) driver;
-				// File fileSource = ts.getScreenshotAs(OutputType.FILE);
-				// FileUtils.copyFile(fileSource, new File("target/failedscreenshots/" + scenario.getId().substring(0, scenario.getId().split(";")[0].indexOf(":")).toUpperCase() + "_S" +
-				// scenario.getName().substring(0, scenario.getName().indexOf(":")) + "-" + sdtf.format(calendar.getTime()) + ".png"));
-
-				BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-				ImageIO.write(image, "png", new File("target/failedscreenshots/" + scenario.getId().substring(0, scenario.getId().split(";")[0].indexOf(":")).toUpperCase() + "_S" + scenario.getName().substring(0, scenario.getName().indexOf(":")) + "-" + sdtf.format(calendar.getTime()) + ".png"));
-
-				LogFunctions.info("Test Failed. Screenshot taken.");
-			}
-		}
-		catch (Exception e) {
-			LogFunctions.error("Error found: " + e);
-		}
-	}
-
 	public static void scrollToBottomOfPage() {
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		wait(5000, false);
@@ -268,20 +246,6 @@ public class CommonFunctions extends Base {
 			// }
 
 			wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(we));
-		}
-		catch (Exception e) {
-			LogFunctions.error("Error found: " + e);
-		}
-	}
-
-	public static void testResults(Scenario scenario) {
-		try {
-			if (scenario.isFailed()) {
-				LogFunctions.error("TEST - FAILED");
-			}
-			else {
-				LogFunctions.info("TEST - PASSED");
-			}
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -376,6 +340,32 @@ public class CommonFunctions extends Base {
 		}
 
 		return xPath;
+	}
+
+	public static String screenshot(Scenario scenario) {
+		String screenshotPath = "";
+
+		try {
+			Calendar calendar = Calendar.getInstance();
+			SimpleDateFormat sdtf = new SimpleDateFormat("MM.dd.yyyy_HHmm");
+
+			// TakesScreenshot ts = (TakesScreenshot) driver;
+			// File fileSource = ts.getScreenshotAs(OutputType.FILE);
+			// FileUtils.copyFile(fileSource, new File("target/screenshots/" + scenario.getId().substring(0, scenario.getId().split(";")[0].indexOf(":")).toUpperCase() + "_S" +
+			// scenario.getName().substring(0, scenario.getName().indexOf(":")) + "-" + sdtf.format(calendar.getTime()) + ".png"));
+
+			BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+			screenshotPath = "target/screenshots/" + scenario.getId().substring(0, scenario.getId().split(";")[0].indexOf(":")).toUpperCase() + "_S" + scenario.getName().substring(0, scenario.getName().indexOf(":")) + "-" + sdtf.format(calendar.getTime()) + ".png";
+
+			ImageIO.write(image, "png", new File(screenshotPath));
+
+			LogFunctions.info("Screenshot taken.");
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+
+		return screenshotPath;
 	}
 
 	public static String stringAppendDateTime(String value) {

@@ -27,11 +27,16 @@ public class StepDefinitions extends Base {
 
 	@After
 	public void tearDown(Scenario scenario) {
-		CommonFunctions.testResults(scenario);
-		CommonFunctions.screenshotFailedTest(scenario);
+		if (scenario.isFailed()) {
+			LogFunctions.error("TEST - FAILED");
+			CommonFunctions.screenshot(scenario);
+		}
+		else {
+			LogFunctions.info("TEST - PASSED");
+		}
+
 		LogFunctions.endLog(scenario);
 		driver.quit();
-		driver = null;
 	}
 
 	@Given("^user opens browser$")
