@@ -76,7 +76,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 13932179100,
+  "duration": 16400252200,
   "status": "passed"
 });
 formatter.scenario({
@@ -131,7 +131,7 @@ formatter.match({
   "location": "StepDefinitions.user_opens_browser()"
 });
 formatter.result({
-  "duration": 159055300,
+  "duration": 264571000,
   "status": "passed"
 });
 formatter.match({
@@ -148,7 +148,7 @@ formatter.match({
   "location": "StepDefinitions.user_logs_into_app_with_the_and_as_the_login_credentials(String,String)"
 });
 formatter.result({
-  "duration": 5466175400,
+  "duration": 5612558200,
   "status": "passed"
 });
 formatter.match({
@@ -161,21 +161,21 @@ formatter.match({
   "location": "StepDefinitions.user_is_on_page(String)"
 });
 formatter.result({
-  "duration": 9728500,
+  "duration": 7519400,
   "status": "passed"
 });
 formatter.match({
   "location": "StepDefinitions.user_validates_his_account_is_logged_in()"
 });
 formatter.result({
-  "duration": 51278900,
+  "duration": 52957100,
   "status": "passed"
 });
 formatter.match({
   "location": "StepDefinitions.user_logs_out_of_the_app()"
 });
 formatter.result({
-  "duration": 1317448900,
+  "duration": 1551899300,
   "status": "passed"
 });
 formatter.match({
@@ -188,11 +188,11 @@ formatter.match({
   "location": "StepDefinitions.user_is_on_page(String)"
 });
 formatter.result({
-  "duration": 8532500,
+  "duration": 7989100,
   "status": "passed"
 });
 formatter.after({
-  "duration": 695074000,
+  "duration": 643372000,
   "status": "passed"
 });
 formatter.scenarioOutline({
@@ -250,7 +250,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 12673063300,
+  "duration": 13105015200,
   "status": "passed"
 });
 formatter.scenario({
@@ -290,7 +290,7 @@ formatter.match({
   "location": "StepDefinitions.user_opens_browser()"
 });
 formatter.result({
-  "duration": 897700,
+  "duration": 469100,
   "status": "passed"
 });
 formatter.match({
@@ -307,7 +307,7 @@ formatter.match({
   "location": "StepDefinitions.user_logs_into_app_with_the_and_as_the_login_credentials(String,String)"
 });
 formatter.result({
-  "duration": 5468963300,
+  "duration": 5499438700,
   "status": "passed"
 });
 formatter.match({
@@ -320,12 +320,12 @@ formatter.match({
   "location": "StepDefinitions.user_sees_feedback_message(String)"
 });
 formatter.result({
-  "duration": 22702400,
-  "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//span[contains(text(), \u0027Invalid User Credentials\u0027)]\"}\n  (Session info: chrome\u003d77.0.3865.75)\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.14.0\u0027, revision: \u0027aacccce0\u0027, time: \u00272018-08-02T20:19:58.91Z\u0027\nSystem info: host: \u0027JEROMEAMORES\u0027, ip: \u0027172.18.0.31\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002711.0.2\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 77.0.3865.75, chrome: {chromedriverVersion: 76.0.3809.68 (420c9498db8ce..., userDataDir: C:\\Users\\JEROME~1.AMO\\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:58412}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}\nSession ID: e182008a4b076e3ecaaf9c6a0fa4565e\n*** Element info: {Using\u003dxpath, value\u003d//span[contains(text(), \u0027Invalid User Credentials\u0027)]}\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:424)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)\r\n\tat utilities.CommonFunctions.checkFeedbackMessageDisplayed(CommonFunctions.java:506)\r\n\tat steps.StepDefinitions.user_sees_feedback_message(StepDefinitions.java:59)\r\n\tat ✽.Then user sees feedback message \"Invalid User Credentials\"(src/test/resources/features/WIP.feature:20)\r\n",
+  "duration": 20089600,
+  "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//span[contains(text(), \u0027Invalid User Credentials\u0027)]\"}\n  (Session info: chrome\u003d77.0.3865.90)\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.14.0\u0027, revision: \u0027aacccce0\u0027, time: \u00272018-08-02T20:19:58.91Z\u0027\nSystem info: host: \u0027JEROMEAMORES\u0027, ip: \u0027172.18.0.31\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002711.0.2\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 77.0.3865.90, chrome: {chromedriverVersion: 76.0.3809.68 (420c9498db8ce..., userDataDir: C:\\Users\\JEROME~1.AMO\\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:64254}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}\nSession ID: d0f2a839f05fc4b10e4276d300b08ed9\n*** Element info: {Using\u003dxpath, value\u003d//span[contains(text(), \u0027Invalid User Credentials\u0027)]}\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:424)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)\r\n\tat utilities.CommonFunctions.checkFeedbackMessageDisplayed(CommonFunctions.java:506)\r\n\tat steps.StepDefinitions.user_sees_feedback_message(StepDefinitions.java:59)\r\n\tat ✽.Then user sees feedback message \"Invalid User Credentials\"(src/test/resources/features/WIP.feature:20)\r\n",
   "status": "failed"
 });
 formatter.after({
-  "duration": 1091888400,
+  "duration": 1012079400,
   "status": "passed"
 });
 });
