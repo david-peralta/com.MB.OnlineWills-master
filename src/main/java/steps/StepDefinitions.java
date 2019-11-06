@@ -1,14 +1,21 @@
 package steps;
 
+import org.openqa.selenium.Keys;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.Keys;
+import pages.AboutPage;
+import pages.AssetsPage;
+import pages.BeneficiariesPage;
+import pages.ChangePasswordPage;
+import pages.CodePage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.PersonalPage;
+import pages.RegistrationPage;
 import utilities.Base;
 import utilities.CommonFunctions;
 import utilities.LogFunctions;
@@ -16,7 +23,16 @@ import utilities.LogFunctions;
 public class StepDefinitions extends Base {
 	LoginPage loginPage;
 	HomePage homePage;
+	CodePage codePage;
+	AboutPage aboutPage;
+	RegistrationPage registrationPage;
+	ChangePasswordPage changePasswordPage;
+	PersonalPage personalPage;
+	AssetsPage assetsPage;
+	BeneficiariesPage beneficiariesPage;
 
+	String Email;
+	// MB WILLS PROJECT
 	// ================================================== Universal Functions ==================================================
 	@Before
 	public void setup(Scenario scenario) {
@@ -36,12 +52,20 @@ public class StepDefinitions extends Base {
 		}
 
 		LogFunctions.endLog(scenario);
-		driver.quit();
+		// driver.quit();
 	}
 
 	@Given("^user opens browser$")
 	public void user_opens_browser() throws Throwable { // Always the start page.
+		driver.get(prop.getProperty("url"));
 		loginPage = new LoginPage();
+
+	}
+
+	@Given("^user opens browser and decides to proceed to the activation links page$")
+	public void user_opens_browser_and_decides_to_proceed_to_the_activation_links_page() throws Throwable {
+		driver.get(prop.getProperty("url2"));
+		codePage = new CodePage();
 	}
 
 	@Then("^user is on \"([^\"]*)\" page$")
@@ -95,6 +119,973 @@ public class StepDefinitions extends Base {
 		CommonFunctions.textDisplayedInPage(arg1);
 	}
 
+	@Then("^user sees question \"([^\"]*)\"$")
+	public void user_sees_question(String arg1) throws Throwable {
+		CommonFunctions.textDisplayedInPage(arg1);
+	}
+
+	@Then("^user sees disaster question displayed$")
+	public void user_sees_disaster_question_displayed() throws Throwable {
+		beneficiariesPage.DisasterQuestionDisplayed();
+	}
+
+	@Then("^user sees beneficiary question displayed$")
+	public void user_sees_beneficiary_question_displayed() throws Throwable {
+		beneficiariesPage.BeneficiaryQuestionDisplayed();
+	}
+
+	@Then("^user clicks yes to do you have assets question$")
+	public void user_clicks_yes_to_do_you_have_assets_question() throws Throwable {
+		assetsPage.ClickYesQuestion1();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to do you have debts question$")
+	public void user_clicks_no_to_do_you_have_debts_question() throws Throwable {
+		assetsPage.ClickNoQuestion2();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question$")
+	public void user_clicks_yes_to_If_any_of_your_children_predecease_you_do_you_want_to_divide_it_equally_amongst_their_children_question() throws Throwable {
+		beneficiariesPage.ClickYesQuestion2();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question$")
+	public void user_clicks_no_to_If_any_of_your_children_predecease_you_do_you_want_to_divide_it_equally_amongst_their_children_question() throws Throwable {
+		beneficiariesPage.ClickNoQuestion2();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to Do you want to give the whole estate equally to your children question$")
+	public void user_clicks_yes_to_Do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
+		beneficiariesPage.ClickYesQuestion1SingleWithChildren();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to Do you want to give the whole estate equally to your children question$")
+	public void user_clicks_no_to_Do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
+		beneficiariesPage.ClickYesQuestion1SingleWithChildren();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to Do you want to include any children you have in the future question$")
+	public void user_clicks_yes_to_Do_you_want_to_include_any_children_you_have_in_the_future_question() throws Throwable {
+		beneficiariesPage.ClickYesQuestion1();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to Do you want to include any children you have in the future question$")
+	public void user_clicks_no_to_Do_you_want_to_include_any_children_you_have_in_the_future_question() throws Throwable {
+		beneficiariesPage.ClickNoQuestion1();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question$")
+	public void user_clicks_yes_to_Do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
+		beneficiariesPage.ClickYesQuestion1();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to Do you want to give the whole of your estate equally to any children you have in the future question$")
+	public void user_clicks_no_to_Do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
+		beneficiariesPage.ClickNoQuestion1();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to do you have debts question$")
+	public void user_clicks_yes_to_do_you_have_debts_question() throws Throwable {
+		assetsPage.ClickYesQuestion2();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to do you have any superannuation question$")
+	public void user_clicks_no_to_do_you_have_any_superannuation_question() throws Throwable {
+		assetsPage.ClickNoQuestion3();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to do you have any superannuation question$")
+	public void user_clicks_yes_to_do_you_have_any_superannuation_question() throws Throwable {
+		assetsPage.ClickYesQuestion3();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to do you have life insurance separate from your superannuation$")
+	public void user_clicks_no_to_do_you_have_life_insurance_separate_from_your_superannuation() throws Throwable {
+		assetsPage.ClickNoQuestion4();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to do you have life insurance separate from your superannuation$")
+	public void user_clicks_yes_to_do_you_have_life_insurance_separate_from_your_superannuation() throws Throwable {
+		assetsPage.ClickYesQuestion4();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to do you control a trust question$")
+	public void user_clicks_no_to_do_you_control_a_trust_question() throws Throwable {
+		assetsPage.ClickNoQuestion5();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to do you control a trust question$")
+	public void user_clicks_yes_to_do_you_control_a_trust_question() throws Throwable {
+		assetsPage.ClickYesQuestion5();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to do you control a self-managed superannuation fund question$")
+	public void user_clicks_no_to_do_you_control_a_self_managed_superannuation_fund_question() throws Throwable {
+		assetsPage.ClickNoQuestion6();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to do you control a self-managed superannuation fund question$")
+	public void user_clicks_yes_to_do_you_control_a_self_managed_superannuation_fund_question() throws Throwable {
+		assetsPage.ClickYesQuestion6();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to do you own your own business or are you a partner in a partnership question$")
+	public void user_clicks_no_to_do_you_own_your_own_business_or_are_you_a_partner_in_a_partnership_question() throws Throwable {
+		assetsPage.ClickNoQuestion7();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to do you own your own business or are you a partner in a partnership question$")
+	public void user_clicks_yes_to_do_you_own_your_own_business_or_are_you_a_partner_in_a_partnership_question() throws Throwable {
+		assetsPage.ClickYesQuestion7();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks on Add Asset$")
+	public void user_clicks_on_Add_Asset() throws Throwable {
+		assetsPage.ClickAddAsset();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user edits the details of the newly added asset$")
+	public void user_edits_the_details_of_the_newly_added_asset() throws Throwable {
+		assetsPage.EditFillUpAllOtherFields();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks on Edit Asset$")
+	public void user_clicks_on_Edit_Asset() throws Throwable {
+		assetsPage.ClickEditAsset();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks on Delete Asset$")
+	public void user_clicks_on_Delete_Asset() throws Throwable {
+		assetsPage.ClickDeleteAsset();
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+	}
+
+	@Then("^user clicks on Cancel Asset$")
+	public void user_clicks_on_Cancel_Asset() throws Throwable {
+		assetsPage.ClickCancelAsset();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to do you have assets question$")
+	public void user_clicks_no_to_do_you_have_assets_question() throws Throwable {
+		assetsPage.ClickNoQuestion1();
+	}
+
+	@Then("^user checks if do you have assets question is mandatory$")
+	public void user_checks_if_do_you_have_assets_question_is_mandatory() throws Throwable {
+		assetsPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+		assetsPage.DisplayedNoQuestion1Required();
+	}
+
+	@Then("^user checks if Select Asset question is mandatory$")
+	public void user_checks_if_Select_Asset_question_is_mandatory() throws Throwable {
+		assetsPage.DisplayedSelectAssetDropdownRequired();
+	}
+
+	@Then("^user checks on validation on Select Asset$")
+	public void user_checks_on_validation_on_Select_Asset() throws Throwable {
+		assetsPage.CheckSelectAssetDropdownDefaultValue();
+		CommonFunctions.wait(5000, false);
+		assetsPage.CheckSelectAssetDropdownValues();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user sees password policy on tooltip$")
+	public void user_sees_password_policy_on_tooltip() throws Throwable {
+		registrationPage.CheckToolTipContent1();
+	}
+
+	@When("^user sees password policy on tooltip on change password page$")
+	public void user_sees_password_policy_on_tooltip_on_change_password_page() throws Throwable {
+		changePasswordPage.CheckToolTipContent1();
+	}
+
+	@Then("^user sees products displayed on landing page$")
+	public void user_sees_products_displayed_on_landing_page() throws Throwable {
+		homePage.displayedSinglesProduct();
+		homePage.displayedCouplesProduct();
+	}
+
+	@When("^user selects singles product$")
+	public void user_selects_singles_product() throws Throwable {
+		homePage.clickSinglesProduct();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user selects couples product$")
+	public void user_selects_couples_product() throws Throwable {
+		homePage.clickCouplesProduct();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user clicks Standard will product for couples$")
+	public void user_clicks_Standard_will_product_for_couples() throws Throwable {
+		personalPage = homePage.clickCouplesProductStandardWillBtn();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user clicks Standard will product for singles$")
+	public void user_clicks_Standard_will_product_for_singles() throws Throwable {
+		personalPage = homePage.clickSinglesProductStandardWillBtn();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user checks if additional questions displayed for single is correct when single product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_single_is_correct_when_single_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForSingleSinglesPackage();
+	}
+
+	@When("^user checks if additional questions displayed for single is correct when couple product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_single_is_correct_when_couple_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForSingleCouplesPackage();
+	}
+
+	@When("^user checks if additional questions displayed for widowed is correct when couple product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_widowed_is_correct_when_couple_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForWidowedCouple();
+	}
+
+	@When("^user checks if additional questions displayed for married is correct when couple product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_married_is_correct_when_couple_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForMarried();
+	}
+
+	@When("^user checks if additional questions displayed for separated is correct when couple product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_separated_is_correct_when_couple_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForSeparatedAndDivorced();
+	}
+
+	@When("^user checks if additional questions displayed for divorced is correct when couple product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_divorced_is_correct_when_couple_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForSeparatedAndDivorced();
+	}
+
+	@When("^user checks if additional questions displayed for separated is correct when single product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_separated_is_correct_when_single_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForSeparatedAndDivorced();
+	}
+
+	@When("^user checks if additional questions displayed for divorced is correct when single product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_divorced_is_correct_when_single_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForSeparatedAndDivorced();
+	}
+
+	@When("^user checks if additional questions displayed for defacto is correct when couple product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_defacto_is_correct_when_couple_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForDefactoAndEngaged();
+	}
+
+	@When("^user checks if additional questions displayed for engaged is correct when couple product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_engaged_is_correct_when_couple_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForDefactoAndEngaged();
+	}
+
+	@When("^user checks if additional questions displayed for married is correct when single product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_married_is_correct_when_single_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForMarried();
+	}
+
+	@When("^user checks if additional questions displayed for defacto is correct when single product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_defacto_is_correct_when_single_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForDefactoAndEngaged();
+	}
+
+	@When("^user checks if additional questions displayed for engaged is correct when single product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_engaged_is_correct_when_single_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForDefactoAndEngaged();
+	}
+
+	@When("^user checks if additional questions displayed for widowed is correct when single product is selected$")
+	public void user_checks_if_additional_questions_displayed_for_widowed_is_correct_when_single_product_is_selected() throws Throwable {
+		aboutPage.AdditionalQuestionsForWidowedSingle();
+	}
+
+	@Then("^user checks if the personal details content is complete$")
+	public void user_checks_if_the_personal_details_content_is_complete() throws Throwable {
+
+		personalPage.CheckTitleDropdown();
+		personalPage.CheckFirstName();
+		personalPage.CheckMiddleName();
+		personalPage.CheckFamilyName();
+		personalPage.CheckDateOfBirth();
+		personalPage.CheckPhoneNumber();
+		personalPage.CheckOccupation();
+		personalPage.CheckResidentialAddressLine1();
+		personalPage.CheckResidentialAddressLine2();
+		personalPage.CheckResidentialSuburb();
+		personalPage.CheckResidentialState();
+		personalPage.CheckResidentialPostCode();
+		personalPage.CheckResidentialAddressSameAsResidential();
+		personalPage.CheckAdditionalQuestion1();
+		personalPage.CheckYesQuestion1();
+		personalPage.CheckNoQuestion1();
+		personalPage.CheckAdditionalQuestion2();
+		personalPage.CheckYesQuestion2();
+		personalPage.CheckYesQuestion2();
+		personalPage.CheckNextButton();
+		personalPage.CheckCancelButton();
+
+	}
+
+	@Then("^the user checks if titles inside the Title dropdown is complete$")
+	public void the_user_checks_if_titles_inside_the_Title_dropdown_is_complete() throws Throwable {
+		String[] TitledropdownValues = { "Select one", "Dr", "Miss", "Mr", "Mrs.", "Ms", "Professor", "Reverend" };
+		personalPage.CheckTitleDropdownValues(TitledropdownValues);
+
+	}
+
+	@When("^user selects Postal Address same as Residential checkbox$")
+	public void user_selects_Postal_Address_same_as_Residential_checkbox() throws Throwable {
+		personalPage.ClickPostalAddressSameAsResidential();
+	}
+
+	@When("^user selects no on first question$")
+	public void user_selects_no_on_first_question() throws Throwable {
+		personalPage.ClickNoFirstQuestion();
+	}
+
+	@When("^user selects yes on first question$")
+	public void user_selects_yes_on_first_question() throws Throwable {
+		personalPage.ClickYesFirstQuestion();
+	}
+
+	@When("^user selects no on second question$")
+	public void user_selects_no_on_second_question() throws Throwable {
+		personalPage.ClickNoSecondQuestion();
+	}
+
+	@When("^user selects yes on second question$")
+	public void user_selects_yes_on_second_question() throws Throwable {
+		personalPage.ClickYesSecondQuestion();
+	}
+
+	@When("^user checks if All Postal detail fields is not displayed$")
+	public void user_checks_if_All_Postal_detail_fields_is_not_displayed() throws Throwable {
+		personalPage.HiddenPostalDetailFields();
+	}
+
+	@When("^user checks if All Postal detail fields is displayed$")
+	public void user_checks_if_All_Postal_detail_fields_is_displayed() throws Throwable {
+		personalPage.DisplayedPostalDetailFields();
+	}
+
+	@Then("^user checks if relationship status dropdown is displayed$")
+	public void user_checks_if_relationship_status_dropdown_is_displayed() throws Throwable {
+		aboutPage.DisplayedRelationshipStatus();
+	}
+
+	@Then("^user checks if Cancel and Back button is displayed$")
+	public void user_checks_if_Cancel_and_Back_button_is_displayed() throws Throwable {
+		aboutPage.DisplayedNextBtn();
+		aboutPage.DisplayedCancelBtn();
+	}
+
+	@When("^user selects no on law property settlement$")
+	public void user_selects_no_on_law_property_settlement() throws Throwable {
+		aboutPage.clickNoBtnLaw();
+	}
+
+	@When("^user selects yes on law property settlement$")
+	public void user_selects_yes_on_law_property_settlement() throws Throwable {
+		aboutPage.clickYesBtnLaw();
+	}
+
+	@When("^user selects NA on law property settlement$")
+	public void user_selects_NA_on_law_property_settlement() throws Throwable {
+		aboutPage.clickNABtnLaw();
+	}
+
+	@When("^user check if years of settlement field is not displayed$")
+	public void user_check_if_years_of_settlement_field_is_not_displayed() throws Throwable {
+		aboutPage.HiddenYearSettlement();
+	}
+
+	@When("^user check if years of settlement field is displayed$")
+	public void user_check_if_years_of_settlement_field_is_displayed() throws Throwable {
+		aboutPage.DisplayedYearSettlement();
+	}
+
+	@Then("^the user checks if States inside the Residential State dropdown is complete$")
+	public void the_user_checks_if_States_inside_the_Residential_State_dropdown_is_complete() throws Throwable {
+		String[] StatedropdownValues = { "Select one", "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA" };
+		personalPage.CheckResStateDropdownValues(StatedropdownValues);
+
+	}
+
+	@Then("^the user checks if Statuses inside the Relationship Status dropdown is complete$")
+	public void the_user_checks_if_Statuses_inside_the_Relationship_Status_dropdown_is_complete() throws Throwable {
+		String[] RelStatus = { "Select One", "Single", "Defacto", "Engaged", "Married", "Widowed", "Separated", "Divorced" };
+		aboutPage.CheckRelationshipStatusDropdownValues(RelStatus);
+	}
+
+	@Then("^the user checks if States inside the Postal State dropdown is complete$")
+	public void the_user_checks_if_States_inside_the_Postal_State_dropdown_is_complete() throws Throwable {
+		String[] StatedropdownValues = { "Select one", "ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA" };
+		personalPage.CheckPostalStateDropdownValues(StatedropdownValues);
+
+	}
+
+	@Then("^user check if \"([^\"]*)\" is the default value of the Relationship Status dropdown$")
+	public void user_check_if_is_the_default_value_of_the_Relationship_Status_dropdown(String arg1) throws Throwable {
+		aboutPage.CheckRelStatusDefaultValue(arg1);
+	}
+
+	@Then("^user check if \"([^\"]*)\" is the default value of the title dropdown$")
+	public void user_check_if_is_the_default_value_of_the_title_dropdown(String arg1) throws Throwable {
+		personalPage.CheckTitleDefaultValue(arg1);
+	}
+
+	@Then("^user check if \"([^\"]*)\" is the default value of the Residential State dropdown$")
+	public void user_check_if_is_the_default_value_of_the_Residential_State_dropdown(String arg1) throws Throwable {
+		personalPage.CheckResStateDefaultValue(arg1);
+	}
+
+	@Then("^user check if \"([^\"]*)\" is the default value of the Postal State dropdown$")
+	public void user_check_if_is_the_default_value_of_the_Postal_State_dropdown(String arg1) throws Throwable {
+		personalPage.CheckPostalStateDefaultValue(arg1);
+	}
+
+	@Then("^user checks if Title dropdown is mandatory$")
+	public void user_checks_if_Title_dropdown_is_mandatory() throws Throwable {
+		personalPage.ClearFirstName();
+		personalPage.ClearFamilyName();
+		personalPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+		personalPage.CheckTitleDropdownMandatory();
+
+	}
+
+	@Then("^user checks if Relationship Status dropdown is mandatory$")
+	public void user_checks_if_Relationship_Status_dropdown_is_mandatory() throws Throwable {
+		aboutPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+		aboutPage.CheckRelationshipStatusDropdownMandatory();
+	}
+
+	@When("^user clicks on Next button on personal page$")
+	public void user_clicks_on_Next_button_on_personal_page() throws Throwable {
+		aboutPage = personalPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user clicks on Cancel button on personal page$")
+	public void user_clicks_on_Cancel_button_on_personal_page() throws Throwable {
+		personalPage.ClickNextButton();
+	}
+
+	@Then("^user checks if Residential State dropdown is mandatory$")
+	public void user_checks_if_Residential_State_dropdown_is_mandatory() throws Throwable {
+		personalPage.CheckResStateDropdownMandatory();
+	}
+
+	@Then("^user checks if Postal State dropdown is mandatory$")
+	public void user_checks_if_Postal_State_dropdown_is_mandatory() throws Throwable {
+		personalPage.CheckPostalStateDropdownMandatory();
+
+	}
+
+	@Then("^user check if First name field is mandatory$")
+	public void user_check_if_First_name_field_is_mandatory() throws Throwable {
+		personalPage.CheckFirstNameMandatory();
+	}
+
+	@Then("^user check if Phone Number field is mandatory$")
+	public void user_check_if_Phone_Number_field_is_mandatory() throws Throwable {
+		personalPage.CheckPhoneNumberMandatory();
+	}
+
+	@Then("^user check if Residential Postcode field is mandatory$")
+	public void user_check_if_Residential_Postcode_field_is_mandatory() throws Throwable {
+		personalPage.CheckResPostcodeMandatory();
+	}
+
+	@Then("^user check if Postal Postcode field is mandatory$")
+	public void user_check_if_Postal_Postcode_field_is_mandatory() throws Throwable {
+		personalPage.CheckPostalPostcodeMandatory();
+	}
+
+	@Then("^user check if First Question is mandatory$")
+	public void user_check_if_First_Question_is_mandatory() throws Throwable {
+		personalPage.CheckFirstQuestionMandatory();
+	}
+
+	@Then("^user check if Second Question is mandatory$")
+	public void user_check_if_Second_Question_is_mandatory() throws Throwable {
+		personalPage.CheckSecondQuestionMandatory();
+	}
+
+	@Then("^user check if Residential address line one field is mandatory$")
+	public void user_check_if_Residential_address_line_one_field_is_mandatory() throws Throwable {
+		personalPage.CheckResidentialAddressLine1Mandatory();
+	}
+
+	@Then("^user check if Residential address line two field is mandatory$")
+	public void user_check_if_Residential_address_line_two_field_is_mandatory() throws Throwable {
+		personalPage.CheckResidentialAddressLine1Mandatory();
+	}
+
+	@Then("^user check if Postal address line one field is mandatory$")
+	public void user_check_if_Postal_address_line_one_field_is_mandatory() throws Throwable {
+		personalPage.CheckPostalAddressLine1Mandatory();
+	}
+
+	@When("^user selects \"([^\"]*)\" as title on personal page$")
+	public void user_selects_as_title_on_personal_page(String arg1) throws Throwable {
+		personalPage.SelectTitlePersonalPage(arg1);
+	}
+
+	@When("^user selects \"([^\"]*)\" as Relationship Status on about page$")
+	public void user_selects_as_Relationship_Status_on_about_page(String arg1) throws Throwable {
+		aboutPage.SelectRelationshipStatusPersonalPage(arg1);
+		CommonFunctions.wait(10000, false);
+	}
+
+	@When("^user selects \"([^\"]*)\" as Residential state on personal page$")
+	public void user_selects_as_Residential_state_on_personal_page(String arg1) throws Throwable {
+		personalPage.SelectResStatePersonalPage(arg1);
+	}
+
+	@When("^user selects \"([^\"]*)\" as Asset on assets page$")
+	public void user_selects_as_Asset_on_assets_page(String arg1) throws Throwable {
+		assetsPage.SelectAssetonDropdown(arg1);
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user checks if validations of fields inside the adding of property asset is implemented$")
+	public void user_checks_if_validations_of_fields_inside_the_adding_of_property_asset_is_implemented() throws Throwable {
+		assetsPage.CheckRequiredPropertyFields();
+	}
+
+	@When("^user checks if validations of fields inside the adding of bank account asset is implemented$")
+	public void user_checks_if_validations_of_fields_inside_the_adding_of_bank_account_asset_is_implemented() throws Throwable {
+		assetsPage.CheckRequiredBankAccountFields();
+	}
+
+	@When("^user checks if validations of fields inside the adding of vehicle asset is implemented$")
+	public void user_checks_if_validations_of_fields_inside_the_adding_of_vehicle_asset_is_implemented() throws Throwable {
+		assetsPage.CheckRequiredVehicleFields();
+	}
+
+	@When("^user checks if validations of fields inside the adding of shares asset is implemented$")
+	public void user_checks_if_validations_of_fields_inside_the_adding_of_shares_asset_is_implemented() throws Throwable {
+		assetsPage.CheckRequiredSharesFields();
+	}
+
+	@When("^user checks if validations of fields inside the adding of other asset is implemented$")
+	public void user_checks_if_validations_of_fields_inside_the_adding_of_other_asset_is_implemented() throws Throwable {
+		assetsPage.CheckRequiredOtherFields();
+	}
+
+	@When("^user fills up all fields inside the adding of property asset$")
+	public void user_fills_up_all_fields_inside_the_adding_of_property_asset() throws Throwable {
+		assetsPage.FillUpAllPropertyFields();
+	}
+
+	@When("^user fills up all fields inside the adding of shares asset$")
+	public void user_fills_up_all_fields_inside_the_adding_of_shares_asset() throws Throwable {
+		assetsPage.FillUpAllSharesFields();
+	}
+
+	@When("^user fills up all fields inside the adding of other asset$")
+	public void user_fills_up_all_fields_inside_the_adding_of_other_asset() throws Throwable {
+		assetsPage.FillUpAllOtherFields();
+	}
+
+	@When("^user fills up all fields inside the adding of vehicle asset$")
+	public void user_fills_up_all_fields_inside_the_adding_of_vehicle_asset() throws Throwable {
+		assetsPage.FillUpAllVehicleFields();
+	}
+
+	@When("^user fills up all fields inside the adding of bank account asset$")
+	public void user_fills_up_all_fields_inside_the_adding_of_bank_account_asset() throws Throwable {
+		assetsPage.FillUpAllBankAccountFields();
+	}
+
+	@When("^user selects \"([^\"]*)\" as Residential Postcode on personal page$")
+	public void user_selects_as_Residential_Postcode_on_personal_page(String arg1) throws Throwable {
+		personalPage.SelectResPostcodePersonalPage(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" as date of birth on personal page$")
+	public void user_inputs_as_date_of_birth_on_personal_page(String arg1) throws Throwable {
+		personalPage.SelectDateToday();
+		// personalPage.SetDateOfBirth(arg1);
+		// CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		// CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user inputs \"([^\"]*)\" as Phone Number on personal page$")
+	public void user_inputs_as_Phone_Number_on_personal_page(String arg1) throws Throwable {
+		personalPage.SetPhoneNumber(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" as Occupation on personal page$")
+	public void user_inputs_as_Occupation_on_personal_page(String arg1) throws Throwable {
+		personalPage.SetOccupation(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" as Residential address line one on personal page$")
+	public void user_inputs_as_Residential_address_line_one_on_personal_page(String arg1) throws Throwable {
+		personalPage.SetResAddressline1(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" as Residential suburb on personal page$")
+	public void user_inputs_as_Residential_suburb_on_personal_page(String arg1) throws Throwable {
+		personalPage.SetResSuburb(arg1);
+	}
+
+	@Then("^user click the next button on the about page$")
+	public void user_click_the_next_button_on_the_about_page() throws Throwable {
+		assetsPage = aboutPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user click the next button on the assets page$")
+	public void user_click_the_next_button_on_the_assets_page() throws Throwable {
+		beneficiariesPage = assetsPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user check if Family name field is mandatory$")
+	public void user_check_if_Family_name_field_is_mandatory() throws Throwable {
+		personalPage.CheckFirstNameMandatory();
+	}
+
+	@Then("^user checks if mandatory fields are validated$")
+	public void user_checks_if_mandatory_fields_are_validated() throws Throwable {
+		aboutPage.RequiredValidationOnAboutPage();
+	}
+
+	@When("^user checks if mandatory fields are validated when single is selected$")
+	public void user_checks_if_mandatory_fields_are_validated_when_single_is_selected() throws Throwable {
+		aboutPage.RequiredValidationOnAboutPageSingle();
+	}
+
+	@When("^user checks if mandatory fields are validated when widowed is selected$")
+	public void user_checks_if_mandatory_fields_are_validated_when_widowed_is_selected() throws Throwable {
+		aboutPage.RequiredValidationOnAboutPageWidowed();
+	}
+
+	@When("^user checks if mandatory fields are validated when married is selected$")
+	public void user_checks_if_mandatory_fields_are_validated_when_married_is_selected() throws Throwable {
+		aboutPage.RequiredValidationOnAboutPageMarried();
+	}
+
+	@When("^user checks if mandatory fields are validated when separated is selected$")
+	public void user_checks_if_mandatory_fields_are_validated_when_separated_is_selected() throws Throwable {
+		aboutPage.RequiredValidationOnAboutPageSeparated();
+	}
+
+	@When("^user checks if mandatory fields are validated when divorced is selected$")
+	public void user_checks_if_mandatory_fields_are_validated_when_divorced_is_selected() throws Throwable {
+		aboutPage.RequiredValidationOnAboutPageSeparated();
+	}
+
+	@When("^user fill up the all required fields for single status$")
+	public void user_fill_up_the_all_required_fields_for_single_status() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsSingle();
+	}
+
+	@When("^user fill up the all required fields for single status with children$")
+	public void user_fill_up_the_all_required_fields_for_single_status_with_children() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsSingleWithChild();
+	}
+
+	@When("^user fill up the all required fields for widowed status$")
+	public void user_fill_up_the_all_required_fields_for_widowed_status() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsWidowed();
+	}
+
+	@When("^user fill up the all required fields for defacto status$")
+	public void user_fill_up_the_all_required_fields_for_defacto_status() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsDefacto();
+	}
+
+	@When("^user fill up the all required fields for engaged status$")
+	public void user_fill_up_the_all_required_fields_for_engaged_status() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsEngaged();
+	}
+
+	@When("^user fill up the all required fields for married status$")
+	public void user_fill_up_the_all_required_fields_for_married_status() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsMarried();
+	}
+
+	@When("^user fill up the all required fields for separated status$")
+	public void user_fill_up_the_all_required_fields_for_separated_status() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsSeparated();
+	}
+
+	@When("^user fill up the all required fields for divorced status$")
+	public void user_fill_up_the_all_required_fields_for_divorced_status() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsDivorced();
+	}
+
+	@When("^user checks if mandatory fields are validated when defacto is selected$")
+	public void user_checks_if_mandatory_fields_are_validated_when_defacto_is_selected() throws Throwable {
+		aboutPage.RequiredValidationOnAboutPageDefacto();
+	}
+
+	@When("^user answers yes to question do have children$")
+	public void user_answers_yes_to_question_do_have_children() throws Throwable {
+		aboutPage.YesChildren();
+	}
+
+	@When("^user checks if all fields inside the adding of children is complete$")
+	public void user_checks_if_all_fields_inside_the_adding_of_children_is_complete() throws Throwable {
+		aboutPage.CheckContentAddChildren();
+	}
+
+	@When("^user adds a legitimate child$")
+	public void user_adds_a_legitimate_child() throws Throwable {
+		aboutPage.AddChildrenToggleOffOn();
+		CommonFunctions.wait(5000, false);
+		aboutPage.AddChildrenClickAddChild();
+		CommonFunctions.wait(5000, false);
+		aboutPage.AddChildrenLegitimate();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user checks if validation on mandatory fields inside the adding of guardian is implemented$")
+	public void user_checks_if_validation_on_mandatory_fields_inside_the_adding_of_guardian_is_implemented() throws Throwable {
+		aboutPage.AddGauardianClickAddGuardian();
+		CommonFunctions.wait(5000, false);
+		aboutPage.ClickGuardianSave();
+		CommonFunctions.wait(5000, false);
+		aboutPage.DisplayMandatoryFieldsOnGuardian();
+
+	}
+
+	@When("^user checks if the default value for country inside the adding of guardian screen is set to Australia$")
+	public void user_checks_if_the_default_value_for_country_inside_the_adding_of_guardian_screen_is_set_to_Australia() throws Throwable {
+		aboutPage.CheckGuardianCountryDefaultValue();
+	}
+
+	@When("^user adds a guardian$")
+	public void user_adds_a_guardian() throws Throwable {
+		aboutPage.AddGauardianClickAddGuardian();
+		CommonFunctions.wait(5000, false);
+		aboutPage.AddGuardian();
+	}
+
+	@When("^user edits the detials of secondary guardian$")
+	public void user_edits_the_detials_of_secondary_guardian() throws Throwable {
+		aboutPage.EditSecondaryGuardian();
+	}
+
+	@When("^user deletes the secondary guardian$")
+	public void user_deletes_the_secondary_guardian() throws Throwable {
+		CommonFunctions.wait(5000, false);
+		aboutPage.DeleteSecondaryGuardian();
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.wait(5000, false);
+
+	}
+
+	@When("^user adds secondary guardian$")
+	public void user_adds_secondary_guardian() throws Throwable {
+		aboutPage.AddGauardianClickAddGuardian();
+		CommonFunctions.wait(5000, false);
+		aboutPage.AddGuardian2();
+	}
+
+	@When("^user selects yes on guardian question$")
+	public void user_selects_yes_on_guardian_question() throws Throwable {
+		aboutPage.ClickGuardianYes();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user checks if guardian question is mandatory$")
+	public void user_checks_if_guardian_question_is_mandatory() throws Throwable {
+		aboutPage.GuardianRequiredDisplayed();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user adds another legitimate child$")
+	public void user_adds_another_legitimate_child() throws Throwable {
+		aboutPage.AddChildrenClickAddChild();
+		CommonFunctions.wait(5000, false);
+		aboutPage.AddChildrenLegitimate();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user edits first child's details$")
+	public void user_edits_first_child_s_details() throws Throwable {
+		aboutPage.ClickEditFirstChild();
+		CommonFunctions.wait(5000, false);
+		aboutPage.AddChildrenFromPrevious();
+
+	}
+
+	@When("^user removes second child$")
+	public void user_removes_second_child() throws Throwable {
+		aboutPage.ClickDeleteSecondChild();
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+
+	}
+
+	@When("^user check if add child link is displayed for the user to add another child$")
+	public void user_check_if_add_child_link_is_displayed_for_the_user_to_add_another_child() throws Throwable {
+		aboutPage.AddChildrenLinkDisplayed();
+	}
+
+	@When("^user checks if mandatory fields are validated when engaged is selected$")
+	public void user_checks_if_mandatory_fields_are_validated_when_engaged_is_selected() throws Throwable {
+		aboutPage.RequiredValidationOnAboutPageDefacto();
+	}
+
+	@Then("^user check if Occupation field is mandatory$")
+	public void user_check_if_Occupation_field_is_mandatory() throws Throwable {
+		personalPage.CheckOccupationMandatory();
+	}
+
+	@When("^user check if mandatory fields validation in adding children is implemented$")
+	public void user_check_if_mandatory_fields_validation_in_adding_children_is_implemented() throws Throwable {
+		aboutPage.CheckAddChildrenRequired();
+	}
+
+	@Then("^user check if Residential Suburb field is mandatory$")
+	public void user_check_if_Residential_Suburb_field_is_mandatory() throws Throwable {
+		personalPage.CheckResSuburbMandatory();
+	}
+
+	@Then("^user check if Postal Suburb field is mandatory$")
+	public void user_check_if_Postal_Suburb_field_is_mandatory() throws Throwable {
+		personalPage.CheckPostalSuburbMandatory();
+	}
+
+	@Then("^user check if Date of birth is mandatory$")
+	public void user_check_if_Date_of_birth_is_mandatory() throws Throwable {
+		personalPage.CheckDOBMandatory();
+	}
+
+	@Then("^user check if Date of birth contains format validation$")
+	public void user_check_if_Date_of_birth_contains_format_validation() throws Throwable {
+		personalPage.CheckDOBPlaceholder();
+		personalPage.SetInvalidDOB();
+		CommonFunctions.wait(10000, false);
+		personalPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+		personalPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+		personalPage.CheckInvalidDOBValidation();
+	}
+
+	@Then("^user check if Middle name field is not mandatory$")
+	public void user_check_if_Middle_name_field_is_not_mandatory() throws Throwable {
+		personalPage.CheckMiddleNameNotMandatory();
+	}
+
+	@Then("^user checks if First name field max length is set to fifty$")
+	public void user_checks_if_First_name_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthFirstName();
+	}
+
+	@Then("^user checks if Phone Number field max length is set to ten$")
+	public void user_checks_if_Phone_Number_field_max_length_is_set_to_ten() throws Throwable {
+		personalPage.MaxlengthPhoneNumber();
+	}
+
+	@Then("^user checks if Residential Postcode field max length is set to ten$")
+	public void user_checks_if_Residential_Postcode_field_max_length_is_set_to_ten() throws Throwable {
+		personalPage.MaxlengthResPostcode();
+	}
+
+	@Then("^user checks if Postal Postcode field max length is set to ten$")
+	public void user_checks_if_Postal_Postcode_field_max_length_is_set_to_ten() throws Throwable {
+		personalPage.MaxlengthPostalPostcode();
+	}
+
+	@Then("^user checks if Family name field max length is set to fifty$")
+	public void user_checks_if_Family_name_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthFirstName();
+	}
+
+	@Then("^user checks if Occupation field max length is set to fifty$")
+	public void user_checks_if_Occupation_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthOccupation();
+	}
+
+	@Then("^user checks if Residential Suburb field max length is set to fifty$")
+	public void user_checks_if_Residential_Suburb_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthResSuburb();
+	}
+
+	@Then("^user checks if Postal Suburb field max length is set to fifty$")
+	public void user_checks_if_Postal_Suburb_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthPostalSuburb();
+	}
+
+	@Then("^user checks if Residential address line one field max length is set to fifty$")
+	public void user_checks_if_Residential_address_line_one_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthResidentialAddressLine1();
+	}
+
+	@Then("^user checks if Residential address line two field max length is set to fifty$")
+	public void user_checks_if_Residential_address_line_two_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthResidentialAddressLine2();
+	}
+
+	@Then("^user checks if Postal address line one field max length is set to fifty$")
+	public void user_checks_if_Postal_address_line_one_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthPostalAddressLine1();
+	}
+
+	@Then("^user checks if Postal address line two field max length is set to fifty$")
+	public void user_checks_if_Postal_address_line_two_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthPostalAddressLine2();
+	}
+
+	@Then("^user checks if Middle name field max length is set to fifty$")
+	public void user_checks_if_Middle_name_field_max_length_is_set_to_fifty() throws Throwable {
+		personalPage.MaxlengthFirstName();
+	}
+
+	@Then("^user checks if Couples product is selected by default$")
+	public void user_checks_if_Couples_product_is_selected_by_default() throws Throwable {
+		homePage.checkCouplesProductRadioButtonIsToggled();
+	}
+
+	@Then("^user sees Standard will Get Started button for couples product$")
+	public void user_sees_Standard_will_Get_Started_button_for_couples_product() throws Throwable {
+		homePage.displayedCouplesProductStandardWillBtn();
+	}
+
+	@Then("^user sees MyLife will Get Started button for couples product$")
+	public void user_sees_MyLife_will_Get_Started_button_for_couples_product() throws Throwable {
+		homePage.displayedCouplesProductMyLifeWillBtn();
+	}
+
 	@Then("^user does not see the message \"([^\"]*)\"$")
 	public void user_does_not_see_the_message(String arg1) throws Throwable {
 		CommonFunctions.textNotDisplayedInPage(arg1);
@@ -116,21 +1107,301 @@ public class StepDefinitions extends Base {
 	}
 
 	// ================================================== Login Page Functions ==================================================
+	@When("^user logs into app$")
+	public void user_logs_into_app() throws Throwable {
+		loginPage.setEmailInput(prop.getProperty("primaryAccountEmail"));
+		loginPage.setPasswordInput(prop.getProperty("primaryAccountPassword"));
+
+		homePage = loginPage.clickLoginButton();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@When("^user logs into app with the \"([^\"]*)\" and \"([^\"]*)\" as the login credentials$")
 	public void user_logs_into_app_with_the_and_as_the_login_credentials(String arg1, String arg2) throws Throwable {
 		loginPage.setEmailInput(arg1);
 		loginPage.setPasswordInput(arg2);
 
 		homePage = loginPage.clickLoginButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user inputs an \"([^\"]*)\" in the forgotten password email field$")
+	public void user_inputs_an_in_the_forgotten_password_email_field(String arg1) throws Throwable {
+		loginPage.setForgottenPasswordEmailField(arg1);
+		loginPage.clickForgottenPasswordSubmitBtn();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user inputs \"([^\"]*)\" in the First Name field on registration page$")
+	public void user_inputs_in_the_First_Name_field_on_registration_page(String arg1) throws Throwable {
+		registrationPage.setFirstNameField(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" in the Family Name field on registration page$")
+	public void user_inputs_in_the_Family_Name_field_on_registration_page(String arg1) throws Throwable {
+		registrationPage.setFamilyNameField(arg1);
+	}
+
+	@When("^user input \"([^\"]*)\" in the Email field on registration page$")
+	public void user_input_in_the_Email_field_on_registration_page(String arg1) throws Throwable {
+		registrationPage.setEmailField(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" in the Email field on registration page$")
+	public void user_inputs_in_the_Email_field_on_registration_page(String arg1) throws Throwable {
+		arg1 = CommonFunctions.stringAppendDateTime(arg1);
+		Email = registrationPage.setEmailField(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" in the Password field on registration page$")
+	public void user_inputs_in_the_Password_field_on_registration_page(String arg1) throws Throwable {
+		registrationPage.setPasswordField(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" in the Password field on change password page$")
+	public void user_inputs_in_the_Password_field_on_change_password_page(String arg1) throws Throwable {
+		changePasswordPage.setPasswordField(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" in the Confirm Password field on change password page$")
+	public void user_inputs_in_the_Confirm_Password_field_on_change_password_page(String arg1) throws Throwable {
+		changePasswordPage.setConfirmPasswordField(arg1);
+	}
+
+	@When("^user inputs \"([^\"]*)\" in the Confirm Password field on registration page$")
+	public void user_inputs_in_the_Confirm_Password_field_on_registration_page(String arg1) throws Throwable {
+		registrationPage.setConfirmPasswordField(arg1);
+	}
+
+	@When("^user selects \"([^\"]*)\" on state dropdown$")
+	public void user_selects_on_state_dropdown(String arg1) throws Throwable {
+		registrationPage.SelectValueOnStateDropdown(arg1);
+	}
+
+	@When("^user selects \"([^\"]*)\" on source dropdown$")
+	public void user_selects_on_source_dropdown(String arg1) throws Throwable {
+		registrationPage.SelectValueOnSourceDropdown(arg1);
+	}
+
+	@When("^user sees the previous \"([^\"]*)\" value displayed in the email field$")
+	public void user_sees_the_previous_value_displayed_in_the_email_field(String arg1) throws Throwable {
+		loginPage.containsValueEmailInput(arg1);
+	}
+
+	@When("^user checks if password field is cleared$")
+	public void user_checks_if_password_field_is_cleared() throws Throwable {
+		loginPage.PasswordValueNull();
 	}
 
 	@Then("^user validates his account is logged in$")
 	public void user_validates_his_account_is_logged_in() throws Throwable {
-		homePage.containsValueUserFullNameAccordion(prop.getProperty("primaryAccountFirstName"));
+		homePage.containsValueUserFullNameLabel(prop.getProperty("primaryAccountName"));
 	}
 
 	@When("^user logs out of the app$")
 	public void user_logs_out_of_the_app() throws Throwable {
-		loginPage = homePage.clickUserFullNameAccordionLogoutLink();
+		homePage.clickUserFullNameAccordionLogoutLink();
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.switchFrameByXPath("//*[text() = 'Are you sure you want to log out?']");
+
+		loginPage = homePage.clickLogoutPopupYesButton();
+		// Then I click "Yes, log out" on popup
 	}
+
+	@When("^user clicks on \"([^\"]*)\" and logs out$")
+	public void user_clicks_on_and_logs_out(String arg1) throws Throwable {
+		homePage.clickUserFullName(arg1);
+		homePage.clickUserFullNameAccordionLogoutLink();
+		CommonFunctions.wait(10000, false);
+	}
+
+	@When("^the user clicks on forgot password link$")
+	public void the_user_clicks_on_forgot_password_link() throws Throwable {
+		loginPage.clickForgottenPasswordLink();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^the user clicks on submit button on change password page$")
+	public void the_user_clicks_on_submit_button_on_change_password_page() throws Throwable {
+		changePasswordPage.clickOnSubmitButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user checks if validation on required field on change password page is displayed$")
+	public void user_checks_if_validation_on_required_field_on_change_password_page_is_displayed() throws Throwable {
+		changePasswordPage.DisplayedReqNewPasswordField();
+		changePasswordPage.DisplayedConfirmReqPasswordField();
+
+	}
+
+	@When("^the user clicks on reset password link$")
+	public void the_user_clicks_on_reset_password_link() throws Throwable {
+		changePasswordPage = codePage.clickResetPasswordLink();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^the user clicks on activation link$")
+	public void the_user_clicks_on_activation_link() throws Throwable {
+		loginPage = codePage.clickActivationLink(Email);
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^the user click on register link$")
+	public void the_user_click_on_register_link() throws Throwable {
+		registrationPage = loginPage.clickForgottenRegisterLink();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user agrees on Maurice Blackburn's Privacy Policy by ticking the checkbox$")
+	public void user_agrees_on_Maurice_Blackburn_s_Privacy_Policy_by_ticking_the_checkbox() throws Throwable {
+		registrationPage.clickPrivacyCheckbox();
+	}
+
+	@When("^the user hovers on the password policy tooltip$")
+	public void the_user_hovers_on_the_password_policy_tooltip() throws Throwable {
+		registrationPage.HoverOnPasswordToolTip();
+		// CommonFunctions.wait(5000, false);
+	}
+
+	@When("^the user hovers on the password policy tooltip on change password page$")
+	public void the_user_hovers_on_the_password_policy_tooltip_on_change_password_page() throws Throwable {
+		changePasswordPage.HoverOnPasswordToolTip();
+		// CommonFunctions.wait(15000, false);
+	}
+
+	@When("^the user clicks on create account button$")
+	public void the_user_clicks_on_create_account_button() throws Throwable {
+		registrationPage.clickCreateAccountButton();
+		CommonFunctions.wait(8000, false);
+	}
+
+	@When("^the user clicks on Privacy policy link$")
+	public void the_user_clicks_on_Privacy_policy_link() throws Throwable {
+		registrationPage.clickPrivacyLink();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user clicks on cancel button$")
+	public void user_clicks_on_cancel_button() throws Throwable {
+		homePage.clickLogoutPopupCancelButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user clicks on yes button$")
+	public void user_clicks_on_yes_button() throws Throwable {
+		homePage.clickLogoutPopupYesButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user checks if logout prompt is closed$")
+	public void user_checks_if_logout_prompt_is_closed() throws Throwable {
+		homePage.NotdisplayedLogoutPopup();
+	}
+
+	@Then("^user checks if the forgotten password page contents is complete$")
+	public void user_checks_if_the_forgotten_password_page_contents_is_complete() throws Throwable {
+		loginPage.displayedForgottenPasswordUserEmail();
+		loginPage.displayedForgottenPasswordSubmitBtn();
+	}
+
+	@Then("^user checks the content of the change password page$")
+	public void user_checks_the_content_of_the_change_password_page() throws Throwable {
+		changePasswordPage.DisplayedNewPasswordField();
+		changePasswordPage.DisplayedConfirmPasswordField();
+		changePasswordPage.DisplayedSubmitButton();
+	}
+
+	@Then("^user checks if the registration page contents is complete$")
+	public void user_checks_if_the_registration_page_contents_is_complete() throws Throwable {
+		registrationPage.displayedFirstNameField();
+		registrationPage.displayedFamilyNameField();
+		registrationPage.displayedEmailField();
+		registrationPage.displayedPasswordField();
+		registrationPage.displayedConfirmPasswordField();
+		registrationPage.displayedStateDropdown();
+		registrationPage.displayedSourceDropdown();
+		registrationPage.displayedPrivacyCheckbox();
+		registrationPage.displayedCreateAccountButton();
+		registrationPage.displayedBacktoLoginLink();
+
+	}
+
+	@Then("^user sees validation on all required fields$")
+	public void user_sees_validation_on_all_required_fields() throws Throwable {
+		registrationPage.displayedRequiredFirstNameField();
+		registrationPage.displayedRequiredFamilyNameField();
+		registrationPage.displayedRequiredEmailField();
+		registrationPage.displayedRequiredPasswordField();
+		registrationPage.displayedRequiredConfirmPasswordField();
+		registrationPage.displayedRequiredStateDropdown();
+		registrationPage.displayedRequiredSourceDropdown();
+	}
+
+	@Then("^user checks if describe field is displayed when \"([^\"]*)\" is selected as source dropdown$")
+	public void user_checks_if_describe_field_is_displayed_when_is_selected_as_source_dropdown(String arg1) throws Throwable {
+		registrationPage.SelectValueOnSourceDropdown(arg1);
+		registrationPage.displayedDescriptionField();
+
+	}
+
+	@Then("^user checks if describe field is mandatory field when \"([^\"]*)\" is selected as source dropdown$")
+	public void user_checks_if_describe_field_is_mandatory_field_when_is_selected_as_source_dropdown(String arg1) throws Throwable {
+		registrationPage.SelectValueOnSourceDropdown(arg1);
+		CommonFunctions.wait(5000, false);
+		registrationPage.clickCreateAccountButton();
+		CommonFunctions.wait(5000, false);
+		registrationPage.displayedRequiredDescriptionField();
+	}
+
+	@When("^user checks if Maurice Blackburn's Privacy Policy checkbox is mandatory$")
+	public void user_checks_if_Maurice_Blackburn_s_Privacy_Policy_checkbox_is_mandatory() throws Throwable {
+		registrationPage.displayedRequiredPrivacyCheckbox();
+	}
+
+	@When("^user checks if validation on invalid email is displayed$")
+	public void user_checks_if_validation_on_invalid_email_is_displayed() throws Throwable {
+		registrationPage.displayedInvalidEmailField();
+	}
+
+	@When("^user checks if validation on registered email is displayed$")
+	public void user_checks_if_validation_on_registered_email_is_displayed() throws Throwable {
+		registrationPage.displayedInvalidRegisteredEmailField();
+	}
+
+	@When("^user checks if validation on invalid password is displayed$")
+	public void user_checks_if_validation_on_invalid_password_is_displayed() throws Throwable {
+		registrationPage.displayedInvalidPasswordField();
+	}
+
+	@When("^user checks if validation on invalid confirm password is displayed$")
+	public void user_checks_if_validation_on_invalid_confirm_password_is_displayed() throws Throwable {
+		registrationPage.displayedInvalidConfirmPasswordField();
+	}
+
+	@When("^user sees logout prompt with buttons Yes, log out and Cancel$")
+	public void user_sees_logout_prompt_with_buttons_Yes_log_out_and_Cancel() throws Throwable {
+		CommonFunctions.switchFrameByXPath("//*[text() = 'Are you sure you want to log out?']");
+		homePage.displayedLogoutPopup();
+		homePage.displayedbutton_LogoutPopup_Yes();
+		homePage.displayedbutton_LogoutPopup_Cancel();
+
+	}
+
+	@Then("^user checks if the contents inside the login page is complete$")
+	public void user_checks_if_the_contents_inside_the_login_page_is_complete() throws Throwable {
+
+		loginPage.displayedEmailInput();
+		loginPage.displayedPassInput();
+		loginPage.displayedButtonLogIn();
+		loginPage.displayedForgottenPasswordLink();
+		loginPage.displayedRegisterLink();
+
+	}
+
+	@When("^user checks if validation error for required field appears on login page$")
+	public void user_checks_if_validation_error_for_required_field_appears_on_login_page() throws Throwable {
+		loginPage.displayedRequiredFieldOninput_Email();
+		loginPage.displayedRequiredFieldOninput_Password();
+	}
+
 }

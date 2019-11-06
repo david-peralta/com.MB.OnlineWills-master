@@ -1,6 +1,6 @@
 Feature: MW - 27 : As a customer, I want to list my beneficiaries so I can allocate my Will
 
-  @Sprint11
+  @Sprint1
   Scenario Outline: Scenario 1: Customer adds a beneficiary
     # Go to site and log in
     Given user opens browser
@@ -26,7 +26,7 @@ Feature: MW - 27 : As a customer, I want to list my beneficiaries so I can alloc
     Then user is on "About you" page
     #Single
     When user selects "Single" as Relationship Status on about page
-    And user fill up the all required fields for single status with children
+    And user fill up the all required fields for single status
     And user click the next button on the about page
     Then user is on "Assets" page
     And user clicks no to do you have assets question
@@ -38,19 +38,15 @@ Feature: MW - 27 : As a customer, I want to list my beneficiaries so I can alloc
     And user clicks no to do you control a self-managed superannuation fund question
     And user clicks no to do you own your own business or are you a partner in a partnership question
     And user click the next button on the assets page
-    #No Spouse and Yes Children
-    And user sees question "Do you want to give the whole estate equally to your children?"
-    And user clicks yes to Do you want to give the whole estate equally to your children question
-    And user sees question "Do you want to include any children you have in the future?"
-    And user clicks yes to Do you want to include any children you have in the future question
-    And user sees question "If any of your children predecease you, do you want to divide it equally amongst their children?"
-    And user clicks no to Do you want to include any children you have in the future question
+    #No Spouse and No Children
+    And user sees question "Do you want to give the whole of your estate equally to any children you have in the future?"
+    And user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question
     And user sees question "If any of your children predecease you, do you want to divide it equally amongst their children?"
     And user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user sees disaster question displayed
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user sees disaster question displayed
-    And user clicks no to Do you want to give the whole estate equally to your children question
+    And user clicks no to Do you want to give the whole of your estate equally to any children you have in the future question
     And user sees beneficiary question displayed
 
     Examples: 
