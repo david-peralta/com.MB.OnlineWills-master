@@ -7,7 +7,7 @@ import utilities.Base;
 import utilities.CommonFunctions;
 
 public class ChangePasswordPage extends Base {
-	// ========================================================== Page Objects ===========================================================
+	// ========================================================= Page Objects ===========================================================
 	@FindBy(xpath = "//input[contains(@id,'NewPasswordField')]")
 	WebElement NewPassword;
 	@FindBy(xpath = "//input[contains(@id,'ConfirmPasswordField')]")

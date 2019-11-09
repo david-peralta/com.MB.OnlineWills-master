@@ -171,7 +171,7 @@ public class RegistrationPage extends Base {
 		CommonFunctions.elementDisplayed(DescriptionField);
 	}
 
-	// RequiredFields ===========================================================
+	// RequiredFields ==========================================================
 	public void displayedRequiredFirstNameField() {
 		CommonFunctions.elementDisplayed(RequiredFirstNameField);
 	}

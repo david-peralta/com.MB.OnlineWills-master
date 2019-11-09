@@ -781,6 +781,40 @@ public class AboutPage extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	public void FillUpMandatoryFieldsMarriedWithChildren() {
+		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question2, "Dim");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question4, "Camuin");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question5, "5");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(WillMarryNo);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(WillTogetherRadioNo);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(LawNoButton);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(ChildrenYes);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(AddChild);
+		CommonFunctions.selectValueFromDropdown(AddChildQuestion4, "Dr");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(AddChildQuestion5, "Little Dim");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(AddChildQuestion7, "Camuin");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(AddChildQuestion8, "05/09/1990");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(AddChildQuestion11No);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(AddChildSave);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(DependentsNo);
+		CommonFunctions.wait(5000, false);
+	}
+
 	public void FillUpMandatoryFieldsSeparated() {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.wait(5000, false);

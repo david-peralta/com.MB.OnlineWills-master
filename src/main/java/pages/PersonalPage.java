@@ -72,7 +72,7 @@ public class PersonalPage extends Base {
 	@FindBy(xpath = "//div[contains(@id,'PostalAddress_Container')]")
 	WebElement PostalContainer;
 
-	// ================================================== Initializing the Page Objects ==================================================
+	// ================================================== Initializing the Page Objects =================================================
 	public PersonalPage() {
 		PageFactory.initElements(driver, this);
 	}

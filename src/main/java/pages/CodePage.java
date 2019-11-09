@@ -8,7 +8,7 @@ import utilities.Base;
 import utilities.CommonFunctions;
 
 public class CodePage extends Base {
-	// ========================================================== Page Objects ===========================================================
+	// ========================================================= Page Objects ===========================================================
 	@FindBy(xpath = "//input[contains(@id, 'PasswordInput')]")
 	WebElement input_Password;
 	@FindBy(xpath = "(//table[contains(@id, 'UserAccountTable')]//tbody//tr//td[contains(text(), 'reset@password.com')]//following-sibling::td)[2]//a")

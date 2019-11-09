@@ -8,11 +8,29 @@ import utilities.CommonFunctions;
 
 public class LoginPage extends Base {
 	// ========================================================== Page Objects ===========================================================
-	@FindBy(xpath = "//input[contains(@id, 'LoginButton')]")
+	@FindBy(xpath = "//input[contains(@value, 'Log In')]")
 	WebElement button_Login;
 
-	@FindBy(xpath = "//input[contains(@id, 'UserNameInput')]")
+	@FindBy(xpath = "//*[text() = 'Forgotten Password']")
+	WebElement ForgottenPasswordLink;
+
+	@FindBy(xpath = "//*[contains(@id,'ButtonResetPassword')]")
+	WebElement ForgottenPasswordSubmitBtn;
+
+	@FindBy(xpath = "//input[contains(@id,'User_email')]")
+	WebElement ForgottenPasswordEmailField;
+
+	@FindBy(xpath = "//*[text() = 'Create an Account']")
+	WebElement RegisterLink;
+
+	@FindBy(xpath = "//input[contains(@id, 'UsernameInput')]")
 	WebElement input_Email;
+
+	@FindBy(xpath = "//input[contains(@id, 'UsernameInput')]//following-sibling::span[text()='Required field']")
+	WebElement RequiredFieldOninput_Email;
+
+	@FindBy(xpath = "//input[contains(@id, 'PasswordInput')]//following-sibling::span[text()='Required field']")
+	WebElement RequiredFieldOninput_Password;
 
 	@FindBy(xpath = "//input[contains(@id, 'PasswordInput')]")
 	WebElement input_Password;
@@ -23,6 +41,68 @@ public class LoginPage extends Base {
 	}
 
 	// ============================================================= Actions =============================================================
+	public void clickForgottenPasswordLink() {
+		CommonFunctions.clickElement(ForgottenPasswordLink);
+	}
+
+	public RegistrationPage clickForgottenRegisterLink() {
+		CommonFunctions.clickElement(RegisterLink);
+		return new RegistrationPage();
+	}
+
+	public void clickForgottenPasswordSubmitBtn() {
+		CommonFunctions.clickElement(ForgottenPasswordSubmitBtn);
+	}
+
+	public void setForgottenPasswordEmailField(String VerifyEmail) {
+		CommonFunctions.clearThenEnterElementValue(ForgottenPasswordEmailField, VerifyEmail);
+	}
+
+	public void displayedForgottenPasswordUserEmail() {
+		CommonFunctions.elementDisplayed(ForgottenPasswordEmailField);
+	}
+
+	public void displayedForgottenPasswordSubmitBtn() {
+		CommonFunctions.elementDisplayed(ForgottenPasswordSubmitBtn);
+	}
+
+	public void containsValueEmailInput(String expectedValue) {
+		CommonFunctions.elementAttributeContainsValue(input_Email, "value", expectedValue);
+	}
+
+	public void PasswordValueNull() {
+		String expectedValue = "";
+		CommonFunctions.elementAttributeContainsValue(input_Email, "value", expectedValue);
+	}
+
+	public void displayedRequiredFieldOninput_Email() {
+		CommonFunctions.elementDisplayed(RequiredFieldOninput_Email);
+	}
+
+	public void displayedRequiredFieldOninput_Password() {
+		CommonFunctions.elementDisplayed(RequiredFieldOninput_Password);
+	}
+
+	public void displayedForgottenPasswordLink() {
+		CommonFunctions.elementDisplayed(ForgottenPasswordLink);
+	}
+
+	public void displayedRegisterLink() {
+		CommonFunctions.elementDisplayed(RegisterLink);
+	}
+
+	public void displayedPassInput() {
+		CommonFunctions.elementDisplayed(input_Password);
+	}
+
+	public void displayedButtonLogIn() {
+		CommonFunctions.elementDisplayed(button_Login);
+	}
+
+	public void displayedEmailInput() {
+		CommonFunctions.elementDisplayed(input_Email);
+	}
+
 	public void setEmailInput(String email) {
 		CommonFunctions.clearThenEnterElementValue(input_Email, email);
 	}

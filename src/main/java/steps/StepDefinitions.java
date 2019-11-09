@@ -12,6 +12,7 @@ import pages.AssetsPage;
 import pages.BeneficiariesPage;
 import pages.ChangePasswordPage;
 import pages.CodePage;
+import pages.ExecutorsPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.PersonalPage;
@@ -30,9 +31,10 @@ public class StepDefinitions extends Base {
 	PersonalPage personalPage;
 	AssetsPage assetsPage;
 	BeneficiariesPage beneficiariesPage;
+	ExecutorsPage executorsPage;
 
 	String Email;
-	// MB WILLS PROJECT
+
 	// ================================================== Universal Functions ==================================================
 	@Before
 	public void setup(Scenario scenario) {
@@ -158,6 +160,18 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	@Then("^user clicks no to Do you wish to leave any gifts question$")
+	public void user_clicks_no_to_Do_you_wish_to_leave_any_gifts_question() throws Throwable {
+		beneficiariesPage.ClickGiftNo();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to Do you wish to leave any gifts question$")
+	public void user_yes_no_to_Do_you_wish_to_leave_any_gifts_question() throws Throwable {
+		beneficiariesPage.ClickGiftYes();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@Then("^user clicks yes to Do you want to give the whole estate equally to your children question$")
 	public void user_clicks_yes_to_Do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion1SingleWithChildren();
@@ -166,13 +180,37 @@ public class StepDefinitions extends Base {
 
 	@Then("^user clicks no to Do you want to give the whole estate equally to your children question$")
 	public void user_clicks_no_to_Do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
-		beneficiariesPage.ClickYesQuestion1SingleWithChildren();
+		beneficiariesPage.ClickNoQuestion1SingleWithChildren();
 		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^user clicks yes to Do you want to include any children you have in the future question$")
 	public void user_clicks_yes_to_Do_you_want_to_include_any_children_you_have_in_the_future_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion1();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to if your spouse/partner predeceases you, do you want to give the whole of your estate equally to any children you have in the future question$")
+	public void user_clicks_yes_to_if_your_spouse_partner_predeceases_you_do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
+		beneficiariesPage.ClickYesQuestion1();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to if your spouse/partner predeceases you, do you want to give the whole of your estate equally to any children you have in the future question$")
+	public void user_clicks_no_to_if_your_spouse_partner_predeceases_you_do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
+		beneficiariesPage.ClickNoQuestion1();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to Do you want to leave your whole estate to your spouse/partner if they survive you question$")
+	public void user_clicks_yes_to_Do_you_want_to_leave_your_whole_estate_to_your_spouse_partner_if_they_survive_you_question() throws Throwable {
+		beneficiariesPage.ClickYesQuestion1WithSpouse();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to Do you want to leave your whole estate to your spouse/partner if they survive you question$")
+	public void user_clicks_no_to_Do_you_want_to_leave_your_whole_estate_to_your_spouse_partner_if_they_survive_you_question() throws Throwable {
+		beneficiariesPage.ClickNoQuestion1WithSpouse();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -583,6 +621,12 @@ public class StepDefinitions extends Base {
 
 	}
 
+	@Then("^user click the next button on the beneficiaries page$")
+	public void user_click_the_next_button_on_the_beneficiaries_page() throws Throwable {
+		beneficiariesPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@Then("^user checks if Relationship Status dropdown is mandatory$")
 	public void user_checks_if_Relationship_Status_dropdown_is_mandatory() throws Throwable {
 		aboutPage.ClickNextButton();
@@ -594,6 +638,43 @@ public class StepDefinitions extends Base {
 	public void user_clicks_on_Next_button_on_personal_page() throws Throwable {
 		aboutPage = personalPage.ClickNextButton();
 		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user checks the person mandatory fields inside the adding of beneficiaries page$")
+	public void user_checks_the_person_mandatory_fields_inside_the_adding_of_beneficiaries_page() throws Throwable {
+		beneficiariesPage.MandatoryFieldsInAddingBeneficiaryPerson();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user checks the charity mandatory fields inside the adding of beneficiaries page$")
+	public void user_checks_the_charity_mandatory_fields_inside_the_adding_of_beneficiaries_page() throws Throwable {
+		beneficiariesPage.MandatoryFieldsInAddingBeneficiaryCharity();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user adds person beneficiaries with amount$")
+	public void user_adds_person_beneficiaries_with_amount() throws Throwable {
+		beneficiariesPage.AddBeneficiaryPersonWithAmount();
+	}
+
+	@When("^user edits benefeciaries detail$")
+	public void user_edits_benefeciaries_detail() throws Throwable {
+		beneficiariesPage.EditBeneficiaryPersonWithAmount();
+	}
+
+	@When("^user adds person beneficiaries with percentage$")
+	public void user_adds_person_beneficiaries_with_percentage() throws Throwable {
+		beneficiariesPage.AddBeneficiaryPersonWithPercentage();
+	}
+
+	@When("^user adds charity beneficiaries with amount$")
+	public void user_adds_charity_beneficiaries_with_amount() throws Throwable {
+		beneficiariesPage.AddBeneficiaryCharityWithAmount();
+	}
+
+	@When("^user adds charity beneficiaries with percentage$")
+	public void user_adds_charity_beneficiaries_with_percentage() throws Throwable {
+		beneficiariesPage.AddBeneficiaryCharityWithPercentage();
 	}
 
 	@When("^user clicks on Cancel button on personal page$")
@@ -819,6 +900,11 @@ public class StepDefinitions extends Base {
 		aboutPage.FillUpMandatoryFieldsSingleWithChild();
 	}
 
+	@When("^user fill up the all required fields for married status without children$")
+	public void user_fill_up_the_all_required_fields_for_married_status_without_children() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsSingleWithChild();
+	}
+
 	@When("^user fill up the all required fields for widowed status$")
 	public void user_fill_up_the_all_required_fields_for_widowed_status() throws Throwable {
 		aboutPage.FillUpMandatoryFieldsWidowed();
@@ -839,9 +925,28 @@ public class StepDefinitions extends Base {
 		aboutPage.FillUpMandatoryFieldsMarried();
 	}
 
+	@When("^user fill up the all required fields for married status with children$")
+	public void user_fill_up_the_all_required_fields_for_married_status_with_children() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsMarriedWithChildren();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to If your spouse/partner predeceases you do you want to give the whole estate equally to your children question$")
+	public void user_clicks_yes_to_If_your_spouse_partner_predeceases_you_do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
+		beneficiariesPage.ClickYesQuestion1SingleWithChildren();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to If your spouse/partner predeceases you do you want to give the whole estate equally to your children question$")
+	public void user_clicks_no_to_If_your_spouse_partner_predeceases_you_do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
+		beneficiariesPage.ClickNoQuestion1SingleWithChildren();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@When("^user fill up the all required fields for separated status$")
 	public void user_fill_up_the_all_required_fields_for_separated_status() throws Throwable {
 		aboutPage.FillUpMandatoryFieldsSeparated();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@When("^user fill up the all required fields for divorced status$")
@@ -1014,6 +1119,45 @@ public class StepDefinitions extends Base {
 	@Then("^user checks if Phone Number field max length is set to ten$")
 	public void user_checks_if_Phone_Number_field_max_length_is_set_to_ten() throws Throwable {
 		personalPage.MaxlengthPhoneNumber();
+	}
+
+	@Then("^user clicks on add beneficiary$")
+	public void user_clicks_on_add_beneficiary() throws Throwable {
+		beneficiariesPage.ClickBeneficiaryQuestion();
+	}
+
+	@Then("^user clicks on add executor$")
+	public void user_clicks_on_add_executor() throws Throwable {
+		executorsPage.clickQuestion2();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks add executor button$")
+	public void user_clicks_add_executor_button() throws Throwable {
+		executorsPage = beneficiariesPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks on cancel beneficiary$")
+	public void user_clicks_on_cancel_beneficiary() throws Throwable {
+		beneficiariesPage.ClickCancelBeneficiary();
+	}
+
+	@Then("^user clicks on edit beneficiary$")
+	public void user_clicks_on_edit_beneficiary() throws Throwable {
+		beneficiariesPage.ClickEditBeneficiary();
+	}
+
+	@Then("^user clicks on delete beneficiary$")
+	public void user_clicks_on_delete_beneficiary() throws Throwable {
+		beneficiariesPage.ClickDeleteBeneficiary();
+	}
+
+	@When("^user deletes a benefeciaries$")
+	public void user_deletes_a_benefeciaries() throws Throwable {
+		beneficiariesPage.ClickDeleteBeneficiary();
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
 	}
 
 	@Then("^user checks if Residential Postcode field max length is set to ten$")

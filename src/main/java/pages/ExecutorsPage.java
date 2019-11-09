@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,7 +18,8 @@ public class ExecutorsPage extends Base {
 
 	// Element - Link
 
-	@FindBy(xpath = "//a[text()='Add Executor']")
+	// @FindBy(xpath = "//*[contains(@id,'lnkAddExecutor')]//parent::div")
+	@FindBy(xpath = "//span[@class='fa fa-fw fa-plus']")
 	WebElement Question2;
 
 	// Element - PopUp
@@ -168,6 +170,21 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.elementDisplayed(Question13.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
 
+	public void clickEditExecutor() {
+		CommonFunctions.clickElement(btn_Edit);
+
+	}
+
+	public void clickAddExecutorButton() {
+		CommonFunctions.clickElement(btn_Add);
+
+	}
+
+	public void clickDeleteExecutor() {
+		CommonFunctions.clickElement(btn_Delete);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+	}
+
 	/* Add Executor */
 	public void clickQuestion2() {
 		CommonFunctions.clickElement(Question2);
@@ -278,6 +295,131 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.selectValueFromDropdown(Question12A, stateDropdown);
 		// CommonFunctions.clickElement(Question3.findElement(By.xpath(".//option[text()='" + titleDropdown + "']")));
 		CommonFunctions.wait(2500, false);
+	}
+
+	public void FillUpExecutorFirstOption() {
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question3, "Mr");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question4, "First");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question5, "Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question6, "Option");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question7, "Father");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question9, "Address1Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question10, "Address2Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question11, "SubTest");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question12A, "QLD");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question13, "1234");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(btn_Add);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void UpdateExecutorFirstOption() {
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question3, "Mr");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Question4, "First");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Question5, "Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Question6, "Option");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Question7, "Father");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Question9, "Address1Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Question10, "Address2Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Question11, "SubTest");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question12A, "QLD");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question13, "1234");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(btn_Add);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void FillUpExecutorBackup() {
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question3, "Ms");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question4, "Backup");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question5, "Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question6, "Upback");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question7, "Cousin");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question8, "GREECE");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question9, "Address1Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question10, "Address2Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question11, "SubTest");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question12B, "GRE");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question13, "4321");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(btn_Add);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void UpdateExecutorBackup() {
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question3, "Ms");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question4, "Backup");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question5, "Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question6, "Upback");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question7, "Cousin");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question8, "GREECE");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question9, "Address1Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question10, "Address2Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question11, "SubTest");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question12B, "GRE");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question13, "4321");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(btn_Add);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void FillUpWhenBuried() {
+		CommonFunctions.clickElement(Question17A);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question18, "Buried Here");
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void FillUpWhenCremated() {
+		CommonFunctions.clickElement(Question17B);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question19, "Cremated Here");
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void FillUpWhenOther() {
+		CommonFunctions.clickElement(Question17C);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question20, "Other Here");
+		CommonFunctions.wait(5000, false);
 	}
 
 }

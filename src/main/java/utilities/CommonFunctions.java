@@ -1,6 +1,5 @@
 package utilities;
 
-import cucumber.api.Scenario;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -24,6 +23,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import cucumber.api.Scenario;
 
 public class CommonFunctions extends Base {
 	static Actions action = new Actions(driver);
@@ -50,6 +50,17 @@ public class CommonFunctions extends Base {
 			we.clear();
 			wait(1000, false);
 			LogFunctions.info("Value in \"" + getElementXPath(we) + "\" element cleared.");
+			enterElementValue(we, value);
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
+	}
+
+	public static void checkElementValue(WebElement we, String value) {
+		try {
+			elementDisplayed(we);
+			LogFunctions.info("Value in \"" + getElementXPath(we) + "\" element displayed.");
 			enterElementValue(we, value);
 		}
 		catch (Exception e) {
@@ -226,26 +237,26 @@ public class CommonFunctions extends Base {
 		}
 	}
 
-	public static void switchFrameByXPath(WebElement we) { // String xPath <- Provide a unique xPath for the desired frame.
+	public static void switchFrameByXPath(String xPath) { // String xPath <- Provide a unique xPath for the desired frame.
 		wait = new WebDriverWait(driver, 30);
 
 		try {
-			// Integer numberOfFrames = driver.findElements(By.tagName("iframe")).size();
-			//
-			// for (int i = 0; i <= numberOfFrames; i++) {
-			// driver.switchTo().frame(i);
-			//
-			// if (driver.findElements(By.xpath(xPath)).size() > 0) {
-			// LogFunctions.info("Switched to frame \"" + i + "\".");
-			// break;
-			// }
-			// else {
-			// driver.switchTo().parentFrame();
-			// LogFunctions.info("Frame not switched.");
-			// }
-			// }
+			Integer numberOfFrames = driver.findElements(By.tagName("iframe")).size();
 
-			wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(we));
+			for (int i = 0; i <= numberOfFrames; i++) {
+				driver.switchTo().frame(i);
+
+				if (driver.findElements(By.xpath(xPath)).size() > 0) {
+					LogFunctions.info("Switched to frame \"" + i + "\".");
+					break;
+				}
+				else {
+					driver.switchTo().parentFrame();
+					LogFunctions.info("Frame not switched.");
+				}
+			}
+
+			// wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(we));
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -305,7 +316,7 @@ public class CommonFunctions extends Base {
 
 	public static String assembleFilePathsToUpload(String filePaths, String filePathToBeAdded) {
 		try {
-			if (filePaths.isBlank()) {
+			if (filePaths.isEmpty()) {
 				filePaths = filePathToBeAdded;
 			}
 			else {
@@ -374,7 +385,7 @@ public class CommonFunctions extends Base {
 		try {
 			Calendar calendar = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("_MMddyy_HHmm");
-			result = value + sdf.format(calendar.getTime());
+			result = sdf.format(calendar.getTime()) + value;
 		}
 		catch (Exception e) {
 			LogFunctions.error("Error found: " + e);
@@ -488,7 +499,6 @@ public class CommonFunctions extends Base {
 
 				break;
 			}
-
 			index = index + 1;
 		}
 
@@ -729,7 +739,7 @@ public class CommonFunctions extends Base {
 
 	public static void elementDisplayed(WebElement we) {
 		Boolean result = true;
-		wait = new WebDriverWait(driver, 30);
+		wait = new WebDriverWait(driver, 60);
 
 		if (wait.until(ExpectedConditions.visibilityOf(we)).isDisplayed()) {
 			LogFunctions.info("Element \"" + getElementXPath(we) + "\" is displayed.");
@@ -802,6 +812,24 @@ public class CommonFunctions extends Base {
 		}
 
 		Assert.assertTrue(result);
+	}
+
+	public static void elementNotExistingByXPath(String xPath) {
+		try {
+			List<WebElement> wes = driver.findElements(By.xpath(xPath));
+
+			if (wes.size() == 0) {
+				LogFunctions.info("Element with xpath \"" + xPath + "\" not found.");
+			}
+			else {
+				LogFunctions.error("Element with xpath \"" + xPath + "\" found.");
+			}
+
+			Assert.assertTrue(wes.size() == 0);
+		}
+		catch (Exception e) {
+			LogFunctions.error("Error found: " + e);
+		}
 	}
 
 	public static void textNotDisplayedInPage(String expectedValue) {
