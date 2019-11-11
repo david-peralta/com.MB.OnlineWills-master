@@ -14,9 +14,11 @@ import pages.ChangePasswordPage;
 import pages.CodePage;
 import pages.ExecutorsPage;
 import pages.HomePage;
+import pages.IDdocsPage;
 import pages.LoginPage;
 import pages.PersonalPage;
 import pages.RegistrationPage;
+import pages.ReviewConfirmPage;
 import utilities.Base;
 import utilities.CommonFunctions;
 import utilities.LogFunctions;
@@ -32,6 +34,8 @@ public class StepDefinitions extends Base {
 	AssetsPage assetsPage;
 	BeneficiariesPage beneficiariesPage;
 	ExecutorsPage executorsPage;
+	IDdocsPage idDocsPage;
+	ReviewConfirmPage reviewConfirmPage;
 
 	String Email;
 
@@ -129,6 +133,11 @@ public class StepDefinitions extends Base {
 	@Then("^user sees disaster question displayed$")
 	public void user_sees_disaster_question_displayed() throws Throwable {
 		beneficiariesPage.DisasterQuestionDisplayed();
+	}
+
+	@Then("^user agrees to terms and agreement inside the ID docs Page$")
+	public void user_agrees_to_terms_and_agreement_inside_the_ID_docs_Page() throws Throwable {
+		idDocsPage.ClickQuestion1();
 	}
 
 	@Then("^user sees beneficiary question displayed$")
@@ -623,8 +632,138 @@ public class StepDefinitions extends Base {
 
 	@Then("^user click the next button on the beneficiaries page$")
 	public void user_click_the_next_button_on_the_beneficiaries_page() throws Throwable {
-		beneficiariesPage.ClickNextButton();
+		executorsPage = beneficiariesPage.ClickNextButton();
 		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user click the next button on the executors page$")
+	public void user_click_the_next_button_on_the_executors_page() throws Throwable {
+		idDocsPage = executorsPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects Foreign Passport as first identification type$")
+	public void user_selects_Foreign_Passport_as_first_identification_type() throws Throwable {
+		idDocsPage.SelectForeignPassportFirstID();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects Driver License as first identification type$")
+	public void user_selects_Driver_License_as_first_identification_type() throws Throwable {
+		idDocsPage.SelectDriverLicenseFirstID();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects Driver License as second identification type$")
+	public void user_selects_Driver_License_as_second_identification_type() throws Throwable {
+		idDocsPage.SelectDriverLicenseSecondID();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects Medicare as first identification type$")
+	public void user_selects_Medicare_as_first_identification_type() throws Throwable {
+		idDocsPage.SelectMedicareFirstID();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects Medicare as second identification type$")
+	public void user_selects_Medicare_as_second_identification_type() throws Throwable {
+		idDocsPage.SelectMedicareSecondID();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects Foreign Passport as second identification type$")
+	public void user_selects_Foreign_Passport_as_second_identification_type() throws Throwable {
+		idDocsPage.SelectForeignPassportFirstID();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user checks if mandatory fields for Foreign Passport and Australian Passport Identification type$")
+	public void user_checks_if_mandatory_fields_for_Foreign_Passport_and_Australian_Passport_Identification_type() throws Throwable {
+		idDocsPage.displayMandatoryForeignPassport();
+		idDocsPage.displayMandatoryAUPassport();
+	}
+
+	@Then("^user checks if mandatory fields for Driver License and Medicare Identification type$")
+	public void user_checks_if_mandatory_fields_for_Driver_License_and_Medicare_Identification_type() throws Throwable {
+		idDocsPage.displayMandatoryDriversLicense();
+		idDocsPage.displayMandatoryMedicare();
+	}
+
+	@Then("^user adds foreign passport details$")
+	public void user_adds_foreign_passport_details() throws Throwable {
+		idDocsPage.FillUpForeignPassport();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user adds driver license details$")
+	public void user_adds_driver_license_details() throws Throwable {
+		idDocsPage.FillUpDriversLicense();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user adds medicare details$")
+	public void user_adds_medicare_details() throws Throwable {
+		idDocsPage.FillUpMedicare();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user adds autralian passport details$")
+	public void user_adds_autralian_passport_details() throws Throwable {
+		idDocsPage.FillUpAustralianPassport();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects Australian Passport as first identification type$")
+	public void user_selects_Australian_Passport_as_first_identification_type() throws Throwable {
+		idDocsPage.SelectAustralianPassportSecondID();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects Australian Passport as second identification type$")
+	public void user_selects_Australian_Passport_as_second_identification_type() throws Throwable {
+		idDocsPage.SelectAustralianPassportSecondID();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks next button on the ID docs page$")
+	public void user_clicks_next_button_on_the_ID_docs_page() throws Throwable {
+		reviewConfirmPage = idDocsPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question$")
+	public void user_clicks_no_to_Would_you_like_Maurice_Blackburn_to_help_your_Executor_manage_your_estate_question() throws Throwable {
+		executorsPage.clickQuestion16B();
+	}
+
+	@Then("^user updates details of first executor$")
+	public void user_updates_details_of_first_executor() throws Throwable {
+		executorsPage.UpdateExecutorBackup();
+	}
+
+	@Then("^user clicks edit button on first executor$")
+	public void user_clicks_edit_button_on_first_executor() throws Throwable {
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.wait(5000, false);
+		executorsPage.clickEditExecutor();
+	}
+
+	@Then("^user deletes the first executor$")
+	public void user_deletes_the_first_executor() throws Throwable {
+		executorsPage.clickDeleteExecutor();
+	}
+
+	@Then("^user update the executor details from backup to first option$")
+	public void user_update_the_executor_details_from_backup_to_first_option() throws Throwable {
+		executorsPage.clickQuestion14A();
+		executorsPage.clickBTNAdd3();
+	}
+
+	@Then("^user selects i have no wish on funeral wishes$")
+	public void user_selects_i_have_no_wish_on_funeral_wishes() throws Throwable {
+		executorsPage.clickQuestion17D();
 	}
 
 	@Then("^user checks if Relationship Status dropdown is mandatory$")
@@ -1134,7 +1273,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user clicks add executor button$")
 	public void user_clicks_add_executor_button() throws Throwable {
-		executorsPage = beneficiariesPage.ClickNextButton();
+		executorsPage.clickAddExecutorButton();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -1151,6 +1290,31 @@ public class StepDefinitions extends Base {
 	@Then("^user clicks on delete beneficiary$")
 	public void user_clicks_on_delete_beneficiary() throws Throwable {
 		beneficiariesPage.ClickDeleteBeneficiary();
+	}
+
+	@Then("^user checks if mandatory fields for adding executor is implemented$")
+	public void user_checks_if_mandatory_fields_for_adding_executor_is_implemented() throws Throwable {
+		executorsPage.displayQuestion1();
+		executorsPage.displayQuestion3();
+		executorsPage.displayQuestion4();
+		executorsPage.displayQuestion6();
+		executorsPage.displayQuestion7();
+		executorsPage.displayQuestion9();
+		executorsPage.displayQuestion11();
+		executorsPage.displayQuestion13();
+
+	}
+
+	@Then("^user adds first option executor$")
+	public void user_adds_first_option_executor() throws Throwable {
+		executorsPage.FillUpExecutorFirstOption();
+
+	}
+
+	@Then("^user adds back up executor$")
+	public void user_adds_back_up_executor() throws Throwable {
+		executorsPage.FillUpExecutorBackup();
+
 	}
 
 	@When("^user deletes a benefeciaries$")

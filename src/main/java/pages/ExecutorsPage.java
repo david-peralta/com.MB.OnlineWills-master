@@ -29,14 +29,15 @@ public class ExecutorsPage extends Base {
 
 	@FindBy(xpath = "//input[contains(@value,'Add')]")
 	WebElement btn_Add;
-
+	@FindBy(xpath = "(//input[contains(@value,'Add')])[3]")
+	WebElement btn_add3;
 	@FindBy(xpath = "(//input[contains(@value,'Cancel')])[2]")
 	WebElement btn_Cancel;
 
-	@FindBy(xpath = "//a[contains(text(),'Delete')]")
+	@FindBy(xpath = "(//a[contains(text(),'Delete')])[1]")
 	WebElement btn_Delete;
 
-	@FindBy(xpath = "//a[contains(text(),'Edit')]")
+	@FindBy(xpath = "(//a[contains(text(),'Edit')])[1]")
 	WebElement btn_Edit;
 
 	@FindBy(xpath = "//input[contains(@value,'Next')]")
@@ -134,6 +135,10 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.elementDisplayed(Question1);
 	}
 
+	public void displayQuestion2() {
+		CommonFunctions.elementDisplayed(Question2);
+	}
+
 	public void displayQuestion3() {
 		CommonFunctions.elementDisplayed(Question3.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
@@ -158,6 +163,12 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.elementDisplayed(Question11.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
 
+	public IDdocsPage ClickNextButton() {
+		CommonFunctions.clickElement(btn_Next);
+
+		return new IDdocsPage();
+	}
+
 	public void displayQuestion12A() {
 		CommonFunctions.elementDisplayed(Question12A.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
@@ -176,6 +187,7 @@ public class ExecutorsPage extends Base {
 	}
 
 	public void clickAddExecutorButton() {
+
 		CommonFunctions.clickElement(btn_Add);
 
 	}
@@ -183,6 +195,10 @@ public class ExecutorsPage extends Base {
 	public void clickDeleteExecutor() {
 		CommonFunctions.clickElement(btn_Delete);
 		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+	}
+
+	public void UpdateFromBackUpToFirstOption() {
+
 	}
 
 	/* Add Executor */
@@ -193,6 +209,10 @@ public class ExecutorsPage extends Base {
 	/* FirstOption & Backup */
 	public void clickQuestion14A() {
 		CommonFunctions.clickElement(Question14A);
+	}
+
+	public void clickBTNAdd3() {
+		CommonFunctions.clickElement(btn_add3);
 	}
 
 	public void clickQuestion14B() {
@@ -298,7 +318,7 @@ public class ExecutorsPage extends Base {
 	}
 
 	public void FillUpExecutorFirstOption() {
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question3, "Mr");
+		CommonFunctions.selectValueFromDropdown(Question3, "Mr");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question4, "First");
 		CommonFunctions.wait(5000, false);
@@ -306,7 +326,7 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question6, "Option");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question7, "Father");
+		CommonFunctions.selectValueFromDropdown(Question7, "Father");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question9, "Address1Test");
 		CommonFunctions.wait(5000, false);
@@ -314,7 +334,7 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question11, "SubTest");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question12A, "QLD");
+		CommonFunctions.selectValueFromDropdown(Question12A, "QLD");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question13, "1234");
 		CommonFunctions.wait(5000, false);
@@ -323,7 +343,7 @@ public class ExecutorsPage extends Base {
 	}
 
 	public void UpdateExecutorFirstOption() {
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question3, "Mr");
+		CommonFunctions.selectValueFromDropdown(Question3, "Mr");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question4, "First");
 		CommonFunctions.wait(5000, false);
@@ -339,7 +359,7 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question11, "SubTest");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question12A, "QLD");
+		CommonFunctions.selectValueFromDropdown(Question12A, "QLD");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question13, "1234");
 		CommonFunctions.wait(5000, false);
@@ -348,7 +368,7 @@ public class ExecutorsPage extends Base {
 	}
 
 	public void FillUpExecutorBackup() {
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question3, "Ms");
+		CommonFunctions.selectValueFromDropdown(Question3, "Ms");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question4, "Backup");
 		CommonFunctions.wait(5000, false);
@@ -356,9 +376,11 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question6, "Upback");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question7, "Cousin");
+		CommonFunctions.selectValueFromDropdown(Question7, "Cousin");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question8, "GREECE");
+		CommonFunctions.clickElement(Question14B);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Question8, "GREECE");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question9, "Address1Test");
 		CommonFunctions.wait(5000, false);
@@ -375,7 +397,7 @@ public class ExecutorsPage extends Base {
 	}
 
 	public void UpdateExecutorBackup() {
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question3, "Ms");
+		CommonFunctions.selectValueFromDropdown(Question3, "Ms");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question4, "Backup");
 		CommonFunctions.wait(5000, false);
@@ -383,9 +405,9 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question6, "Upback");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question7, "Cousin");
+		CommonFunctions.selectValueFromDropdown(Question7, "Cousin");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.checkSingleSelectDropdownSelectedOption(Question8, "GREECE");
+		CommonFunctions.selectValueFromDropdown(Question8, "GREECE");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question9, "Address1Test");
 		CommonFunctions.wait(5000, false);
