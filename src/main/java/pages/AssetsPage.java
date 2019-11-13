@@ -62,6 +62,10 @@ public class AssetsPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'Button_AssetListSave')]")
 	WebElement SaveAddAsset;
 
+	@FindBy(xpath = "//input[contains(@id,'RadioButton_RightsYes')]")
+	WebElement RightsYes;
+	@FindBy(xpath = "//input[contains(@id,'RadioButton_RightsNo')]")
+	WebElement RightsNo;
 	@FindBy(xpath = "//*[text()='Add Additional Superannuation Fund']")
 	WebElement AddSuper;
 	@FindBy(xpath = "//input[contains(@id,'Button_SuperAdd')]")
@@ -188,6 +192,13 @@ public class AssetsPage extends Base {
 		CommonFunctions.clickElement(BindingYes);
 	}
 
+	public void ClickRightsNo() {
+		CommonFunctions.clickElement(RightsNo);
+	}
+
+	public void ClickRightsYes() {
+		CommonFunctions.clickElement(RightsYes);
+	}
 	public void DisplayValidationOnMandatoryFieldsForNominatedDeathBenef() {
 		CommonFunctions.elementDisplayed(BenefTitleReq);
 		CommonFunctions.elementDisplayed(BenefFNameReq);

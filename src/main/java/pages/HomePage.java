@@ -34,6 +34,8 @@ public class HomePage extends Base {
 	WebElement SinglesProductStandardWillBtn;
 	@FindBy(xpath = "//input[contains(@id,'MyLifeCoupleGetStarted')]")
 	WebElement CouplesProductMyLifeWillBtn;
+	@FindBy(xpath = "//input[@value='New Order']")
+	WebElement NewOrderPopUp;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public HomePage() {
@@ -44,6 +46,12 @@ public class HomePage extends Base {
 
 	public void checkCouplesProductRadioButtonIsToggled() {
 		CommonFunctions.elementAttributeContainsValue(CouplesProduct.findElement(By.xpath(".//parent::label//input")), "checked", "true");
+	}
+
+	public void clickNewOrderOnPopUp() {
+		CommonFunctions.switchFrameByXPath("//div[text()='DEBUG You have an incomplete Order']");
+		CommonFunctions.clickElement(NewOrderPopUp);
+
 	}
 
 	public void containsValueUserFullNameLabel(String expectedValue) {

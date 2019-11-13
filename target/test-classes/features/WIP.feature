@@ -1,11 +1,12 @@
-Feature: MW - 31 : Review and confirm
+Feature: MW - 39 : As a customer, I want to enter the required details about my funeral wishes, so I can specify what I want done to my body when I pass away
 
-      @Sprint11
+  @Sprint11
   Scenario Outline: 
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
+    When user clicks on new order on incomplete order popup
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
@@ -52,21 +53,9 @@ Feature: MW - 31 : Review and confirm
     And user clicks on add executor
     And user adds back up executor
     And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
-    And user selects i have no wish on funeral wishes
     And user click the next button on the executors page
-    #ID docs Page
-    Then user is on "ID Check" page
-    And user agrees to terms and agreement inside the ID docs Page
-    #ADD ID
-    And user selects Driver License as first identification type
-    And user adds driver license details
-    And user selects Medicare as second identification type
-      And user adds medicare details
 
-    
-    And user adds medicare details
-    And user clicks next button on the ID docs page
-    Then user is on "ReviewAndConfirm" page
+    And user selects i have no wish on funeral wishes
     Examples: 
       | email            | password     | Address1                                         | Suburb         |
       | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
