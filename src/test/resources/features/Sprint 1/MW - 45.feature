@@ -32,4 +32,4 @@ Feature: MW - 45 : As a customer, I want my account locked after a number of uns
 
 		Examples: 
 			| email                  | password     |
-			| NonVictorian@gmail.com | Password123! |
+			| NonVictorian@gmail.com | ABCDEFGHIJKL |
