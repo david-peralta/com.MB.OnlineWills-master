@@ -1583,7 +1583,7 @@ public class StepDefinitions extends Base {
 		loginPage.setPasswordInput(arg2);
 
 		homePage = loginPage.clickLoginButton();
-		CommonFunctions.wait(5000, false);
+		CommonFunctions.wait(10000, false);
 	}
 
 	@When("^user inputs an \"([^\"]*)\" in the forgotten password email field$")
