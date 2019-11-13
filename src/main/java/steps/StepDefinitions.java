@@ -1,6 +1,9 @@
 package steps;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -66,6 +69,16 @@ public class StepDefinitions extends Base {
 		driver.get(prop.getProperty("url"));
 		loginPage = new LoginPage();
 
+	}
+
+	@When("^user clicks on new order on incomplete order popup$")
+	public void user_clicks_on_new_order_on_incomplete_order_popup() throws Throwable {
+		if (new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(), 'DEBUG You have an incomplete Order')]")))).isDisplayed()) {
+			homePage.clickNewOrderOnPopUp();
+		}
+		else {
+
+		}
 	}
 
 	@Given("^user opens browser and decides to proceed to the activation links page$")
@@ -287,6 +300,16 @@ public class StepDefinitions extends Base {
 	public void user_clicks_no_to_do_you_control_a_self_managed_superannuation_fund_question() throws Throwable {
 		assetsPage.ClickNoQuestion6();
 		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks yes to Do you intend to grant any life interests or rights to occupy in your Will question$")
+	public void user_clicks_yes_to_Do_you_intend_to_grant_any_life_interests_or_rights_to_occupy_in_your_Will_question() throws Throwable {
+		assetsPage.ClickRightsYes();
+	}
+
+	@Then("^user clicks no to Do you intend to grant any life interests or rights to occupy in your Will question$")
+	public void user_clicks_no_to_Do_you_intend_to_grant_any_life_interests_or_rights_to_occupy_in_your_Will_question() throws Throwable {
+		assetsPage.ClickRightsNo();
 	}
 
 	@Then("^user clicks yes to do you control a self-managed superannuation fund question$")
