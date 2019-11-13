@@ -190,6 +190,70 @@ public class AboutPage extends Base {
 	WebElement GuardianCancel;
 	@FindBy(xpath = "//input[contains(@id,'GuardianSaveButton')]")
 	WebElement GuardianSave;
+	@FindBy(xpath = "//input[contains(@id,'OtherDependentSaveButton')]")
+	WebElement DependentSave;
+	@FindBy(xpath = "//input[contains(@id,'OtherDependentCancelButton')]")
+	WebElement DependentCancel;
+	@FindBy(xpath = "//*[text()='Add Dependent']")
+	WebElement AddDependent;
+
+	@FindBy(xpath = "(//*[text()='Edit'])[2]")
+	WebElement EditfirstDependent;
+	@FindBy(xpath = "(//*[text()='Delete'])[2]")
+	WebElement DeletefirstDependent;
+
+	@FindBy(xpath = "//select[contains(@id,'OtherDependentTitle')]")
+	WebElement DependentTitle;
+	@FindBy(xpath = "(//select[contains(@id,'OtherDependentTitle')]//following::span//following::span[text()='Required field'])[1]")
+	WebElement DependentTitleReq;
+
+	@FindBy(xpath = "//input[contains(@id,'OtherDependentFirstName')]")
+	WebElement DependentFName;
+	@FindBy(xpath = "(//input[contains(@id,'OtherDependentFirstName')]//following::span//following::span[text()='Required field'])[1]")
+	WebElement DependentFNameReq;
+
+	@FindBy(xpath = "//input[contains(@id,'OtherDependentMiddleName')]")
+	WebElement DependentMName;
+
+	@FindBy(xpath = "//input[contains(@id,'OtherDependentLastName')]")
+	WebElement DependentLName;
+	@FindBy(xpath = "(//input[contains(@id,'OtherDependentLastName')]//following::span//following::span[text()='Required field'])[1]")
+	WebElement DependentLNameReq;
+
+	@FindBy(xpath = "//select[contains(@id,'OtherDependent_Relationship')]")
+	WebElement DependentRel;
+	@FindBy(xpath = "(//select[contains(@id,'OtherDependent_Relationship')]//following::span//following::span[text()='Required field'])[1]")
+	WebElement DependentRelReq;
+	@FindBy(xpath = "//select[contains(@id,'OtherDependent_Country')]")
+	WebElement DependentCountry;
+
+	@FindBy(xpath = "//input[contains(@id,'OtherDependent_Line1ResAddress_Input')]")
+	WebElement DependentAddress1;
+	@FindBy(xpath = "(//input[contains(@id,'OtherDependent_Line1ResAddress_Input')]//following::span//following::span[text()='Required field'])[1]")
+	WebElement DependentAddress1Req;
+
+	@FindBy(xpath = "//input[contains(@id,'OtherDependent_Line2ResAddress_Input')]")
+	WebElement DependentAddress2;
+
+	@FindBy(xpath = "//input[contains(@id,'OtherDependent_SubsurfRes_Input')]")
+	WebElement DependentSuburb;
+	@FindBy(xpath = "(//input[contains(@id,'OtherDependent_SubsurfRes_Input')]//following::span//following::span[text()='Required field'])[1]")
+	WebElement DependentSuburbReq;
+
+	@FindBy(xpath = "//select[contains(@id,'GuardianInfo_StateId_Input')]")
+	WebElement DependentStateDropdown;
+	@FindBy(xpath = "(//select[contains(@id,'GuardianInfo_StateId_Input')]//following::span//following::span[text()='Required field'])[1]")
+	WebElement DependentStateDropdownReq;
+
+	@FindBy(xpath = "//input[contains(@id,'GuardianInfo_StateText_Input')]")
+	WebElement DependentState;
+	@FindBy(xpath = "(//input[contains(@id,'GuardianInfo_StateText_Input')]//following::span//following::span[text()='Required field'])[1]")
+	WebElement DependentStateReq;
+
+	@FindBy(xpath = "//input[contains(@id,'OtherDependent_PostcodePost_Input')]")
+	WebElement DependentPostCode;
+	@FindBy(xpath = "(//input[contains(@id,'OtherDependent_PostcodePost_Input')]//following::span//following::span[text()='Required field'])[1]")
+	WebElement DependentPostCodeReq;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public AboutPage() {
@@ -198,6 +262,91 @@ public class AboutPage extends Base {
 	}
 
 	// ============================================================= Actions =============================================================
+	public void ClickAddDependent() {
+		CommonFunctions.clickElement(AddDependent);
+	}
+
+	public void ClickEditFirstDependent() {
+		CommonFunctions.clickElement(EditfirstDependent);
+	}
+
+	public void ClickDeleteFirstDependent() {
+		CommonFunctions.clickElement(DeletefirstDependent);
+	}
+
+	public void DisplayMandatoryFieldDependent() {
+		CommonFunctions.elementDisplayed(DependentTitleReq);
+		CommonFunctions.elementDisplayed(DependentFNameReq);
+		CommonFunctions.elementDisplayed(DependentLNameReq);
+		CommonFunctions.elementDisplayed(DependentRelReq);
+		CommonFunctions.elementDisplayed(DependentAddress1Req);
+		CommonFunctions.elementDisplayed(DependentSuburbReq);
+		CommonFunctions.elementDisplayed(DependentStateDropdownReq);
+		CommonFunctions.elementDisplayed(DependentPostCodeReq);
+		CommonFunctions.selectValueFromDropdown(DependentCountry, "BAHRAIN");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(DependentSave);
+		CommonFunctions.elementDisplayed(DependentStateReq);
+	}
+
+	public void AddAUDependent() {
+		CommonFunctions.selectValueFromDropdown(DependentTitle, "Dr");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentFName, "AUDependent First Name");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentMName, "AUDependent Middle Name");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentLName, "AUDependent Last Name");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(DependentRel, "Mother");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(DependentCountry, "AUSTRALIA");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentAddress1, "AUDependent Address line 1");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentAddress2, "AUDependent Address line 2");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentSuburb, "AUDependent Suburb");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(DependentStateDropdown, "VIC");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentPostCode, "6666");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(DependentSave);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void AddNonAUDependent() {
+		CommonFunctions.selectValueFromDropdown(DependentTitle, "Dr");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentFName, "Dependent First Name");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentMName, "Dependent Middle Name");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentLName, "Dependent Last Name");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(DependentRel, "Mother");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(DependentCountry, "PHILIPPINES");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentAddress1, "Dependent Address line 1");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentAddress2, "Dependent Address line 2");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentSuburb, "Dependent Suburb");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentState, "INTRAMUROS, MANILA");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(DependentPostCode, "1002");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(DependentSave);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void ClickSaveAddDependent() {
+		CommonFunctions.clickElement(DependentSave);
+	}
+
 	public void ClickEditFirstChild() {
 		CommonFunctions.clickElement(EditFirstChild);
 	}
@@ -711,10 +860,47 @@ public class AboutPage extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	public void FillUpMandatoryFieldsSingleWithMinorChild() {
+		CommonFunctions.clickElement(LawNoButton);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(ChildrenYes);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(AddChild);
+		CommonFunctions.selectValueFromDropdown(AddChildQuestion4, "Dr");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(AddChildQuestion5, "Little Dim");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(AddChildQuestion7, "Camuin");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(AddChildQuestion8, "05/09/2015");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(AddChildQuestion11No);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(AddChildSave);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(DependentsNo);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void DisplayMandatoryFieldsDependent() {
+		CommonFunctions.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
+
+	}
+
 	public void FillUpMandatoryFieldsWidowed() {
 		CommonFunctions.clickElement(ChildrenNo);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(DependentsNo);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void ClickDependentsNo() {
+		CommonFunctions.clickElement(DependentsNo);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void ClickDependentsYes() {
+		CommonFunctions.clickElement(DependentsYes);
 		CommonFunctions.wait(5000, false);
 	}
 

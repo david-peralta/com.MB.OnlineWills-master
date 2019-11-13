@@ -115,12 +115,28 @@ public class BeneficiariesPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'Gifts_False')]")
 	WebElement GiftsNo;
 
+	// Beneficiaries - Gifts
+	@FindBy(xpath = "//span[contains(text(),'Do you wish to leave any gifts?')]")
+	WebElement Gift_Question;
+	// @FindBy(xpath = "")
+	// WebElement ;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public BeneficiariesPage() {
 		PageFactory.initElements(driver, this);
 	}
 
 	// ============================================================= Actions =============================================================
+	public void checkGiftRadioButton() {
+		CommonFunctions.elementDisplayed(GiftsYes);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void checkGiftQuestion() {
+		CommonFunctions.elementDisplayed(Gift_Question);
+		CommonFunctions.wait(5000, false);
+	}
+
 	public void ClickPersonAddBeneficiary() {
 		CommonFunctions.clickElement(PersonAddBeneficiary);
 		CommonFunctions.wait(5000, false);

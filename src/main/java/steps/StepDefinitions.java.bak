@@ -1090,113 +1090,11 @@ public class StepDefinitions extends Base {
 		aboutPage.FillUpMandatoryFieldsSingleWithChild();
 	}
 
-	@Then("^user clicks on add superannuation button$")
-	public void user_clicks_on_add_superannuation_button() throws Throwable {
-		assetsPage.ClickAddSuper();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user clicks cancel button on adding superannuation$")
-	public void user_clicks_cancel_button_on_adding_superannuation() throws Throwable {
-		assetsPage.ClickAddSuperCancel();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user clicks save button on adding superannuation$")
-	public void user_clicks_save_button_on_adding_superannuation() throws Throwable {
-		assetsPage.ClickAddSuperSave();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user sees mandatory fields validation for adding superannuation$")
-	public void user_sees_mandatory_fields_validation_for_adding_superannuation() throws Throwable {
-		assetsPage.MandatoryfieldsAddSuper();
-	}
-
-	@Then("^user adds superannuation with unsure death beneficiary$")
-	public void user_adds_superannuation_with_unsure_death_beneficiary() throws Throwable {
-		assetsPage.AddSuperWithDeathBenefUnsure();
-	}
-
-	@Then("^user adds superannuation with no death beneficiary$")
-	public void user_adds_superannuation_with_no_death_beneficiary() throws Throwable {
-		assetsPage.AddSuperWithDeathBenefNo();
-	}
-
-	@Then("^user adds superannuation with death beneficiary$")
-	public void user_adds_superannuation_with_death_beneficiary() throws Throwable {
-		assetsPage.AddSuperWithDeathBenefYes();
-	}
-
-	@When("^user sees validation on question do you have any other dependents$")
-	public void user_sees_validation_on_question_do_you_have_any_other_dependents() throws Throwable {
-		aboutPage.DisplayMandatoryFieldsDependent();
-	}
-
-	@Then("^user clicks save button on adding death beneficiary$")
-	public void user_clicks_save_button_on_adding_death_beneficiary() throws Throwable {
-		assetsPage.SuperDeathBenefSave();
-	}
-
-	@When("^user fill up the all required fields for single status with minor child$")
-	public void user_fill_up_the_all_required_fields_for_single_status_with_minor_child() throws Throwable {
-		aboutPage.FillUpMandatoryFieldsSingleWithMinorChild();
-	}
-	
 	@When("^user fill up the all required fields for married status without children$")
 	public void user_fill_up_the_all_required_fields_for_married_status_without_children() throws Throwable {
 		aboutPage.FillUpMandatoryFieldsSingleWithChild();
 	}
 
-	@Then("^user clicks add death benificiary$")
-	public void user_clicks_add_death_benificiary() throws Throwable {
-		assetsPage.ClickAddSuperBenef();
-	}
-
-	@Then("^user clicks edit death benificiary$")
-	public void user_clicks_edit_death_benificiary() throws Throwable {
-		assetsPage.ClickEditSuperBenef();
-	}
-
-	@Then("^user deletes the first death benificiary$")
-	public void user_deletes_the_first_death_benificiary() throws Throwable {
-		assetsPage.ClickDeleteSuperBenef();
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
-		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
-		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
-	}
-
-	@Then("^user sees mandatory fields validation for nominating beneficiary$")
-	public void user_sees_mandatory_fields_validation_for_nominating_beneficiary() throws Throwable {
-		assetsPage.DisplayValidationOnMandatoryFieldsForNominatedDeathBenef();
-	}
-
-	@Then("^user clicks yes on Is it Binding question$")
-	public void user_clicks_yes_on_Is_it_Binding_question() throws Throwable {
-		assetsPage.ClickBindingYes();
-	}
-
-	@Then("^user clicks no on Is it Binding question$")
-	public void user_clicks_no_on_Is_it_Binding_question() throws Throwable {
-		assetsPage.ClickBindingNo();
-	}
-
-	@Then("^user clicks unsure on Is it Binding question$")
-	public void user_clicks_unsure_on_Is_it_Binding_question() throws Throwable {
-		assetsPage.ClickBindingUnsure();
-	}
-
-	@Then("^user nominates a beneficiary$")
-	public void user_nominates_a_beneficiary() throws Throwable {
-		assetsPage.NominateBeneficiary();
-	}
-
-	@Then("^user edits the nominated beneficiary$")
-	public void user_edits_the_nominated_beneficiary() throws Throwable {
-		assetsPage.EditNominateBeneficiary();
-	}
-	
 	@When("^user fill up the all required fields for widowed status$")
 	public void user_fill_up_the_all_required_fields_for_widowed_status() throws Throwable {
 		aboutPage.FillUpMandatoryFieldsWidowed();
