@@ -1,7 +1,7 @@
 Feature: MW - 42 : As a customer, I want to view additional products I can purchase
 
 	@Sprint1
-	Scenario Outline: 1: Customer locks account
+	Scenario Outline: 1: Single and doesn’t live in VIC
 		Given user opens browser
 		When user logs into app with the "<email>" and "<password>" as the login credentials
 
