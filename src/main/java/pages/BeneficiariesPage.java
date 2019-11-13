@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -118,8 +119,40 @@ public class BeneficiariesPage extends Base {
 	// Beneficiaries - Gifts
 	@FindBy(xpath = "//span[contains(text(),'Do you wish to leave any gifts?')]")
 	WebElement Gift_Question;
-	// @FindBy(xpath = "")
-	// WebElement ;
+	@FindBy(xpath = "//a[contains(text(),'Add Gift')]")
+	WebElement AddGift;
+	@FindBy(xpath = "//input[contains(@id,'GiftDescription')]")
+	WebElement Gift_Description;
+	@FindBy(xpath = "//input[contains(@id,'GiftsReciever')]")
+	WebElement Gift_Reciever;
+	@FindBy(xpath = "//select[contains(@id,'GiftsRelationship')]")
+	WebElement Gift_Relationship;
+	@FindBy(xpath = "//select[contains(@id,'GiftsCountry')]")
+	WebElement Gift_Country;
+	@FindBy(xpath = "//input[contains(@id,'GiftsAddressLine1')]")
+	WebElement Gift_Address1;
+	@FindBy(xpath = "//input[contains(@id,'GiftsAddressLine2')]")
+	WebElement Gift_Address2;
+	@FindBy(xpath = "//input[contains(@id,'GiftsSuburb')]")
+	WebElement Gift_Suburb;
+	@FindBy(xpath = "//select[contains(@id,'GiftsState')]")
+	WebElement Gift_State;
+	@FindBy(xpath = "//input[contains(@id,'GiftsPostcode')]")
+	WebElement Gift_PostCode;
+
+	// Beneficiaries - Buttons
+	@FindBy(xpath = "//input[contains(@value,'Add')]")
+	WebElement Gift_Add;
+	@FindBy(xpath = "//input[contains(@value,'Cancel')]")
+	WebElement Gift_Cancel;
+	@FindBy(xpath = "//a[contains(text(),'Edit')]")
+	WebElement Gift_Edit;
+	@FindBy(xpath = "//a[contains(text(),'Delete')]")
+	WebElement Gift_Delete;
+
+	// Beneficiaries - Error Messages
+	@FindBy(xpath = "//span[contains(text(),'Please add gift')]")
+	WebElement Gift_AddGiftMsg;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public BeneficiariesPage() {
@@ -135,6 +168,51 @@ public class BeneficiariesPage extends Base {
 	public void checkGiftQuestion() {
 		CommonFunctions.elementDisplayed(Gift_Question);
 		CommonFunctions.wait(5000, false);
+	}
+
+	public void CheckGiftDescriptionRequired() {
+		CommonFunctions.elementDisplayed(Gift_Description.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftRecieverRequired() {
+		CommonFunctions.elementDisplayed(Gift_Reciever.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftRelationshipRequired() {
+		CommonFunctions.elementDisplayed(Gift_Relationship.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftCountryRequired() {
+		CommonFunctions.elementDisplayed(Gift_Country.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftAddress1Required() {
+		CommonFunctions.elementDisplayed(Gift_Address1.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftSuburbRequired() {
+		CommonFunctions.elementDisplayed(Gift_Suburb.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftStateRequired() {
+		CommonFunctions.elementDisplayed(Gift_State.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftPostcodeRequired() {
+		CommonFunctions.elementDisplayed(Gift_PostCode.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftRequiredFields() {
+		CommonFunctions.clickElement(Gift_Add);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.elementDisplayed(Gift_Description.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Gift_Reciever.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Gift_Relationship.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		// CommonFunctions.elementDisplayed(Gift_Country.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Gift_Address1.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Gift_Suburb.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Gift_State.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Gift_PostCode.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
 
 	public void ClickPersonAddBeneficiary() {

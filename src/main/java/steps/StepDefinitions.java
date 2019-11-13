@@ -879,7 +879,7 @@ public class StepDefinitions extends Base {
 		aboutPage.ClickEditFirstDependent();
 
 	}
-	
+
 	@When("^user deletes first dependent$")
 	public void user_deletes_first_dependent() throws Throwable {
 		CommonFunctions.wait(5000, false);
@@ -892,7 +892,7 @@ public class StepDefinitions extends Base {
 		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
 		CommonFunctions.wait(5000, false);
 	}
-	
+
 	@When("^user clicks save dependent button$")
 	public void user_clicks_save_dependent_button() throws Throwable {
 		aboutPage.ClickSaveAddDependent();
@@ -912,7 +912,7 @@ public class StepDefinitions extends Base {
 	public void user_edits_dependent_details() throws Throwable {
 		aboutPage.AddNonAUDependent();
 	}
-	
+
 	@Then("^user check if Residential address line two field is mandatory$")
 	public void user_check_if_Residential_address_line_two_field_is_mandatory() throws Throwable {
 		personalPage.CheckResidentialAddressLine1Mandatory();
@@ -943,7 +943,7 @@ public class StepDefinitions extends Base {
 	public void user_clicks_yes_on_do_you_have_any_other_dependents_question() throws Throwable {
 		aboutPage.ClickDependentsYes();
 	}
-	
+
 	@When("^user selects \"([^\"]*)\" as Asset on assets page$")
 	public void user_selects_as_Asset_on_assets_page(String arg1) throws Throwable {
 		assetsPage.SelectAssetonDropdown(arg1);
@@ -1142,7 +1142,7 @@ public class StepDefinitions extends Base {
 	public void user_fill_up_the_all_required_fields_for_single_status_with_minor_child() throws Throwable {
 		aboutPage.FillUpMandatoryFieldsSingleWithMinorChild();
 	}
-	
+
 	@When("^user fill up the all required fields for married status without children$")
 	public void user_fill_up_the_all_required_fields_for_married_status_without_children() throws Throwable {
 		aboutPage.FillUpMandatoryFieldsSingleWithChild();
@@ -1196,7 +1196,7 @@ public class StepDefinitions extends Base {
 	public void user_edits_the_nominated_beneficiary() throws Throwable {
 		assetsPage.EditNominateBeneficiary();
 	}
-	
+
 	@When("^user fill up the all required fields for widowed status$")
 	public void user_fill_up_the_all_required_fields_for_widowed_status() throws Throwable {
 		aboutPage.FillUpMandatoryFieldsWidowed();
@@ -1885,6 +1885,11 @@ public class StepDefinitions extends Base {
 		assetsPage.FillUpDebtFields2();
 	}
 
+	@Then("^user edits debt$")
+	public void user_edits_debt() throws Throwable {
+		assetsPage.UpdateDebtFields();
+	}
+
 	@Then("^user removes debt$")
 	public void user_removes_debt() throws Throwable {
 		assetsPage.ClickDeleteDebt1();
@@ -1894,6 +1899,17 @@ public class StepDefinitions extends Base {
 	@Then("^user cancels debt with unsaved changes$")
 	public void user_cancels_debt_with_unsaved_changes() throws Throwable {
 		assetsPage.ClickCancelDebt();
+	}
+
+	/** Beneficiaries - GIFT */
+	@Then("^user checks required fields in the gift section$")
+	public void user_checks_required_fields_in_gift_section() throws Throwable {
+		beneficiariesPage.CheckGiftRequiredFields();
+	}
+
+	@Then("^user fills up gift from beneficiaries$")
+	public void user_fills_up_gift_from_beneficiaries() throws Throwable {
+
 	}
 
 }

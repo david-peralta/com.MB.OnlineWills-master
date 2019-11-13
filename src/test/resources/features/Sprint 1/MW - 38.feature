@@ -44,6 +44,9 @@ Feature: MW - 38 : Beneficiaries - Gifts
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
 		#Scenario 1 - Customer Indicates gifts to allocate   	 
    	And user clicks yes to Do you wish to leave any gifts question
+   	And user checks required fields in the gift section
+   	And user fills up gift from beneficiaries
+   	
 
 
     Examples: 
