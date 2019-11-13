@@ -3,11 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Created by: Jerome Lorenzo D. Amores -->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.Enzo.Test</groupId>
-	<artifactId>com.Enzo.Test</artifactId>
+	<groupId>com.MB.OnlineWills.Test</groupId>
+	<artifactId>com.MB.OnlineWills.Test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>EnzoTest</name>
+	<name>MBOnlineWills</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
