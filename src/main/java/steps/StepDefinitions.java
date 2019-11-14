@@ -11,6 +11,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pages.AboutPage;
+import pages.AddOnsPage;
 import pages.AssetsPage;
 import pages.BeneficiariesPage;
 import pages.ChangePasswordPage;
@@ -19,6 +20,7 @@ import pages.ExecutorsPage;
 import pages.HomePage;
 import pages.IDdocsPage;
 import pages.LoginPage;
+import pages.PaymentsPage;
 import pages.PersonalPage;
 import pages.RegistrationPage;
 import pages.ReviewConfirmPage;
@@ -39,6 +41,8 @@ public class StepDefinitions extends Base {
 	ExecutorsPage executorsPage;
 	IDdocsPage idDocsPage;
 	ReviewConfirmPage reviewConfirmPage;
+	PaymentsPage paymentsPage;
+	AddOnsPage addOnsPage;
 
 	String Email;
 
@@ -1961,61 +1965,51 @@ public class StepDefinitions extends Base {
 
 	@When("^user confirms that he completed the form himself$")
 	public void user_confirms_that_he_completed_the_form_himself() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		reviewConfirmPage.clickQuestion1();
 	}
 
 	@When("^user clicks the next button on the review and confirm page$")
 	public void user_clicks_the_next_button_on_the_review_and_confirm_page() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		paymentsPage = reviewConfirmPage.clickNextPaymentButton();
 	}
 
 	@When("^user clicks the next button on the review and confirm page to go to add-on page$")
 	public void user_clicks_the_next_button_on_the_review_and_confirm_page_to_go_to_addon_page() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		addOnsPage = reviewConfirmPage.clickNextAddOnsButton();
 	}
 
 	@When("^user clicks the next button on the add-ons page$")
 	public void user_clicks_the_next_button_on_the_addons_page() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		paymentsPage = addOnsPage.clickNextButton();
 	}
 
 	@Then("^user sees the power of attorney product$")
 	public void user_sees_the_power_of_attorney_product() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("//*[text() = 'Power of Attorney documents']")));
 	}
 
 	@When("^user clicks no to do you want to do your will with your spouse or partner question$")
 	public void user_clicks_no_to_do_you_want_to_do_your_will_with_your_spouse_or_partner_question() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		aboutPage.clickWillTogetherRadioNoRadioButton();
 	}
 
 	@When("^user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question$")
 	public void user_clicks_no_to_do_you_want_to_leave_your_whole_estate_to_your_spouse_partner_if_they_survive_you_question() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		beneficiariesPage.ClickNoQuestion1WithSpouse();
 	}
 
 	@Then("^user sees the add your spouse/partner option$")
 	public void user_sees_the_add_your_spouse_partner_option() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("//*[text() = 'Add your Spouse/Partner']")));
 	}
 
 	@When("^user clicks yes to do you want to do your will with your spouse or partner question$")
 	public void user_clicks_yes_to_do_you_want_to_do_your_will_with_your_spouse_or_partner_question() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		aboutPage.clickWillTogetherRadioYesRadioButton();
 	}
 
 	@When("^user inputs \"([^\"]*)\" as the email address of the spouse/partner$")
 	public void user_inputs_as_the_email_address_of_the_spouse_partner(String arg1) throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		aboutPage.setQuestion8Input(arg1);
 	}
 }

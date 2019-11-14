@@ -1094,4 +1094,15 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(RelationshipStatus.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
 
+	public void clickWillTogetherRadioYesRadioButton() {
+		CommonFunctions.clickElement(WillTogetherRadioYes);
+	}
+
+	public void clickWillTogetherRadioNoRadioButton() {
+		CommonFunctions.clickElement(WillTogetherRadioNo);
+	}
+
+	public void setQuestion8Input(String value) {
+		CommonFunctions.clearThenEnterElementValue(Question8, value);
+	}
 }
