@@ -1958,4 +1958,52 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 
 	}
+
+	@When("^user confirms that he completed the form himself$")
+	public void user_confirms_that_he_completed_the_form_himself() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@When("^user clicks the next button on the review and confirm page$")
+	public void user_clicks_the_next_button_on_the_review_and_confirm_page() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@Then("^user sees the power of attorney product$")
+	public void user_sees_the_power_of_attorney_product() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@When("^user clicks no to do you want to do your will with your spouse or partner question$")
+	public void user_clicks_no_to_do_you_want_to_do_your_will_with_your_spouse_or_partner_question() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@When("^user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question$")
+	public void user_clicks_no_to_do_you_want_to_leave_your_whole_estate_to_your_spouse_partner_if_they_survive_you_question() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@Then("^user sees the add your spouse/partner option$")
+	public void user_sees_the_add_your_spouse_partner_option() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@When("^user clicks yes to do you want to do your will with your spouse or partner question$")
+	public void user_clicks_yes_to_do_you_want_to_do_your_will_with_your_spouse_or_partner_question() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@When("^user inputs \"([^\"]*)\" as the email address of the spouse/partner$")
+	public void user_inputs_as_the_email_address_of_the_spouse_partner(String arg1) throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
 }
