@@ -148,7 +148,7 @@ public class StepDefinitions extends Base {
 		beneficiariesPage.DisasterQuestionDisplayed();
 	}
 
-	@Then("^user agrees to terms and agreement inside the ID docs Page$")
+	@When("^user agrees to terms and agreement inside the ID docs Page$")
 	public void user_agrees_to_terms_and_agreement_inside_the_ID_docs_Page() throws Throwable {
 		idDocsPage.ClickQuestion1();
 	}
@@ -158,179 +158,179 @@ public class StepDefinitions extends Base {
 		beneficiariesPage.BeneficiaryQuestionDisplayed();
 	}
 
-	@Then("^user clicks yes to do you have assets question$")
+	@When("^user clicks yes to do you have assets question$")
 	public void user_clicks_yes_to_do_you_have_assets_question() throws Throwable {
 		assetsPage.ClickYesQuestion1();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to do you have debts question$")
+	@When("^user clicks no to do you have debts question$")
 	public void user_clicks_no_to_do_you_have_debts_question() throws Throwable {
 		assetsPage.ClickNoQuestion2();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question$")
+	@When("^user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question$")
 	public void user_clicks_yes_to_If_any_of_your_children_predecease_you_do_you_want_to_divide_it_equally_amongst_their_children_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion2();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question$")
+	@When("^user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question$")
 	public void user_clicks_no_to_If_any_of_your_children_predecease_you_do_you_want_to_divide_it_equally_amongst_their_children_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion2();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to Do you wish to leave any gifts question$")
+	@When("^user clicks no to Do you wish to leave any gifts question$")
 	public void user_clicks_no_to_Do_you_wish_to_leave_any_gifts_question() throws Throwable {
 		beneficiariesPage.ClickGiftNo();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to Do you wish to leave any gifts question$")
+	@When("^user clicks yes to Do you wish to leave any gifts question$")
 	public void user_yes_no_to_Do_you_wish_to_leave_any_gifts_question() throws Throwable {
 		beneficiariesPage.ClickGiftYes();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to Do you want to give the whole estate equally to your children question$")
+	@When("^user clicks yes to Do you want to give the whole estate equally to your children question$")
 	public void user_clicks_yes_to_Do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion1SingleWithChildren();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to Do you want to give the whole estate equally to your children question$")
+	@When("^user clicks no to Do you want to give the whole estate equally to your children question$")
 	public void user_clicks_no_to_Do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion1SingleWithChildren();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to Do you want to include any children you have in the future question$")
+	@When("^user clicks yes to Do you want to include any children you have in the future question$")
 	public void user_clicks_yes_to_Do_you_want_to_include_any_children_you_have_in_the_future_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion1();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to if your spouse/partner predeceases you, do you want to give the whole of your estate equally to any children you have in the future question$")
+	@When("^user clicks yes to if your spouse/partner predeceases you, do you want to give the whole of your estate equally to any children you have in the future question$")
 	public void user_clicks_yes_to_if_your_spouse_partner_predeceases_you_do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion1();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to if your spouse/partner predeceases you, do you want to give the whole of your estate equally to any children you have in the future question$")
+	@When("^user clicks no to if your spouse/partner predeceases you, do you want to give the whole of your estate equally to any children you have in the future question$")
 	public void user_clicks_no_to_if_your_spouse_partner_predeceases_you_do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion1();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to Do you want to leave your whole estate to your spouse/partner if they survive you question$")
+	@When("^user clicks yes to Do you want to leave your whole estate to your spouse/partner if they survive you question$")
 	public void user_clicks_yes_to_Do_you_want_to_leave_your_whole_estate_to_your_spouse_partner_if_they_survive_you_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion1WithSpouse();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to Do you want to leave your whole estate to your spouse/partner if they survive you question$")
+	@When("^user clicks no to Do you want to leave your whole estate to your spouse/partner if they survive you question$")
 	public void user_clicks_no_to_Do_you_want_to_leave_your_whole_estate_to_your_spouse_partner_if_they_survive_you_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion1WithSpouse();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to Do you want to include any children you have in the future question$")
+	@When("^user clicks no to Do you want to include any children you have in the future question$")
 	public void user_clicks_no_to_Do_you_want_to_include_any_children_you_have_in_the_future_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion1();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question$")
+	@When("^user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question$")
 	public void user_clicks_yes_to_Do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion1();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to Do you want to give the whole of your estate equally to any children you have in the future question$")
+	@When("^user clicks no to Do you want to give the whole of your estate equally to any children you have in the future question$")
 	public void user_clicks_no_to_Do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion1();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to do you have debts question$")
+	@When("^user clicks yes to do you have debts question$")
 	public void user_clicks_yes_to_do_you_have_debts_question() throws Throwable {
 		assetsPage.ClickYesQuestion2();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to do you have any superannuation question$")
+	@When("^user clicks no to do you have any superannuation question$")
 	public void user_clicks_no_to_do_you_have_any_superannuation_question() throws Throwable {
 		assetsPage.ClickNoQuestion3();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to do you have any superannuation question$")
+	@When("^user clicks yes to do you have any superannuation question$")
 	public void user_clicks_yes_to_do_you_have_any_superannuation_question() throws Throwable {
 		assetsPage.ClickYesQuestion3();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to do you have life insurance separate from your superannuation$")
+	@When("^user clicks no to do you have life insurance separate from your superannuation$")
 	public void user_clicks_no_to_do_you_have_life_insurance_separate_from_your_superannuation() throws Throwable {
 		assetsPage.ClickNoQuestion4();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to do you have life insurance separate from your superannuation$")
+	@When("^user clicks yes to do you have life insurance separate from your superannuation$")
 	public void user_clicks_yes_to_do_you_have_life_insurance_separate_from_your_superannuation() throws Throwable {
 		assetsPage.ClickYesQuestion4();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to do you control a trust question$")
+	@When("^user clicks no to do you control a trust question$")
 	public void user_clicks_no_to_do_you_control_a_trust_question() throws Throwable {
 		assetsPage.ClickNoQuestion5();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to do you control a trust question$")
+	@When("^user clicks yes to do you control a trust question$")
 	public void user_clicks_yes_to_do_you_control_a_trust_question() throws Throwable {
 		assetsPage.ClickYesQuestion5();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to do you control a self-managed superannuation fund question$")
+	@When("^user clicks no to do you control a self-managed superannuation fund question$")
 	public void user_clicks_no_to_do_you_control_a_self_managed_superannuation_fund_question() throws Throwable {
 		assetsPage.ClickNoQuestion6();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to Do you intend to grant any life interests or rights to occupy in your Will question$")
+	@When("^user clicks yes to Do you intend to grant any life interests or rights to occupy in your Will question$")
 	public void user_clicks_yes_to_Do_you_intend_to_grant_any_life_interests_or_rights_to_occupy_in_your_Will_question() throws Throwable {
 		assetsPage.ClickRightsYes();
 	}
 
-	@Then("^user clicks no to Do you intend to grant any life interests or rights to occupy in your Will question$")
+	@When("^user clicks no to Do you intend to grant any life interests or rights to occupy in your Will question$")
 	public void user_clicks_no_to_Do_you_intend_to_grant_any_life_interests_or_rights_to_occupy_in_your_Will_question() throws Throwable {
 		assetsPage.ClickRightsNo();
 	}
 
-	@Then("^user clicks yes to do you control a self-managed superannuation fund question$")
+	@When("^user clicks yes to do you control a self-managed superannuation fund question$")
 	public void user_clicks_yes_to_do_you_control_a_self_managed_superannuation_fund_question() throws Throwable {
 		assetsPage.ClickYesQuestion6();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to do you own your own business or are you a partner in a partnership question$")
+	@When("^user clicks no to do you own your own business or are you a partner in a partnership question$")
 	public void user_clicks_no_to_do_you_own_your_own_business_or_are_you_a_partner_in_a_partnership_question() throws Throwable {
 		assetsPage.ClickNoQuestion7();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to do you own your own business or are you a partner in a partnership question$")
+	@When("^user clicks yes to do you own your own business or are you a partner in a partnership question$")
 	public void user_clicks_yes_to_do_you_own_your_own_business_or_are_you_a_partner_in_a_partnership_question() throws Throwable {
 		assetsPage.ClickYesQuestion7();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks on Add Asset$")
+	@When("^user clicks on Add Asset$")
 	public void user_clicks_on_Add_Asset() throws Throwable {
 		assetsPage.ClickAddAsset();
 		CommonFunctions.wait(5000, false);
@@ -342,13 +342,13 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks on Edit Asset$")
+	@When("^user clicks on Edit Asset$")
 	public void user_clicks_on_Edit_Asset() throws Throwable {
 		assetsPage.ClickEditAsset();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks on Delete Asset$")
+	@When("^user clicks on Delete Asset$")
 	public void user_clicks_on_Delete_Asset() throws Throwable {
 		assetsPage.ClickDeleteAsset();
 		CommonFunctions.wait(5000, false);
@@ -357,13 +357,13 @@ public class StepDefinitions extends Base {
 		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
 	}
 
-	@Then("^user clicks on Cancel Asset$")
+	@When("^user clicks on Cancel Asset$")
 	public void user_clicks_on_Cancel_Asset() throws Throwable {
 		assetsPage.ClickCancelAsset();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to do you have assets question$")
+	@When("^user clicks no to do you have assets question$")
 	public void user_clicks_no_to_do_you_have_assets_question() throws Throwable {
 		assetsPage.ClickNoQuestion1();
 	}
@@ -665,37 +665,37 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user selects Foreign Passport as first identification type$")
+	@When("^user selects Foreign Passport as first identification type$")
 	public void user_selects_Foreign_Passport_as_first_identification_type() throws Throwable {
 		idDocsPage.SelectForeignPassportFirstID();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user selects Driver License as first identification type$")
+	@When("^user selects Driver License as first identification type$")
 	public void user_selects_Driver_License_as_first_identification_type() throws Throwable {
 		idDocsPage.SelectDriverLicenseFirstID();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user selects Driver License as second identification type$")
+	@When("^user selects Driver License as second identification type$")
 	public void user_selects_Driver_License_as_second_identification_type() throws Throwable {
 		idDocsPage.SelectDriverLicenseSecondID();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user selects Medicare as first identification type$")
+	@When("^user selects Medicare as first identification type$")
 	public void user_selects_Medicare_as_first_identification_type() throws Throwable {
 		idDocsPage.SelectMedicareFirstID();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user selects Medicare as second identification type$")
+	@When("^user selects Medicare as second identification type$")
 	public void user_selects_Medicare_as_second_identification_type() throws Throwable {
 		idDocsPage.SelectMedicareSecondID();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user selects Foreign Passport as second identification type$")
+	@When("^user selects Foreign Passport as second identification type$")
 	public void user_selects_Foreign_Passport_as_second_identification_type() throws Throwable {
 		idDocsPage.SelectForeignPassportFirstID();
 		CommonFunctions.wait(5000, false);
@@ -713,49 +713,49 @@ public class StepDefinitions extends Base {
 		idDocsPage.displayMandatoryMedicare();
 	}
 
-	@Then("^user adds foreign passport details$")
+	@When("^user adds foreign passport details$")
 	public void user_adds_foreign_passport_details() throws Throwable {
 		idDocsPage.FillUpForeignPassport();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user adds driver license details$")
+	@When("^user adds driver license details$")
 	public void user_adds_driver_license_details() throws Throwable {
 		idDocsPage.FillUpDriversLicense();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user adds medicare details$")
+	@When("^user adds medicare details$")
 	public void user_adds_medicare_details() throws Throwable {
 		idDocsPage.FillUpMedicare();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user adds autralian passport details$")
+	@When("^user adds autralian passport details$")
 	public void user_adds_autralian_passport_details() throws Throwable {
 		idDocsPage.FillUpAustralianPassport();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user selects Australian Passport as first identification type$")
+	@When("^user selects Australian Passport as first identification type$")
 	public void user_selects_Australian_Passport_as_first_identification_type() throws Throwable {
 		idDocsPage.SelectAustralianPassportSecondID();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user selects Australian Passport as second identification type$")
+	@When("^user selects Australian Passport as second identification type$")
 	public void user_selects_Australian_Passport_as_second_identification_type() throws Throwable {
 		idDocsPage.SelectAustralianPassportSecondID();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks next button on the ID docs page$")
+	@When("^user clicks next button on the ID docs page$")
 	public void user_clicks_next_button_on_the_ID_docs_page() throws Throwable {
 		reviewConfirmPage = idDocsPage.ClickNextButton();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question$")
+	@When("^user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question$")
 	public void user_clicks_no_to_Would_you_like_Maurice_Blackburn_to_help_your_Executor_manage_your_estate_question() throws Throwable {
 		executorsPage.clickQuestion16B();
 	}
@@ -765,7 +765,7 @@ public class StepDefinitions extends Base {
 		executorsPage.UpdateExecutorBackup();
 	}
 
-	@Then("^user clicks edit button on first executor$")
+	@When("^user clicks edit button on first executor$")
 	public void user_clicks_edit_button_on_first_executor() throws Throwable {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
@@ -784,7 +784,7 @@ public class StepDefinitions extends Base {
 		executorsPage.clickBTNAdd3();
 	}
 
-	@Then("^user selects i have no wish on funeral wishes$")
+	@When("^user selects i have no wish on funeral wishes$")
 	public void user_selects_i_have_no_wish_on_funeral_wishes() throws Throwable {
 		executorsPage.clickQuestion17D();
 	}
@@ -1056,13 +1056,13 @@ public class StepDefinitions extends Base {
 		personalPage.SetResSuburb(arg1);
 	}
 
-	@Then("^user click the next button on the about page$")
+	@When("^user click the next button on the about page$")
 	public void user_click_the_next_button_on_the_about_page() throws Throwable {
 		assetsPage = aboutPage.ClickNextButton();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user click the next button on the assets page$")
+	@When("^user click the next button on the assets page$")
 	public void user_click_the_next_button_on_the_assets_page() throws Throwable {
 		beneficiariesPage = assetsPage.ClickNextButton();
 		CommonFunctions.wait(5000, false);
@@ -1113,19 +1113,19 @@ public class StepDefinitions extends Base {
 		aboutPage.FillUpMandatoryFieldsSingleWithChild();
 	}
 
-	@Then("^user clicks on add superannuation button$")
+	@When("^user clicks on add superannuation button$")
 	public void user_clicks_on_add_superannuation_button() throws Throwable {
 		assetsPage.ClickAddSuper();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks cancel button on adding superannuation$")
+	@When("^user clicks cancel button on adding superannuation$")
 	public void user_clicks_cancel_button_on_adding_superannuation() throws Throwable {
 		assetsPage.ClickAddSuperCancel();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks save button on adding superannuation$")
+	@When("^user clicks save button on adding superannuation$")
 	public void user_clicks_save_button_on_adding_superannuation() throws Throwable {
 		assetsPage.ClickAddSuperSave();
 		CommonFunctions.wait(5000, false);
@@ -1136,17 +1136,17 @@ public class StepDefinitions extends Base {
 		assetsPage.MandatoryfieldsAddSuper();
 	}
 
-	@Then("^user adds superannuation with unsure death beneficiary$")
+	@When("^user adds superannuation with unsure death beneficiary$")
 	public void user_adds_superannuation_with_unsure_death_beneficiary() throws Throwable {
 		assetsPage.AddSuperWithDeathBenefUnsure();
 	}
 
-	@Then("^user adds superannuation with no death beneficiary$")
+	@When("^user adds superannuation with no death beneficiary$")
 	public void user_adds_superannuation_with_no_death_beneficiary() throws Throwable {
 		assetsPage.AddSuperWithDeathBenefNo();
 	}
 
-	@Then("^user adds superannuation with death beneficiary$")
+	@When("^user adds superannuation with death beneficiary$")
 	public void user_adds_superannuation_with_death_beneficiary() throws Throwable {
 		assetsPage.AddSuperWithDeathBenefYes();
 	}
@@ -1156,7 +1156,7 @@ public class StepDefinitions extends Base {
 		aboutPage.DisplayMandatoryFieldsDependent();
 	}
 
-	@Then("^user clicks save button on adding death beneficiary$")
+	@When("^user clicks save button on adding death beneficiary$")
 	public void user_clicks_save_button_on_adding_death_beneficiary() throws Throwable {
 		assetsPage.SuperDeathBenefSave();
 	}
@@ -1171,12 +1171,12 @@ public class StepDefinitions extends Base {
 		aboutPage.FillUpMandatoryFieldsSingleWithChild();
 	}
 
-	@Then("^user clicks add death benificiary$")
+	@When("^user clicks add death benificiary$")
 	public void user_clicks_add_death_benificiary() throws Throwable {
 		assetsPage.ClickAddSuperBenef();
 	}
 
-	@Then("^user clicks edit death benificiary$")
+	@When("^user clicks edit death benificiary$")
 	public void user_clicks_edit_death_benificiary() throws Throwable {
 		assetsPage.ClickEditSuperBenef();
 	}
@@ -1195,17 +1195,17 @@ public class StepDefinitions extends Base {
 		assetsPage.DisplayValidationOnMandatoryFieldsForNominatedDeathBenef();
 	}
 
-	@Then("^user clicks yes on Is it Binding question$")
+	@When("^user clicks yes on Is it Binding question$")
 	public void user_clicks_yes_on_Is_it_Binding_question() throws Throwable {
 		assetsPage.ClickBindingYes();
 	}
 
-	@Then("^user clicks no on Is it Binding question$")
+	@When("^user clicks no on Is it Binding question$")
 	public void user_clicks_no_on_Is_it_Binding_question() throws Throwable {
 		assetsPage.ClickBindingNo();
 	}
 
-	@Then("^user clicks unsure on Is it Binding question$")
+	@When("^user clicks unsure on Is it Binding question$")
 	public void user_clicks_unsure_on_Is_it_Binding_question() throws Throwable {
 		assetsPage.ClickBindingUnsure();
 	}
@@ -1215,7 +1215,7 @@ public class StepDefinitions extends Base {
 		assetsPage.NominateBeneficiary();
 	}
 
-	@Then("^user edits the nominated beneficiary$")
+	@When("^user edits the nominated beneficiary$")
 	public void user_edits_the_nominated_beneficiary() throws Throwable {
 		assetsPage.EditNominateBeneficiary();
 	}
@@ -1246,13 +1246,13 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks yes to If your spouse/partner predeceases you do you want to give the whole estate equally to your children question$")
+	@When("^user clicks yes to If your spouse/partner predeceases you do you want to give the whole estate equally to your children question$")
 	public void user_clicks_yes_to_If_your_spouse_partner_predeceases_you_do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion1SingleWithChildren();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks no to If your spouse/partner predeceases you do you want to give the whole estate equally to your children question$")
+	@When("^user clicks no to If your spouse/partner predeceases you do you want to give the whole estate equally to your children question$")
 	public void user_clicks_no_to_If_your_spouse_partner_predeceases_you_do_you_want_to_give_the_whole_estate_equally_to_your_children_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion1SingleWithChildren();
 		CommonFunctions.wait(5000, false);
@@ -1436,34 +1436,34 @@ public class StepDefinitions extends Base {
 		personalPage.MaxlengthPhoneNumber();
 	}
 
-	@Then("^user clicks on add beneficiary$")
+	@When("^user clicks on add beneficiary$")
 	public void user_clicks_on_add_beneficiary() throws Throwable {
 		beneficiariesPage.ClickBeneficiaryQuestion();
 	}
 
-	@Then("^user clicks on add executor$")
+	@When("^user clicks on add executor$")
 	public void user_clicks_on_add_executor() throws Throwable {
 		executorsPage.clickQuestion2();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks add executor button$")
+	@When("^user clicks add executor button$")
 	public void user_clicks_add_executor_button() throws Throwable {
 		executorsPage.clickAddExecutorButton();
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks on cancel beneficiary$")
+	@When("^user clicks on cancel beneficiary$")
 	public void user_clicks_on_cancel_beneficiary() throws Throwable {
 		beneficiariesPage.ClickCancelBeneficiary();
 	}
 
-	@Then("^user clicks on edit beneficiary$")
+	@When("^user clicks on edit beneficiary$")
 	public void user_clicks_on_edit_beneficiary() throws Throwable {
 		beneficiariesPage.ClickEditBeneficiary();
 	}
 
-	@Then("^user clicks on delete beneficiary$")
+	@When("^user clicks on delete beneficiary$")
 	public void user_clicks_on_delete_beneficiary() throws Throwable {
 		beneficiariesPage.ClickDeleteBeneficiary();
 	}
@@ -1481,13 +1481,13 @@ public class StepDefinitions extends Base {
 
 	}
 
-	@Then("^user adds first option executor$")
+	@When("^user adds first option executor$")
 	public void user_adds_first_option_executor() throws Throwable {
 		executorsPage.FillUpExecutorFirstOption();
 
 	}
 
-	@Then("^user adds back up executor$")
+	@When("^user adds back up executor$")
 	public void user_adds_back_up_executor() throws Throwable {
 		executorsPage.FillUpExecutorBackup();
 
@@ -1888,7 +1888,7 @@ public class StepDefinitions extends Base {
 		loginPage.displayedRequiredFieldOninput_Password();
 	}
 
-	@Then("^user clicks on add debt$")
+	@When("^user clicks on add debt$")
 	public void user_clicks_on_add_debt() throws Throwable {
 		assetsPage.clickAddDebt();
 	}
@@ -1898,28 +1898,28 @@ public class StepDefinitions extends Base {
 		assetsPage.CheckRequiredDebtFields();
 	}
 
-	@Then("^user fills up debt$")
+	@When("^user fills up debt$")
 	public void user_fills_up_debt() throws Throwable {
 		assetsPage.FillUpDebtFields();
 	}
 
-	@Then("^user adds another debt$")
+	@When("^user adds another debt$")
 	public void user_add_another_debt() throws Throwable {
 		assetsPage.FillUpDebtFields2();
 	}
 
-	@Then("^user edits debt$")
+	@When("^user edits debt$")
 	public void user_edits_debt() throws Throwable {
 		assetsPage.UpdateDebtFields();
 	}
 
-	@Then("^user removes debt$")
+	@When("^user removes debt$")
 	public void user_removes_debt() throws Throwable {
 		assetsPage.ClickDeleteDebt1();
 		assetsPage.ClickDeleteDebt2();
 	}
 
-	@Then("^user cancels debt with unsaved changes$")
+	@When("^user cancels debt with unsaved changes$")
 	public void user_cancels_debt_with_unsaved_changes() throws Throwable {
 		assetsPage.ClickCancelDebt();
 	}
@@ -1930,7 +1930,7 @@ public class StepDefinitions extends Base {
 		beneficiariesPage.CheckGiftRequiredFields();
 	}
 
-	@Then("^user fills up gift from beneficiaries$")
+	@When("^user fills up gift from beneficiaries$")
 	public void user_fills_up_gift_from_beneficiaries() throws Throwable {
 
 	}

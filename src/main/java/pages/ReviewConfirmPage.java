@@ -116,6 +116,14 @@ public class ReviewConfirmPage extends Base {
 	}
 
 	// ============================================================= Actions =============================================================
+	public void clickNextButton() {
+		CommonFunctions.clickElement(btn_Next);
+	}
+
+	public void clickQuestion1() {
+		CommonFunctions.clickElement(Question1);
+	}
+
 	public void displayQuestion1() {
 		CommonFunctions.elementDisplayed(Question1);
 	}
