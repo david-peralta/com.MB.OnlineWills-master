@@ -6,7 +6,7 @@ Feature: MW - 38 : Beneficiaries - Gifts
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    And  user clicks on new order on incomplete order popup
+    And user clicks on new order on incomplete order popup
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
@@ -27,7 +27,7 @@ Feature: MW - 38 : Beneficiaries - Gifts
     Then user is on "About you" page
     #Single
     When user selects "Single" as Relationship Status on about page
-    And user fill up the all required fields for single status with children
+    And user fill up the all required fields for single status
     And user click the next button on the about page
     Then user is on "Assets" page
     And user clicks no to do you have assets question
@@ -40,15 +40,23 @@ Feature: MW - 38 : Beneficiaries - Gifts
     And user clicks no to do you own your own business or are you a partner in a partnership question
     And user click the next button on the assets page
     #Beneficiaires - select Gift
-    And user clicks yes to Do you want to give the whole estate equally to your children question
-    And user clicks no to Do you want to include any children you have in the future question
-    And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
-		#Scenario 1 - Customer Indicates gifts to allocate   	 
-   	And user clicks yes to Do you wish to leave any gifts question
-   	And user checks required fields in the gift section
-   	And user fills up gift from beneficiaries
-   	
-
+    #No Spouse and No Children
+    And user sees question "Do you want to give the whole of your estate equally to any children you have in the future?"
+    And user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question
+    And user sees question "If any of your children predecease you, do you want to divide it equally amongst their children?"
+    And user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question
+    And user sees disaster question displayed
+    #Scenario 1: Customer Indicates gifts to allocate
+    #Scenario 2: Mandatory fields not filled in
+    #Scenario 3: Mandatory fields filled in
+    #Scenario 4: Customer adds another Gift
+    #Scenario 5: Customer edits a gift's details
+    When user clicks yes to Do you wish to leave any gifts question
+    Then user checks required fields in the gift section
+    When user fills up gift from beneficiaries
+    Then user updates gift from beneficiaries
+    And user removes gift beneficiary
+    And user cancels created gift beneficiary
 
     Examples: 
       | email            | password     | Address1                                         | Suburb         |

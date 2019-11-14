@@ -1930,8 +1930,32 @@ public class StepDefinitions extends Base {
 		beneficiariesPage.CheckGiftRequiredFields();
 	}
 
-	@When("^user fills up gift from beneficiaries$")
+	@Then("^user fills up gift from beneficiaries$")
 	public void user_fills_up_gift_from_beneficiaries() throws Throwable {
+		beneficiariesPage.FillUpGiftSection();
+		CommonFunctions.wait(5000, false);
+		beneficiariesPage.FillUpGiftSection2();
+
+	}
+
+	@When("^user updates gift from beneficiaries$")
+	public void user_updates_gift_from_beneficiaries() throws Throwable {
+		beneficiariesPage.UpdatesGiftSection();
+		CommonFunctions.wait(5000, false);
+		beneficiariesPage.UpdatesGiftSection2();
+
+	}
+
+	@Then("^user removes gift beneficiary$")
+	public void user_removes_gift_beneficiary() throws Throwable {
+		beneficiariesPage.clickDeleteGift();
+		CommonFunctions.wait(5000, false);
+
+	}
+
+	@Then("^user cancels created gift beneficiary$")
+	public void user_cancels_created_gift_beneficiary() throws Throwable {
+		CommonFunctions.wait(5000, false);
 
 	}
 }

@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -123,8 +124,8 @@ public class BeneficiariesPage extends Base {
 	WebElement AddGift;
 	@FindBy(xpath = "//input[contains(@id,'GiftDescription')]")
 	WebElement Gift_Description;
-	@FindBy(xpath = "//input[contains(@id,'GiftsReciever')]")
-	WebElement Gift_Reciever;
+	@FindBy(xpath = "//input[contains(@id,'GiftsReceiver')]")
+	WebElement Gift_Receiver;
 	@FindBy(xpath = "//select[contains(@id,'GiftsRelationship')]")
 	WebElement Gift_Relationship;
 	@FindBy(xpath = "//select[contains(@id,'GiftsCountry')]")
@@ -145,12 +146,20 @@ public class BeneficiariesPage extends Base {
 	WebElement Gift_Add;
 	@FindBy(xpath = "//input[contains(@value,'Cancel')]")
 	WebElement Gift_Cancel;
-	@FindBy(xpath = "//a[contains(text(),'Edit')]")
-	WebElement Gift_Edit;
-	@FindBy(xpath = "//a[contains(text(),'Delete')]")
-	WebElement Gift_Delete;
+	// @FindBy(xpath = "//a[contains(text(),'Edit')]")
+	@FindBy(xpath = "(//a[contains(@id,'GiftEdit')])[1]")
+	WebElement Gift_Edit1;
+	@FindBy(xpath = "(//a[contains(@id,'GiftEdit')])[2]")
+	WebElement Gift_Edit2;
+	// @FindBy(xpath = "//a[contains(text(),'Delete')]")
+	@FindBy(xpath = "(//a[contains(@id,'GiftDelete')])[1]")
+	WebElement Gift_Delete1;
+	@FindBy(xpath = "(//a[contains(@id,'GiftDelete')])[2]")
+	WebElement Gift_Delete2;
+	@FindBy(xpath = "//input[contains(@value,'Save')]")
+	WebElement Gift_Save;
 
-	// Beneficiaries - Error Messages
+	// Beneficiaries - Error Message
 	@FindBy(xpath = "//span[contains(text(),'Please add gift')]")
 	WebElement Gift_AddGiftMsg;
 
@@ -175,7 +184,7 @@ public class BeneficiariesPage extends Base {
 	}
 
 	public void CheckGiftRecieverRequired() {
-		CommonFunctions.elementDisplayed(Gift_Reciever.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Gift_Receiver.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
 
 	public void CheckGiftRelationshipRequired() {
@@ -203,16 +212,27 @@ public class BeneficiariesPage extends Base {
 	}
 
 	public void CheckGiftRequiredFields() {
+		CommonFunctions.clickElement(AddGift);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.scrollToBottomOfPage();
 		CommonFunctions.clickElement(Gift_Add);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(Gift_Description.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(Gift_Reciever.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.elementDisplayed(Gift_Receiver.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(Gift_Relationship.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
-		// ommonFunctions.elementDisplayed(Gift_Country.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		// CommonFunctions.elementDisplayed(Gift_Country.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(Gift_Address1.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(Gift_Suburb.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(Gift_State.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(Gift_PostCode.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(5000, false);
+		// CommonFunctions.clickElement(Gift_Add);
 	}
 
 	public void ClickPersonAddBeneficiary() {
@@ -233,6 +253,14 @@ public class BeneficiariesPage extends Base {
 	public void ClickCharityAddBeneficiary() {
 		CommonFunctions.clickElement(CharityAddBeneficiary);
 		CommonFunctions.wait(5000, false);
+	}
+
+	public void clickDeleteGift() {
+		// CommonFunctions.clickElement(Gift_Delete1);
+		CommonFunctions.clickElement(Gift_Delete2);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
 	}
 
 	public void MandatoryFieldsInAddingBeneficiaryCharity() {
@@ -398,6 +426,98 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.selectValueFromDropdown(AddBeneficiariesAmountField, "9999999999");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(SaveBeneficiaries);
+	}
+
+	public void FillUpGiftSection() {
+		CommonFunctions.clickElement(AddGift);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Gift_Description, "Sample");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Gift_Receiver, "Demeth Camuin Foundation");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_Relationship, "Father");
+		CommonFunctions.wait(5000, false);
+		// CommonFunctions.selectValueFromDropdown(Gift_Country, "AUSTRALIA");
+		CommonFunctions.enterElementValue(Gift_Address1, "Address1");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Gift_Suburb, "Suburb1");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_State, "VIC");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Gift_PostCode, "Postcode1");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(Gift_Add);
+		CommonFunctions.wait(5000, false);
+
+	}
+
+	public void FillUpGiftSection2() {
+		CommonFunctions.clickElement(AddGift);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Gift_Description, "Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Gift_Receiver, "Demeth Camuin Foundation");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_Relationship, "Brother");
+		CommonFunctions.wait(5000, false);
+		// CommonFunctions.selectValueFromDropdown(Gift_Country, "AUSTRALIA");
+		CommonFunctions.enterElementValue(Gift_Address1, "Address2");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Gift_Suburb, "Suburb2");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_State, "VIC");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Gift_PostCode, "Postcode2");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(Gift_Add);
+		CommonFunctions.wait(5000, false);
+
+	}
+
+	public void UpdatesGiftSection() {
+		CommonFunctions.clickElement(Gift_Edit1);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Description, "Test");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Receiver, "Demeth Camuin Foundation");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_Relationship, "Brother");
+		CommonFunctions.wait(5000, false);
+		// CommonFunctions.selectValueFromDropdown(Gift_Country, "AUSTRALIA");
+		CommonFunctions.clearThenEnterElementValue(Gift_Address1, "Address2");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Suburb, "Suburb2");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_State, "VIC");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_PostCode, "Postcode2");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(Gift_Save);
+		CommonFunctions.wait(5000, false);
+
+	}
+
+	public void UpdatesGiftSection2() {
+		CommonFunctions.clickElement(Gift_Edit2);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Description, "Sample");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Receiver, "Demeth Camuin Foundation");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_Relationship, "Father");
+		CommonFunctions.wait(5000, false);
+		// CommonFunctions.selectValueFromDropdown(Gift_Country, "AUSTRALIA");
+		CommonFunctions.clearThenEnterElementValue(Gift_Address1, "Address1");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Suburb, "Suburb1");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_State, "VIC");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_PostCode, "Postcode1");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(Gift_Save);
+		CommonFunctions.wait(5000, false);
+
 	}
 
 	public void ClickYesQuestion1SingleWithChildren() {
