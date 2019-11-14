@@ -1971,6 +1971,18 @@ public class StepDefinitions extends Base {
 		throw new PendingException();
 	}
 
+	@When("^user clicks the next button on the review and confirm page to go to add-on page$")
+	public void user_clicks_the_next_button_on_the_review_and_confirm_page_to_go_to_addon_page() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
+	@When("^user clicks the next button on the add-ons page$")
+	public void user_clicks_the_next_button_on_the_addons_page() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
+
 	@Then("^user sees the power of attorney product$")
 	public void user_sees_the_power_of_attorney_product() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions

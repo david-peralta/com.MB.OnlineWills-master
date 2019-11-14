@@ -283,7 +283,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
 
@@ -342,7 +342,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
 
@@ -401,7 +401,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
 
@@ -460,7 +460,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
 
@@ -520,7 +520,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the add your spouse/partner option
 
@@ -580,7 +580,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the add your spouse/partner option
 
@@ -640,7 +640,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the add your spouse/partner option
 
@@ -880,7 +880,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
 		And user sees the add your spouse/partner option
@@ -941,7 +941,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
 		And user sees the add your spouse/partner option
@@ -1002,7 +1002,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
 		And user sees the add your spouse/partner option
@@ -1064,7 +1064,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
 
@@ -1125,7 +1125,7 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
 
@@ -1135,8 +1135,9 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 
 	@Sprint1
 	Scenario Outline: 6-Engaged: Couple who lives in VIC and selected the couple package
-	Scenario Outline: 7: Customer views the previous page - Not Applicable
-	Scenario Outline: 8: Customer skips Add On page
+		Scenario Outline: 7: Customer views the previous page - Not Applicable
+		Scenario Outline: 8: Customer skips Add On page
+
 		Given user opens browser
 		When user logs into app with the "<email>" and "<password>" as the login credentials
 		And user clicks on new order on incomplete order popup
@@ -1188,9 +1189,11 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
 		And user clicks next button on the ID docs page
 		Then user is on "ReviewAndConfirm" page
 		When user confirms that he completed the form himself
-		And user clicks the next button on the review and confirm page
+		And user clicks the next button on the review and confirm page to go to add-on page
 		Then user is on "Add-Ons" page
 		And user sees the power of attorney product
+		When user clicks the next button on the add-ons page
+		Then user is on "Payment" page
 
 		Examples: 
 			| email            | password     |
