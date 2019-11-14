@@ -6,6 +6,7 @@ Feature: MW - 38 : Beneficiaries - Gifts
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
+    And  user clicks on new order on incomplete order popup
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles

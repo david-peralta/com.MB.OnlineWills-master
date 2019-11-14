@@ -208,7 +208,7 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.elementDisplayed(Gift_Description.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Gift_Reciever.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Gift_Relationship.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
-		// CommonFunctions.elementDisplayed(Gift_Country.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		// ommonFunctions.elementDisplayed(Gift_Country.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Gift_Address1.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Gift_Suburb.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Gift_State.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
