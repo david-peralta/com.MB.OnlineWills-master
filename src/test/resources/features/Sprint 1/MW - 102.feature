@@ -9,6 +9,7 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     And user clicks on new order on incomplete order popup
     When user selects singles product
     #Select Single - MyLife will Package
+    #Scenario 1: Customer selects the MyLife Documents product
     When user clicks MyLife will product for singles
     Then user is on "Personal" page
     #User filled valid input
@@ -23,8 +24,10 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     When user selects Postal Address same as Residential checkbox
     When user selects no on first question
     When user selects no on second question
+    #Scenario 2: Customer completes the ‘Personal Details’ page
     When user clicks next page to review and confirm details
     Then user is on "ReviewAndConfirm" page
+    #Scenario 3: Customer reviews information entered and confirm acknowledgment
     And user reviews personal details
     And user confirms will details
     When user clicks the next button to confirm will
