@@ -24,6 +24,7 @@ import pages.PaymentsPage;
 import pages.PersonalPage;
 import pages.RegistrationPage;
 import pages.ReviewConfirmPage;
+import pages.ThankYouPage;
 import utilities.Base;
 import utilities.CommonFunctions;
 import utilities.LogFunctions;
@@ -43,6 +44,7 @@ public class StepDefinitions extends Base {
 	ReviewConfirmPage reviewConfirmPage;
 	PaymentsPage paymentsPage;
 	AddOnsPage addOnsPage;
+	ThankYouPage thankyouPage;
 
 	String Email;
 
@@ -1117,6 +1119,11 @@ public class StepDefinitions extends Base {
 		aboutPage.FillUpMandatoryFieldsSingleWithChild();
 	}
 
+	@When("^user fills up for single status for step children$")
+	public void user_fills_up_for_single_status_for_step_children() throws Throwable {
+		aboutPage.AddChildrenStepChild();
+	}
+
 	@When("^user clicks on add superannuation button$")
 	public void user_clicks_on_add_superannuation_button() throws Throwable {
 		assetsPage.ClickAddSuper();
@@ -2011,5 +2018,30 @@ public class StepDefinitions extends Base {
 	@When("^user inputs \"([^\"]*)\" as the email address of the spouse/partner$")
 	public void user_inputs_as_the_email_address_of_the_spouse_partner(String arg1) throws Throwable {
 		aboutPage.setQuestion8Input(arg1);
+	}
+
+	@Then("^user click the next button to the idDocs page$")
+	public void user_click_the_next_button_to_the_idDocs_page() throws Throwable {
+		idDocsPage = beneficiariesPage.clickNextIDDocs();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user reviews and confirms will details$")
+	public void user_reviews_and_confirms_will_details() throws Throwable {
+		CommonFunctions.wait(5000, false);
+		reviewConfirmPage.validatesFields();
+	}
+
+	@Then("^user confirms will details$")
+	public void user_confirms_will_details() throws Throwable {
+		CommonFunctions.scrollToBottomOfPage();
+		CommonFunctions.wait(5000, false);
+		reviewConfirmPage.clickConfirm();
+	}
+
+	@When("^user clicks the next button to confirm will$")
+	public void user_clicks_the_next_button_to_confirm_will() throws Throwable {
+		CommonFunctions.wait(5000, false);
+		thankyouPage = reviewConfirmPage.clickNextThankYou();
 	}
 }

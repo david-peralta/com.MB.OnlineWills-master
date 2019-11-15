@@ -15,6 +15,9 @@ public class ReviewConfirmPage extends Base {
 	@FindBy(xpath = "//input[contains(@type,'checkbox')]")
 	WebElement Question1;
 
+	@FindBy(xpath = "//input[contains(@id,'CB_Confirm')]")
+	WebElement chk_Confirm;
+
 	// Element - Button
 
 	@FindBy(xpath = "//input[contains(@value,'Next')]")
@@ -22,6 +25,21 @@ public class ReviewConfirmPage extends Base {
 
 	@FindBy(xpath = "//input[contains(@value,'Back')]")
 	WebElement btn_Back;
+
+	@FindBy(xpath = "(//input[contains(@value,'Edit')])[1]")
+	WebElement btn_EditPersonal;
+
+	@FindBy(xpath = "(//input[contains(@value,'Edit')])[2]")
+	WebElement btn_EditAbout;
+
+	@FindBy(xpath = "(//input[contains(@value,'Edit')])[3]")
+	WebElement btn_EditAssets;
+
+	@FindBy(xpath = "(//input[contains(@value,'Edit')])[4]")
+	WebElement btn_EditBeneficiaries;
+
+	@FindBy(xpath = "(//input[contains(@value,'Edit')])[5]")
+	WebElement btn_EditExecutors;
 
 	// Element - Dropdown
 
@@ -128,12 +146,26 @@ public class ReviewConfirmPage extends Base {
 		return new AddOnsPage();
 	}
 
+	public ThankYouPage clickNextThankYou() {
+		CommonFunctions.clickElement(btn_Next);
+
+		return new ThankYouPage();
+	}
+
+	public void clickNextButton() {
+		CommonFunctions.clickElement(btn_Next);
+	}
+
 	public void clickQuestion1() {
-		CommonFunctions.clickElement(Question1);
+		CommonFunctions.clickElement(chk_Confirm);
 	}
 
 	public void displayQuestion1() {
-		CommonFunctions.elementDisplayed(Question1);
+		CommonFunctions.elementDisplayed(chk_Confirm);
+	}
+
+	public void clickConfirm() {
+		CommonFunctions.clickElement(chk_Confirm);
 	}
 
 	/* Drivers License */
@@ -309,4 +341,11 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	public void validatesFields() {
+		CommonFunctions.textDisplayedInPage("Personal Info");
+		CommonFunctions.textDisplayedInPage("About You");
+		CommonFunctions.textDisplayedInPage("Assets");
+		CommonFunctions.textDisplayedInPage("Beneficiaries");
+		// CommonFunctions.textDisplayedInPage("Executors");
+	}
 }

@@ -550,6 +550,8 @@ public class AboutPage extends Base {
 	}
 
 	public void AddChildrenStepChild() {
+		CommonFunctions.clickElement(LawNoButton);
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(ChildrenYes);
@@ -569,6 +571,8 @@ public class AboutPage extends Base {
 		CommonFunctions.clickElement(AddChildQuestion10);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(AddChildSave);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(DependentsNo);
 		CommonFunctions.wait(5000, false);
 	}
 

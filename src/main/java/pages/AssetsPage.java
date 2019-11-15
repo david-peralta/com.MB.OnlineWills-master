@@ -1,7 +1,7 @@
 package pages;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -199,6 +199,7 @@ public class AssetsPage extends Base {
 	public void ClickRightsYes() {
 		CommonFunctions.clickElement(RightsYes);
 	}
+
 	public void DisplayValidationOnMandatoryFieldsForNominatedDeathBenef() {
 		CommonFunctions.elementDisplayed(BenefTitleReq);
 		CommonFunctions.elementDisplayed(BenefFNameReq);
@@ -304,6 +305,7 @@ public class AssetsPage extends Base {
 	public void ClickAddSuperCancel() {
 		CommonFunctions.clickElement(SuperCancel);
 	}
+
 	public void ClickYesQuestion1() {
 		CommonFunctions.clickElement(YesQuestion1);
 	}
@@ -465,6 +467,11 @@ public class AssetsPage extends Base {
 		CommonFunctions.clickElement(DebtSave);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(NoQuestion2Required);
+	}
+
+	public void CheckRequiredDebtOwedTo() {
+		CommonFunctions.clickElement(DebtSave);
+		CommonFunctions.wait(5000, false);
 	}
 
 	public void FillUpAllBankAccountFields() {

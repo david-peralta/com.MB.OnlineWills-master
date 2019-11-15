@@ -584,4 +584,10 @@ public class BeneficiariesPage extends Base {
 		return new ExecutorsPage();
 	}
 
+	public IDdocsPage clickNextIDDocs() {
+		CommonFunctions.clickElement(NextButton);
+
+		return new IDdocsPage();
+	}
+
 }
