@@ -161,6 +161,12 @@ public class PersonalPage extends Base {
 		return new HomePage();
 	}
 
+	public ReviewConfirmPage clickNextToReviewConfirm() {
+		CommonFunctions.clickElement(NextButton);
+
+		return new ReviewConfirmPage();
+	}
+
 	public void HiddenPostalDetailFields() {
 		CommonFunctions.elementCssValueContains(PostalContainer, "display", "none");
 		// CommonFunctions.elementAttributeContainsValue(PostalContainer, "style", "display:none");

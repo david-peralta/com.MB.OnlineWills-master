@@ -348,4 +348,20 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.textDisplayedInPage("Beneficiaries");
 		// CommonFunctions.textDisplayedInPage("Executors");
 	}
+
+	public void validatePersonalDetails() {
+		CommonFunctions.scrollToBottomOfPage();
+		CommonFunctions.wait(2500, false);
+		CommonFunctions.textDisplayedInPage("Personal Info");
+		CommonFunctions.textDisplayedInPage("Title");
+		CommonFunctions.textDisplayedInPage("First name");
+		CommonFunctions.textDisplayedInPage("Middle name");
+		CommonFunctions.textDisplayedInPage("Family name");
+		CommonFunctions.textDisplayedInPage("Residential address");
+		CommonFunctions.textDisplayedInPage("Postal address");
+		CommonFunctions.textDisplayedInPage("Date of Birth");
+		CommonFunctions.textDisplayedInPage("Email");
+		CommonFunctions.textDisplayedInPage("Phone Number");
+		CommonFunctions.textDisplayedInPage("Occupation");
+	}
 }

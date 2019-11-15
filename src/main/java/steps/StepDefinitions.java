@@ -434,6 +434,18 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	@When("^user clicks MyLife will product for singles$")
+	public void user_clicks_MyLife_will_product_for_singles() throws Throwable {
+		personalPage = homePage.clickMyLifeProductStandardSingleWillBtn();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user clicks MyLife will product for couples$")
+	public void user_clicks_MyLife_will_product_for_couples() throws Throwable {
+		personalPage = homePage.clickMyLifeProductStandardCoupleWillBtn();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@When("^user checks if additional questions displayed for single is correct when single product is selected$")
 	public void user_checks_if_additional_questions_displayed_for_single_is_correct_when_single_product_is_selected() throws Throwable {
 		aboutPage.AdditionalQuestionsForSingleSinglesPackage();
@@ -805,6 +817,12 @@ public class StepDefinitions extends Base {
 	@When("^user clicks on Next button on personal page$")
 	public void user_clicks_on_Next_button_on_personal_page() throws Throwable {
 		aboutPage = personalPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user clicks next page to review and confirm details$")
+	public void user_clicks_next_page_to_review_and_confirm_details() throws Throwable {
+		reviewConfirmPage = personalPage.clickNextToReviewConfirm();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -2030,6 +2048,12 @@ public class StepDefinitions extends Base {
 	public void user_reviews_and_confirms_will_details() throws Throwable {
 		CommonFunctions.wait(5000, false);
 		reviewConfirmPage.validatesFields();
+	}
+
+	@Then("^user reviews personal details$")
+	public void user_reviews_personal_details() throws Throwable {
+		CommonFunctions.wait(5000, false);
+		reviewConfirmPage.validatePersonalDetails();
 	}
 
 	@Then("^user confirms will details$")

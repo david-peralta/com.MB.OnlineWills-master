@@ -32,6 +32,8 @@ public class HomePage extends Base {
 	WebElement CouplesProductStandardWillBtn;
 	@FindBy(xpath = "//input[contains(@id,'StandardSingleGetStarted3')]")
 	WebElement SinglesProductStandardWillBtn;
+	@FindBy(xpath = "//input[contains(@id,'MyLifeSingleGetStarted')]")
+	WebElement SinglesProductMyLifeWillBtn;
 	@FindBy(xpath = "//input[contains(@id,'MyLifeCoupleGetStarted')]")
 	WebElement CouplesProductMyLifeWillBtn;
 	@FindBy(xpath = "//input[@value='New Order']")
@@ -112,6 +114,10 @@ public class HomePage extends Base {
 		CommonFunctions.clickElement(CouplesProduct.findElement(By.xpath(".//parent::label")));
 	}
 
+	public void clickMyLifeProduct() {
+		CommonFunctions.clickElement(CouplesProduct.findElement(By.xpath(".//parent::label")));
+	}
+
 	public LoginPage clickLogoutPopupYesButton() {
 		CommonFunctions.clickElement(button_LogoutPopup_Yes);
 
@@ -126,6 +132,18 @@ public class HomePage extends Base {
 
 	public PersonalPage clickSinglesProductStandardWillBtn() {
 		CommonFunctions.clickElement(SinglesProductStandardWillBtn);
+
+		return new PersonalPage();
+	}
+
+	public PersonalPage clickMyLifeProductStandardSingleWillBtn() {
+		CommonFunctions.clickElement(SinglesProductMyLifeWillBtn);
+
+		return new PersonalPage();
+	}
+
+	public PersonalPage clickMyLifeProductStandardCoupleWillBtn() {
+		CommonFunctions.clickElement(CouplesProductMyLifeWillBtn);
 
 		return new PersonalPage();
 	}
