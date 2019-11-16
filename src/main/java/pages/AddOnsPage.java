@@ -8,8 +8,10 @@ import utilities.CommonFunctions;
 
 public class AddOnsPage extends Base {
 	// ========================================================== Page Objects ===========================================================
-	@FindBy(xpath = "//input[@value = 'Next']")
-	WebElement button_Next;
+	@FindBy(xpath = "//input[contains(@id,'AddPOAButtonSingle')]")
+	WebElement AddPOAButton;
+	@FindBy(xpath = "//input[contains(@value,'Next')]")
+	WebElement btn_Next;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public AddOnsPage() {
@@ -17,9 +19,19 @@ public class AddOnsPage extends Base {
 	}
 
 	// ============================================================= Actions =============================================================
-	public PaymentsPage clickNextButton() {
-		CommonFunctions.clickElement(button_Next);
 
-		return new PaymentsPage();
+	public void clickAddPOAButton() {
+		CommonFunctions.clickElement(AddPOAButton);
 	}
+
+	public FinancialDecisionsPage clickNextWithPOA() {
+		CommonFunctions.clickElement(btn_Next);
+		return new FinancialDecisionsPage();
+	}
+
+	public PaymentPage clickNextWithoutPOA() {
+		CommonFunctions.clickElement(btn_Next);
+		return new PaymentPage();
+	}
+
 }

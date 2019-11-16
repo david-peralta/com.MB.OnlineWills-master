@@ -364,4 +364,9 @@ public class IDdocsPage extends Base {
 		return new ReviewConfirmPage();
 	}
 
+	public ExecutorsPage ClickBackButton() {
+		CommonFunctions.clickElement(btn_Back);
+
+		return new ExecutorsPage();
+	}
 }

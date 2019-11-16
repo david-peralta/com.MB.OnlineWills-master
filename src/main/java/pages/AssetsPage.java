@@ -29,6 +29,8 @@ public class AssetsPage extends Base {
 	WebElement YesQuestion4;
 	@FindBy(xpath = "//input[contains(@id,'RadioButton_InsuranceNo')]")
 	WebElement NoQuestion4;
+	@FindBy(xpath = "// div[contains(@id,'InputsAndLabels')]//following::div//following::div[text()='Required field']")
+	WebElement FuneralWishesReq;
 
 	@FindBy(xpath = "//input[contains(@id,'RadioButton_TrustYes')]")
 	WebElement YesQuestion5;
@@ -198,6 +200,10 @@ public class AssetsPage extends Base {
 
 	public void ClickRightsYes() {
 		CommonFunctions.clickElement(RightsYes);
+	}
+
+	public void DisplayedFuneralRequired() {
+		CommonFunctions.elementDisplayed(FuneralWishesReq);
 	}
 
 	public void DisplayValidationOnMandatoryFieldsForNominatedDeathBenef() {

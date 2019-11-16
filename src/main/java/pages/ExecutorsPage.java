@@ -289,6 +289,10 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.clearThenEnterElementValue(Question20, want);
 	}
 
+	public void DisplayQuestion20() {
+		CommonFunctions.elementDisplayed(Question20);
+	}
+
 	public void selectQuestion3(String titleDropdown) {
 		CommonFunctions.wait(2500, false);
 		CommonFunctions.selectValueFromDropdown(Question3, titleDropdown);

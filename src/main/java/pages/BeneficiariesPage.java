@@ -26,6 +26,8 @@ public class BeneficiariesPage extends Base {
 	WebElement YesQuestion1WithSpouse;
 	@FindBy(xpath = "//input[contains(@id,'Partner_False')]")
 	WebElement NoQuestion1WithSpouse;
+	@FindBy(xpath = "//input[contains(@id,'WishDetail_Input')]")
+	WebElement FuneralWishField;
 
 	@FindBy(xpath = "// *[contains(text(), 'If all of your listed beneficiaries pass away, what would you like us to do with their share?')]")
 	WebElement DisasterQuestion;
