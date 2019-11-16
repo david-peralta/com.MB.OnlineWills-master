@@ -45,6 +45,19 @@ public class ReviewConfirmPage extends Base {
 
 	@FindBy(xpath = "(//select[contains(@id,'IdentificationTypeInput')])[1]")
 	WebElement Question2A;
+	@FindBy(xpath = "(//span[text()='Are you currently in hospital?']//following::div[text()='No'])[1]")
+	WebElement PersonalInfoHospitalQuestionWithNo;
+	@FindBy(xpath = "(//span[text()='Are you currently in hospital?']//following::div[text()='Yes'])[1]")
+	WebElement PersonalInfoHospitalQuestionWithYes;
+	@FindBy(xpath = "(//span[contains(text(),'Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will?')]//following::div[text()='Yes'])[1]")
+	WebElement PersonalInfoDiagnosedQuestionWithYes;
+	@FindBy(xpath = "(//span[contains(text(),'Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will?')]//following::div[text()='No'])[1]")
+	WebElement PersonalInfoDiagnosedQuestionWithNo;
+	@FindBy(xpath = "//td[text()='Have you had a family law property settlement?']//following::td[text()='No']")
+	WebElement FamilyLawPropertyNo;
+
+	@FindBy(xpath = "//td[text()='Have you had a family law property settlement?']//following::td[text()='Yes']")
+	WebElement FamilyLawPropertyYes;
 
 	@FindBy(xpath = "(//select[contains(@id,'IdentificationTypeInput')])[2]")
 	WebElement Question2B;
@@ -127,6 +140,83 @@ public class ReviewConfirmPage extends Base {
 
 	@FindBy(xpath = "//input[contains(@id,'ForeignPassportDOBInput')]")
 	WebElement Question25;
+	@FindBy(xpath = "(//*[text()='Do you have any children?']//following::div[text()='Yes'])[1]")
+	WebElement HaveChildrenYes;
+	@FindBy(xpath = "(//*[text()='Do you have any children?']//following::div[text()='No'])[1]")
+	WebElement HaveChildrenNo;
+
+	@FindBy(xpath = "(//span[contains(text(),'Do you have any other dependents?')]//following::div[text()='Yes'])[1]")
+	WebElement HaveDependentsYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you have any other dependents?')]//following::div[text()='No'])[1]")
+	WebElement HaveDependentsNo;
+
+	@FindBy(xpath = "(//span[contains(text(),'Do you already have a Will?')]//following::div[text()='None'])[1]")
+	WebElement HaveWillNone;
+
+	@FindBy(xpath = "(//span[contains(text(),'Do you have any assets?')]//following::div[text()='Yes'])[1]")
+	WebElement HaveAssetsYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you have any assets?')]//following::div[text()='No'])[1]")
+	WebElement HaveAssetsNo;
+	@FindBy(xpath = "(//span[contains(text(),'Do you have any debts?')]//following::div[text()='Yes'])[1]")
+	WebElement HaveDebtsYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you have any debts?')]//following::div[text()='No'])[1]")
+	WebElement HaveDebtsNo;
+	@FindBy(xpath = "(//span[contains(text(),'Do you have any superannuation?')]//following::div[text()='Yes'])[1]")
+	WebElement HaveSuperYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you have any superannuation?')]//following::div[text()='No'])[1]")
+	WebElement HaveSuperNo;
+	@FindBy(xpath = "(//span[contains(text(),'Do you have life insurance separate from your superannuation?')]//following::div[text()='Yes'])[1]")
+	WebElement HaveLifeInsuranceSuperYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you have life insurance separate from your superannuation?')]//following::div[text()='No'])[1]")
+	WebElement HaveLifeInsuranceSuperNo;
+	@FindBy(xpath = "(//span[contains(text(),'Do you control a trust?')]//following::div[text()='Yes'])[1]")
+	WebElement HaveTrustYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you control a trust?')]//following::div[text()='No'])[1]")
+	WebElement HaveTrustNo;
+	@FindBy(xpath = "(//span[contains(text(),'Do you control a self-managed superannuation fund?')]//following::div[text()='Yes'])[1]")
+	WebElement HaveSuperFundYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you control a self-managed superannuation fund?')]//following::div[text()='No'])[1]")
+	WebElement HaveSuperFundNo;
+	@FindBy(xpath = "(//span[contains(text(),'Do you own your own business, or are you a partner in a partnership?')]//following::div[text()='Yes'])[1]")
+	WebElement HaveBusinessYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you own your own business, or are you a partner in a partnership?')]//following::div[text()='No'])[1]")
+	WebElement HaveBusinessNo;
+
+	@FindBy(xpath = "(//span[contains(text(),'Do you want to give the whole of your estate equally to any children you have in the future?')]//following::div[text()='Yes'])[1]")
+	WebElement BenefFutureChildrenQuestionYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you want to give the whole of your estate equally to any children you have in the future?')]//following::div[text()='No'])[1]")
+	WebElement BenefFutureChildrenQuestionNo;
+
+	@FindBy(xpath = "(//span[contains(text(),'If any of your children predecease you, do you want to divide it equally amongst their children?')]//following::div[text()='Yes'])[1]")
+	WebElement BenefDisasterQuestionYes;
+	@FindBy(xpath = "(//span[contains(text(),'If any of your children predecease you, do you want to divide it equally amongst their children?')]//following::div[text()='No'])[1]")
+	WebElement BenefDisasterQuestionNo;
+	@FindBy(xpath = "(//div[contains(@id,'Content')])[120]")
+	WebElement BenefDisasterQuestionField;
+
+	@FindBy(xpath = "(//span[contains(text(),'Do you wish to leave any gifts?')]//following::div[text()='Yes'])[1]")
+	WebElement HaveGiftYes;
+	@FindBy(xpath = "(//span[contains(text(),'Do you wish to leave any gifts?')]//following::div[text()='No'])[1]")
+	WebElement HaveGiftNo;
+
+	@FindBy(xpath = "(//span[contains(text(),'Would you like Maurice Blackburn to assist with Managing your estate?')]//following::div[text()='Yes'])[1]")
+	WebElement MBAssistManageEstateYes;
+	@FindBy(xpath = "(//span[contains(text(),'Would you like Maurice Blackburn to assist with Managing your estate?')]//following::div[text()='No'])[1]")
+	WebElement MBAssistManageEstateNo;
+
+	@FindBy(xpath = "//input[contains(@id,'CB_Confirm')]")
+	WebElement ConfirmAcknowledgement;
+
+	@FindBy(xpath = "(//input[@value='Edit'])[1]")
+	WebElement EditPersonalInfoSummary;
+	@FindBy(xpath = "(//input[@value='Edit'])[2]")
+	WebElement EditAboutYouSummary;
+	@FindBy(xpath = "(//input[@value='Edit'])[3]")
+	WebElement EditAssetsSummary;
+	@FindBy(xpath = "(//input[@value='Edit'])[4]")
+	WebElement EditBeneficiariesSummary;
+	@FindBy(xpath = "(//input[@value='Edit'])[5]")
+	WebElement EditExecutorsSummary;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public ReviewConfirmPage() {
@@ -160,185 +250,93 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.clickElement(chk_Confirm);
 	}
 
-	public void displayQuestion1() {
-		CommonFunctions.elementDisplayed(chk_Confirm);
+	public ExecutorsPage ClickEditExecutorsSummary() {
+		CommonFunctions.clickElement(EditExecutorsSummary);
+		return new ExecutorsPage();
 	}
 
-	public void clickConfirm() {
-		CommonFunctions.clickElement(chk_Confirm);
+	public BeneficiariesPage ClickEditBeneficiariesSummary() {
+		CommonFunctions.clickElement(EditBeneficiariesSummary);
+		return new BeneficiariesPage();
 	}
 
-	/* Drivers License */
-	public void displayQuestion3() {
-		CommonFunctions.elementDisplayed(Question3.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public AssetsPage ClickEditAssetsSummary() {
+		CommonFunctions.clickElement(EditAssetsSummary);
+		return new AssetsPage();
 	}
 
-	public void displayQuestion4() {
-		CommonFunctions.elementDisplayed(Question4.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
+	public AboutPage ClickEditAboutYouSummary() {
+		CommonFunctions.clickElement(EditAboutYouSummary);
+		return new AboutPage();
 	}
 
-	public void displayQuestion6() {
-		CommonFunctions.elementDisplayed(Question5.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public PersonalPage ClickEditPersonalInfoSummary() {
+		CommonFunctions.clickElement(EditPersonalInfoSummary);
+		return new PersonalPage();
 	}
 
-	public void displayQuestion7() {
-		CommonFunctions.elementDisplayed(Question7.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void ClickConfirmAcknowledgement() {
+		CommonFunctions.clickElement(ConfirmAcknowledgement);
 	}
 
-	public void displayQuestion8() {
-		CommonFunctions.elementDisplayed(Question8.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void BenefDisasterQuestionYes() {
+		CommonFunctions.elementDisplayed(BenefDisasterQuestionYes);
 	}
 
-	/* Medicare */
-
-	public void displayQuestion9() {
-		CommonFunctions.elementDisplayed(Question9.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void BenefDisasterQuestionNo() {
+		CommonFunctions.elementDisplayed(BenefDisasterQuestionNo);
 	}
 
-	public void displayQuestion10() {
-		CommonFunctions.elementDisplayed(Question10.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void HaveGiftYes() {
+		CommonFunctions.elementDisplayed(HaveGiftYes);
 	}
 
-	public void displayQuestion11() {
-		CommonFunctions.elementDisplayed(Question11.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void HaveGiftNo() {
+		CommonFunctions.elementDisplayed(HaveGiftNo);
 	}
 
-	public void displayQuestion12() {
-		CommonFunctions.elementDisplayed(Question12.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void BenefDisasterQuestionField() {
+		CommonFunctions.elementDisplayed(BenefDisasterQuestionField);
 	}
 
-	public void displayQuestion13() {
-		CommonFunctions.elementDisplayed(Question13.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
+	public void BenefFutureChildrenQuestionYes() {
+		CommonFunctions.elementDisplayed(BenefFutureChildrenQuestionYes);
 	}
 
-	public void displayQuestion14() {
-		CommonFunctions.elementDisplayed(Question14.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
+	public void BenefFutureChildrenQuestionNo() {
+		CommonFunctions.elementDisplayed(BenefFutureChildrenQuestionNo);
 	}
 
-	/* Australian Passport */
-
-	public void displayQuestion15() {
-		CommonFunctions.elementDisplayed(Question15.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void HaveBusinessYes() {
+		CommonFunctions.elementDisplayed(HaveBusinessYes);
 	}
 
-	public void displayQuestion16() {
-		CommonFunctions.elementDisplayed(Question16.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
+	public void HaveBusinessNo() {
+		CommonFunctions.elementDisplayed(HaveBusinessNo);
 	}
 
-	public void displayQuestion17() {
-		CommonFunctions.elementDisplayed(Question17.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void HaveSuperFundYes() {
+		CommonFunctions.elementDisplayed(HaveTrustYes);
 	}
 
-	public void displayQuestion18() {
-		CommonFunctions.elementDisplayed(Question18.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void HaveSuperFundNo() {
+		CommonFunctions.elementDisplayed(HaveTrustNo);
 	}
 
-	public void displayQuestion19() {
-		CommonFunctions.elementDisplayed(Question19.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
+	public void HaveTrustYes() {
+		CommonFunctions.elementDisplayed(HaveTrustYes);
 	}
 
-	public void displayAusPassportGender() {
-		CommonFunctions.elementDisplayed(AusPassportGender.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void HaveTrustNo() {
+		CommonFunctions.elementDisplayed(HaveTrustNo);
 	}
 
-	/* ForeignPassport */
-
-	public void displayQuestion20() {
-		CommonFunctions.elementDisplayed(Question20.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void HaveLifeInsuranceSuperNo() {
+		CommonFunctions.elementDisplayed(HaveLifeInsuranceSuperNo);
 	}
 
-	public void displayQuestion21() {
-		CommonFunctions.elementDisplayed(Question21.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
-	}
-
-	public void displayQuestion22() {
-		CommonFunctions.elementDisplayed(Question22.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
-	}
-
-	public void displayQuestion23() {
-		CommonFunctions.elementDisplayed(Question23.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
-	}
-
-	public void displayQuestion24() {
-		CommonFunctions.elementDisplayed(Question24.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
-	}
-
-	public void displayQuestion25() {
-		CommonFunctions.elementDisplayed(Question25.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
-	}
-
-	public void FillUpDriversLicense() {
-		CommonFunctions.selectValueFromDropdown(Question2A, "Driver's Licence");
-		CommonFunctions.wait(5000, false);
-		// CommonFunctions.selectValueFromDropdown(Question2B, "Driver's Licence");
-		// CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question3, "First");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(Question4, "ACT");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question5, "Option");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(Question6, "Father");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question7, "Address1Test");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Question8, "09/05/1993");
-		CommonFunctions.wait(5000, false);
-	}
-
-	public void FillUpMedicare() {
-		CommonFunctions.selectValueFromDropdown(Question2A, "Medicare");
-		CommonFunctions.wait(5000, false);
-		// CommonFunctions.selectValueFromDropdown(Question2B, "Medicare");
-		// CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question9, "First");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(Question10, "Green");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question11, "A1111111");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question12, "0123456789");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Question13, "15/06/2025");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Question14, "09/05/1993");
-		CommonFunctions.wait(5000, false);
-	}
-
-	public void FillUpAustralianPassport() {
-		// CommonFunctions.selectValueFromDropdown(Question2A, "Australian Passport");
-		// CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(Question2B, "Australian Passport");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question15, "ABC1111");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question16, "Dim");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question17, "Test");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question18, "User");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Question19, "09/05/1993");
-		CommonFunctions.wait(5000, false);
-	}
-
-	public void FillUpForeignPassport() {
-		// CommonFunctions.selectValueFromDropdown(Question2A, "Foreign Passport");
-		// CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(Question2B, "Foreign Passport");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question20, "DEF2222");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(Question21, "ANGOLA");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question22, "Test");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(Question23, "Dim");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question24, "User");
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Question25, "09/05/1993");
-		CommonFunctions.wait(5000, false);
+	public void HaveLifeInsuranceSuperYes() {
+		CommonFunctions.elementDisplayed(HaveLifeInsuranceSuperYes);
 	}
 
 	public void validatesFields() {
@@ -363,5 +361,79 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.textDisplayedInPage("Email");
 		CommonFunctions.textDisplayedInPage("Phone Number");
 		CommonFunctions.textDisplayedInPage("Occupation");
+	}
+
+	public void FamilyLawPropertyNo() {
+		CommonFunctions.elementDisplayed(FamilyLawPropertyNo);
+	}
+
+	public void HaveWillNone() {
+		CommonFunctions.elementDisplayed(HaveWillNone);
+	}
+
+	public void HaveSuperNo() {
+		CommonFunctions.elementDisplayed(HaveSuperNo);
+	}
+
+	public void HaveSuperYes() {
+		CommonFunctions.elementDisplayed(HaveSuperYes);
+	}
+
+	public void HaveDebtsNo() {
+		CommonFunctions.elementDisplayed(HaveDebtsNo);
+	}
+
+	public void HaveDebtsYes() {
+		CommonFunctions.elementDisplayed(HaveDebtsYes);
+	}
+
+	public void HaveAssetsNo() {
+		CommonFunctions.elementDisplayed(HaveAssetsNo);
+	}
+
+	public void HaveAssetsYes() {
+		CommonFunctions.elementDisplayed(HaveAssetsYes);
+	}
+
+	public void HaveDependentsNo() {
+		CommonFunctions.elementDisplayed(HaveDependentsNo);
+	}
+
+	public void HaveDependentsYes() {
+		CommonFunctions.elementDisplayed(HaveDependentsYes);
+	}
+
+	public void HaveChildrenNo() {
+		CommonFunctions.elementDisplayed(HaveChildrenNo);
+	}
+
+	public void HaveChildrenYes() {
+		CommonFunctions.elementDisplayed(HaveChildrenYes);
+	}
+
+	public void FamilyLawPropertyYes() {
+		CommonFunctions.elementDisplayed(FamilyLawPropertyYes);
+	}
+
+	public void HospitalNoSummary() {
+		CommonFunctions.elementDisplayed(PersonalInfoHospitalQuestionWithNo);
+	}
+
+	public void HospitalYesSummary() {
+		CommonFunctions.elementDisplayed(PersonalInfoHospitalQuestionWithYes);
+	}
+
+	public void DiagnosedYesSummary() {
+		CommonFunctions.elementDisplayed(PersonalInfoDiagnosedQuestionWithYes);
+	}
+
+	public void DiagnosedNoSummary() {
+		CommonFunctions.elementDisplayed(PersonalInfoDiagnosedQuestionWithNo);
+	}
+
+	public AddOnsPage ClickNextButton() {
+		CommonFunctions.clickElement(btn_Next);
+
+		return new AddOnsPage();
 	}
 }
