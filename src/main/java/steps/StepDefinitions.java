@@ -777,11 +777,11 @@ public class StepDefinitions extends Base {
 	public void user_clicks_no_to_Would_you_like_Maurice_Blackburn_to_help_your_Executor_manage_your_estate_question() throws Throwable {
 		executorsPage.clickQuestion16B();
 	}
+
 	@Then("^user click Buried to when i pass away I wish to be$")
 	public void user_click_Buried_to_when_i_pass_away_I_wish_to_be() throws Throwable {
 		executorsPage.clickQuestion17A();
 	}
-
 
 	@When("^user click Cremated to when i pass away I wish to be$")
 	public void user_click_Cremated_to_when_i_pass_away_I_wish_to_be() throws Throwable {
@@ -2078,77 +2078,85 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 		thankyouPage = reviewConfirmPage.clickNextThankYou();
 	}
-	
-	//Union details
+
+	// Union details
 	@Then("^pop-up header is displayed$")
 	public void pop_up_header_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    homePage.DisplayedPopupHeader();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.DisplayedPopupHeader();
 	}
-	
+
 	@Then("^user click free standard will$")
 	public void user_click_free_standard_will() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-		  homePage.ClickFreeStandardWill();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.ClickFreeStandardWill();
 	}
-	
+
 	@Then("^affiliated unions dropdown is displayed$")
 	public void affiliated_unions_dropdown_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	   homePage.DisplayedSelectAffliatedUnions();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.DisplayedSelectAffliatedUnions();
 	}
+
 	@When("^user selects \"([^\"]*)\" as affliated unions$")
 	public void user_selects_as_affliated_unions(String arg1) throws Throwable {
-	   homePage.SelectAffiliatedUnion(arg1);
+		homePage.SelectAffiliatedUnion(arg1);
 	}
 
 	@Then("^your member number field is displayed$")
 	public void your_member_number_field_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    homePage.DisplayedYourMemberNumber();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.DisplayedYourMemberNumber();
 	}
-	
+
 	@Then("^member number footnote is displayed$")
 	public void member_number_footnote_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	   homePage.DisplayedMemberNumberFootnote();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.DisplayedMemberNumberFootnote();
 	}
 
 	@Then("^cancel button is displayed$")
 	public void cancel_button_is_displayed() throws Throwable {
-	    homePage.DisplayedCancelBtn();
+		homePage.DisplayedCancelBtn();
 	}
 
 	@Then("^user click on confirm button$")
 	public void user_click_on_confirm_button() throws Throwable {
-	    homePage.DisplayedConfirmBtn();
-	    CommonFunctions.wait(5000, false);
+		homePage.DisplayedConfirmBtn();
+		CommonFunctions.wait(5000, false);
 	}
-	
+
 	@Then("^user click on cancel button$")
 	public void user_click_on_cancel_button() throws Throwable {
-	    homePage.ClickCancelBtn();
-	    CommonFunctions.wait(5000, false);
+		homePage.ClickCancelBtn();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^affiliated union alert message is displayed$")
 	public void affiliated_union_alert_message_is_displayed() throws Throwable {
-	    homePage.DisplayedValidationMessage1();
+		homePage.DisplayedValidationMessage1();
 	}
 
 	@Then("^your member number alert message is displayed$")
 	public void your_member_number_alert_message_is_displayed() throws Throwable {
-		 homePage.DisplayedValidationMessage2();
+		homePage.DisplayedValidationMessage2();
 	}
+
 	@When("^user enter \"([^\"]*)\" on your member number$")
 	public void user_enter_on_your_member_number(String arg1) throws Throwable {
 		homePage.SetMemberNumber(arg1);
 	}
-	
+
 	@When("^user check the cost$")
 	public void user_check_the_cost() throws Throwable {
 		homePage.DisplayedCost();
-	 
+
+	}
+
+	@Then("^user checks relationship status if single and widowed are not available$")
+	public void user_checks_relationship_status_if_single_and_widowed_are_not_available() throws Throwable {
+		String[] RelStatus = { "Select One", "Defacto", "Engaged", "Married", "Separated", "Divorced" };
+		aboutPage.CheckRelationshipStatusDropdownValues(RelStatus);
 	}
 
 }

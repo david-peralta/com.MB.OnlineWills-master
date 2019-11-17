@@ -1,6 +1,6 @@
 Feature: MW - 131 : Executors Page
 
-  @Sprint11
+  @Regression
   Scenario Outline: 
     # Go to site and log in
     Given user opens browser
