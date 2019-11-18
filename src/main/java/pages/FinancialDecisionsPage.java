@@ -41,7 +41,7 @@ public class FinancialDecisionsPage extends Base {
 	WebElement PersonalDecisionMakerReq;
 	@FindBy(xpath = "//a[contains(@id,'AddFinancialDecisionMakerID')]")
 	WebElement AddFinancialDecisionMakerID;
-	@FindBy(xpath = "//a[contains(@id,'AddPersonalDecisionMakerID')]")
+	@FindBy(xpath = "//a[contains(@id,'AddPersonalDecisionMakerId')]")
 	WebElement AddPersonalDecisionMakerID;
 	@FindBy(xpath = "//select[contains(@id,'POATitle')]")
 	WebElement POATitle;

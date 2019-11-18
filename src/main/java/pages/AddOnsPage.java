@@ -29,9 +29,9 @@ public class AddOnsPage extends Base {
 		return new FinancialDecisionsPage();
 	}
 
-	public PaymentPage clickNextWithoutPOA() {
+	public PaymentsPage clickNextWithoutPOA() {
 		CommonFunctions.clickElement(btn_Next);
-		return new PaymentPage();
+		return new PaymentsPage();
 	}
 
 }

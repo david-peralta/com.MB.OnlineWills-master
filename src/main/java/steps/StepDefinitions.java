@@ -22,8 +22,8 @@ import pages.FinancialDecisionsPage;
 import pages.HomePage;
 import pages.IDdocsPage;
 import pages.LoginPage;
-import pages.PaymentsPage;
 import pages.MedicalDecisionsPage;
+import pages.PaymentsPage;
 import pages.PersonalPage;
 import pages.RegistrationPage;
 import pages.ReviewConfirmPage;
@@ -857,6 +857,12 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	@Then("^user clicks next button on the medical decision page$")
+	public void user_clicks_next_button_on_the_medical_decision_page() throws Throwable {
+		reviewConfirmPage = medicalDecisionsPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@Then("^user selects Both financial and personal matters on enduring power of attorney options$")
 	public void user_selects_Both_financial_and_personal_matters_on_enduring_power_of_attorney_options() throws Throwable {
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
@@ -985,7 +991,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user click the next button without adding POA on the AddOns page$")
 	public void user_click_the_next_button_without_adding_POA_on_the_AddOns_page() throws Throwable {
-		paymentPage = addOnsPage.clickNextWithoutPOA();
+		paymentsPage = addOnsPage.clickNextWithoutPOA();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -1089,11 +1095,11 @@ public class StepDefinitions extends Base {
 	public void user_clicks_no_to_Would_you_like_Maurice_Blackburn_to_help_your_Executor_manage_your_estate_question() throws Throwable {
 		executorsPage.clickQuestion16B();
 	}
+
 	@Then("^user click Buried to when i pass away I wish to be$")
 	public void user_click_Buried_to_when_i_pass_away_I_wish_to_be() throws Throwable {
 		executorsPage.clickQuestion17A();
 	}
-
 
 	@When("^user click Cremated to when i pass away I wish to be$")
 	public void user_click_Cremated_to_when_i_pass_away_I_wish_to_be() throws Throwable {
@@ -2367,7 +2373,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks the next button on the add-ons page$")
 	public void user_clicks_the_next_button_on_the_addons_page() throws Throwable {
-		paymentsPage = addOnsPage.clickNextButton();
+		paymentsPage = addOnsPage.clickNextWithoutPOA();
 	}
 
 	@Then("^user sees the power of attorney product$")
@@ -2422,7 +2428,7 @@ public class StepDefinitions extends Base {
 	public void user_confirms_will_details() throws Throwable {
 		CommonFunctions.scrollToBottomOfPage();
 		CommonFunctions.wait(5000, false);
-		reviewConfirmPage.clickConfirm();
+		reviewConfirmPage.ClickConfirmAcknowledgement();
 	}
 
 	@When("^user clicks the next button to confirm will$")
@@ -2430,77 +2436,118 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 		thankyouPage = reviewConfirmPage.clickNextThankYou();
 	}
-	
-	//Union details
+
+	// Union details
 	@Then("^pop-up header is displayed$")
 	public void pop_up_header_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    homePage.DisplayedPopupHeader();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.DisplayedPopupHeader();
 	}
-	
+
 	@Then("^user click free standard will$")
 	public void user_click_free_standard_will() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-		  homePage.ClickFreeStandardWill();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.ClickFreeStandardWill();
 	}
-	
+
 	@Then("^affiliated unions dropdown is displayed$")
 	public void affiliated_unions_dropdown_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	   homePage.DisplayedSelectAffliatedUnions();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.DisplayedSelectAffliatedUnions();
 	}
+
 	@When("^user selects \"([^\"]*)\" as affliated unions$")
 	public void user_selects_as_affliated_unions(String arg1) throws Throwable {
-	   homePage.SelectAffiliatedUnion(arg1);
+		homePage.SelectAffiliatedUnion(arg1);
 	}
 
 	@Then("^your member number field is displayed$")
 	public void your_member_number_field_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    homePage.DisplayedYourMemberNumber();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.DisplayedYourMemberNumber();
 	}
-	
+
 	@Then("^member number footnote is displayed$")
 	public void member_number_footnote_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	   homePage.DisplayedMemberNumberFootnote();
+		// Write code here that turns the phrase above into concrete actions
+		homePage.DisplayedMemberNumberFootnote();
 	}
 
 	@Then("^cancel button is displayed$")
 	public void cancel_button_is_displayed() throws Throwable {
-	    homePage.DisplayedCancelBtn();
+		homePage.DisplayedCancelBtn();
 	}
 
 	@Then("^user click on confirm button$")
 	public void user_click_on_confirm_button() throws Throwable {
-	    homePage.DisplayedConfirmBtn();
-	    CommonFunctions.wait(5000, false);
+		homePage.DisplayedConfirmBtn();
+		CommonFunctions.wait(5000, false);
 	}
-	
+
 	@Then("^user click on cancel button$")
 	public void user_click_on_cancel_button() throws Throwable {
-	    homePage.ClickCancelBtn();
-	    CommonFunctions.wait(5000, false);
+		homePage.ClickCancelBtn();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^affiliated union alert message is displayed$")
 	public void affiliated_union_alert_message_is_displayed() throws Throwable {
-	    homePage.DisplayedValidationMessage1();
+		homePage.DisplayedValidationMessage1();
 	}
 
 	@Then("^your member number alert message is displayed$")
 	public void your_member_number_alert_message_is_displayed() throws Throwable {
-		 homePage.DisplayedValidationMessage2();
+		homePage.DisplayedValidationMessage2();
 	}
+
 	@When("^user enter \"([^\"]*)\" on your member number$")
 	public void user_enter_on_your_member_number(String arg1) throws Throwable {
 		homePage.SetMemberNumber(arg1);
 	}
-	
+
 	@When("^user check the cost$")
 	public void user_check_the_cost() throws Throwable {
 		homePage.DisplayedCost();
-	 
+
+	}
+
+	@Then("^user sees validation on mandatory field inside the medical decision page$")
+	public void user_sees_validation_on_mandatory_field_inside_the_medical_decision_page() throws Throwable {
+		medicalDecisionsPage.DisplayedDecisionMakerReq();
+	}
+
+	@Then("^user clicks on add decision maker on medical decision page$")
+	public void user_clicks_on_add_decision_maker_on_medical_decision_page() throws Throwable {
+		medicalDecisionsPage.clickAddDecisionMaker();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks on add decision maker$")
+	public void user_clicks_on_add_decision_maker() throws Throwable {
+		financialDecisionsPage.clickAddPOA();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks on I do not want to appoint a Medical Decision Maker checkbox$")
+	public void user_clicks_on_I_do_not_want_to_appoint_a_Medical_Decision_Maker_checkbox() throws Throwable {
+		medicalDecisionsPage.clickIDontWantDecisionMaker();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks back button on review and confirm page to go back to medical decision page$")
+	public void user_clicks_back_button_on_review_and_confirm_page_to_go_back_to_medical_decision_page() throws Throwable {
+		medicalDecisionsPage = reviewConfirmPage.ClickBackButtonMedical();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user sees validation on mandatory fields on adding a decision maker$")
+	public void user_sees_validation_on_mandatory_fields_on_adding_a_decision_maker() throws Throwable {
+		medicalDecisionsPage.DecisionMAkerMandatoryFieldsOnAddingOne();
+	}
+
+	@Then("^user fills up all required fields on adding a decision maker$")
+	public void user_fills_up_all_required_fields_on_adding_a_decision_maker() throws Throwable {
+		medicalDecisionsPage.SetDecisionMakerMandatoryFields();
 	}
 
 }
