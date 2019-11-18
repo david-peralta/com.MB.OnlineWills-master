@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -2019,7 +2020,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks the next button on the add-ons page$")
 	public void user_clicks_the_next_button_on_the_addons_page() throws Throwable {
-		paymentsPage = addOnsPage.clickNextButton();
+		paymentsPage = addOnsPage.clickNextWithoutPOA();
 	}
 
 	@Then("^user sees the power of attorney product$")
@@ -2074,7 +2075,7 @@ public class StepDefinitions extends Base {
 	public void user_confirms_will_details() throws Throwable {
 		CommonFunctions.scrollToBottomOfPage();
 		CommonFunctions.wait(5000, false);
-		reviewConfirmPage.clickConfirm();
+		reviewConfirmPage.ClickConfirmAcknowledgement();
 	}
 
 	@When("^user clicks the next button to confirm will$")
@@ -2162,7 +2163,7 @@ public class StepDefinitions extends Base {
 		String[] RelStatus = { "Select One", "Defacto", "Engaged", "Married", "Separated", "Divorced" };
 		aboutPage.CheckRelationshipStatusDropdownValues(RelStatus);
 	}
-	
+
 	@Then("^user sees validation on mandatory field inside the medical decision page$")
 	public void user_sees_validation_on_mandatory_field_inside_the_medical_decision_page() throws Throwable {
 		medicalDecisionsPage.DisplayedDecisionMakerReq();
