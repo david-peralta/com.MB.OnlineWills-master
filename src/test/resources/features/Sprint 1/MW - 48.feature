@@ -1,6 +1,6 @@
-Feature: MW - 48 : POA Financial Decision Page
+Feature: MW - 40 : Review and confirm
 
-  @Sprint
+  @Sprint11
   Scenario Outline: 
     # Go to site and log in
     Given user opens browser
@@ -66,19 +66,80 @@ Feature: MW - 48 : POA Financial Decision Page
     #Review and confirm
     Then user is on "ReviewAndConfirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
     Then user clicks on add POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page
+    And user sees message "Enduring Power of Attorney"
+    And user sees question "Do you want your Enduring Power of Attorney to be for:"
+    And user sees question "Are there any limitations that you would like to discuss?"
+    And user click the next button with POA on the financial decision page
+    And user sees mandatory validation inside the financial decision page
+    #Both
+    And user selects Both financial and personal matters on enduring power of attorney options
+    And user sees message "Financial Decision Maker"
+    And user sees message "Personal Decision Makers"
+    And user click the next button with POA on the financial decision page
+    And user sees mandatory validation inside the financial decision page for both financial and personal matters
+    And user clicks yes to Personal Decision Makers question
+    And user click the next button with POA on the financial decision page
+    And user sees mandatory validation inside the financial decision page for both financial and personal matters with personal
+    #Financial
+    And user selects Only financial matters on enduring power of attorney options
+    And user sees message "Financial Decision Maker"
+    And user click the next button with POA on the financial decision page
+    And user sees mandatory validation inside the financial decision page for financial matters
+    #Personal
+    And user selects Only personal matters on enduring power of attorney options
+    And user sees message "Personal Decision Makers"
+    And user click the next button with POA on the financial decision page
+    And user sees mandatory validation inside the financial decision page for personal matters
     #Add Financial Decision Maker
     #1
     And user selects Only financial matters on enduring power of attorney options
     And user clicks on add financial decision maker on financial decision page
+    And user clicks on add financial decision maker
+    And user sees mandatory fields validation on adding financial decision maker
     And user fills up financial decision maker details with Primary Decision Maker
     And user clicks on add financial decision maker
+    #2
+    And user clicks on add financial decision maker on financial decision page
+    And user fills up financial decision maker details with Primary Decision Maker
+    And user clicks on add financial decision maker
+    #3
+    And user clicks on add financial decision maker on financial decision page
+    And user fills up financial decision maker details with Primary Decision Maker
+    And user clicks on add financial decision maker
+    #4
+    And user clicks on add financial decision maker on financial decision page
+    And user fills up financial decision maker details with Primary Decision Maker
+    And user clicks on add financial decision maker
+    #Check if add add financial decision maker on financial decision page is hidden
+    And user checks if add financial decision maker button on financial decision page is hidden
+    #Add Personal Decision Maker
+    And user selects Only personal matters on enduring power of attorney options
+    And user clicks on add personal decision maker on financial decision page
+    And user clicks on add personal decision maker
+    And user sees mandatory fields validation on adding personal decision maker
+    And user fills up personal decision maker details with Primary Decision Maker
+    And user clicks on add personal decision maker
+    #2
+    And user clicks on add personal decision maker on financial decision page
+    And user fills up personal decision maker details with Primary Decision Maker
+    And user clicks on add personal decision maker
+    #3
+    And user clicks on add personal decision maker on financial decision page
+    And user fills up personal decision maker details with Primary Decision Maker
+    And user clicks on add personal decision maker
+    #4
+    And user clicks on add personal decision maker on financial decision page
+    And user fills up personal decision maker details with Primary Decision Maker
+    And user clicks on add personal decision maker
+    #Check if add add financial decision maker on financial decision page is hidden
+    And user checks if add personal decision maker button on financial decision page is hidden
     #Select immediately on start to act dropdown
     And user selects "Immediately" on When do you want your Financial/Personal Decision Makers to start to act dropdown
     #Input limitation
@@ -87,6 +148,17 @@ Feature: MW - 48 : POA Financial Decision Page
     And user click the next button with POA on the financial decision page
     #Medical POA page
     Then user is on "Medical POA" page
+    And user clicks next button on the medical decision page
+    And user sees validation on mandatory field inside the medical decision page
+    And user clicks on I do not want to appoint a Medical Decision Maker checkbox
+    And user clicks next button on the medical decision page
+    Then user is on "ReviewAndConfirm" page
+    And user clicks back button on review and confirm page to go back to medical decision page
+    Then user is on "MedicalPOA" page
+    And user clicks on add decision maker on medical decision page
+    And user clicks on add decision maker
+    And user sees validation on mandatory fields on adding a decision maker
+    And user fills up all required fields on adding a decision maker
 
     Examples: 
       | email            | password     | Address1                                         | Suburb         |
