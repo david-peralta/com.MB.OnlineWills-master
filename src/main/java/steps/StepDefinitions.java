@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -50,6 +49,7 @@ public class StepDefinitions extends Base {
 	ThankYouPage thankyouPage;
 	FinancialDecisionsPage financialDecisionsPage;
 	MedicalDecisionsPage medicalDecisionsPage;
+
 	String Email;
 
 	// ================================================== Universal Functions ==================================================
@@ -89,11 +89,6 @@ public class StepDefinitions extends Base {
 		else {
 
 		}
-	}
-
-	@Then("^user checks if funeral wishes question is mandatory$")
-	public void user_checks_if_funeral_wishes_question_is_mandatory() throws Throwable {
-
 	}
 
 	@Given("^user opens browser and decides to proceed to the activation links page$")
@@ -153,149 +148,6 @@ public class StepDefinitions extends Base {
 		CommonFunctions.textDisplayedInPage(arg1);
 	}
 
-	@Then("^user sees Are you currently in hospital question with no answer in personal info summary$")
-	public void user_sees_Are_you_currently_in_hospital_question_with_no_answer_in_personal_info_summary() throws Throwable {
-		reviewConfirmPage.HospitalNoSummary();
-	}
-
-	@Then("^user sees Are you currently in hospital question with yes answer in personal info summary$")
-	public void user_sees_Are_you_currently_in_hospital_question_with_yes_answer_in_personal_info_summary() throws Throwable {
-		reviewConfirmPage.HospitalYesSummary();
-	}
-
-	@Then("^user clicks edit button on personal info summary$")
-	public void user_clicks_edit_button_on_personal_info_summary() throws Throwable {
-		reviewConfirmPage.ClickEditPersonalInfoSummary();
-	}
-
-	@Then("^user edits some personal details$")
-	public void user_edits_some_personal_details() throws Throwable {
-		personalPage.SelectTitlePersonalPage("Reverend");
-		personalPage.SetOccupation(" Update");
-	}
-
-	@Then("^user edits some about you details$")
-	public void user_edits_some_about_you_details() throws Throwable {
-		aboutPage.clickNABtnLaw();
-	}
-
-	@Then("^user sees diagnosed question with no answer in personal info summary$")
-	public void user_sees_diagnosed_question_with_no_answer_in_personal_info_summary() throws Throwable {
-		reviewConfirmPage.DiagnosedNoSummary();
-	}
-
-	@Then("^user checks the personal info summary details$")
-	public void user_checks_the_personal_info_summary_details() throws Throwable {
-		CommonFunctions.textDisplayedInPage("Title");
-		CommonFunctions.textDisplayedInPage("Dr");
-		CommonFunctions.textDisplayedInPage("Date of Birth");
-		CommonFunctions.textDisplayedInPage("14/11/2019");
-		CommonFunctions.textDisplayedInPage("First name");
-		CommonFunctions.textDisplayedInPage("dim");
-		CommonFunctions.textDisplayedInPage("Middle name");
-		CommonFunctions.textDisplayedInPage("Family name");
-		CommonFunctions.textDisplayedInPage("camuin");
-		CommonFunctions.textDisplayedInPage("Residential address");
-		CommonFunctions.textDisplayedInPage("No.22 Diamond Street Bahayang Pagasa Imus Cavite");
-		CommonFunctions.textDisplayedInPage("Email");
-		CommonFunctions.textDisplayedInPage("demeth@gmail.com");
-		CommonFunctions.textDisplayedInPage("Phone Number");
-		CommonFunctions.textDisplayedInPage("4772834");
-		CommonFunctions.textDisplayedInPage("Occupation");
-		CommonFunctions.textDisplayedInPage("Consultant");
-		CommonFunctions.textDisplayedInPage("Postal address");
-		CommonFunctions.textDisplayedInPage("Same as Residential Address");
-		CommonFunctions.textDisplayedInPage("Are you currently in hospital?");
-		reviewConfirmPage.HospitalNoSummary();
-		CommonFunctions.textDisplayedInPage("Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will?");
-		reviewConfirmPage.DiagnosedNoSummary();
-	}
-
-	@Then("^user checks the About you summary details$")
-	public void user_checks_the_About_you_summary_details() throws Throwable {
-		CommonFunctions.textDisplayedInPage("Current Marital Status");
-		CommonFunctions.textDisplayedInPage("Single");
-		CommonFunctions.textDisplayedInPage("Have you had a family law property settlement?");
-		reviewConfirmPage.FamilyLawPropertyNo();
-		CommonFunctions.textDisplayedInPage("Do you have any children?");
-		reviewConfirmPage.HaveChildrenNo();
-		reviewConfirmPage.HaveDependentsNo();
-		reviewConfirmPage.HaveWillNone();
-
-	}
-
-	@Then("^user checks the Assets summary details$")
-	public void user_checks_the_Assets_summary_details() throws Throwable {
-		CommonFunctions.textDisplayedInPage("Do you have any assets?");
-		reviewConfirmPage.HaveAssetsNo();
-		CommonFunctions.textDisplayedInPage("Do you have any debts?");
-		reviewConfirmPage.HaveDebtsNo();
-		CommonFunctions.textDisplayedInPage("Do you have any superannuation?");
-		reviewConfirmPage.HaveSuperNo();
-		CommonFunctions.textDisplayedInPage("Do you have life insurance separate from your superannuation?");
-		reviewConfirmPage.HaveLifeInsuranceSuperNo();
-		CommonFunctions.textDisplayedInPage("Do you control a trust?");
-		reviewConfirmPage.HaveTrustNo();
-		CommonFunctions.textDisplayedInPage("Do you control a self-managed superannuation fund?");
-		reviewConfirmPage.HaveSuperFundNo();
-		CommonFunctions.textDisplayedInPage("Do you own your own business, or are you a partner in a partnership?");
-		reviewConfirmPage.HaveBusinessNo();
-
-	}
-
-	@Then("^user checks the Executors summary details$")
-	public void user_checks_the_Executors_summary_details() throws Throwable {
-		CommonFunctions.textDisplayedInPage("Who do you want to manage your estate?");
-		CommonFunctions.textDisplayedInPage("Backup Executor");
-		CommonFunctions.textDisplayedInPage("Name:");
-		CommonFunctions.textDisplayedInPage("Backup Test Upback");
-		CommonFunctions.textDisplayedInPage("Relationship:");
-		CommonFunctions.textDisplayedInPage("Cousin");
-		CommonFunctions.textDisplayedInPage("First Option Executor");
-		CommonFunctions.textDisplayedInPage("Name:");
-		CommonFunctions.textDisplayedInPage("First Test Option");
-		CommonFunctions.textDisplayedInPage("Relationship:");
-		CommonFunctions.textDisplayedInPage("Father");
-		CommonFunctions.textDisplayedInPage("Would you like Maurice Blackburn to assist with Managing your estate?");
-		CommonFunctions.textDisplayedInPage("Funeral Wishes");
-		CommonFunctions.textDisplayedInPage("I have no wishes");
-
-	}
-
-	@Then("^user checks the Beneficiaries summary details$")
-	public void user_checks_the_Beneficiaries_summary_details() throws Throwable {
-		CommonFunctions.textDisplayedInPage("Do you want to give the whole of your estate equally to any children you have in the future?");
-		reviewConfirmPage.BenefFutureChildrenQuestionYes();
-		CommonFunctions.textDisplayedInPage("If any of your children predecease you, do you want to divide it equally amongst their children?");
-		reviewConfirmPage.BenefDisasterQuestionNo();
-		CommonFunctions.textDisplayedInPage("If all of your listed beneficiaries pass away, what would you like us to do with their share?");
-		reviewConfirmPage.BenefDisasterQuestionField();
-		CommonFunctions.textDisplayedInPage("Do you wish to leave any gifts?");
-		reviewConfirmPage.HaveGiftNo();
-
-	}
-
-	@Then("^user sees family law property question with no asnwer in about you summary$")
-	public void user_sees_family_law_property_question_with_no_asnwer_in_about_you_summary() throws Throwable {
-		reviewConfirmPage.FamilyLawPropertyNo();
-	}
-
-	@Then("^user sees do you have children question with no asnwer in about you summary$")
-	public void user_sees_do_you_have_children_question_with_no_asnwer_in_about_you_summary() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
-
-	@Then("^user sees family law property question with yes asnwer in about you summary$")
-	public void user_sees_family_law_property_question_with_yes_asnwer_in_about_you_summary() throws Throwable {
-		reviewConfirmPage.FamilyLawPropertyYes();
-	}
-
-	@Then("^user sees diagnosed question with yes answer in personal info summary$")
-	public void user_sees_diagnosed_question_with_yes_answer_in_personal_info_summary() throws Throwable {
-		reviewConfirmPage.DiagnosedYesSummary();
-	}
-
 	@Then("^user sees question \"([^\"]*)\"$")
 	public void user_sees_question(String arg1) throws Throwable {
 		CommonFunctions.textDisplayedInPage(arg1);
@@ -309,13 +161,6 @@ public class StepDefinitions extends Base {
 	@When("^user agrees to terms and agreement inside the ID docs Page$")
 	public void user_agrees_to_terms_and_agreement_inside_the_ID_docs_Page() throws Throwable {
 		idDocsPage.ClickQuestion1();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user clicks on add POA on addons page$")
-	public void user_clicks_on_add_POA_on_addons_page() throws Throwable {
-		addOnsPage.clickAddPOAButton();
-		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^user sees beneficiary question displayed$")
@@ -842,153 +687,6 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user click the next button on the review and confirm page$")
-	public void user_click_the_next_button_on_the_review_and_confirm_page() throws Throwable {
-		addOnsPage = reviewConfirmPage.ClickNextButton();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user click the next button with POA on the financial decision page$")
-	public void user_click_the_next_button_with_POA_on_the_financial_decision_page() throws Throwable {
-		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
-		CommonFunctions.wait(2000, false);
-		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
-		medicalDecisionsPage = financialDecisionsPage.ClickNextButton();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user selects Both financial and personal matters on enduring power of attorney options$")
-	public void user_selects_Both_financial_and_personal_matters_on_enduring_power_of_attorney_options() throws Throwable {
-		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
-		CommonFunctions.wait(2000, false);
-		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
-		financialDecisionsPage.clickBothFinancialAndPersonalMatters();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user selects Only financial matters on enduring power of attorney options$")
-	public void user_selects_Only_financial_matters_on_enduring_power_of_attorney_options() throws Throwable {
-		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
-		CommonFunctions.wait(2000, false);
-		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
-		financialDecisionsPage.clickOnlyFinancialMatters();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user selects Only personal matters on enduring power of attorney options$")
-	public void user_selects_Only_personal_matters_on_enduring_power_of_attorney_options() throws Throwable {
-		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
-		CommonFunctions.wait(2000, false);
-		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
-		financialDecisionsPage.clickOnlyPersonalMatters();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user enter \"([^\"]*)\" as limitation value$")
-	public void user_enter_as_limitation_value(String arg1) throws Throwable {
-		financialDecisionsPage.SetLimitationsInput(arg1);
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user selects \"([^\"]*)\" on When do you want your Financial/Personal Decision Makers to start to act dropdown$")
-	public void user_selects_on_When_do_you_want_your_Financial_Personal_Decision_Makers_to_start_to_act_dropdown(String arg1) throws Throwable {
-		financialDecisionsPage.SelectValueOnAttorneyWhenToActDropdown(arg1);
-	}
-
-	@Then("^user sees mandatory validation inside the financial decision page for both financial and personal matters$")
-	public void user_sees_mandatory_validation_inside_the_financial_decision_page_for_both_financial_and_personal_matters() throws Throwable {
-		financialDecisionsPage.FinancialDecisionsMandatoryFieldsBoth();
-	}
-
-	@Then("^user sees mandatory validation inside the financial decision page for both financial and personal matters with personal$")
-	public void user_sees_mandatory_validation_inside_the_financial_decision_page_for_both_financial_and_personal_matters_with_personal() throws Throwable {
-		financialDecisionsPage.FinancialDecisionsMandatoryFieldsBothWithPersonal();
-	}
-
-	@Then("^user clicks yes to Personal Decision Makers question$")
-	public void user_clicks_yes_to_Personal_Decision_Makers_question() throws Throwable {
-		financialDecisionsPage.clickPersonalDecisionMakerRadioYes();
-	}
-
-	@Then("^user clicks no to Personal Decision Makers question$")
-	public void user_clicks_no_to_Personal_Decision_Makers_question() throws Throwable {
-		financialDecisionsPage.clickPersonalDecisionMakerRadioNo();
-	}
-
-	@Then("^user sees mandatory validation inside the financial decision page$")
-	public void user_sees_mandatory_validation_inside_the_financial_decision_page() throws Throwable {
-		financialDecisionsPage.FinancialDecisionsMandatoryFields();
-	}
-
-	@Then("^user sees mandatory validation inside the financial decision page for financial matters$")
-	public void user_sees_mandatory_validation_inside_the_financial_decision_page_for_financial_matters() throws Throwable {
-		financialDecisionsPage.FinancialDecisionsMandatoryFieldsFinancial();
-	}
-
-	@Then("^user clicks on add financial decision maker$")
-	public void user_clicks_on_add_financial_decision_maker() throws Throwable {
-		financialDecisionsPage.clickAddPOA();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user clicks on add personal decision maker$")
-	public void user_clicks_on_add_personal_decision_maker() throws Throwable {
-		financialDecisionsPage.clickAddPOA();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user sees mandatory fields validation on adding financial decision maker$")
-	public void user_sees_mandatory_fields_validation_on_adding_financial_decision_maker() throws Throwable {
-		financialDecisionsPage.FinancialDecisionsMandatoryFieldsOnAddingFinancial();
-	}
-
-	@Then("^user sees mandatory fields validation on adding personal decision maker$")
-	public void user_sees_mandatory_fields_validation_on_adding_personal_decision_maker() throws Throwable {
-		financialDecisionsPage.FinancialDecisionsMandatoryFieldsOnAddingFinancial();
-	}
-
-	@Then("^user clicks on add personal decision maker on financial decision page$")
-	public void user_clicks_on_add_personal_decision_maker_on_financial_decision_page() throws Throwable {
-		financialDecisionsPage.AddPersonalDecisionMakerID();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user clicks on add financial decision maker on financial decision page$")
-	public void user_clicks_on_add_financial_decision_maker_on_financial_decision_page() throws Throwable {
-		financialDecisionsPage.AddFinancialDecisionMakerID();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user checks if add financial decision maker button on financial decision page is hidden$")
-	public void user_checks_if_add_financial_decision_maker_button_on_financial_decision_page_is_hidden() throws Throwable {
-		financialDecisionsPage.AddFinancialDecisionMakerIDHidden();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user checks if add personal decision maker button on financial decision page is hidden$")
-	public void user_checks_if_add_personal_decision_maker_button_on_financial_decision_page_is_hidden() throws Throwable {
-		financialDecisionsPage.AddPersonalDecisionMakerIDHidden();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user sees mandatory validation inside the financial decision page for personal matters$")
-	public void user_sees_mandatory_validation_inside_the_financial_decision_page_for_personal_matters() throws Throwable {
-		financialDecisionsPage.FinancialDecisionsMandatoryFieldsPersonal();
-	}
-
-	@Then("^user click the next button with POA on the AddOns page$")
-	public void user_click_the_next_button_on_the_AddOns_page() throws Throwable {
-		CommonFunctions.wait(5000, false);
-		financialDecisionsPage = addOnsPage.clickNextWithPOA();
-		CommonFunctions.wait(5000, false);
-	}
-
-	@Then("^user click the next button without adding POA on the AddOns page$")
-	public void user_click_the_next_button_without_adding_POA_on_the_AddOns_page() throws Throwable {
-		paymentsPage = addOnsPage.clickNextWithoutPOA();
-		CommonFunctions.wait(5000, false);
-	}
-
 	@When("^user selects Foreign Passport as first identification type$")
 	public void user_selects_Foreign_Passport_as_first_identification_type() throws Throwable {
 		idDocsPage.SelectForeignPassportFirstID();
@@ -1079,12 +777,6 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user clicks back button on the ID docs page$")
-	public void user_clicks_back_button_on_the_ID_docs_page() throws Throwable {
-		executorsPage = idDocsPage.ClickBackButton();
-		CommonFunctions.wait(5000, false);
-	}
-
 	@When("^user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question$")
 	public void user_clicks_no_to_Would_you_like_Maurice_Blackburn_to_help_your_Executor_manage_your_estate_question() throws Throwable {
 		executorsPage.clickQuestion16B();
@@ -1127,41 +819,6 @@ public class StepDefinitions extends Base {
 	@When("^user selects i have no wish on funeral wishes$")
 	public void user_selects_i_have_no_wish_on_funeral_wishes() throws Throwable {
 		executorsPage.clickQuestion17D();
-	}
-
-	@Then("^user selects i have other on funeral wishes$")
-	public void user_selects_i_have_other_on_funeral_wishes() throws Throwable {
-		executorsPage.clickQuestion17C();
-	}
-
-	@Then("^user fills up financial decision maker details with Primary Decision Maker$")
-	public void user_fills_up_financial_decision_maker_details_with_Primary_Decision_Maker() throws Throwable {
-		financialDecisionsPage.SetFinancialDecisionsMandatoryFieldsOnAddingFinancialPDMYes();
-	}
-
-	@Then("^user fills up personal decision maker details with Primary Decision Maker$")
-	public void user_fills_up_personal_decision_maker_details_with_Primary_Decision_Maker() throws Throwable {
-		financialDecisionsPage.SetFinancialDecisionsMandatoryFieldsOnAddingFinancialPDMYes();
-	}
-
-	@Then("^user fills up financial decision maker details without Primary Decision Maker$")
-	public void user_fills_up_financial_decision_maker_details_without_Primary_Decision_Maker() throws Throwable {
-		financialDecisionsPage.SetFinancialDecisionsMandatoryFieldsOnAddingFinancialPDMNo();
-	}
-
-	@Then("^user selects i have cremated on funeral wishes$")
-	public void user_selects_i_have_cremated_on_funeral_wishes() throws Throwable {
-		executorsPage.clickQuestion17B();
-	}
-
-	@Then("^user selects i have buried on funeral wishes$")
-	public void user_selects_i_have_buried_on_funeral_wishes() throws Throwable {
-		executorsPage.clickQuestion17A();
-	}
-
-	@Then("^user sees funeral wishes field$")
-	public void user_sees_funeral_wishes_field() throws Throwable {
-		executorsPage.DisplayQuestion20();
 	}
 
 	@Then("^user checks if Relationship Status dropdown is mandatory$")
@@ -1758,11 +1415,6 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
 
-	}
-
-	@Then("^user confirms on the acknowledgement inside the review and confirm page$")
-	public void user_confirms_on_the_acknowledgement_inside_the_review_and_confirm_page() throws Throwable {
-		reviewConfirmPage.ClickConfirmAcknowledgement();
 	}
 
 	@When("^user check if add child link is displayed for the user to add another child$")
@@ -2367,7 +2019,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks the next button on the add-ons page$")
 	public void user_clicks_the_next_button_on_the_addons_page() throws Throwable {
-		paymentsPage = addOnsPage.clickNextWithoutPOA();
+		paymentsPage = addOnsPage.clickNextButton();
 	}
 
 	@Then("^user sees the power of attorney product$")
@@ -2422,7 +2074,7 @@ public class StepDefinitions extends Base {
 	public void user_confirms_will_details() throws Throwable {
 		CommonFunctions.scrollToBottomOfPage();
 		CommonFunctions.wait(5000, false);
-		reviewConfirmPage.ClickConfirmAcknowledgement();
+		reviewConfirmPage.clickConfirm();
 	}
 
 	@When("^user clicks the next button to confirm will$")
@@ -2505,6 +2157,12 @@ public class StepDefinitions extends Base {
 
 	}
 
+	@Then("^user checks relationship status if single and widowed are not available$")
+	public void user_checks_relationship_status_if_single_and_widowed_are_not_available() throws Throwable {
+		String[] RelStatus = { "Select One", "Defacto", "Engaged", "Married", "Separated", "Divorced" };
+		aboutPage.CheckRelationshipStatusDropdownValues(RelStatus);
+	}
+	
 	@Then("^user sees validation on mandatory field inside the medical decision page$")
 	public void user_sees_validation_on_mandatory_field_inside_the_medical_decision_page() throws Throwable {
 		medicalDecisionsPage.DisplayedDecisionMakerReq();
