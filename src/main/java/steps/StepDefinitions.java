@@ -985,7 +985,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user click the next button without adding POA on the AddOns page$")
 	public void user_click_the_next_button_without_adding_POA_on_the_AddOns_page() throws Throwable {
-		paymentPage = addOnsPage.clickNextWithoutPOA();
+		paymentsPage = addOnsPage.clickNextWithoutPOA();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -2367,7 +2367,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks the next button on the add-ons page$")
 	public void user_clicks_the_next_button_on_the_addons_page() throws Throwable {
-		paymentsPage = addOnsPage.clickNextButton();
+		paymentsPage = addOnsPage.clickNextWithoutPOA();
 	}
 
 	@Then("^user sees the power of attorney product$")
@@ -2422,7 +2422,7 @@ public class StepDefinitions extends Base {
 	public void user_confirms_will_details() throws Throwable {
 		CommonFunctions.scrollToBottomOfPage();
 		CommonFunctions.wait(5000, false);
-		reviewConfirmPage.clickConfirm();
+		reviewConfirmPage.ClickConfirmAcknowledgement();
 	}
 
 	@When("^user clicks the next button to confirm will$")
