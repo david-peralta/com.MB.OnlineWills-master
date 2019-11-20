@@ -68,6 +68,10 @@ public class MedicalDecisionsPage extends Base {
 
 	@FindBy(xpath = "//select[contains(@id,'POAState')]")
 	WebElement POAState;
+	@FindBy(xpath = "//input[contains(@id,'AdvanceCareSignDate')]")
+	WebElement AdvanceCareSignDate;
+	@FindBy(xpath = "//input[contains(@id,'AddPOA')]")
+	WebElement btn_AddPOA;
 	@FindBy(xpath = "(//select[contains(@id,'POAState')]//following::a//following::span//following::span[text()='Required field'])[1]")
 	WebElement POAStateReq;
 	@FindBy(xpath = "//input[contains(@id,'POAPostCode')]")
@@ -75,14 +79,31 @@ public class MedicalDecisionsPage extends Base {
 	@FindBy(xpath = "(//input[contains(@id,'POAPostCode')]//following::a//following::span//following::span[text()='Required field'])[1]")
 	WebElement POAPostCodeReq;
 
+	@FindBy(xpath = "(//a[text()='Remove'])[1]")
+	WebElement RemoveDecisionMaker;
+	@FindBy(xpath = "(//a[text()='Edit'])[1]")
+	WebElement EditDecisionMaker;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public MedicalDecisionsPage() {
 		PageFactory.initElements(driver, this);
 	}
 
 	// ============================================================= Actions =============================================================
+	public void clickRemoveDecisionMaker() {
+		CommonFunctions.clickElement(RemoveDecisionMaker);
+	}
+
+	public void clickEditDecisionMaker() {
+		CommonFunctions.clickElement(EditDecisionMaker);
+	}
+
 	public void clickAddDecisionMaker() {
 		CommonFunctions.clickElement(AddDecisionMaker);
+	}
+
+	public void clickAddPOA() {
+		CommonFunctions.clickElement(btn_AddPOA);
 	}
 
 	public void DecisionMAkerMandatoryFieldsOnAddingOne() {
@@ -115,8 +136,37 @@ public class MedicalDecisionsPage extends Base {
 		CommonFunctions.enterElementValue(POAPostCode, "1234");
 	}
 
+	public void EditDecisionMakerMandatoryFields() {
+		CommonFunctions.selectValueFromDropdown(POATitle, "Dr");
+		CommonFunctions.enterElementValue(POAFirstName, " Update");
+		CommonFunctions.enterElementValue(POAMiddleName, " Update");
+		CommonFunctions.enterElementValue(POALastName, " Update");
+		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.enterElementValue(POAPhone, "4770344");
+		CommonFunctions.selectValueFromDropdown(POARel, "Aunt");
+		CommonFunctions.selectValueFromDropdown(POACountry, "AUSTRALIA");
+		CommonFunctions.enterElementValue(POAAddressLine1, " Update");
+		CommonFunctions.enterElementValue(POAAddressLine2, " Update");
+		CommonFunctions.enterElementValue(POASuburb, " Update");
+		CommonFunctions.selectValueFromDropdown(POAState, "VIC");
+		CommonFunctions.enterElementValue(POAPostCode, "56");
+	}
+
+	public void SetAdvanceCareSignDate() {
+		CommonFunctions.selectValueFromDropdown(AdvanceCareSignDate, "05/09/1990");
+	}
+
 	public void clickIDontWantDecisionMaker() {
 		CommonFunctions.clickElement(DecisionMaker);
+	}
+
+	public void clickYes() {
+		CommonFunctions.clickElement(POAPDMYes);
+	}
+
+	public void clickNo() {
+		CommonFunctions.clickElement(POAPDMNo);
 	}
 
 	public void DisplayedDecisionMakerReq() {
