@@ -1114,6 +1114,12 @@ public class AboutPage extends Base {
 		return new AssetsPage();
 	}
 
+	public PersonalPage ClickBackButton() {
+		CommonFunctions.clickElement(CancelButton);
+
+		return new PersonalPage();
+	}
+
 	public void CheckRelationshipStatusDropdownMandatory() {
 		CommonFunctions.elementDisplayed(RelationshipStatus.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}

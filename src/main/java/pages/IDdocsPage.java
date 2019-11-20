@@ -386,6 +386,12 @@ public class IDdocsPage extends Base {
 		return new ExecutorsPage();
 	}
 
+	public BeneficiariesPage ClickBackIDDocs() {
+		CommonFunctions.clickElement(btn_Back);
+
+		return new BeneficiariesPage();
+	}
+
 	public AboutPage ProgressChangeAbout() {
 		CommonFunctions.clickElement(ProgressAbout);
 

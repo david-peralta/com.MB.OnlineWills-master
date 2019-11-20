@@ -22,6 +22,8 @@ public class DashboardPage extends Base {
 	/* Link */
 	@FindBy(xpath = "//a[contains(@id,'MoreOptions')]")
 	WebElement link_MoreOption;
+	@FindBy(xpath = "//a[contains(@id,'HideOptions')]")
+	WebElement link_HideOption;
 
 	/* Table Row */
 	@FindBy(xpath = "//*[text()='Name']//parent::th")
@@ -47,7 +49,44 @@ public class DashboardPage extends Base {
 	@FindBy(xpath = "//*[text()='Action Date']//parent::th")
 	WebElement tablerow_ActionDate;
 
-	/* Row Actions */
+	/* Table Row - More Option - Displays */
+	@FindBy(xpath = "//div[contains(@id,'Options')]//parent::span[text()='Will Type']")
+	WebElement option_WillType;
+	@FindBy(xpath = "//div[contains(@id,'Options')]//parent::span[text()='Union Member']")
+	WebElement option_UnionMember;
+	@FindBy(xpath = "//div[contains(@id,'Options')]//parent::span[text()='State']")
+	WebElement option_State;
+	@FindBy(xpath = "//div[contains(@id,'Options')]//parent::span[text()='Status']")
+	WebElement option_Status;
+	@FindBy(xpath = "//div[contains(@id,'Options')]//parent::span[text()='Date range start']")
+	WebElement option_DateStart;
+	@FindBy(xpath = "//div[contains(@id,'Options')]//parent::span[text()='Date range end']")
+	WebElement option_DateEnd;
+	@FindBy(xpath = "//div[contains(@id,'Options')]//parent::span[text()='Actions']")
+	WebElement option_Actions;
+
+	/* Table Row - More Option - Options */
+	// @FindBy(xpath = "//div[contains(@id,'Options')]//parent::select[contains(@id,'WillTypeId')]")
+	@FindBy(xpath = "((//div[contains(@id, 'Options')]//table[contains(@class, 'seven')]//tbody//tr)[2]//td)[1]//select")
+	WebElement dropdown_WillType;
+	// @FindBy(xpath = "//div[contains(@id,'Options')]//parent::select[contains(@id,'')]")
+	@FindBy(xpath = "((//div[contains(@id, 'Options')]//table[contains(@class, 'seven')]//tbody//tr)[2]//td)[2]//select")
+	WebElement dropdown_UnionMember;
+	// @FindBy(xpath = "//div[contains(@id,'Options')]//parent::select[contains(@id,'StatusId')]")
+	@FindBy(xpath = "((//div[contains(@id, 'Options')]//table[contains(@class, 'seven')]//tbody//tr)[2]//td)[3]//select")
+	WebElement dropdown_State;
+	// @FindBy(xpath = "//div[contains(@id,'Options')]//parent::select[contains(@id,'')]")
+	@FindBy(xpath = "((//div[contains(@id, 'Options')]//table[contains(@class, 'seven')]//tbody//tr)[2]//td)[4]//select")
+	WebElement dropdown_Status;
+	@FindBy(xpath = "//input[contains(@id,'DateRangeStart')]")
+	WebElement input_DateStart;
+	@FindBy(xpath = "//input[contains(@id,'DateRangeEnd')]")
+	WebElement input_DateEnd;
+	// @FindBy(xpath = "//div[contains(@id,'Options')]//parent::select[contains(@id,'')]")
+	@FindBy(xpath = "((//div[contains(@id, 'Options')]//table[contains(@class, 'seven')]//tbody//tr)[2]//td)[7]//select")
+	WebElement dropdown_Actions;
+
+	/* Row Displays */
 	@FindBy(xpath = "(//table[contains(@id,'FormItemTable')]//following-sibling::tr)[2]")
 	WebElement tablerow_NewestRow;
 	@FindBy(xpath = "(//table[contains(@id,'FormItemTable')]//following-sibling::tr)[11]")
@@ -89,6 +128,16 @@ public class DashboardPage extends Base {
 		CommonFunctions.wait(3000, false);
 	}
 
+	public void clickMoreOption() {
+		CommonFunctions.clickElement(link_MoreOption);
+		CommonFunctions.wait(2500, false);
+	}
+
+	public void clickHideOption() {
+		CommonFunctions.clickElement(link_HideOption);
+		CommonFunctions.wait(2500, false);
+	}
+
 	public void checksDashboardRows() {
 		CommonFunctions.elementDisplayed(tablerow_Name);
 		CommonFunctions.wait(3000, false);
@@ -122,6 +171,14 @@ public class DashboardPage extends Base {
 
 	}
 
+	public void SearchDashboardEmptyUser() {
+		CommonFunctions.clearThenEnterElementValue(input_SearchDashboard, "jose");
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.clickElement(button_Search);
+		CommonFunctions.wait(3000, false);
+
+	}
+
 	public void UpdateUserActions() {
 		CommonFunctions.selectValueFromDropdown(dropdown_Action, "Made contact");
 		CommonFunctions.wait(3000, false);
@@ -136,6 +193,44 @@ public class DashboardPage extends Base {
 
 	public void SortsColumnInDashboardTable() {
 		CommonFunctions.clickElement(tablerow_Update);
+		CommonFunctions.wait(3000, false);
+	}
+
+	public void displayMoreOptionSearchFields() {
+		CommonFunctions.elementDisplayed(dropdown_WillType);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(dropdown_UnionMember);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(dropdown_State);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(dropdown_Status);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(input_DateStart);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(input_DateEnd);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(dropdown_Actions);
+		CommonFunctions.wait(3000, false);
+	}
+
+	public void FillUpMoreOptionSearchFields() {
+		CommonFunctions.clearThenEnterElementValue(input_SearchDashboard, "Email");
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.selectValueFromDropdown(dropdown_WillType, "Standard");
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.selectValueFromDropdown(dropdown_UnionMember, "Without Union");
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.selectValueFromDropdown(dropdown_State, "VIC");
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.selectValueFromDropdown(dropdown_Status, "Initiated");
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(input_DateStart);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(input_DateEnd);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(dropdown_Actions);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.clickElement(button_Search);
 		CommonFunctions.wait(3000, false);
 	}
 

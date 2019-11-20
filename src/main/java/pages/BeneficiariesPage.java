@@ -650,4 +650,10 @@ public class BeneficiariesPage extends Base {
 		return new AddOnsPage();
 	}
 
+	public AssetsPage clickBackToAssets() {
+		CommonFunctions.clickElement(BackButton);
+
+		return new AssetsPage();
+	}
+
 }

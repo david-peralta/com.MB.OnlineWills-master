@@ -1463,9 +1463,21 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	@When("^user click the back button on the about page$")
+	public void user_click_the_back_button_on_the_about_page() throws Throwable {
+		personalPage = aboutPage.ClickBackButton();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@When("^user click the next button on the assets page$")
 	public void user_click_the_next_button_on_the_assets_page() throws Throwable {
 		beneficiariesPage = assetsPage.ClickNextButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user click the back button on the assets page$")
+	public void user_click_the_back_button_on_the_assets_page() throws Throwable {
+		aboutPage = assetsPage.ClickBackButton();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -2435,6 +2447,18 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	@Then("^user click the back button to the idDocs page$")
+	public void user_click_the_back_button_to_the_idDocs_page() throws Throwable {
+		beneficiariesPage = idDocsPage.ClickBackIDDocs();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user click the back button to the Beneficiaries Page$")
+	public void user_click_the_back_button_to_the_Beneficiaries_page() throws Throwable {
+		assetsPage = beneficiariesPage.clickBackToAssets();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@Then("^user reviews and confirms will details$")
 	public void user_reviews_and_confirms_will_details() throws Throwable {
 		CommonFunctions.wait(5000, false);
@@ -2966,9 +2990,14 @@ public class StepDefinitions extends Base {
 		dashboardPage.displayedOldestRow();
 	}
 
-	@When("^user search for selected user in dashboard$")
-	public void user_search_for_selected_user_in_dashboard() throws Throwable {
+	@When("^user searches for a user in dashboard$")
+	public void user_searchs_a_user_in_dashboard() throws Throwable {
 		dashboardPage.SearchDashboardUser();
+	}
+
+	@When("^user searches for a user that is not in dashboard$")
+	public void user_searches_for_a_user_that_is_not_dashboard() throws Throwable {
+		dashboardPage.SearchDashboardEmptyUser();
 	}
 
 	@Then("^user updates action details in dashboard$")
@@ -2984,6 +3013,31 @@ public class StepDefinitions extends Base {
 	@When("^user sorts dashboard column$")
 	public void user_sorts_dashboard_collumn() throws Throwable {
 		dashboardPage.SortsColumnInDashboardTable();
+	}
+
+	@When("^user clicks more option to search$")
+	public void user_uses_more_option_to_search() throws Throwable {
+		dashboardPage.clickMoreOption();
+	}
+
+	@When("^user clicks hide option to search$")
+	public void user_uses_hide_option_to_search() throws Throwable {
+		dashboardPage.clickHideOption();
+	}
+
+	@Then("^user checks if search fields are displayed$")
+	public void user_checks_if_search_fields_are_displayed() throws Throwable {
+		dashboardPage.displayMoreOptionSearchFields();
+	}
+
+	@Then("^user sees no forms in the dashboard$")
+	public void user_sees_no_forms_in_the_dashboard() throws Throwable {
+		CommonFunctions.textDisplayedInPage("No form items to show...");
+	}
+
+	@Then("^user searches for a user using more options$")
+	public void user_searches_for_a_user_using_more_options() throws Throwable {
+		dashboardPage.FillUpMoreOptionSearchFields();
 	}
 
 }
