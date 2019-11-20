@@ -205,7 +205,10 @@ public class ReviewConfirmPage extends Base {
 
 	@FindBy(xpath = "//input[contains(@id,'CB_Confirm')]")
 	WebElement ConfirmAcknowledgement;
-
+	@FindBy(xpath = "(//input[@value='Edit'])[1]")
+	WebElement EditEnduringPowerofAttorney;
+	@FindBy(xpath = "(//input[@value='Edit'])[2]")
+	WebElement EditMedicalPowerofAttorney;
 	@FindBy(xpath = "(//input[@value='Edit'])[1]")
 	WebElement EditPersonalInfoSummary;
 	@FindBy(xpath = "(//input[@value='Edit'])[2]")
@@ -216,6 +219,11 @@ public class ReviewConfirmPage extends Base {
 	WebElement EditBeneficiariesSummary;
 	@FindBy(xpath = "(//input[@value='Edit'])[5]")
 	WebElement EditExecutorsSummary;
+
+	@FindBy(xpath = "//span[text()='I do not want to appoint a Medical Decision Maker']//following::div[text()='Yes']")
+	WebElement YesIDoNotWantToAppointAMedicalDecisionMaker;
+	@FindBy(xpath = "//span[text()='I do not want to appoint a Medical Decision Maker']//following::div[text()='No']")
+	WebElement NoIDoNotWantToAppointAMedicalDecisionMaker;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public ReviewConfirmPage() {
@@ -447,4 +455,21 @@ public class ReviewConfirmPage extends Base {
 
 		return new PaymentsPage();
 	}
+
+	public FinancialDecisionsPage clickEditEnduringPowerofAttorney() {
+		CommonFunctions.clickElement(EditEnduringPowerofAttorney);
+
+		return new FinancialDecisionsPage();
+	}
+
+	public MedicalDecisionsPage clickEditMedicalPowerofAttorney() {
+		CommonFunctions.clickElement(EditMedicalPowerofAttorney);
+
+		return new MedicalDecisionsPage();
+	}
+
+	public void DisplayYesIDoNotWantToAppointAMedicalDecisionMaker() {
+		CommonFunctions.clickElement(YesIDoNotWantToAppointAMedicalDecisionMaker);
+	}
+
 }

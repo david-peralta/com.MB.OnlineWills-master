@@ -52,7 +52,7 @@ public class StepDefinitions extends Base {
 	MedicalDecisionsPage medicalDecisionsPage;
 	String Email;
 
-	// ================================================== Universal Functions =================================================
+	// ================================================== Universal Functions ==================================================
 	@Before
 	public void setup(Scenario scenario) {
 		LogFunctions.startLog(scenario);
@@ -308,8 +308,11 @@ public class StepDefinitions extends Base {
 
 	@When("^user agrees to terms and agreement inside the ID docs Page$")
 	public void user_agrees_to_terms_and_agreement_inside_the_ID_docs_Page() throws Throwable {
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.wait(5000, false);
 		idDocsPage.ClickQuestion1();
 		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 	}
 
 	@Then("^user clicks on add POA on addons page$")
@@ -1053,6 +1056,7 @@ public class StepDefinitions extends Base {
 	public void user_adds_medicare_details() throws Throwable {
 		idDocsPage.FillUpMedicare();
 		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 	}
 
 	@When("^user adds autralian passport details$")
@@ -1075,6 +1079,8 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks next button on the ID docs page$")
 	public void user_clicks_next_button_on_the_ID_docs_page() throws Throwable {
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		reviewConfirmPage = idDocsPage.ClickNextButton();
 		CommonFunctions.wait(5000, false);
 	}
@@ -2518,7 +2524,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user clicks on add decision maker$")
 	public void user_clicks_on_add_decision_maker() throws Throwable {
-		financialDecisionsPage.clickAddPOA();
+		medicalDecisionsPage.clickAddPOA();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -2536,14 +2542,166 @@ public class StepDefinitions extends Base {
 
 	@Then("^user sees validation on mandatory fields on adding a decision maker$")
 	public void user_sees_validation_on_mandatory_fields_on_adding_a_decision_maker() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		medicalDecisionsPage.DecisionMAkerMandatoryFieldsOnAddingOne();
 	}
 
 	@Then("^user clicks next button on the medical decision page$")
 	public void user_clicks_next_button_on_the_medical_decision_page() throws Throwable {
 		reviewConfirmPage = medicalDecisionsPage.ClickNextButton();
 		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user fills up all required fields on adding a decision maker$")
+	public void user_fills_up_all_required_fields_on_adding_a_decision_maker() throws Throwable {
+		medicalDecisionsPage.SetDecisionMakerMandatoryFields();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects yes on Do you have an Advance Care Directive currently in place question$")
+	public void user_selects_yes_on_Do_you_have_an_Advance_Care_Directive_currently_in_place_question() throws Throwable {
+		medicalDecisionsPage.clickYes();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user selects no on Do you have an Advance Care Directive currently in place question$")
+	public void user_selects_no_on_Do_you_have_an_Advance_Care_Directive_currently_in_place_question() throws Throwable {
+		medicalDecisionsPage.clickNo();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user inputs date on What date did you sign your Advance Care Directive question$")
+	public void user_inputs_date_on_What_date_did_you_sign_your_Advance_Care_Directive_question() throws Throwable {
+		medicalDecisionsPage.SetAdvanceCareSignDate();
+	}
+
+	@Then("^user clicks on edit button on medical decision page$")
+	public void user_clicks_on_edit_button_on_medical_decision_page() throws Throwable {
+		medicalDecisionsPage.clickEditDecisionMaker();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user clicks on remove button on medical decision page$")
+	public void user_clicks_on_remove_button_on_medical_decision_page() throws Throwable {
+		medicalDecisionsPage.clickRemoveDecisionMaker();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user edits some details on the added decision maker$")
+	public void user_edits_some_details_on_the_added_decision_maker() throws Throwable {
+		medicalDecisionsPage.EditDecisionMakerMandatoryFields();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user fills up mandatory fields inside the personal page for victorian$")
+	public void user_fills_up_mandatory_fields_inside_the_personal_page_for_victorian() throws Throwable {
+		personalPage.SelectTitlePersonalPage("Dr");
+		CommonFunctions.wait(2000, false);
+		// personalPage.SelectDateToday();
+		personalPage.SetDateOfBirth("05/09/1990");
+		CommonFunctions.wait(2000, false);
+		personalPage.SetPhoneNumber("4772834");
+		CommonFunctions.wait(2000, false);
+		personalPage.SetOccupation("Consultant");
+		CommonFunctions.wait(2000, false);
+		personalPage.SetResAddressline1("Australia");
+		CommonFunctions.wait(2000, false);
+		personalPage.SetResSuburb("Melbourne");
+		CommonFunctions.wait(2000, false);
+		personalPage.SelectResStatePersonalPage("VIC");
+		CommonFunctions.wait(2000, false);
+		personalPage.SelectResPostcodePersonalPage("4103");
+		CommonFunctions.wait(2000, false);
+		personalPage.ClickPostalAddressSameAsResidential();
+		CommonFunctions.wait(2000, false);
+		personalPage.ClickNoFirstQuestion();
+		CommonFunctions.wait(2000, false);
+		personalPage.ClickNoSecondQuestion();
+
+	}
+
+	@When("^user fills up mandatory fields inside the personal page for non victorian$")
+	public void user_fills_up_mandatory_fields_inside_the_personal_page_for_non_victorian() throws Throwable {
+		personalPage.SelectTitlePersonalPage("Dr");
+		personalPage.SelectDateToday();
+		personalPage.SetPhoneNumber("4772834");
+		personalPage.SetOccupation("Consultant");
+		personalPage.SetResAddressline1("Australia");
+		personalPage.SetResSuburb("Executive Lane");
+		personalPage.SelectResStatePersonalPage("QLT");
+		personalPage.SelectResPostcodePersonalPage("4103");
+		personalPage.ClickPostalAddressSameAsResidential();
+		personalPage.ClickNoFirstQuestion();
+		personalPage.ClickNoSecondQuestion();
+
+	}
+
+	@Then("^user clicks no to all assets question$")
+	public void user_clicks_no_to_all_assets_question() throws Throwable {
+		assetsPage.ClickNoQuestion2();
+		assetsPage.ClickNoQuestion3();
+		assetsPage.ClickNoQuestion4();
+		assetsPage.ClickNoQuestion5();
+		assetsPage.ClickNoQuestion6();
+		assetsPage.ClickNoQuestion7();
+
+	}
+
+	// @When("^user adds second driver license details$")
+	// public void user_adds_second_driver_license_details() throws Throwable {
+	// idDocsPage.FillUpSecondDriversLicense();
+	// CommonFunctions.wait(5000, false);
+	// reviewConfirmPage = idDocsPage.ClickNextButton();
+	// }
+
+	@Then("^user checks the information inside the review and confirm after medical POA page$")
+	public void user_checks_the_information_inside_the_review_and_confirm_after_medical_POA_page() throws Throwable {
+		CommonFunctions.textDisplayedInPage("Thank you for providing your information.");
+		CommonFunctions.textDisplayedInPage("Please confirm the below details are correct.");
+		CommonFunctions.textDisplayedInPage("NOTE: This is not Enduring Powers of Attorney. It is a copy of the information you provided to us online.");
+		CommonFunctions.textDisplayedInPage("One of our expert Wills & Estates lawyers will review this information and be in touch soon.");
+		CommonFunctions.textDisplayedInPage("Enduring Power of Attorney");
+		CommonFunctions.textDisplayedInPage("Do you want your Enduring Power of Attorney to be for:");
+		CommonFunctions.textDisplayedInPage("Only financial matters");
+		CommonFunctions.textDisplayedInPage("Financial Decision Maker");
+		CommonFunctions.textDisplayedInPage("Primary Financial Power of Attorney");
+		CommonFunctions.textDisplayedInPage("Name:");
+		CommonFunctions.textDisplayedInPage("Demeth Rey Camuin");
+		CommonFunctions.textDisplayedInPage("Relationship:");
+		CommonFunctions.textDisplayedInPage("Son");
+		CommonFunctions.textDisplayedInPage("When do you want your Financial/Personal Decision Makers to start to act?");
+		CommonFunctions.textDisplayedInPage("Immediately");
+		CommonFunctions.textDisplayedInPage("Are there any limitations that you would like to discuss?");
+		// CommonFunctions.textDisplayedInPage("This a test Limitation");
+		CommonFunctions.textDisplayedInPage("Medical Power of Attorney");
+		CommonFunctions.textDisplayedInPage("I do not want to appoint a Medical Decision Maker");
+		reviewConfirmPage.DisplayYesIDoNotWantToAppointAMedicalDecisionMaker();
+
+	}
+
+	@When("^user clicks the next button on the review and confirm page to go to payments page$")
+	public void user_clicks_the_next_button_on_the_review_and_confirm_page_to_go_to_payments_page() throws Throwable {
+		paymentsPage = reviewConfirmPage.ClickNextButtonPayment();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user uploads a will inside the about you page$")
+	public void user_uploads_a_will_inside_the_about_you_page() throws Throwable {
+		aboutPage.UploadValidWill();
+	}
+
+	@When("^user uploads a will with invalid file format inside the about you page$")
+	public void user_uploads_a_will_with_invalid_file_format_inside_the_about_you_page() throws Throwable {
+		aboutPage.UploadWillInvalidFileFormat();
+	}
+
+	@When("^user uploads a will with invalid file size inside the about you page$")
+	public void user_uploads_a_will_with_invalid_file_size_inside_the_about_you_page() throws Throwable {
+		aboutPage.UploadWill10MBPLUS();
+	}
+
+	@When("^user removes the attached file on about you page$")
+	public void user_removes_the_attached_file_on_about_you_page() throws Throwable {
+		aboutPage.ClickRemoveAttachment();
 	}
 
 }

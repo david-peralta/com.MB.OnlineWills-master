@@ -1,6 +1,6 @@
-Feature: MW - 40 : Review and confirm
+Feature: MW - 48
 
-  @Sprint11
+  @Sprint
   Scenario Outline: 
     # Go to site and log in
     Given user opens browser
@@ -105,41 +105,41 @@ Feature: MW - 40 : Review and confirm
     And user sees mandatory fields validation on adding financial decision maker
     And user fills up financial decision maker details with Primary Decision Maker
     And user clicks on add financial decision maker
-    #2
-    And user clicks on add financial decision maker on financial decision page
-    And user fills up financial decision maker details with Primary Decision Maker
-    And user clicks on add financial decision maker
-    #3
-    And user clicks on add financial decision maker on financial decision page
-    And user fills up financial decision maker details with Primary Decision Maker
-    And user clicks on add financial decision maker
-    #4
-    And user clicks on add financial decision maker on financial decision page
-    And user fills up financial decision maker details with Primary Decision Maker
-    And user clicks on add financial decision maker
-    #Check if add add financial decision maker on financial decision page is hidden
-    And user checks if add financial decision maker button on financial decision page is hidden
     #Add Personal Decision Maker
     And user selects Only personal matters on enduring power of attorney options
     And user clicks on add personal decision maker on financial decision page
+    #2
+    #And user clicks on add financial decision maker on financial decision page
+    #And user fills up financial decision maker details with Primary Decision Maker
+    #And user clicks on add financial decision maker
+    #3
+    #And user clicks on add financial decision maker on financial decision page
+    #And user fills up financial decision maker details with Primary Decision Maker
+    #And user clicks on add financial decision maker
+    #4
+    #And user clicks on add financial decision maker on financial decision page
+    #And user fills up financial decision maker details with Primary Decision Maker
+    #And user clicks on add financial decision maker
+    #Check if add add financial decision maker on financial decision page is hidden
+    #And user checks if add financial decision maker button on financial decision pagencial decision page
     And user clicks on add personal decision maker
     And user sees mandatory fields validation on adding personal decision maker
     And user fills up personal decision maker details with Primary Decision Maker
     And user clicks on add personal decision maker
     #2
-    And user clicks on add personal decision maker on financial decision page
-    And user fills up personal decision maker details with Primary Decision Maker
-    And user clicks on add personal decision maker
+    #And user clicks on add personal decision maker on financial decision page
+    #And user fills up personal decision maker details with Primary Decision Maker
+    #And user clicks on add personal decision maker
     #3
-    And user clicks on add personal decision maker on financial decision page
-    And user fills up personal decision maker details with Primary Decision Maker
-    And user clicks on add personal decision maker
+    #And user clicks on add personal decision maker on financial decision page
+    #And user fills up personal decision maker details with Primary Decision Maker
+    #And user clicks on add personal decision maker
     #4
-    And user clicks on add personal decision maker on financial decision page
-    And user fills up personal decision maker details with Primary Decision Maker
-    And user clicks on add personal decision maker
+    #And user clicks on add personal decision maker on financial decision page
+    #And user fills up personal decision maker details with Primary Decision Maker
+    #And user clicks on add personal decision maker
     #Check if add add financial decision maker on financial decision page is hidden
-    And user checks if add personal decision maker button on financial decision page is hidden
+    #And user checks if add personal decision maker button on financial decision page is hidden
     #Select immediately on start to act dropdown
     And user selects "Immediately" on When do you want your Financial/Personal Decision Makers to start to act dropdown
     #Input limitation
@@ -147,7 +147,7 @@ Feature: MW - 40 : Review and confirm
     #next button
     And user click the next button with POA on the financial decision page
     #Medical POA page
-    Then user is on "Medical POA" page
+    Then user is on "MedicalPOA" page
     And user clicks next button on the medical decision page
     And user sees validation on mandatory field inside the medical decision page
     And user clicks on I do not want to appoint a Medical Decision Maker checkbox
@@ -155,10 +155,30 @@ Feature: MW - 40 : Review and confirm
     Then user is on "ReviewAndConfirm" page
     And user clicks back button on review and confirm page to go back to medical decision page
     Then user is on "MedicalPOA" page
+    And user clicks on I do not want to appoint a Medical Decision Maker checkbox
+    #Add and validate
     And user clicks on add decision maker on medical decision page
     And user clicks on add decision maker
-    And user sees validation on mandatory fields on adding a decision maker
+    And user sees validation on mandatory field inside the medical decision page
     And user fills up all required fields on adding a decision maker
+    And user clicks on add decision maker
+    And user selects no on Do you have an Advance Care Directive currently in place question
+    And user selects yes on Do you have an Advance Care Directive currently in place question
+    And user inputs date on What date did you sign your Advance Care Directive question
+    #Add another one
+    And user clicks on add decision maker on medical decision page
+    And user fills up all required fields on adding a decision maker
+    And user clicks on add decision maker
+    #Edit decision
+    And user clicks on edit button on medical decision page
+    And user edits some details on the added decision maker
+    And user clicks on add decision maker
+    #Remove decision
+    And user clicks on remove button on medical decision page
+    And user hits the enter key
+    # Next
+    And user clicks next button on the medical decision page
+    Then user is on "ReviewAndConfirm" page
 
     Examples: 
       | email            | password     | Address1                                         | Suburb         |

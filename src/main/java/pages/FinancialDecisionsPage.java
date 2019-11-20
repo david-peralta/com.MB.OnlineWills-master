@@ -179,13 +179,13 @@ public class FinancialDecisionsPage extends Base {
 
 	public void SetFinancialDecisionsMandatoryFieldsOnAddingFinancialPDMYes() {
 		CommonFunctions.selectValueFromDropdown(POATitle, "Dr");
-		CommonFunctions.enterElementValue(POAFirstName, "POA FirstName");
-		CommonFunctions.enterElementValue(POAMiddleName, "POA MiddleName");
-		CommonFunctions.enterElementValue(POALastName, "POA LastName");
+		CommonFunctions.enterElementValue(POAFirstName, "Demeth");
+		CommonFunctions.enterElementValue(POAMiddleName, "Rey");
+		CommonFunctions.enterElementValue(POALastName, "Camuin");
 		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.enterElementValue(POAPhone, "4770344");
-		CommonFunctions.selectValueFromDropdown(POARel, "Aunt");
+		CommonFunctions.selectValueFromDropdown(POARel, "Son");
 		CommonFunctions.selectValueFromDropdown(POACountry, "AUSTRALIA");
 		CommonFunctions.enterElementValue(POAAddressLine1, "Australia");
 		CommonFunctions.enterElementValue(POAAddressLine2, "Australia");

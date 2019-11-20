@@ -23,6 +23,8 @@ public class AboutPage extends Base {
 	WebElement LawNAButton;
 	@FindBy(xpath = "(//input[contains(@id,'PropertySettlementRadioNA')]//following::div[text()='Required field'])[1]")
 	WebElement LawNAButtonRequired;
+	@FindBy(xpath = "//span[text()='select a file']")
+	WebElement SelectFile;
 
 	@FindBy(xpath = "//select[contains(@id,'Partner_TitleId')]")
 	WebElement Question1;
@@ -254,6 +256,8 @@ public class AboutPage extends Base {
 	WebElement DependentPostCode;
 	@FindBy(xpath = "(//input[contains(@id,'OtherDependent_PostcodePost_Input')]//following::span//following::span[text()='Required field'])[1]")
 	WebElement DependentPostCodeReq;
+	@FindBy(xpath = "//a[text()='Remove']")
+	WebElement RemoveAttachment;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public AboutPage() {
@@ -1109,4 +1113,27 @@ public class AboutPage extends Base {
 	public void setQuestion8Input(String value) {
 		CommonFunctions.clearThenEnterElementValue(Question8, value);
 	}
+
+	public void UploadWill10MBPLUS() {
+		// CommonFunctions.assembleFilePathsToUpload(GoodPath, "C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/12.84MB.jpg");
+		// CommonFunctions.attachToUploadElement(driver.findElement(By.xpath(".//input[@id='Upload_file']")), GoodPath);
+
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/12.84MB.jpg");
+
+	}
+
+	public void UploadValidWill() {
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/SampleWill.pdf");
+
+	}
+
+	public void UploadWillInvalidFileFormat() {
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/Proposed MB Online Will Form V1.4.xlsx");
+
+	}
+
+	public void ClickRemoveAttachment() {
+		CommonFunctions.clickElement(RemoveAttachment);
+	}
+
 }
