@@ -12,6 +12,10 @@ public class PaymentsPage extends Base {
 	WebElement AddPOAButton;
 	@FindBy(xpath = "//input[contains(@value,'Next')]")
 	WebElement btn_Next;
+	@FindBy(xpath = "//input[contains(@value,'Back')]")
+	WebElement btn_back;
+	@FindBy(xpath = "//input[contains(@value,'Pay Now')]")
+	WebElement btn_paynow;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public PaymentsPage() {
@@ -28,5 +32,15 @@ public class PaymentsPage extends Base {
 		CommonFunctions.clickElement(btn_Next);
 		return new FinancialDecisionsPage();
 	}
+	public ReviewConfirmPage clickBack() {
+		CommonFunctions.clickElement(btn_back);
+		return new ReviewConfirmPage();
+	}
+
+	public CheckOutPage clickPayNow() {
+		CommonFunctions.clickElement(btn_paynow);
+		return new CheckOutPage();
+	}
+
 
 }
