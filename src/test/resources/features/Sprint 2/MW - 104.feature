@@ -4,12 +4,24 @@ Feature: MW - 104 As a Legal Assistant, I want to navigate to a Dashboard, So th
   Scenario Outline: 
     # Go to site and log in
     #Scenario1
-    Given user opens browser
+    Given user opens admin page
     When user logs into app with the "<email>" and "<password>" to dashboard
     Then user is on "Dashboard" page
-    Then user checks dashboard table displayed
+    #Scenario2
+    #And user checks dashboard table displayed
+    #Scenario3
+    #And user checks newest row in dashboard
+    #And user checks oldest row in dashboard
+    When user search for selected user in dashboard
+    #Scenario 4-5-6
+    When user updates action details in dashboard
+    #Scenario 7
+   	Then user enters invalid date in action 
+    And user sees feedback message "Invalid Date"
+    Then user sorts dashboard column
+    
     
 
     Examples: 
-      | email    | password     | Address1                                         | Suburb         |
-      | backuser | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email    | password     |
+      | backuser | Password123! |

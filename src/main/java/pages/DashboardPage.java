@@ -28,7 +28,7 @@ public class DashboardPage extends Base {
 	WebElement tablerow_Name;
 	@FindBy(xpath = "//*[text()='Surname']//parent::th")
 	WebElement tablerow_Surname;
-	@FindBy(xpath = "//*[text()='Update']//parent::th")
+	@FindBy(xpath = "//*[text()='Updated']//parent::th")
 	WebElement tablerow_Update;
 	@FindBy(xpath = "//*[text()='Phone']//parent::th")
 	WebElement tablerow_Phone;
@@ -46,6 +46,16 @@ public class DashboardPage extends Base {
 	WebElement tablerow_Action;
 	@FindBy(xpath = "//*[text()='Action Date']//parent::th")
 	WebElement tablerow_ActionDate;
+
+	/* Row Actions */
+	@FindBy(xpath = "(//table[contains(@id,'FormItemTable')]//following-sibling::tr)[2]")
+	WebElement tablerow_NewestRow;
+	@FindBy(xpath = "(//table[contains(@id,'FormItemTable')]//following-sibling::tr)[11]")
+	WebElement tablerow_OldestRow;
+	@FindBy(xpath = "(//select[contains(@id,'FormItemTable_List_Current_Actions_Id')])[1]")
+	WebElement dropdown_Action;
+	@FindBy(xpath = "(//input[contains(@id,'ActionDate2')])[1]")
+	WebElement input_ActionDate;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public DashboardPage() {
@@ -67,6 +77,66 @@ public class DashboardPage extends Base {
 
 	public void displayedSearchDashboard() {
 		CommonFunctions.elementDisplayed(input_SearchDashboard);
+	}
+
+	public void displayedNewestRow() {
+		CommonFunctions.elementDisplayed(tablerow_NewestRow);
+		CommonFunctions.wait(3000, false);
+	}
+
+	public void displayedOldestRow() {
+		CommonFunctions.elementDisplayed(tablerow_OldestRow);
+		CommonFunctions.wait(3000, false);
+	}
+
+	public void checksDashboardRows() {
+		CommonFunctions.elementDisplayed(tablerow_Name);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_Surname);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_Update);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_Phone);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_Email);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_Single);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_Union);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_State);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_Status);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_Action);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(tablerow_ActionDate);
+		CommonFunctions.wait(3000, false);
+	}
+
+	public void SearchDashboardUser() {
+		CommonFunctions.clearThenEnterElementValue(input_SearchDashboard, "Email");
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.clickElement(button_Search);
+		CommonFunctions.wait(3000, false);
+
+	}
+
+	public void UpdateUserActions() {
+		CommonFunctions.selectValueFromDropdown(dropdown_Action, "Made contact");
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.clearThenEnterElementValue(input_ActionDate, "05/09/2001");
+		CommonFunctions.wait(3000, false);
+	}
+
+	public void enterInvalidDate() {
+		CommonFunctions.clearThenEnterElementValue(input_ActionDate, "05/09/111");
+		CommonFunctions.wait(3000, false);
+	}
+
+	public void SortsColumnInDashboardTable() {
+		CommonFunctions.clickElement(tablerow_Update);
+		CommonFunctions.wait(3000, false);
 	}
 
 	public DashboardPage clickLoginDashboard() {
