@@ -16,6 +16,7 @@ import pages.AddOnsPage;
 import pages.AssetsPage;
 import pages.BeneficiariesPage;
 import pages.ChangePasswordPage;
+import pages.CheckOutPage;
 import pages.CodePage;
 import pages.DashboardPage;
 import pages.ExecutorsPage;
@@ -54,6 +55,7 @@ public class StepDefinitions extends Base {
 	DashboardPage dashboardPage;
 
 	String Email;
+	CheckOutPage checkOutPage;
 
 	// ================================================== Universal Functions ==================================================
 	@Before
@@ -2717,6 +2719,148 @@ public class StepDefinitions extends Base {
 	public void user_removes_the_attached_file_on_about_you_page() throws Throwable {
 		aboutPage.ClickRemoveAttachment();
 	}
+	@Then("^user click on I do not want a MDM$")
+	public void user_click_on_I_do_not_want_a_MDM() throws Throwable {
+	   medicalDecisionsPage.clickIDontWantDecisionMaker();
+	}
+	@Then("^user click next$")
+	public void user_click_next() throws Throwable {
+	    medicalDecisionsPage.ClickNextButton();
+	}
+	@Then("^POA is displayed in the order summary$")
+	public void poa_is_displayed_in_the_order_summary() throws Throwable {
+		CommonFunctions.textDisplayedInPage("Power of Attorney");
+	}
+	
+
+	@Then("^Standard will legal document is displayed in the order summary$")
+	public void standard_will_legal_document_is_displayed_in_the_order_summary() throws Throwable {
+		CommonFunctions.textDisplayedInPage("Standard");
+		CommonFunctions.wait(5000, false);
+		
+	}
+	@Then("^user clicks on back button on the order summary page$")
+	public void user_clicks_on_back_button_on_the_order_summary_page() throws Throwable {
+		CommonFunctions.wait(5000, false);
+		reviewConfirmPage = paymentsPage.clickBack();
+		
+		
+	}
+	@Then("^user clicks on pay now button$")
+	public void user_clicks_on_pay_now_button() throws Throwable {
+		CommonFunctions.wait(5000, false);
+		checkOutPage = paymentsPage.clickPayNow();
+		CommonFunctions.wait(5000, false);
+
+	}
+	
+	@When("^user clicks on continue on incomplete order popup$")
+	public void user_clicks_on_continue_on_incomplete_order_popup() throws Throwable {
+		if (new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(), 'DEBUG You have an incomplete Order')]")))).isDisplayed()) {
+			paymentsPage = homePage.ClickContiueButtonPopUp();
+		}
+		else {
+
+		}
+		CommonFunctions.wait(5000, false);
+	}
+//	@Then("^user sees next button on the ID docs page$")
+//	public void user_sees_next_button_on_the_ID_docs_page() throws Throwable {
+//		idDocsPage.DisplayedNextButton();
+//	}
+	
+
+	//Checkout - invalid payment steps
+	@When("^user sees card type option$")
+	public void user_sees_card_type_option() throws Throwable {
+		checkOutPage.displayCardType();
+	}
+
+	@When("^user sees card number input$")
+	public void user_sees_card_number_input() throws Throwable {
+		checkOutPage.displayCardNumber();
+	}
+	
+	@When("^user sees expiration date month selection$")
+	public void user_sees_expiration_date_month_selection() throws Throwable {
+		checkOutPage.displayExpMonth();
+	}
+
+	@When("^user sees expiration date year selection$")
+	public void user_sees_expiration_date_year_selection() throws Throwable {
+		checkOutPage.displayYearMonth();
+	}
+
+	@When("^user sees CVN input$")
+	public void user_sees_CVN_input() throws Throwable {
+		checkOutPage.displayCVN();
+	}
+	
+	@When("^user clicks the pay button$")
+	public void user_clicks_the_pay_button() throws Throwable {
+		checkOutPage.ClickPayButton();
+			
+	}
+	@Then("^error message Card type is a required field is displayed$")
+	public void error_message_Card_type_is_a_required_field_is_displayed() throws Throwable {
+		checkOutPage.displayCardTypeErrorMessage();
+	}
+
+	@Then("^error message Enter a valid card number is displayed$")
+	public void error_message_Enter_a_valid_card_number_is_displayed() throws Throwable {
+		checkOutPage.displayCardNumberErrorMessage();
+	}
+
+	@Then("^error message Enter a valid expiry date is displayed$")
+	public void error_message_Enter_a_valid_expiry_date_is_displayed() throws Throwable {
+	    checkOutPage.displayCardExpirationErrorMessage();
+	}
+	
+	@Then("^user clicks the cancel button$")
+	public void user_clicks_the_cancel_button() throws Throwable {
+		checkOutPage.ClickCancelButton();
+	}
+	
+	@When("^user sees validation message Are you sure you want to cancel your order\\?$")
+	public void user_sees_validation_message_Are_you_sure_you_want_to_cancel_your_order() throws Throwable {
+		checkOutPage.displayCancelOrderPopup();
+	}
+
+	@Then("^user clicks no$")
+	public void user_clicks_no() throws Throwable {
+		checkOutPage.clickNoCancelOrder();
+	}
+
+	@Then("^user clicks yes$")
+	public void user_clicks_yes() throws Throwable {
+		checkOutPage.clickYesCancelOrder();
+	}
+	
+	@Then("^user clicks on return to website button$")
+	public void user_clicks_on_return_to_website_button() throws Throwable {
+	  homePage = checkOutPage.ClickReturn();
+	}
+	//Checkout - valid payment steps
+	@Then("^user enter payment details$")
+	public void user_enter_payment_details() throws Throwable {
+		checkOutPage.fillUpPaymentDetails();
+	}
+	
+	@Then("^user select month$")
+	public void user_select_month() throws Throwable {
+		checkOutPage.selectMonth();
+	}
+
+	@Then("^user select year$")
+	public void user_select_year() throws Throwable {
+		checkOutPage.selectYear();
+	}
+	
+//	@When("^user clicks the next button on the review and confirm page to go to payments page$")
+//	public void user_clicks_the_next_button_on_the_review_and_confirm_page_to_go_to_payments_page() throws Throwable {
+//		paymentsPage = reviewConfirmPage.ClickNextButtonPayment();
+//	}
+
 
 	@Then("^user redirects to \"([^\"]*)\" page$")
 	public void user_redirects_to__page(String arg1) throws Throwable {

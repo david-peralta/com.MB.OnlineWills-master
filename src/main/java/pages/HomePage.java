@@ -40,7 +40,6 @@ public class HomePage extends Base {
 	WebElement NewOrderPopUp;
 	@FindBy(xpath = "//input[@value='Continue']")
 	WebElement Continue;
-
 	@FindBy(xpath = "//div[contains(@id,'VoucherUnion_block_wtTitle')]")
 	WebElement PopupHeader;
 	@FindBy(xpath = "//a[contains(text(),'Click here to check if you qualify for a free standard Will')]")
@@ -233,4 +232,11 @@ public class HomePage extends Base {
 
 	}
 
+	public PaymentsPage ClickContiueButtonPopUp() {
+		CommonFunctions.clickElement(ContinueOrderPopUp);
+		return new PaymentsPage();
+		
+		
+	}
+	
 }
