@@ -94,10 +94,10 @@ public class IDdocsPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'PassportDOBInput')]")
 	WebElement Question19;
 
-	@FindBy(xpath = "//input[contains(@id,'AusPassportNo')]")
+	/* Foreign Passport */
+	@FindBy(xpath = "//input[contains(@id,'ForeignPassportNo')]")
 	WebElement Question20;
 
-	/* Foreign Passport */
 	@FindBy(xpath = "//input[contains(@id,'ForeignPassportFname')]")
 	WebElement Question22;
 
@@ -109,6 +109,22 @@ public class IDdocsPage extends Base {
 
 	@FindBy(xpath = "//input[contains(@id,'ForeignPassportDOBInput')]")
 	WebElement Question25;
+
+	/* Progess Bar */
+	@FindBy(xpath = "//div[text()='Personal Details']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressPersonal;
+	@FindBy(xpath = "//div[text()='About You']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAbout;
+	@FindBy(xpath = "//div[text()='Assets']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAssets;
+	@FindBy(xpath = "//div[text()='Executors']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressExecutors;
+	@FindBy(xpath = "//div[text()='Beneficiaries']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressBeneficiaries;
+	@FindBy(xpath = "//div[text()='Review & Confirm']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressReviewConfirm;
+	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAddOns;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public IDdocsPage() {
@@ -304,7 +320,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question7, "Address1Test");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Question8, "09/05/1993");
+		CommonFunctions.clearThenEnterElementValue(Question8, "05/09/1990");
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -322,7 +338,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question13, "01/01/2025");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Question14, "01/01/1993");
+		CommonFunctions.clearThenEnterElementValue(Question14, "05/09/1990");
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -337,7 +353,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question18, "User");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Question19, "09/05/1993");
+		CommonFunctions.clearThenEnterElementValue(Question19, "05/09/1990");
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -354,7 +370,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question24, "User");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Question25, "09/05/1993");
+		CommonFunctions.clearThenEnterElementValue(Question25, "05/09/1990");
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -368,5 +384,47 @@ public class IDdocsPage extends Base {
 		CommonFunctions.clickElement(btn_Back);
 
 		return new ExecutorsPage();
+	}
+
+	public AboutPage ProgressChangeAbout() {
+		CommonFunctions.clickElement(ProgressAbout);
+
+		return new AboutPage();
+	}
+
+	public AssetsPage ProgressChangeAssets() {
+		CommonFunctions.clickElement(ProgressAssets);
+
+		return new AssetsPage();
+	}
+
+	public BeneficiariesPage ProgressChangeBeneficiaries() {
+		CommonFunctions.clickElement(ProgressBeneficiaries);
+
+		return new BeneficiariesPage();
+	}
+
+	public ExecutorsPage ProgressChangeExecutors() {
+		CommonFunctions.clickElement(ProgressExecutors);
+
+		return new ExecutorsPage();
+	}
+
+	public PersonalPage ProgressPersonal() {
+		CommonFunctions.clickElement(ProgressPersonal);
+
+		return new PersonalPage();
+	}
+
+	public ReviewConfirmPage ProgressChangeReviewConfirm() {
+		CommonFunctions.clickElement(ProgressReviewConfirm);
+
+		return new ReviewConfirmPage();
+	}
+
+	public AddOnsPage ProgressChangeAddOns() {
+		CommonFunctions.clickElement(ProgressAddOns);
+
+		return new AddOnsPage();
 	}
 }

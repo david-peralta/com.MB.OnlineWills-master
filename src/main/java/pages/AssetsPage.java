@@ -184,6 +184,22 @@ public class AssetsPage extends Base {
 	@FindBy(xpath = "(//input[contains(@id,'NominatedPortion')]//following::a//following::span//following::span[text()='Required field'])[1]")
 	WebElement BenefNominatedPortionReq;
 
+	/* Progess Bar */
+	@FindBy(xpath = "//div[text()='Personal Details']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressPersonal;
+	@FindBy(xpath = "//div[text()='About You']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAbout;
+	@FindBy(xpath = "//div[text()='Beneficiaries']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressBeneficiaries;
+	@FindBy(xpath = "//div[text()='Executors']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressExecutors;
+	@FindBy(xpath = "//div[text()='ID Docs']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressIDDocs;
+	@FindBy(xpath = "//div[text()='Review & Confirm']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressReviewConfirm;
+	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAddOns;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public AssetsPage() {
 		PageFactory.initElements(driver, this);
@@ -603,6 +619,48 @@ public class AssetsPage extends Base {
 	public AboutPage ClickBackButton() {
 		CommonFunctions.clickElement(BackButton);
 		return new AboutPage();
+	}
+
+	public AboutPage ProgressChangeAbout() {
+		CommonFunctions.clickElement(NextButton);
+
+		return new AboutPage();
+	}
+
+	public PersonalPage ProgressChangePersonal() {
+		CommonFunctions.clickElement(NextButton);
+
+		return new PersonalPage();
+	}
+
+	public BeneficiariesPage ProgressChangeBeneficiaries() {
+		CommonFunctions.clickElement(NextButton);
+
+		return new BeneficiariesPage();
+	}
+
+	public ExecutorsPage ProgressChangeExecutors() {
+		CommonFunctions.clickElement(NextButton);
+
+		return new ExecutorsPage();
+	}
+
+	public IDdocsPage ProgressChangeIDdocs() {
+		CommonFunctions.clickElement(NextButton);
+
+		return new IDdocsPage();
+	}
+
+	public ReviewConfirmPage ProgressChangeReviewConfirm() {
+		CommonFunctions.clickElement(NextButton);
+
+		return new ReviewConfirmPage();
+	}
+
+	public AddOnsPage ProgressChangeAddOns() {
+		CommonFunctions.clickElement(NextButton);
+
+		return new AddOnsPage();
 	}
 
 }

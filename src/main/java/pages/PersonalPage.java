@@ -72,6 +72,22 @@ public class PersonalPage extends Base {
 	@FindBy(xpath = "//div[contains(@id,'PostalAddress_Container')]")
 	WebElement PostalContainer;
 
+	/* Progess Bar */
+	@FindBy(xpath = "//div[text()='About You']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAbout;
+	@FindBy(xpath = "//div[text()='Assets']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAssets;
+	@FindBy(xpath = "//div[text()='Beneficiaries']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressBeneficiaries;
+	@FindBy(xpath = "//div[text()='Executors']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressExecutors;
+	@FindBy(xpath = "//div[text()='ID Docs']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressIDDocs;
+	@FindBy(xpath = "//div[text()='Review & Confirm']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressReviewConfirm;
+	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAddOns;
+
 	// ================================================== Initializing the Page Objects =================================================
 	public PersonalPage() {
 		PageFactory.initElements(driver, this);
@@ -349,6 +365,12 @@ public class PersonalPage extends Base {
 
 	}
 
+	public void FillUpDateOfBirth(String birth) {
+		CommonFunctions.clickElement(DateOfBirth);
+		CommonFunctions.wait(2500, false);
+		CommonFunctions.enterElementValue(DateOfBirth, birth);
+	}
+
 	public void CheckResSuburbMandatory() {
 		CommonFunctions.elementDisplayed(ResidentialSuburb.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
@@ -439,6 +461,56 @@ public class PersonalPage extends Base {
 
 	public void CheckPostalStateDropdownMandatory() {
 		CommonFunctions.elementDisplayed(PostalState.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public AboutPage ProgressChangeAbout() {
+		CommonFunctions.clickElement(ProgressAbout);
+
+		return new AboutPage();
+	}
+
+	public AssetsPage ProgressChangeAssets() {
+		CommonFunctions.clickElement(ProgressAssets);
+
+		return new AssetsPage();
+	}
+
+	public BeneficiariesPage ProgressChangeBeneficiaries() {
+		CommonFunctions.clickElement(ProgressBeneficiaries);
+
+		return new BeneficiariesPage();
+	}
+
+	public ExecutorsPage ProgressChangeExecutors() {
+		CommonFunctions.clickElement(ProgressExecutors);
+
+		return new ExecutorsPage();
+	}
+
+	public IDdocsPage ProgressChangeIDdocs() {
+		CommonFunctions.clickElement(ProgressIDDocs);
+
+		return new IDdocsPage();
+	}
+
+	public ReviewConfirmPage ProgressChangeReviewConfirm() {
+		CommonFunctions.clickElement(ProgressReviewConfirm);
+
+		return new ReviewConfirmPage();
+	}
+
+	public AddOnsPage ProgressChangeAddOns() {
+		CommonFunctions.clickElement(ProgressAddOns);
+
+		return new AddOnsPage();
+	}
+
+	public void CheckProgressAbout() {
+		CommonFunctions.elementDisplayed(ProgressAbout.findElement(By.xpath(".//following-sibling::a[contains(text(),'Change')]")));
+	}
+
+	public void CheckProgressAsset() {
+		CommonFunctions.elementDisplayed(ProgressAbout.findElement(By.xpath(".//following-sibling::a[contains(text(),'Change')]")));
 	}
 
 }

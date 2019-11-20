@@ -125,6 +125,22 @@ public class ExecutorsPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'WishDetail_Input')]")
 	WebElement Question20;
 
+	/* Progess Bar */
+	@FindBy(xpath = "//div[text()='Personal Details']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressPersonal;
+	@FindBy(xpath = "//div[text()='About You']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAbout;
+	@FindBy(xpath = "//div[text()='Assets']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAssets;
+	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAddOns;
+	@FindBy(xpath = "//div[text()='Beneficiaries']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressBeneficiaries;
+	@FindBy(xpath = "//div[text()='ID Docs']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressIDDocs;
+	@FindBy(xpath = "//div[text()='Review & Confirm']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressReviewConfirm;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public ExecutorsPage() {
 		PageFactory.initElements(driver, this);
@@ -446,6 +462,48 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question20, "Other Here");
 		CommonFunctions.wait(5000, false);
+	}
+
+	public AboutPage ProgressChangeAbout() {
+		CommonFunctions.clickElement(ProgressAbout);
+
+		return new AboutPage();
+	}
+
+	public AssetsPage ProgressChangeAssets() {
+		CommonFunctions.clickElement(ProgressAssets);
+
+		return new AssetsPage();
+	}
+
+	public BeneficiariesPage ProgressChangeBeneficiaries() {
+		CommonFunctions.clickElement(ProgressBeneficiaries);
+
+		return new BeneficiariesPage();
+	}
+
+	public PersonalPage ProgressChangePersonal() {
+		CommonFunctions.clickElement(ProgressPersonal);
+
+		return new PersonalPage();
+	}
+
+	public IDdocsPage ProgressChangeIDdocs() {
+		CommonFunctions.clickElement(ProgressIDDocs);
+
+		return new IDdocsPage();
+	}
+
+	public ReviewConfirmPage ProgressChangeReviewConfirm() {
+		CommonFunctions.clickElement(ProgressReviewConfirm);
+
+		return new ReviewConfirmPage();
+	}
+
+	public AddOnsPage ProgressChangeAddOns() {
+		CommonFunctions.clickElement(ProgressAddOns);
+
+		return new AddOnsPage();
 	}
 
 }

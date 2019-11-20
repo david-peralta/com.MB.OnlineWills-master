@@ -55,7 +55,6 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     And user adds driver license details
     And user selects Medicare as second identification type
     And user adds medicare details
-    And user adds medicare details
     And user clicks next button on the ID docs page
     Then user is on "ReviewAndConfirm" page
     And user reviews and confirms will details

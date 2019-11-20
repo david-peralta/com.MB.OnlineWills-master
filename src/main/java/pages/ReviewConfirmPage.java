@@ -225,6 +225,22 @@ public class ReviewConfirmPage extends Base {
 	@FindBy(xpath = "//span[text()='I do not want to appoint a Medical Decision Maker']//following::div[text()='No']")
 	WebElement NoIDoNotWantToAppointAMedicalDecisionMaker;
 
+	/* Progess Bar */
+	@FindBy(xpath = "//div[text()='Personal Details']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressPersonal;
+	@FindBy(xpath = "//div[text()='About You']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAbout;
+	@FindBy(xpath = "//div[text()='Assets']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAssets;
+	@FindBy(xpath = "//div[text()='Executors']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressExecutors;
+	@FindBy(xpath = "//div[text()='Beneficiaries']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressBeneficiaries;
+	@FindBy(xpath = "//div[text()='ID Docs']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressIDDocs;
+	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAddOns;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public ReviewConfirmPage() {
 		PageFactory.initElements(driver, this);
@@ -470,6 +486,48 @@ public class ReviewConfirmPage extends Base {
 
 	public void DisplayYesIDoNotWantToAppointAMedicalDecisionMaker() {
 		CommonFunctions.clickElement(YesIDoNotWantToAppointAMedicalDecisionMaker);
+	}
+
+	public PersonalPage ProgressChangePersonal() {
+		CommonFunctions.clickElement(ProgressPersonal);
+
+		return new PersonalPage();
+	}
+
+	public AssetsPage ProgressChangeAssets() {
+		CommonFunctions.clickElement(ProgressAssets);
+
+		return new AssetsPage();
+	}
+
+	public BeneficiariesPage ProgressChangeBeneficiaries() {
+		CommonFunctions.clickElement(ProgressBeneficiaries);
+
+		return new BeneficiariesPage();
+	}
+
+	public ExecutorsPage ProgressChangeExecutors() {
+		CommonFunctions.clickElement(ProgressExecutors);
+
+		return new ExecutorsPage();
+	}
+
+	public IDdocsPage ProgressChangeIDdocs() {
+		CommonFunctions.clickElement(ProgressIDDocs);
+
+		return new IDdocsPage();
+	}
+
+	public AboutPage ProgressChangeReviewConfirm() {
+		CommonFunctions.clickElement(ProgressAbout);
+
+		return new AboutPage();
+	}
+
+	public AddOnsPage ProgressChangeAddOns() {
+		CommonFunctions.clickElement(ProgressAddOns);
+
+		return new AddOnsPage();
 	}
 
 }

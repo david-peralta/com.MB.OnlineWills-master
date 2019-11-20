@@ -17,6 +17,7 @@ import pages.AssetsPage;
 import pages.BeneficiariesPage;
 import pages.ChangePasswordPage;
 import pages.CodePage;
+import pages.DashboardPage;
 import pages.ExecutorsPage;
 import pages.FinancialDecisionsPage;
 import pages.HomePage;
@@ -50,6 +51,8 @@ public class StepDefinitions extends Base {
 	ThankYouPage thankyouPage;
 	FinancialDecisionsPage financialDecisionsPage;
 	MedicalDecisionsPage medicalDecisionsPage;
+	DashboardPage dashboardPage;
+
 	String Email;
 
 	// ================================================== Universal Functions ==================================================
@@ -76,7 +79,7 @@ public class StepDefinitions extends Base {
 
 	@Given("^user opens browser$")
 	public void user_opens_browser() throws Throwable { // Always the start page.
-		driver.get(prop.getProperty("url"));
+		driver.get(prop.getProperty("url4"));
 		loginPage = new LoginPage();
 
 	}
@@ -319,6 +322,7 @@ public class StepDefinitions extends Base {
 	public void user_clicks_on_add_POA_on_addons_page() throws Throwable {
 		addOnsPage.clickAddPOAButton();
 		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 	}
 
 	@Then("^user sees beneficiary question displayed$")
@@ -1417,7 +1421,8 @@ public class StepDefinitions extends Base {
 
 	@When("^user inputs \"([^\"]*)\" as date of birth on personal page$")
 	public void user_inputs_as_date_of_birth_on_personal_page(String arg1) throws Throwable {
-		personalPage.SelectDateToday();
+		// personalPage.SelectDateToday();
+		personalPage.SetDateOfBirth(arg1);
 		// personalPage.SetDateOfBirth(arg1);
 		// CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		// CommonFunctions.wait(5000, false);
@@ -2003,6 +2008,15 @@ public class StepDefinitions extends Base {
 		loginPage.setPasswordInput(arg2);
 
 		homePage = loginPage.clickLoginButton();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@When("^user logs into app with the \"([^\"]*)\" and \"([^\"]*)\" to dashboard$")
+	public void user_logs_into_app_with_the_and_to_dashboard(String arg1, String arg2) throws Throwable {
+		loginPage.setEmailInput(arg1);
+		loginPage.setPasswordInput(arg2);
+
+		dashboardPage = loginPage.clickLoginDashboard();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -2704,4 +2718,87 @@ public class StepDefinitions extends Base {
 		aboutPage.ClickRemoveAttachment();
 	}
 
+	@Then("^user redirects to \"([^\"]*)\" page$")
+	public void user_redirects_to__page(String arg1) throws Throwable {
+		if (driver.getTitle().equals("Personal Details")) {
+			if (arg1 == "Personal Details")
+				personalPage = idDocsPage.ProgressPersonal();
+			CommonFunctions.wait(5000, false);
+		}
+		else if (driver.getTitle().equals("About You")) {
+			if (arg1 == "About You")
+				aboutPage = idDocsPage.ProgressChangeAbout();
+			CommonFunctions.wait(5000, false);
+		}
+
+		else if (driver.getTitle().equals("Assets")) {
+			if (arg1 == "Assets")
+				assetsPage = aboutPage.ProgressChangeAssets();
+			CommonFunctions.wait(5000, false);
+		}
+
+		else if (driver.getTitle().equals("Beneficiaries")) {
+			if (arg1 == "Beneficiaries")
+				beneficiariesPage = assetsPage.ProgressChangeBeneficiaries();
+			CommonFunctions.wait(5000, false);
+		}
+
+		else if (driver.getTitle().equals("Executors")) {
+			if (arg1 == "Executors")
+				executorsPage = beneficiariesPage.ProgressChangeExecutors();
+			CommonFunctions.wait(5000, false);
+		}
+
+		else if (driver.getTitle().equals("ID Check")) {
+			if (arg1 == "ID Check")
+				idDocsPage = executorsPage.ClickNextButton();
+			CommonFunctions.wait(5000, false);
+		}
+
+		else if (driver.getTitle().equals("ReviewAndConfirm")) {
+			if (arg1 == "ReviewAndConfirm")
+				reviewConfirmPage = idDocsPage.ProgressChangeReviewConfirm();
+			CommonFunctions.wait(5000, false);
+		}
+	}
+
+	@Then("^user redirects to Personal Details page$")
+	public void user_redirects_to_Personal_Details_page() throws Throwable {
+		personalPage = idDocsPage.ProgressPersonal();
+	}
+
+	@Then("^user redirects to About You page$")
+	public void user_redirects_to_About_You_page() throws Throwable {
+		aboutPage = personalPage.ProgressChangeAbout();
+	}
+
+	@Then("^user redirects to Assets page$")
+	public void user_redirects_to_Assets_page() throws Throwable {
+		assetsPage = aboutPage.ProgressChangeAssets();
+	}
+
+	@Then("^user redirects to Beneficiaries page$")
+	public void user_redirects_to_Beneficiaries_page() throws Throwable {
+		beneficiariesPage = assetsPage.ProgressChangeBeneficiaries();
+	}
+
+	@Then("^user redirects to Executors page$")
+	public void user_redirects_to_Executors_page() throws Throwable {
+		executorsPage = beneficiariesPage.ProgressChangeExecutors();
+	}
+
+	@Then("^user verifies if will is complete$")
+	public void user_verifies_if_will_is_complete() throws Throwable {
+		addOnsPage.CheckProgressConfirmed();
+	}
+
+	// @When("^user clicks the next button on the review and confirm page to go to payments page$")
+	// public void user_clicks_the_next_button_on_the_review_and_confirm_page_to_go_to_payments_page() throws Throwable {
+	// paymentsPage = reviewConfirmPage.ClickNextButtonPayment();
+	// }
+
+	@Then("^user check dashboard table displayed$")
+	public void user_checks_dashboard_table_displayed() throws Throwable {
+
+	}
 }
