@@ -1,20 +1,20 @@
-Feature: MW - 54
+Feature: MW - 54 : Checkout
 
-  @Regression2
+  @Sprint
   Scenario Outline: 
-    #Scenario1
-    # Go to site and log in
+    # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    And user clicks on new order on incomplete order popup
+    When user clicks on new order on incomplete order popup
+    #When user clicks on continue on incomplete order popup
     When user selects singles product
-    #Select Standard will Package
+    #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
     When user selects "Dr" as title on personal page
-    When user inputs "Today" as date of birth on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
     When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
     When user inputs "<Address1>" as Residential address line one on personal page
@@ -62,21 +62,21 @@ Feature: MW - 54
       | email                   | password     | Address1                                         | Suburb         |
       | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
 
-  @Regression2
+  @Sprint
   Scenario Outline: 
-    #Scenario3
-    # Go to site and log in
+    # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
     When user clicks on new order on incomplete order popup
+    #When user clicks on continue on incomplete order popup
     When user selects singles product
-    #Select Standard will Package
+    #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
     When user selects "Dr" as title on personal page
-    When user inputs "05/09/1990" as date of birth on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
     When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
     When user inputs "<Address1>" as Residential address line one on personal page

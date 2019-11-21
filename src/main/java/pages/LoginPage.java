@@ -23,7 +23,7 @@ public class LoginPage extends Base {
 	@FindBy(xpath = "//*[text() = 'Create an Account']")
 	WebElement RegisterLink;
 
-	@FindBy(xpath = "//input[contains(@id, 'UserNameInput')]")
+	@FindBy(xpath = "//input[contains(@id, 'UsernameInput')]")
 	WebElement input_Email;
 
 	@FindBy(xpath = "//input[contains(@id, 'UsernameInput')]//following-sibling::span[text()='Required field']")
@@ -121,5 +121,5 @@ public class LoginPage extends Base {
 		CommonFunctions.clickElement(button_Login);
 		return new DashboardPage();
 	}
-	
+
 }

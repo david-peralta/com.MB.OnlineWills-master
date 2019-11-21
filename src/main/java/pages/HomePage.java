@@ -79,6 +79,10 @@ public class HomePage extends Base {
 	@FindBy(xpath = "//span[contains(text(),'A Will for your spouse/partner')]")
 	WebElement CoupleWillTypeText2;
 
+	/* Footer */
+	@FindBy(xpath = "//div[contains(text(),'© Copyright 2019 Maurice Blackburn. All Rights Reserved.')]")
+	WebElement Footer_MB;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public HomePage() {
 		PageFactory.initElements(driver, this);

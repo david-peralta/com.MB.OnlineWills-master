@@ -61,9 +61,9 @@ public class PersonalPage extends Base {
 	WebElement YesQuestion2;
 	@FindBy(xpath = "//input[contains(@id,'Diagnosed_No')]")
 	WebElement NoQuestion2;
-	@FindBy(xpath = "//input[contains(@id,'Next_Input')]")
+	@FindBy(xpath = "//input[contains(@value,'Next')]")
 	WebElement NextButton;
-	@FindBy(xpath = "//input[contains(@id,'Cancel_Input')]")
+	@FindBy(xpath = "//input[contains(@value, 'Cancel')]")
 	WebElement CancelButton;
 
 	@FindBy(xpath = "//button[text()='Today']")
