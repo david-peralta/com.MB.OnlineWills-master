@@ -24,6 +24,8 @@ public class DashboardPage extends Base {
 	WebElement link_MoreOption;
 	@FindBy(xpath = "//a[contains(@id,'HideOptions')]")
 	WebElement link_HideOption;
+	@FindBy(xpath = "//div[text() ='Union List']//parent::div//parent::a")
+	WebElement button_UnionList;
 
 	/* Table Row */
 	@FindBy(xpath = "//*[text()='Name']//parent::th")
@@ -238,4 +240,11 @@ public class DashboardPage extends Base {
 		CommonFunctions.clickElement(button_Search);
 		return new DashboardPage();
 	}
+	
+	public UnionListPage clickUnionList() {
+		CommonFunctions.clickElement(button_UnionList);
+		CommonFunctions.wait(5000, false);
+		return new UnionListPage();
+	}
+	
 }

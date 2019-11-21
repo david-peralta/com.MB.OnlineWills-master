@@ -30,6 +30,7 @@ import pages.PersonalPage;
 import pages.RegistrationPage;
 import pages.ReviewConfirmPage;
 import pages.ThankYouPage;
+import pages.UnionListPage;
 import utilities.Base;
 import utilities.CommonFunctions;
 import utilities.LogFunctions;
@@ -53,7 +54,8 @@ public class StepDefinitions extends Base {
 	FinancialDecisionsPage financialDecisionsPage;
 	MedicalDecisionsPage medicalDecisionsPage;
 	DashboardPage dashboardPage;
-
+	UnionListPage unionListPage;
+	
 	String Email;
 	CheckOutPage checkOutPage;
 
@@ -81,7 +83,7 @@ public class StepDefinitions extends Base {
 
 	@Given("^user opens browser$")
 	public void user_opens_browser() throws Throwable { // Always the start page.
-		driver.get(prop.getProperty("url"));
+		driver.get(prop.getProperty("url1"));
 		loginPage = new LoginPage();
 
 	}
@@ -2032,14 +2034,6 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
-	@When("^user logs into app with the \"([^\"]*)\" and \"([^\"]*)\" to dashboard$")
-	public void user_logs_into_app_with_the_and_to_dashboard(String arg1, String arg2) throws Throwable {
-		loginPage.setEmailInput(arg1);
-		loginPage.setPasswordInput(arg2);
-
-		dashboardPage = loginPage.clickLoginDashboard();
-		CommonFunctions.wait(5000, false);
-	}
 
 	@When("^user inputs an \"([^\"]*)\" in the forgotten password email field$")
 	public void user_inputs_an_in_the_forgotten_password_email_field(String arg1) throws Throwable {
@@ -3069,5 +3063,127 @@ public class StepDefinitions extends Base {
 	public void user_checks_couple_will_types_is_displayed() throws Throwable {
 		homePage.checkCoupleWillBodyText2();
 	}
+	
+	// MW-177 MW-114 MW-115
+		@When("^user logs into app with the \"([^\"]*)\" and \"([^\"]*)\" to dashboard$")
+		public void user_logs_into_app_with_the_and_to_dashboard(String arg1, String arg2) throws Throwable {
+			loginPage.setEmailInput(arg1);
+			loginPage.setPasswordInput(arg2);
+			dashboardPage = loginPage.clickLoginDashboard();
+			CommonFunctions.wait(5000, false);
+		}
+		
+		@Then("^user clicks on union list menu$")
+		public void user_clicks_on_union_list_menu() throws Throwable {
+			CommonFunctions.wait(5000, false);
+			unionListPage = dashboardPage.clickUnionList();
+		}
+		
+		@Then("^user clicks on add union button$")
+		public void user_clicks_on_add_union_button() throws Throwable {
+			unionListPage.clickAddUnion();
+		}
+		@Then("^check add rule$")
+		public void check_add_rule() throws Throwable {
+			unionListPage.checkAddRule();
+		}
+
+		@Then("^user fill up add union details$")
+		public void user_fill_up_add_union_details() throws Throwable {
+		    unionListPage.fillUpUnionDetails_numeric_alphanumeric();
+		}
+		
+		@Then("^user click cancel button$")
+		public void user_click_cancel_button() throws Throwable {
+		   unionListPage.clickCancelUnion();
+		}
+
+		@Then("^user click save button$")
+		public void user_click_save_button() throws Throwable {
+		    unionListPage.clickSaveUnion();
+		}
+		
+		@Then("^user sees alert message$")
+		public void user_sees_alert_message() throws Throwable {
+		    unionListPage.alertMessageDisplay();
+		}
+		
+		@Then("^user select alphanumeric string type$")
+		public void user_select_alphanumeric_string_type() throws Throwable {
+		    unionListPage.selectAlphanumericStringType();
+		}
+		@Then("^user sees alert message for alpha location$")
+		public void user_sees_alert_message_for_alpha_location() throws Throwable {
+		    unionListPage.alertMessageDisplay_AlphaLocation();
+		}
+		
+		//Edit Union
+		@Then("^user clicks on edit union$")
+		public void user_clicks_on_edit_union() throws Throwable {
+		    unionListPage.clickEditButton();
+		}
+		
+		@Then("^user fill up edit union details$")
+		public void user_fill_up_edit_union_details() throws Throwable {
+		    unionListPage.fillUpEditUnionDetails_numeric_alphanumeric();
+		}
+
+		@Then("^user check for the edited union$")
+		public void user_check_for_the_edited_union() throws Throwable {
+			CommonFunctions.textDisplayedInPage("AlphaNumeric01");
+		}
+		
+		@Then("^user enter min length greater than max length$")
+		public void user_enter_min_length_greater_than_max_length() throws Throwable {
+			unionListPage.fillUpUnionDetails_SampleUnion1();
+		}
+		@When("^user enter min length less than zero$")
+		public void user_enter_min_length_less_than_zero() throws Throwable {
+			unionListPage.fillUpUnionDetails_SampleUnion2();
+		}
+		@When("^user enter alpha length equal to max length$")
+		public void user_enter_alpha_length_equal_to_max_length() throws Throwable {
+			unionListPage.fillUpUnionDetails_SampleUnion3();
+		}
+		@When("^user enter alpha length greater than to max length$")
+		public void user_enter_alpha_length_greater_than_to_max_length() throws Throwable {
+			unionListPage.fillUpUnionDetails_SampleUnion4();
+		}
+		@When("^user enter alpha length equal to zero$")
+		public void user_enter_alpha_length_equal_to_zero() throws Throwable {
+			unionListPage.fillUpUnionDetails_SampleUnion5();
+		}
+		@When("^user enter alpha length less than zero$")
+		public void user_enter_alpha_length_less_than_zero() throws Throwable {
+			unionListPage.fillUpUnionDetails_SampleUnion6();
+		}
+		@When("^user enter max length greater than fifty$")
+		public void user_enter_max_length_greater_than_fifty() throws Throwable {
+			unionListPage.fillUpUnionDetails_SampleUnion7();
+		}
+		@Then("^user clicks on edit union then cancel$")
+		public void user_clicks_on_edit_union_then_cancel() throws Throwable {
+		    unionListPage.clickEditButton1();
+		}
+
+		@Then("^user fill up edit union details and cancel$")
+		public void user_fill_up_edit_union_details_and_cancel() throws Throwable {
+		    unionListPage.fillUpUnionDetails_numeric();
+		}
+
+		
+		//Delete Union
+		@Then("^user click delete button$")
+		public void user_click_delete_button() throws Throwable {
+		    unionListPage.clickDeleteButton();
+		    CommonFunctions.wait(5000, false);
+		}
+		
+		@Then("^windows alert message is displayed$")
+		public void windows_alert_message_is_displayed() throws Throwable {
+		//	Alert alert = driver.switchTo().alert();
+	    //  alert.accept();
+			unionListPage.displayDeleteAlertMessage();
+		}
 
 }

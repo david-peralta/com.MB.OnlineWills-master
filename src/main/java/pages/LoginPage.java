@@ -121,4 +121,5 @@ public class LoginPage extends Base {
 		CommonFunctions.clickElement(button_Login);
 		return new DashboardPage();
 	}
+	
 }
