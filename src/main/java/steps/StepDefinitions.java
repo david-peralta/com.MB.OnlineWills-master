@@ -3040,4 +3040,34 @@ public class StepDefinitions extends Base {
 		dashboardPage.FillUpMoreOptionSearchFields();
 	}
 
+	@Then("^user verifies if css is displayed")
+	public void user_verifies_if_css_is_displayed() throws Throwable {
+		homePage.checkCSSColor();
+	}
+
+	@Then("^user checks standard will title is displayed")
+	public void user_checks_standard_will_title_is_displayed() throws Throwable {
+		homePage.checkStandardSingleWillText();
+	}
+
+	@Then("^user checks standard will body is displayed")
+	public void user_checks_standard_will_body_is_displayed() throws Throwable {
+		homePage.checkSingleWillBodyText();
+	}
+
+	@Then("^user checks couple will title is displayed")
+	public void user_checks_couple_will_title_is_displayed() throws Throwable {
+		homePage.checkStandardCoupleWillText();
+	}
+
+	@Then("^user checks couple will body is displayed")
+	public void user_checks_couple_will_body_is_displayed() throws Throwable {
+		homePage.checkCoupleWillBodyText1();
+	}
+
+	@Then("^user checks couple will types is displayed")
+	public void user_checks_couple_will_types_is_displayed() throws Throwable {
+		homePage.checkCoupleWillBodyText2();
+	}
+
 }

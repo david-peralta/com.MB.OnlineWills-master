@@ -9,6 +9,10 @@ import utilities.CommonFunctions;
 
 public class HomePage extends Base {
 	// ========================================================== Page Objects ===========================================================
+	/* CSS Property */
+	@FindBy(xpath = "//div[contains (@class, 'menu-item  background-red OSInline')]")
+	WebElement css_Red;
+
 	@FindBy(xpath = "//input[@value = 'Yes, logout']")
 	WebElement button_LogoutPopup_Yes;
 
@@ -60,6 +64,20 @@ public class HomePage extends Base {
 	WebElement AffiliatedUnionsDropdown;
 	@FindBy(xpath = "//span[contains(text(),'$0')]")
 	WebElement Cost;
+
+	/* View Text */
+	@FindBy(xpath = "//span[contains(text(),'Standard Single Will')]")
+	WebElement StandardSingleWill;
+	@FindBy(xpath = "//span[contains(text(),'It takes only 30 mins to provide us with all the information we need to draft your Will. ')]")
+	WebElement SingleWillBodyText;
+	@FindBy(xpath = "//span[contains(text(),'Standard Couple Will')]")
+	WebElement StandardCoupleWill;
+	@FindBy(xpath = "//span[contains(text(),'It takes only 30 mins to provide us with all the information we need to draft a Will for you and your spouse/partner. ')]")
+	WebElement CoupleWillBodyText;
+	@FindBy(xpath = "(//span[contains(text(),'A Will for you')])[1]")
+	WebElement CoupleWillTypeText1;
+	@FindBy(xpath = "//span[contains(text(),'A Will for your spouse/partner')]")
+	WebElement CoupleWillTypeText2;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public HomePage() {
@@ -236,6 +254,38 @@ public class HomePage extends Base {
 		CommonFunctions.clickElement(ContinueOrderPopUp);
 		return new PaymentsPage();
 
+	}
+
+	public void checkCSSColor() {
+		CommonFunctions.elementCssValueContains(css_Red, "background-color", "rgba(201, 42, 42, 1)");
+		// CommonFunctions.elementCssValueContains(css_Red, "font-size", "20px");
+	}
+
+	public void checkStandardSingleWillText() {
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(StandardSingleWill);
+	}
+
+	public void checkSingleWillBodyText() {
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(SingleWillBodyText);
+	}
+
+	public void checkStandardCoupleWillText() {
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(StandardCoupleWill);
+	}
+
+	public void checkCoupleWillBodyText1() {
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(CoupleWillBodyText);
+	}
+
+	public void checkCoupleWillBodyText2() {
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(CoupleWillTypeText1);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(CoupleWillTypeText2);
 	}
 
 }

@@ -58,7 +58,6 @@ Feature: MW - 54
     #AboutYou to Personal
     When user click the back button on the about page
 
-
     Examples: 
       | email                   | password     | Address1                                         | Suburb         |
       | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
