@@ -1149,8 +1149,16 @@ public class AboutPage extends Base {
 
 	}
 
+	public void UploadMoreWills() {
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/WillInstructions1.pdf");
+		CommonFunctions.wait(5000, false);
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/WillInstructions2.pdf");
+		CommonFunctions.wait(5000, false);
+	}
+
 	public void UploadWillInvalidFileFormat() {
-		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/Proposed MB Online Will Form V1.4.xlsx");
+		// driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/Proposed MB Online Will Form V1.4.xlsx");
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/Proposed MB Online Will Form V1.4.xlsx");
 
 	}
 

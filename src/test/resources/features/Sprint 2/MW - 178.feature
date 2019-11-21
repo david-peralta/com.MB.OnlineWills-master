@@ -1,6 +1,6 @@
 Feature: MW - 178
 
-  @Regression1
+  @Regression
   Scenario Outline: 
     #Scenario1
     #Standard Single Will - NON VIC
