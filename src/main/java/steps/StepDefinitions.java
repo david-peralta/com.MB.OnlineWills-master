@@ -3067,7 +3067,7 @@ public class StepDefinitions extends Base {
 	public void user_checks_couple_will_types_is_displayed() throws Throwable {
 		homePage.checkCoupleWillBodyText2();
 	}
-	
+
 	// MW-177 MW-114 MW-115
 	@When("^user logs into app with the \"([^\"]*)\" and \"([^\"]*)\" to dashboard$")
 	public void user_logs_into_app_with_the_and_to_dashboard(String arg1, String arg2) throws Throwable {

@@ -141,9 +141,9 @@ public class AssetsPage extends Base {
 	WebElement DebtCancel;
 
 	// buttons
-	@FindBy(xpath = "//input[contains(@id,'Button_AssetsNext')]")
+	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
 	WebElement NextButton;
-	@FindBy(xpath = "//input[contains(@id,'Button_AssetsBack')]")
+	@FindBy(xpath = "//input[contains(@value,'Back')]")
 	WebElement BackButton;
 	@FindBy(xpath = "//input[contains(@id,'SuperFundName')]")
 	WebElement SuperFundName;

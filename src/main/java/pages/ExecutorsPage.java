@@ -40,7 +40,7 @@ public class ExecutorsPage extends Base {
 	@FindBy(xpath = "(//a[contains(text(),'Edit')])[1]")
 	WebElement btn_Edit;
 
-	@FindBy(xpath = "//input[contains(@value,'Next')]")
+	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
 	WebElement btn_Next;
 
 	@FindBy(xpath = "//input[contains(@value,'Back')]")

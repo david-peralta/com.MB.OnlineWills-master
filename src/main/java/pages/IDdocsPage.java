@@ -17,7 +17,7 @@ public class IDdocsPage extends Base {
 
 	// Element - Button
 
-	@FindBy(xpath = "//input[contains(@value,'Next')]")
+	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
 	WebElement btn_Next;
 
 	@FindBy(xpath = "//input[contains(@value,'Back')]")

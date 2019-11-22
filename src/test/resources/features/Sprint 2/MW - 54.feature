@@ -25,38 +25,7 @@ Feature: MW - 54 : Checkout
     When user selects no on first question
     When user selects no on second question
     When user clicks on Next button on personal page
-    Then user is on "About you" page
-    #Single
-    When user selects "Single" as Relationship Status on about page
-    And user fills up for single status for step children
-    And user click the next button on the about page
-    Then user is on "Assets" page
-    And user clicks no to do you have assets question
-    #Asset answer "no" to other question
-    And user clicks no to do you have debts question
-    And user clicks no to do you have any superannuation question
-    And user clicks no to do you have life insurance separate from your superannuation
-    And user clicks no to do you control a trust question
-    And user clicks no to do you control a self-managed superannuation fund question
-    And user clicks no to do you own your own business or are you a partner in a partnership question
-    And user click the next button on the assets page
-    #Beneficiaires
-    And user clicks yes to Do you want to give the whole estate equally to your children question
-    And user clicks no to Do you want to include any children you have in the future question
-    And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
-    And user clicks no to Do you wish to leave any gifts question
-    And user sees disaster question displayed
-    #Scenario 2: Customer reviews information entered
-    When user click the next button to the idDocs page
-    Then user is on "ID Check" page
-    #ID Check to Beneficiaries
-    When user click the back button to the idDocs page
-    #Beneficiaries to Assets
-    When user click the back button to the Beneficiaries Page
-    #Assets to AboutYou
-    When user click the back button on the assets page
-    #AboutYou to Personal
-    When user click the back button on the about page
+    
 
     Examples: 
       | email                   | password     | Address1                                         | Suburb         |

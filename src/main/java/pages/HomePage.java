@@ -292,4 +292,10 @@ public class HomePage extends Base {
 		CommonFunctions.elementDisplayed(CoupleWillTypeText2);
 	}
 
+	public void checkFooterIfDisplayed() {
+		CommonFunctions.scrollToBottomOfPage();
+		CommonFunctions.wait(2500, false);
+		CommonFunctions.elementDisplayed(Footer_MB);
+	}
+
 }

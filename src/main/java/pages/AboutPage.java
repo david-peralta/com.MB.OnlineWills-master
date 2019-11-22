@@ -11,7 +11,7 @@ public class AboutPage extends Base {
 	// ========================================================== Page Objects ===========================================================
 	@FindBy(xpath = "//select[contains(@id,'Select_PartnerRelationshipId')]")
 	WebElement RelationshipStatus;
-	@FindBy(xpath = "//input[contains(@id,'Next_Input')]")
+	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
 	WebElement NextButton;
 	@FindBy(xpath = "//input[contains(@id,'Cancel_Input')]")
 	WebElement CancelButton;

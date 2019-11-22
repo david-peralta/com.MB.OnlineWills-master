@@ -110,9 +110,9 @@ public class BeneficiariesPage extends Base {
 	WebElement AddBeneficiariesCharityName;
 	@FindBy(xpath = "//input[contains(@id,'BeneftCharityName')]//following::a//following::span//following::span[text()='Required Field']")
 	WebElement AddBeneficiariesCharityNameReq;
-	@FindBy(xpath = "//input[contains(@id,'Next_Input')]")
+	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
 	WebElement NextButton;
-	@FindBy(xpath = "//input[contains(@id,'Cancel_Input')]")
+	@FindBy(xpath = "//input[contains(@value.'Back')]")
 	WebElement BackButton;
 	@FindBy(xpath = "//input[contains(@id,'Gifts_True')]")
 	WebElement GiftsYes;
