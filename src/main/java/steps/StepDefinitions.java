@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -296,8 +295,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user sees do you have children question with no asnwer in about you summary$")
 	public void user_sees_do_you_have_children_question_with_no_asnwer_in_about_you_summary() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		reviewConfirmPage.HaveChildrenNo();
 	}
 
 	@Then("^user sees family law property question with yes asnwer in about you summary$")
@@ -904,6 +902,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user enter \"([^\"]*)\" as limitation value$")
 	public void user_enter_as_limitation_value(String arg1) throws Throwable {
+		CommonFunctions.wait(5000, false);
 		financialDecisionsPage.SetLimitationsInput(arg1);
 		CommonFunctions.wait(5000, false);
 	}
@@ -911,6 +910,7 @@ public class StepDefinitions extends Base {
 	@Then("^user selects \"([^\"]*)\" on When do you want your Financial/Personal Decision Makers to start to act dropdown$")
 	public void user_selects_on_When_do_you_want_your_Financial_Personal_Decision_Makers_to_start_to_act_dropdown(String arg1) throws Throwable {
 		financialDecisionsPage.SelectValueOnAttorneyWhenToActDropdown(arg1);
+		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^user sees mandatory validation inside the financial decision page for both financial and personal matters$")
@@ -2037,6 +2037,15 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	@When("^user logs into app with the \"([^\"]*)\" and \"([^\"]*)\" as the admin login credentials$")
+	public void user_logs_into_app_with_the_and_as_the_admin_login_credentials(String arg1, String arg2) throws Throwable {
+		loginPage.setEmailInputAdmin(arg1);
+		loginPage.setPasswordInput(arg2);
+
+		homePage = loginPage.clickLoginButton();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@When("^user inputs an \"([^\"]*)\" in the forgotten password email field$")
 	public void user_inputs_an_in_the_forgotten_password_email_field(String arg1) throws Throwable {
 		loginPage.setForgottenPasswordEmailField(arg1);
@@ -2640,8 +2649,6 @@ public class StepDefinitions extends Base {
 		personalPage.SelectTitlePersonalPage("Dr");
 		CommonFunctions.wait(2000, false);
 		// personalPage.SelectDateToday();
-		personalPage.SetDateOfBirth("05/09/1990");
-		CommonFunctions.wait(2000, false);
 		personalPage.SetPhoneNumber("4772834");
 		CommonFunctions.wait(2000, false);
 		personalPage.SetOccupation("Consultant");
@@ -2659,6 +2666,8 @@ public class StepDefinitions extends Base {
 		personalPage.ClickNoFirstQuestion();
 		CommonFunctions.wait(2000, false);
 		personalPage.ClickNoSecondQuestion();
+		personalPage.SetDateOfBirth("05/09/1990");
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 
 	}
 
@@ -2680,6 +2689,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user clicks no to all assets question$")
 	public void user_clicks_no_to_all_assets_question() throws Throwable {
+		assetsPage.ClickNoQuestion1();
 		assetsPage.ClickNoQuestion2();
 		assetsPage.ClickNoQuestion3();
 		assetsPage.ClickNoQuestion4();
@@ -3216,6 +3226,242 @@ public class StepDefinitions extends Base {
 	@Then("^user checks POA amount displayed$")
 	public void user_checks_POA_amount_displayed() throws Throwable {
 		paymentsPage.checkAddonsDisplayed();
+	}
+
+	@When("^user sees spouse/partner will tooltip$")
+	public void user_sees_spouse_partner_will_tooltip() throws Throwable {
+		aboutPage.DisplayTooltipForSpouse();
+	}
+
+	@When("^user checks the content of spouse/partner will tooltip$")
+	public void user_checks_the_content_of_spouse_partner_will_tooltip() throws Throwable {
+		aboutPage.ClickTooltipForSpouse();
+		CommonFunctions.wait(2000, false);
+		CommonFunctions.textDisplayedInPage("We recommend that you and your partner prepare your Wills at the same time. If you have assets which are held jointly or you are leaving your assets to your partner, and you die first, then these assets will belong to your partner. Your partner will need a Will to deal with the ultimate distribution. If at this stage we only prepare your Will, we may not be able to assist your partner with a Will later because to do so may create a conflict of interest. It is also cheaper to do both Wills at the same time.");
+	}
+
+	@When("^user clicks yes to Do you have any children question$")
+	public void user_clicks_yes_to_Do_you_have_any_children_question() throws Throwable {
+		aboutPage.ClickChildrenYes();
+	}
+
+	@When("^user clicks add child on about you page$")
+	public void user_clicks_add_child_on_about_you_page() throws Throwable {
+		aboutPage.ClickAddChild();
+	}
+
+	@When("^user sees significant will tooltip$")
+	public void user_sees_significant_will_tooltip() throws Throwable {
+		aboutPage.DisplayTooltipSignificant();
+	}
+
+	@When("^user checks the content of significant will tooltip$")
+	public void user_checks_the_content_of_significant_will_tooltip() throws Throwable {
+		aboutPage.ClickTooltipSignificant();
+		CommonFunctions.wait(2000, false);
+		CommonFunctions.textDisplayedInPage("You might be leaving part of your estate to a person who needs help with managing their assets or has asset protection issues. Let us know if you are naming a beneficiary who runs their own business or is in a job where they are at risk of being sued or whose personal circumstances mean that they are vulnerable (e.g. have mental health or addiction concerns or have a disability) so that we can talk to you about the best way to deal with their part of the estate.");
+		aboutPage.AddChildrenLegitimate();
+	}
+
+	@When("^user sees dependents will tooltip$")
+	public void user_sees_dependents_will_tooltip() throws Throwable {
+		aboutPage.DisplayTooltipDependents();
+	}
+
+	@When("^user checks the content of dependents will tooltip$")
+	public void user_checks_the_content_of_dependents_will_tooltip() throws Throwable {
+		aboutPage.ClickTooltipDependents();
+		CommonFunctions.wait(2000, false);
+		CommonFunctions.textDisplayedInPage("A Dependent includes someone you financailly support or someone who lives with you and with whom you have a supportive relationship. It does not usually include a housemate.");
+	}
+
+	@When("^user sees upload will tooltip$")
+	public void user_sees_upload_will_tooltip() throws Throwable {
+		aboutPage.DisplayTooltipUploadWill();
+	}
+
+	@When("^user sees Death beneficiary tooltip$")
+	public void user_sees_Death_beneficiary_tooltip() throws Throwable {
+		assetsPage.DisplayTooltipDeathBenef();
+	}
+
+	@When("^user checks the content of upload will tooltip$")
+	public void user_checks_the_content_of_upload_will_tooltip() throws Throwable {
+		aboutPage.ClickTooltipUploadWill();
+		CommonFunctions.wait(2000, false);
+		CommonFunctions.textDisplayedInPage("It is helpful for us to see a copy of your old Will to understand how your wishes have changed. This may impact the advice we give you. DO NOT unstaple or damage your old Will as this may make it invalid.");
+	}
+
+	@Then("^user checks the content of Death beneficiary tooltip$")
+	public void user_checks_the_content_of_Death_beneficiary_tooltip() throws Throwable {
+		assetsPage.ClickTooltipDeathBenef();
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.textDisplayedInPage("Your superannuation is not automatically covered by your Will. You should contact your superannuation fund or advisor directly to find out whether you require a Binding Death Benefit Nomination or other documentation to direct the payment of your superannuation death benefits. There may be different tax consequences depending on your nominated beneficiaries and you should seek financial advice.");
+		// CommonFunctions.textDisplayedInPage("If you do not have a valid Binding Death Benefit Nomination at the date of your death then the Trustee of the superannuation fund may have the
+		// discretion to determine how your death benefits are paid. If your nomination is Non-Binding then your superannuation fund may take it into consideration but will not be bound to pay your
+		// death benefits in the way you have chosen.");
+	}
+
+	@Then("^user clicks yes on Have you nominated a beneficiary$")
+	public void user_clicks_yes_on_Have_you_nominated_a_beneficiary() throws Throwable {
+		assetsPage.ClickSuperDeathBenefYes();
+	}
+
+	@When("^user sees binding tooltip$")
+	public void user_sees_binding_tooltip() throws Throwable {
+		assetsPage.DisplayTooltipBinding();
+	}
+
+	@Then("^user checks the content of binding tooltip$")
+	public void user_checks_the_content_of_binding_tooltip() throws Throwable {
+		assetsPage.ClickTooltipBinding();
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.textDisplayedInPage("A nomination is binding if you have nominated a dependent or interdependent. This may include your spouse or children. You should contact your Superannuation fund to check this definition.");
+	}
+
+	@When("^user sees assets tooltip$")
+	public void user_sees_assets_tooltip() throws Throwable {
+		assetsPage.DisplayTooltipAssets();
+	}
+
+	@Then("^user checks the content of assets tooltip$")
+	public void user_checks_the_content_of_assets_tooltip() throws Throwable {
+		assetsPage.ClickTooltipAssets();
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.textDisplayedInPage("An Asset is something of financial value that you solely or jointly own.");
+	}
+
+	@When("^user sees trusts tooltip$")
+	public void user_sees_trusts_tooltip() throws Throwable {
+		assetsPage.DisplayTooltipTrusts();
+	}
+
+	@Then("^user checks the content of trusts tooltip$")
+	public void user_checks_the_content_of_trusts_tooltip() throws Throwable {
+		assetsPage.ClickTooltipTrusts();
+		CommonFunctions.wait(1500, false);
+		assetsPage.DisplayTooltipTrustsVideo();
+
+	}
+
+	@Then("^user sees superannuation tooltip$")
+	public void user_sees_superannuation_tooltip() throws Throwable {
+		assetsPage.DisplayTooltipSuper();
+	}
+
+	@Then("^user checks the content of superannuation tooltip$")
+	public void user_checks_the_content_of_superannuation_tooltip() throws Throwable {
+		assetsPage.ClickTooltipSuper();
+		CommonFunctions.wait(1500, false);
+		assetsPage.DisplayTooltipSuperVideo();
+	}
+
+	@Then("^user sees life interest tooltip$")
+	public void user_sees_life_interest_tooltip() throws Throwable {
+		assetsPage.DisplayTooltipInterests();
+	}
+
+	@Then("^user checks the content of life interest tooltip$")
+	public void user_checks_the_content_of_life_interest_tooltip() throws Throwable {
+		assetsPage.ClickTooltipInterests();
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.textDisplayedInPage("A life interest allows you to give property to another person for their lifetime, and upon their death, the asset can be given to someone else.");
+	}
+
+	@Then("^user sees ownership tooltip$")
+	public void user_sees_ownership_tooltip() throws Throwable {
+		assetsPage.DisplayTooltipOwnership();
+	}
+
+	@Then("^user checks the content of ownership tooltip$")
+	public void user_checks_the_content_of_ownership_tooltip() throws Throwable {
+		assetsPage.ClickTooltipOwnership();
+		CommonFunctions.wait(1500, false);
+		assetsPage.DisplayTooltipOwnershipVideo();
+	}
+
+	@When("^user sees guardian tooltip$")
+	public void user_sees_guardian_tooltip() throws Throwable {
+		aboutPage.DisplayTooltipGuardian();
+	}
+
+	@When("^user checks the content of guardian tooltip$")
+	public void user_checks_the_content_of_guardian_tooltip() throws Throwable {
+		aboutPage.ClickTooltipGuardian();
+		CommonFunctions.wait(1500, false);
+		aboutPage.DisplayTooltipGuardianVideo();
+	}
+
+	@Then("^user sees beneficiaries tooltip$")
+	public void user_sees_beneficiaries_tooltip() throws Throwable {
+		beneficiariesPage.DisplayBeneficiaries_Tooltip();
+	}
+
+	@Then("^user checks the content of beneficiaries tooltip$")
+	public void user_checks_the_content_of_beneficiaries_tooltip() throws Throwable {
+		beneficiariesPage.ClickBeneficiaries_Tooltip();
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.textDisplayedInPage("Your Beneficiaries are the people you want to leave your estate to. Estate is the word used to refer to the assets that you own in your sole name when you die.");
+	}
+
+	@Then("^user sees executors tooltip$")
+	public void user_sees_executors_tooltip() throws Throwable {
+		executorsPage.DisplayExecutors_Tooltip();
+	}
+
+	@Then("^user sees Lawyers of Your Estate tooltip$")
+	public void user_sees_Lawyers_of_Your_Estate_tooltip() throws Throwable {
+		executorsPage.DisplayLawyersOfEstate_Tooltip();
+	}
+
+	@Then("^user checks the content of executors tooltip$")
+	public void user_checks_the_content_of_executors_tooltip() throws Throwable {
+		executorsPage.ClickExecutors_Tooltip();
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.textDisplayedInPage("Your Executor (also known as your Trustee) is the person or people who are responsible for ensuring that the terms of your Will are carried out after your death.  ");
+	}
+
+	@Then("^user checks the content of Lawyers of Your Estate tooltip$")
+	public void user_checks_the_content_of_Lawyers_of_Your_Estate_tooltip() throws Throwable {
+		executorsPage.ClickLawyersOfEstate_Tooltip();
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.textDisplayedInPage("Your Executors may need help in dealing with the legal aspects of the estate after your death including applying to the Court for a Grant of Probate. You can include a wish that Maurice Blackburn is to assist your Executors with this process. This wish is not binding on your executors and if they would prefer to do it themselves or use another lawyer then they are free to do so.");
+	}
+
+	@Then("^user sees POA tooltip with video$")
+	public void user_sees_POA_tooltip_with_video() throws Throwable {
+		addOnsPage.DisplayPowerOfAttorney_Tooltip2();
+		CommonFunctions.wait(1500, false);
+		addOnsPage.clickPowerOfAttorney_Tooltip2();
+		addOnsPage.DisplayPowerOfAttorney_Tooltip2Video();
+	}
+
+	@Then("^user sees Enduring POA tooltip$")
+	public void user_sees_Enduring_POA_tooltip() throws Throwable {
+		financialDecisionsPage.DisplayEnduringPOA_Tooltip2();
+		CommonFunctions.wait(1500, false);
+		financialDecisionsPage.ClickEnduringPOA_Tooltip2();
+	}
+
+	@Then("^user sees when to act tooltip$")
+	public void user_sees_when_to_act_tooltip() throws Throwable {
+		financialDecisionsPage.DisplayWhenToAct_Tooltip();
+		CommonFunctions.wait(1500, false);
+		financialDecisionsPage.ClickWhenToAct_Tooltip();
+	}
+
+	@Then("^user sees Medical Decision Maker tooltip$")
+	public void user_sees_Medical_Decision_Maker_tooltip() throws Throwable {
+		medicalDecisionsPage.DisplayMedicalDecisionMaker_Tooltip();
+		CommonFunctions.wait(1500, false);
+		medicalDecisionsPage.clickMedicalDecisionMaker_Tooltip();
+	}
+
+	@Then("^user sees Advance Care tooltip$")
+	public void user_sees_Advance_Care_tooltip() throws Throwable {
+		medicalDecisionsPage.DisplayAdvanceCare_Tooltip();
+		CommonFunctions.wait(1500, false);
+		medicalDecisionsPage.clickAdvanceCare_Tooltip();
 	}
 
 }

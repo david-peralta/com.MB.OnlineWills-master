@@ -32,6 +32,11 @@ public class AddOnsPage extends Base {
 	@FindBy(xpath = "//div[text()='Will']//parent::div[text()='Confirmed']")
 	WebElement ProgressConfirmed;
 
+	@FindBy(xpath = "//div[contains(@id,'PowerOfAttorney_Tooltip2')]")
+	WebElement PowerOfAttorney_Tooltip2;
+	@FindBy(xpath = "//div[contains(@id,'PowerOfAttorney_TooltipVideo2')]")
+	WebElement PowerOfAttorney_Tooltip2Video;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public AddOnsPage() {
 		PageFactory.initElements(driver, this);
@@ -102,6 +107,18 @@ public class AddOnsPage extends Base {
 	public void CheckWillConfirmed() {
 		CommonFunctions.elementDisplayed(ProgressConfirmed);
 		CommonFunctions.wait(2500, false);
+	}
+
+	public void clickPowerOfAttorney_Tooltip2() {
+		CommonFunctions.clickElement(PowerOfAttorney_Tooltip2);
+	}
+
+	public void DisplayPowerOfAttorney_Tooltip2() {
+		CommonFunctions.elementDisplayed(PowerOfAttorney_Tooltip2);
+	}
+
+	public void DisplayPowerOfAttorney_Tooltip2Video() {
+		CommonFunctions.elementDisplayed(PowerOfAttorney_Tooltip2Video);
 	}
 
 }

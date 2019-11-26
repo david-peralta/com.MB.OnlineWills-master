@@ -84,6 +84,11 @@ public class MedicalDecisionsPage extends Base {
 	@FindBy(xpath = "(//a[text()='Edit'])[1]")
 	WebElement EditDecisionMaker;
 
+	@FindBy(xpath = "//div[contains(@id,'MedicalDecisionMaker_Tooltip')]")
+	WebElement MedicalDecisionMaker_Tooltip;
+	@FindBy(xpath = "//div[contains(@id,'AdvanceCare_Tooltip')]")
+	WebElement AdvanceCare_Tooltip;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public MedicalDecisionsPage() {
 		PageFactory.initElements(driver, this);
@@ -183,6 +188,22 @@ public class MedicalDecisionsPage extends Base {
 		CommonFunctions.clickElement(btn_Back);
 
 		return new FinancialDecisionsPage();
+	}
+
+	public void clickMedicalDecisionMaker_Tooltip() {
+		CommonFunctions.clickElement(MedicalDecisionMaker_Tooltip);
+	}
+
+	public void clickAdvanceCare_Tooltip() {
+		CommonFunctions.clickElement(AdvanceCare_Tooltip);
+	}
+
+	public void DisplayMedicalDecisionMaker_Tooltip() {
+		CommonFunctions.elementDisplayed(MedicalDecisionMaker_Tooltip);
+	}
+
+	public void DisplayAdvanceCare_Tooltip() {
+		CommonFunctions.elementDisplayed(AdvanceCare_Tooltip);
 	}
 
 }

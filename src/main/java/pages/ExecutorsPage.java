@@ -141,6 +141,12 @@ public class ExecutorsPage extends Base {
 	@FindBy(xpath = "//div[text()='Review & Confirm']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressReviewConfirm;
 
+	@FindBy(xpath = "//div[contains(@id,'Executors_Tooltip')]")
+	WebElement Executors_tooltip;
+
+	@FindBy(xpath = "//div[contains(@id,'LawyersOfEstate_Tooltip')]")
+	WebElement LawyersOfEstate_Tooltip;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public ExecutorsPage() {
 		PageFactory.initElements(driver, this);
@@ -504,6 +510,22 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.clickElement(ProgressAddOns);
 
 		return new AddOnsPage();
+	}
+
+	public void DisplayExecutors_Tooltip() {
+		CommonFunctions.elementDisplayed(Executors_tooltip);
+	}
+
+	public void ClickExecutors_Tooltip() {
+		CommonFunctions.clickElement(Executors_tooltip);
+	}
+
+	public void DisplayLawyersOfEstate_Tooltip() {
+		CommonFunctions.elementDisplayed(LawyersOfEstate_Tooltip);
+	}
+
+	public void ClickLawyersOfEstate_Tooltip() {
+		CommonFunctions.clickElement(LawyersOfEstate_Tooltip);
 	}
 
 }

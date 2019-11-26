@@ -26,7 +26,7 @@ public class LoginPage extends Base {
 	@FindBy(xpath = "//input[contains(@id, 'UserNameInput')]")
 	WebElement input_Email;
 
-	@FindBy(xpath = "//input[contains(@id, 'UsernameInput')]//following-sibling::span[text()='Required field']")
+	@FindBy(xpath = "//input[contains(@id, 'UserNameInput')]//following-sibling::span[text()='Required field']")
 	WebElement RequiredFieldOninput_Email;
 
 	@FindBy(xpath = "//input[contains(@id, 'PasswordInput')]//following-sibling::span[text()='Required field']")
@@ -34,6 +34,11 @@ public class LoginPage extends Base {
 
 	@FindBy(xpath = "//input[contains(@id, 'PasswordInput')]")
 	WebElement input_Password;
+
+	@FindBy(xpath = "//input[contains(@id, 'UsernameInput')]")
+	WebElement input_EmailAdmin;
+	@FindBy(xpath = "//input[contains(@id, 'PasswordInput')]")
+	WebElement input_PasswordAdmin;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public LoginPage() {
@@ -120,6 +125,10 @@ public class LoginPage extends Base {
 	public DashboardPage clickLoginDashboard() {
 		CommonFunctions.clickElement(button_Login);
 		return new DashboardPage();
+	}
+
+	public void setEmailInputAdmin(String password) {
+		CommonFunctions.clearThenEnterElementValue(input_EmailAdmin, password);
 	}
 
 }

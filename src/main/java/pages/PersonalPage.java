@@ -359,6 +359,7 @@ public class PersonalPage extends Base {
 
 	public void SetDateOfBirth(String value) {
 		CommonFunctions.enterElementValue(DateOfBirth, value);
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);

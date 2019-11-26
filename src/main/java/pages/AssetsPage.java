@@ -68,7 +68,7 @@ public class AssetsPage extends Base {
 	WebElement RightsYes;
 	@FindBy(xpath = "//input[contains(@id,'RadioButton_RightsNo')]")
 	WebElement RightsNo;
-	@FindBy(xpath = "//*[text()='Add Additional Superannuation Fund']")
+	@FindBy(xpath = "//*[text()='Add Superannuation Account']")
 	WebElement AddSuper;
 	@FindBy(xpath = "//input[contains(@id,'Button_SuperAdd')]")
 	WebElement SuperSave;
@@ -199,6 +199,27 @@ public class AssetsPage extends Base {
 	WebElement ProgressReviewConfirm;
 	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressAddOns;
+
+	@FindBy(xpath = "// div[contains(@id,'DeathBenef_Tooltip')]")
+	WebElement DeathBenef_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Binding_Tooltip')]")
+	WebElement Binding_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Assets_Tooltip')]")
+	WebElement Assets_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Trust_Tooltip')]")
+	WebElement Trust_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Trust_TooltipVideo')]")
+	WebElement Trust_TooltipVideo;
+	@FindBy(xpath = "// div[contains(@id,'Superannuation_Tooltip')]")
+	WebElement Super_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Superannuation_TooltipVideo')]")
+	WebElement Super_TooltipVideo;
+	@FindBy(xpath = "// div[contains(@id,'Interests_Tooltip')]")
+	WebElement Interest_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Ownership_Tooltip')]")
+	WebElement Ownership_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Ownership_TooltipVideo')]")
+	WebElement Ownership_TooltipVideo;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public AssetsPage() {
@@ -661,6 +682,79 @@ public class AssetsPage extends Base {
 		CommonFunctions.clickElement(NextButton);
 
 		return new AddOnsPage();
+	}
+
+	public void DisplayTooltipDeathBenef() {
+		CommonFunctions.elementDisplayed(DeathBenef_Tooltip);
+	}
+
+	public void DisplayTooltipBinding() {
+		CommonFunctions.elementDisplayed(Binding_Tooltip);
+	}
+
+	public void ClickTooltipDeathBenef() {
+		CommonFunctions.clickElement(DeathBenef_Tooltip);
+	}
+
+	public void ClickSuperDeathBenefYes() {
+		CommonFunctions.clickElement(SuperDeathBenefYes);
+
+	}
+
+	public void ClickTooltipBinding() {
+		CommonFunctions.clickElement(Binding_Tooltip);
+	}
+
+	public void ClickTooltipAssets() {
+		CommonFunctions.clickElement(Assets_Tooltip);
+	}
+
+	public void DisplayTooltipAssets() {
+		CommonFunctions.elementDisplayed(Assets_Tooltip);
+	}
+
+	public void ClickTooltipTrusts() {
+		CommonFunctions.clickElement(Trust_Tooltip);
+	}
+
+	public void ClickTooltipSuper() {
+		CommonFunctions.clickElement(Super_Tooltip);
+	}
+
+	public void DisplayTooltipTrusts() {
+		CommonFunctions.elementDisplayed(Trust_Tooltip);
+	}
+
+	public void DisplayTooltipSuper() {
+		CommonFunctions.elementDisplayed(Super_Tooltip);
+	}
+
+	public void DisplayTooltipSuperVideo() {
+		CommonFunctions.elementDisplayed(Super_TooltipVideo);
+	}
+
+	public void DisplayTooltipTrustsVideo() {
+		CommonFunctions.elementDisplayed(Trust_TooltipVideo);
+	}
+
+	public void DisplayTooltipInterests() {
+		CommonFunctions.elementDisplayed(Interest_Tooltip);
+	}
+
+	public void ClickTooltipInterests() {
+		CommonFunctions.clickElement(Interest_Tooltip);
+	}
+
+	public void DisplayTooltipOwnershipVideo() {
+		CommonFunctions.elementDisplayed(Ownership_TooltipVideo);
+	}
+
+	public void DisplayTooltipOwnership() {
+		CommonFunctions.elementDisplayed(Ownership_Tooltip);
+	}
+
+	public void ClickTooltipOwnership() {
+		CommonFunctions.clickElement(Ownership_Tooltip);
 	}
 
 }

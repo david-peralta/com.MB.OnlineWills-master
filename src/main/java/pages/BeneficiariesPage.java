@@ -181,6 +181,9 @@ public class BeneficiariesPage extends Base {
 	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressAddOns;
 
+	@FindBy(xpath = "// div[contains(@id,'Benef_Tooltip')]")
+	WebElement Beneficiaries_Tooltip;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public BeneficiariesPage() {
 		PageFactory.initElements(driver, this);
@@ -654,6 +657,14 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.clickElement(BackButton);
 
 		return new AssetsPage();
+	}
+
+	public void DisplayBeneficiaries_Tooltip() {
+		CommonFunctions.elementDisplayed(Beneficiaries_Tooltip);
+	}
+
+	public void ClickBeneficiaries_Tooltip() {
+		CommonFunctions.clickElement(Beneficiaries_Tooltip);
 	}
 
 }

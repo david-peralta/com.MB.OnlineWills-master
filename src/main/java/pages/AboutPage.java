@@ -275,6 +275,19 @@ public class AboutPage extends Base {
 	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressAddOns;
 
+	@FindBy(xpath = "//div[contains(@id,'SpousePartner_Tooltip')]")
+	WebElement SpousePartner_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Significant_Tooltip')]")
+	WebElement Significant_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Dependents_Tooltip')]")
+	WebElement Dependents_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'UploadWill_Tooltip')]")
+	WebElement UploadWill_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Guardian_Tooltip')]")
+	WebElement Guardian_Tooltip;
+	@FindBy(xpath = "// div[contains(@id,'Guardian_TooltipVideo')]")
+	WebElement Guardian_TooltipVideo;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public AboutPage() {
 		PageFactory.initElements(driver, this);
@@ -1206,5 +1219,59 @@ public class AboutPage extends Base {
 		CommonFunctions.clickElement(ProgressAddOns);
 
 		return new AddOnsPage();
+	}
+
+	public void DisplayTooltipForSpouse() {
+		CommonFunctions.elementDisplayed(SpousePartner_Tooltip);
+	}
+
+	public void DisplayTooltipSignificant() {
+		CommonFunctions.elementDisplayed(Significant_Tooltip);
+	}
+
+	public void DisplayTooltipDependents() {
+		CommonFunctions.elementDisplayed(Dependents_Tooltip);
+	}
+
+	public void DisplayTooltipUploadWill() {
+		CommonFunctions.elementDisplayed(UploadWill_Tooltip);
+	}
+
+	public void ClickTooltipUploadWill() {
+		CommonFunctions.clickElement(UploadWill_Tooltip);
+	}
+
+	public void ClickTooltipForSpouse() {
+		CommonFunctions.clickElement(SpousePartner_Tooltip);
+	}
+
+	public void ClickTooltipSignificant() {
+		CommonFunctions.clickElement(Significant_Tooltip);
+	}
+
+	public void ClickTooltipDependents() {
+		CommonFunctions.clickElement(Dependents_Tooltip);
+	}
+
+	public void ClickChildrenYes() {
+		CommonFunctions.clickElement(ChildrenYes);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void ClickAddChild() {
+		CommonFunctions.clickElement(AddChild);
+		CommonFunctions.wait(5000, false);
+	}
+
+	public void DisplayTooltipGuardian() {
+		CommonFunctions.elementDisplayed(Guardian_Tooltip);
+	}
+
+	public void DisplayTooltipGuardianVideo() {
+		CommonFunctions.elementDisplayed(Guardian_TooltipVideo);
+	}
+
+	public void ClickTooltipGuardian() {
+		CommonFunctions.clickElement(Guardian_Tooltip);
 	}
 }

@@ -97,6 +97,11 @@ public class FinancialDecisionsPage extends Base {
 	@FindBy(xpath = "(//input[contains(@id,'Backup')]//following::div[text()='Required field'])[1]")
 	WebElement POAPDMReq;
 
+	@FindBy(xpath = "//div[contains(@id,'EnduringPOA_Tooltip2')]")
+	WebElement EnduringPOA_Tooltip2;
+	@FindBy(xpath = "//div[contains(@id,'WhenToAct_Tooltip')]")
+	WebElement WhenToAct_Tooltip;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public FinancialDecisionsPage() {
 		PageFactory.initElements(driver, this);
@@ -238,4 +243,19 @@ public class FinancialDecisionsPage extends Base {
 		return new MedicalDecisionsPage();
 	}
 
+	public void ClickEnduringPOA_Tooltip2() {
+		CommonFunctions.clickElement(EnduringPOA_Tooltip2);
+	}
+
+	public void DisplayEnduringPOA_Tooltip2() {
+		CommonFunctions.elementDisplayed(EnduringPOA_Tooltip2);
+	}
+
+	public void ClickWhenToAct_Tooltip() {
+		CommonFunctions.clickElement(WhenToAct_Tooltip);
+	}
+
+	public void DisplayWhenToAct_Tooltip() {
+		CommonFunctions.elementDisplayed(WhenToAct_Tooltip);
+	}
 }
