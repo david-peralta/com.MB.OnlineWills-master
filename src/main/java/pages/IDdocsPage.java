@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -321,6 +322,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.enterElementValue(Question7, "Address1Test");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question8, "05/09/1990");
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -339,6 +341,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.clearThenEnterElementValue(Question13, "01/01/2025");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question14, "05/09/1990");
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -354,6 +357,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.enterElementValue(Question18, "User");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question19, "05/09/1990");
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -371,6 +375,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.enterElementValue(Question24, "User");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question25, "05/09/1990");
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 	}
 

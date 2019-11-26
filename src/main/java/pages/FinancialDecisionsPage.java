@@ -11,7 +11,7 @@ public class FinancialDecisionsPage extends Base {
 	// ========================================================== Page Objects ===========================================================
 	@FindBy(xpath = "//input[contains(@id,'AddPOA')]")
 	WebElement btn_AddPOA;
-	@FindBy(xpath = "//input[contains(@value,'Next')]")
+	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
 	WebElement btn_Next;
 	@FindBy(xpath = "//span[text()='Both financial and personal matters']//preceding-sibling::input")
 	WebElement BothFinancialAndPersonalMatters;
@@ -145,6 +145,7 @@ public class FinancialDecisionsPage extends Base {
 
 	public void SelectValueOnAttorneyWhenToActDropdown(String arg1) {
 		CommonFunctions.selectValueFromDropdown(AttorneyWhenToActDropdown, arg1);
+		CommonFunctions.wait(3000, false);
 	}
 
 	public void clickBothFinancialAndPersonalMatters() {

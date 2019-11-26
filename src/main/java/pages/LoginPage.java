@@ -23,7 +23,7 @@ public class LoginPage extends Base {
 	@FindBy(xpath = "//*[text() = 'Create an Account']")
 	WebElement RegisterLink;
 
-	@FindBy(xpath = "//input[contains(@id, 'UsernameInput')]")
+	@FindBy(xpath = "//input[contains(@id, 'UserNameInput')]")
 	WebElement input_Email;
 
 	@FindBy(xpath = "//input[contains(@id, 'UsernameInput')]//following-sibling::span[text()='Required field']")

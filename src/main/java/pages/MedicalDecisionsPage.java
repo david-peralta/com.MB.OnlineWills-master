@@ -9,7 +9,7 @@ import utilities.CommonFunctions;
 
 public class MedicalDecisionsPage extends Base {
 	// ========================================================== Page Objects ===========================================================
-	@FindBy(xpath = "//input[@value='Next']")
+	@FindBy(xpath = "//input[@value='Save and Continue']")
 	WebElement btn_Next;
 	@FindBy(xpath = "//input[@value='Back']")
 	WebElement btn_Back;

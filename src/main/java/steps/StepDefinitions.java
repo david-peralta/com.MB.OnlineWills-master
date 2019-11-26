@@ -1059,25 +1059,28 @@ public class StepDefinitions extends Base {
 	public void user_adds_foreign_passport_details() throws Throwable {
 		idDocsPage.FillUpForeignPassport();
 		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 	}
 
 	@When("^user adds driver license details$")
 	public void user_adds_driver_license_details() throws Throwable {
 		idDocsPage.FillUpDriversLicense();
 		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 	}
 
 	@When("^user adds medicare details$")
 	public void user_adds_medicare_details() throws Throwable {
 		idDocsPage.FillUpMedicare();
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 	}
 
 	@When("^user adds autralian passport details$")
 	public void user_adds_autralian_passport_details() throws Throwable {
 		idDocsPage.FillUpAustralianPassport();
 		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 	}
 
 	@When("^user selects Australian Passport as first identification type$")
@@ -2762,6 +2765,7 @@ public class StepDefinitions extends Base {
 	@Then("^POA is displayed in the order summary$")
 	public void poa_is_displayed_in_the_order_summary() throws Throwable {
 		CommonFunctions.textDisplayedInPage("Power of Attorney");
+
 	}
 
 	@Then("^Standard will legal document is displayed in the order summary$")
@@ -3201,6 +3205,17 @@ public class StepDefinitions extends Base {
 	@Then("^user checks page footer in home page$")
 	public void user_checks_page_footer_in_home_page() throws Throwable {
 		homePage.checkFooterIfDisplayed();
+	}
+
+	@Then("^user clicks on proceed payment button$")
+	public void user_clicks_on_proceed_payment_button() throws Throwable {
+		paymentsPage.clickProceedPayment();
+		CommonFunctions.wait(5000, false);
+	}
+
+	@Then("^user checks POA amount displayed$")
+	public void user_checks_POA_amount_displayed() throws Throwable {
+		paymentsPage.checkAddonsDisplayed();
 	}
 
 }
