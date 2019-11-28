@@ -436,7 +436,6 @@ Feature: MW - 176 : Union - Confirmation
     When user clicks the pay button
     #Payment Complete
     Then user is on "Thank You" page
-    And user saves a copy of the record
 
     Examples: 
       | email            | password     | Address1  | Suburb         |

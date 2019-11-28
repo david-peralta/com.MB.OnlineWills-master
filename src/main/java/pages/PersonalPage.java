@@ -205,14 +205,17 @@ public class PersonalPage extends Base {
 
 	public void ClickNoFirstQuestion() {
 		CommonFunctions.clickElement(NoQuestion1);
+		CommonFunctions.wait(2000, false);
 	}
 
 	public void ClickYesFirstQuestion() {
 		CommonFunctions.clickElement(YesQuestion1);
+
 	}
 
 	public void ClickNoSecondQuestion() {
 		CommonFunctions.clickElement(NoQuestion2);
+		CommonFunctions.wait(2000, false);
 	}
 
 	public void ClickYesSecondQuestion() {
