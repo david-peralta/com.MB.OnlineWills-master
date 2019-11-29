@@ -363,23 +363,23 @@ public class ReviewConfirmPage extends Base {
 	}
 
 	public void validatesFields() {
-		CommonFunctions.textDisplayedInPage("Personal Info");
+		CommonFunctions.textDisplayedInPage("Personal Details");
 		CommonFunctions.textDisplayedInPage("About You");
 		CommonFunctions.textDisplayedInPage("Assets");
 		CommonFunctions.textDisplayedInPage("Beneficiaries");
-		// CommonFunctions.textDisplayedInPage("Executors");
+		CommonFunctions.textDisplayedInPage("ID Docs");
 	}
 
 	public void validatePersonalDetails() {
 		CommonFunctions.scrollToBottomOfPage();
 		CommonFunctions.wait(2500, false);
-		CommonFunctions.textDisplayedInPage("Personal Info");
+		CommonFunctions.textDisplayedInPage("Personal Details");
 		CommonFunctions.textDisplayedInPage("Title");
-		CommonFunctions.textDisplayedInPage("First name");
-		CommonFunctions.textDisplayedInPage("Middle name");
-		CommonFunctions.textDisplayedInPage("Family name");
-		CommonFunctions.textDisplayedInPage("Residential address");
-		CommonFunctions.textDisplayedInPage("Postal address");
+		CommonFunctions.textDisplayedInPage("First Name");
+		CommonFunctions.textDisplayedInPage("Middle Name");
+		CommonFunctions.textDisplayedInPage("Family Name");
+		CommonFunctions.textDisplayedInPage("Residential Address");
+		CommonFunctions.textDisplayedInPage("Postal Address");
 		CommonFunctions.textDisplayedInPage("Date of Birth");
 		CommonFunctions.textDisplayedInPage("Email");
 		CommonFunctions.textDisplayedInPage("Phone Number");

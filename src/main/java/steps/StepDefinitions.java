@@ -609,6 +609,12 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	@When("^user clicks Standard victorian will product for singles$")
+	public void user_clicks_Standard_victorian_will_product_for_singles() throws Throwable {
+		personalPage = homePage.clickSinglesProductStandardWillVicBtn();
+		CommonFunctions.wait(5000, false);
+	}
+
 	@When("^user clicks MyLife will product for singles$")
 	public void user_clicks_MyLife_will_product_for_singles() throws Throwable {
 		personalPage = homePage.clickMyLifeProductStandardSingleWillBtn();
@@ -2439,6 +2445,7 @@ public class StepDefinitions extends Base {
 	@When("^user clicks yes to do you want to do your will with your spouse or partner question$")
 	public void user_clicks_yes_to_do_you_want_to_do_your_will_with_your_spouse_or_partner_question() throws Throwable {
 		aboutPage.clickWillTogetherRadioYesRadioButton();
+		CommonFunctions.wait(2500, false);
 	}
 
 	@When("^user inputs \"([^\"]*)\" as the email address of the spouse/partner$")
@@ -3462,6 +3469,22 @@ public class StepDefinitions extends Base {
 		medicalDecisionsPage.DisplayAdvanceCare_Tooltip();
 		CommonFunctions.wait(1500, false);
 		medicalDecisionsPage.clickAdvanceCare_Tooltip();
+	}
+
+	@Then("^user checks relationship status if single and widowed are not available$")
+	public void user_checks_relationship_status_if_single_and_widowed_are_not_available() throws Throwable {
+		String[] RelStatus = { "Select One", "Defacto", "Engaged", "Married", "Separated", "Divorced" };
+		aboutPage.CheckRelationshipStatusDropdownValues(RelStatus);
+	}
+
+	@Then("^user checks POA consent for spouse$")
+	public void user_checks_POA_consent_for_spouse() throws Throwable {
+		aboutPage.displayEmailConsent();
+	}
+
+	@Then("^user clicks download cost disclosure$")
+	public void user_clicks_download_cost_disclosure() throws Throwable {
+		paymentsPage.clickCostDisclosure();
 	}
 
 }

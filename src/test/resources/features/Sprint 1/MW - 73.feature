@@ -13,6 +13,7 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     Then user is on "Personal" page
     #User filled valid input
     When user selects "Dr" as title on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
     When user inputs "Today" as date of birth on personal page
     When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
@@ -45,7 +46,7 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     And user clicks no to Do you want to include any children you have in the future question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
-    And user sees disaster question displayed
+    #And user sees disaster question displayed
     #Scenario 2: Customer reviews information entered
     When user click the next button to the idDocs page
     Then user is on "ID Check" page
@@ -56,7 +57,7 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     And user selects Medicare as second identification type
     And user adds medicare details
     And user clicks next button on the ID docs page
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user reviews and confirms will details
     And user confirms will details
     When user clicks the next button to confirm will

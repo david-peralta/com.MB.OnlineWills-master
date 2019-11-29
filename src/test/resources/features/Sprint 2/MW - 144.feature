@@ -6,6 +6,7 @@ Feature: MW - 144 / Checks if Relationship status for about you page
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
+    When user clicks on new order on incomplete order popup
     When user selects couples product
     #Select Standard will Package
     When user clicks Standard will product for couples
@@ -13,6 +14,7 @@ Feature: MW - 144 / Checks if Relationship status for about you page
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user inputs "Today" as date of birth on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
     When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
     When user inputs "<Address1>" as Residential address line one on personal page
@@ -38,13 +40,15 @@ Feature: MW - 144 / Checks if Relationship status for about you page
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
+    When user clicks on new order on incomplete order popup
     When user selects singles product
     #Select Standard will Package
-    When user clicks Standard will product for singles
+    When user clicks Standard victorian will product for singles
     Then user is on "Personal" page
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user inputs "Today" as date of birth on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
     When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
     When user inputs "<Address1>" as Residential address line one on personal page

@@ -14,6 +14,7 @@ Feature: MW - 102
     Then user is on "Personal" page
     #User filled valid input
     When user selects "Dr" as title on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
     When user inputs "Today" as date of birth on personal page
     When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
@@ -26,7 +27,7 @@ Feature: MW - 102
     When user selects no on second question
     #Scenario 2: Customer completes the ‘Personal Details’ page
     When user clicks next page to review and confirm details
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     #Scenario 3: Customer reviews information entered and confirm acknowledgment
     And user reviews personal details
     And user confirms will details

@@ -288,6 +288,9 @@ public class AboutPage extends Base {
 	@FindBy(xpath = "// div[contains(@id,'Guardian_TooltipVideo')]")
 	WebElement Guardian_TooltipVideo;
 
+	@FindBy(xpath = "//span[text()='Please input your spouse/partner’s email so we can send them an invitation to " + "complete their online form. By providing the contact email address, you confirm that you have consent from " + "the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
+	WebElement email_Consent;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public AboutPage() {
 		PageFactory.initElements(driver, this);
@@ -1273,5 +1276,11 @@ public class AboutPage extends Base {
 
 	public void ClickTooltipGuardian() {
 		CommonFunctions.clickElement(Guardian_Tooltip);
+	}
+
+	public void displayEmailConsent() {
+		CommonFunctions.scrollToElement(email_Consent);
+		CommonFunctions.elementDisplayed(email_Consent);
+		CommonFunctions.wait(2500, false);
 	}
 }

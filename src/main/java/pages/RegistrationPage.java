@@ -77,6 +77,18 @@ public class RegistrationPage extends Base {
 	@FindBy(xpath = "//div[@class = 'tool-tex' and contains(., 'Must include a special character')]")
 	WebElement ToolTipContent5;
 
+	// Privacy Requirements
+	@FindBy(xpath = "//span[text()='You must agree to the MyLife WillsTM Terms & Conditions to complete registration.']")
+	WebElement required_TermsCondition;
+	@FindBy(xpath = "//span[text()='You must agree to the Collection Statement and Privacy Policy to complete registration.']")
+	WebElement required_CollectionPolicy;
+
+	// Checkbox
+	@FindBy(xpath = "//input[contains(@id,'CBPrivacy2')]")
+	WebElement RequiredPrivacyCheckbox2;
+	@FindBy(xpath = "(//input[contains(@id,'CBPrivacy')])[1]")
+	WebElement RequiredPrivacyCheckbox1;
+
 	// ================================================== Initializing the Page Objects ==================================================
 	public RegistrationPage() {
 		PageFactory.initElements(driver, this);
@@ -247,6 +259,14 @@ public class RegistrationPage extends Base {
 
 	public void HoverOnPasswordToolTip() {
 		CommonFunctions.hoverOverElement(PasswordPolicyToolTip);
+	}
+
+	public void clickRequiredCheckbox1() {
+		CommonFunctions.clickElement(RequiredPrivacyCheckbox1);
+	}
+
+	public void clickRequiredCheckbox2() {
+		CommonFunctions.clickElement(RequiredPrivacyCheckbox2);
 	}
 
 }

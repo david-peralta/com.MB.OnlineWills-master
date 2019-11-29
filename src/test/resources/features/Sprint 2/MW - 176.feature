@@ -10,7 +10,7 @@ Feature: MW - 176 : Union - Confirmation
     When user clicks on new order on incomplete order popup
     #When user clicks on continue on incomplete order popup
     When user selects singles product
-    #SELECTS UNION - POA
+    #SELECTS UNION - NO POA
     And user click free standard will
     #Numeric
     When user selects "Numeric" as affliated unions
@@ -72,7 +72,7 @@ Feature: MW - 176 : Union - Confirmation
     And user adds driver license details
     And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page
@@ -105,7 +105,7 @@ Feature: MW - 176 : Union - Confirmation
     #When user clicks on new order on incomplete order popup
     #When user clicks on continue on incomplete order popup
     When user selects singles product
-    #SELECTS UNION - POA
+    #SELECTS UNION - NO POA
     And user click free standard will
     #Numeric
     When user selects "Numeric" as affliated unions
@@ -167,7 +167,7 @@ Feature: MW - 176 : Union - Confirmation
     And user adds driver license details
     And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page
@@ -262,7 +262,7 @@ Feature: MW - 176 : Union - Confirmation
     And user adds driver license details
     And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page
@@ -388,7 +388,7 @@ Feature: MW - 176 : Union - Confirmation
     And user adds driver license details
     And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page
