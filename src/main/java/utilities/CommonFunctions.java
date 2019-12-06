@@ -855,4 +855,5 @@ public class CommonFunctions extends Base {
 
 		Assert.assertTrue(result);
 	}
+
 }

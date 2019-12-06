@@ -1,5 +1,6 @@
 package steps;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +25,7 @@ import pages.HomePage;
 import pages.IDdocsPage;
 import pages.LoginPage;
 import pages.MedicalDecisionsPage;
+import pages.OrdersPage;
 import pages.PaymentsPage;
 import pages.PersonalPage;
 import pages.RegistrationPage;
@@ -54,9 +56,9 @@ public class StepDefinitions extends Base {
 	MedicalDecisionsPage medicalDecisionsPage;
 	DashboardPage dashboardPage;
 	UnionListPage unionListPage;
-
 	String Email;
 	CheckOutPage checkOutPage;
+	OrdersPage ordersPage;
 
 	// ================================================== Universal Functions ==================================================
 	@Before
@@ -77,7 +79,7 @@ public class StepDefinitions extends Base {
 		}
 
 		LogFunctions.endLog(scenario);
-		// driver.quit();
+		driver.quit();
 	}
 
 	@Given("^user opens browser$")
@@ -3471,6 +3473,7 @@ public class StepDefinitions extends Base {
 		medicalDecisionsPage.clickAdvanceCare_Tooltip();
 	}
 
+
 	@Then("^user checks relationship status if single and widowed are not available$")
 	public void user_checks_relationship_status_if_single_and_widowed_are_not_available() throws Throwable {
 		String[] RelStatus = { "Select One", "Defacto", "Engaged", "Married", "Separated", "Divorced" };
@@ -3485,6 +3488,40 @@ public class StepDefinitions extends Base {
 	@Then("^user clicks download cost disclosure$")
 	public void user_clicks_download_cost_disclosure() throws Throwable {
 		paymentsPage.clickCostDisclosure();
+
+	@Given("^user opens browser and proceeds to orders page$")
+	public void user_opens_browser_and_proceeds_to_orders_page() throws Throwable {
+		driver.get(prop.getProperty("orders"));
+		ordersPage = new OrdersPage();
+		CommonFunctions.wait(1500, false);
+	}
+
+	@Then("^user selects \"([^\"]*)\" on user dropdown$")
+	public void user_selects_on_user_dropdown(String arg1) throws Throwable {
+		ordersPage.SetSelectUser(arg1);
+		CommonFunctions.wait(1500, false);
+	}
+
+	@Then("^user clicks on delete all button$")
+	public void user_clicks_on_delete_all_button() throws Throwable {
+		ordersPage.ClickDeleteAllButton();
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.wait(5000, false);
+		Alert alert = driver.switchTo().alert();
+		System.out.println(alert.getText());
+		alert.accept();
+
+	}
+
+	@Then("^user clicks ok button on popup$")
+	public void user_clicks_ok_button_on_popup() throws Throwable {
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+
 	}
 
 }
