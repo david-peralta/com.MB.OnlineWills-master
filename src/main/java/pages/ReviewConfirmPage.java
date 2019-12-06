@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -240,6 +241,59 @@ public class ReviewConfirmPage extends Base {
 	WebElement ProgressIDDocs;
 	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressAddOns;
+	
+	//Element Labels
+		//Personal Details
+	@FindBy(xpath = "//div[contains(@id,'Title') and . /text()='Personal Details']")
+	WebElement Label_PersonalDetails;
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Title:')]")
+	WebElement Label_PersonalDetails_Title;
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'First Name:')]")
+	WebElement Label_PersonalDetails_Fname;
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Middle Name:')]")
+	WebElement Label_PersonalDetails_Mname;
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Family Name:')]")
+	WebElement Label_PersonalDetails_Sname;
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Residential Address:')]")
+	WebElement Label_PersonalDetails_RAddess;
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Postal Address:')]")
+	WebElement Label_PersonalDetails_PAddess;
+	@FindBy(xpath = "//div[contains(@id,'Column2')]//td[contains(text(),'Date of Birth:')]")
+	WebElement Label_PersonalDetails_Birth;
+	@FindBy(xpath = "(//div[contains(@id,'Column2')]//td[contains(text(),'Email:')])[1]")
+	WebElement Label_PersonalDetails_Email;
+	@FindBy(xpath = "//div[contains(@id,'Column2')]//td[contains(text(),'Phone Number:')]")
+	WebElement Label_PersonalDetails_PhoneNo;
+	@FindBy(xpath = "//div[contains(@id,'Column2')]//td[contains(text(),'Occupation:')]")
+	WebElement Label_PersonalDetails_Occupation;
+		//About You
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Current Marital Status:')]")
+	WebElement Label_About_You_Status;
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Length of relationship (years):')]")
+	WebElement Label_About_You_Years;
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Do you want to do your Will together with your spouse/partner?')]")
+	WebElement Label_About_You_Will_With_Partner;
+	@FindBy(xpath = "//div[contains(@id,'Column2')]//td[contains(text(),'Title:')]")
+	WebElement Label_About_You_Title;
+	@FindBy(xpath = "//div[contains(@id,'Column2')]//td[contains(text(),'First Name:')]")
+	WebElement Label_About_You_Fname;
+	@FindBy(xpath = "//div[contains(@id,'Column2')]//td[contains(text(),'Middle Name(s):')]")
+	WebElement Label_About_You_Mname;
+	@FindBy(xpath = "//div[contains(@id,'Column2')]//td[contains(text(),'Family Name:')]")
+	WebElement Label_About_You_Sname;
+	
+		//Executors
+	@FindBy(xpath = "(//div[@class='card Display']//span[contains(text(),'Name:')])[1]")
+	WebElement Label_Executors_Name;
+	@FindBy(xpath = "(//div[@class='card Display']//span[contains(text(),'Relationship:')])[1]")
+	WebElement Label_Executors_Relationship;
+	@FindBy(xpath = "//div[contains(@id,'Column1')]//span[contains(text(),'When I pass away, I wish to be:')]")
+	WebElement Label_Executors_Wish;
+	
+	
+	
+	
+	
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public ReviewConfirmPage() {
@@ -384,6 +438,31 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.textDisplayedInPage("Email");
 		CommonFunctions.textDisplayedInPage("Phone Number");
 		CommonFunctions.textDisplayedInPage("Occupation");
+		CommonFunctions.textDisplayedInPage("Personal Details");
+		CommonFunctions.textDisplayedInPage("Title:");
+		CommonFunctions.textDisplayedInPage("First Name:");
+		CommonFunctions.textDisplayedInPage("Middle Name:");
+		CommonFunctions.textDisplayedInPage("Family Name:");
+		CommonFunctions.textDisplayedInPage("Residential Address:");
+		CommonFunctions.textDisplayedInPage("Postal Address:");
+		CommonFunctions.textDisplayedInPage("Date of Birth:");
+		CommonFunctions.textDisplayedInPage("Email:");
+		CommonFunctions.textDisplayedInPage("Phone Number:");
+		CommonFunctions.textDisplayedInPage("Occupation:");
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.textDisplayedInPage("Current Marital Status:");
+		CommonFunctions.textDisplayedInPage("Do you want to do your Will together with your spouse/partner?");
+		CommonFunctions.textDisplayedInPage("Title:");
+		CommonFunctions.textDisplayedInPage("First Name:");
+		CommonFunctions.textDisplayedInPage("Middle Name(s):");
+		CommonFunctions.textDisplayedInPage("Family Name:");
+		CommonFunctions.textDisplayedInPage("Email:");
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.textDisplayedInPage("Name:");
+		CommonFunctions.textDisplayedInPage("Relationship:");
+		
+		
+
 	}
 
 	public void FamilyLawPropertyNo() {
@@ -529,5 +608,30 @@ public class ReviewConfirmPage extends Base {
 
 		return new AddOnsPage();
 	}
+	public void ValidateLabels() {
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_Email);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_Birth);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_Fname);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_Mname);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_Occupation);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_PAddess);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_PhoneNo);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_RAddess);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_Sname);
+		CommonFunctions.elementDisplayed(Label_PersonalDetails_Title);
+		CommonFunctions.elementDisplayed(Label_About_You_Fname);
+		CommonFunctions.elementDisplayed(Label_About_You_Mname);
+		CommonFunctions.elementDisplayed(Label_About_You_Sname);
+		CommonFunctions.elementDisplayed(Label_About_You_Status);
+		CommonFunctions.elementDisplayed(Label_About_You_Title);
+		CommonFunctions.elementDisplayed(Label_About_You_Years);
+		CommonFunctions.elementDisplayed(Label_About_You_Will_With_Partner);
+		CommonFunctions.elementDisplayed(Label_Executors_Name);
+		CommonFunctions.elementDisplayed(Label_Executors_Relationship);
+		CommonFunctions.elementDisplayed(Label_Executors_Wish);
+	
+	}
+	
 
 }

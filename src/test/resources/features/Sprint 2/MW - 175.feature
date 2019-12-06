@@ -25,7 +25,7 @@ Feature: MW - 175 : Union Member Payments
 		When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
-    Then user is on "Personal Details" page
+    Then user is on "Personal" page
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user inputs "01/01/1993" as date of birth on personal page

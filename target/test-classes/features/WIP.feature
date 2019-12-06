@@ -1,6 +1,6 @@
 Feature: Order
 
-  @Sprint
+  @Sprint11
   Scenario Outline: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page

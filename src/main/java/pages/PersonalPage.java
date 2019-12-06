@@ -61,7 +61,7 @@ public class PersonalPage extends Base {
 	WebElement YesQuestion2;
 	@FindBy(xpath = "//input[contains(@id,'Diagnosed_No')]")
 	WebElement NoQuestion2;
-	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
+	@FindBy(xpath = "//input[@value='Save and Continue']")
 	WebElement NextButton;
 	@FindBy(xpath = "//input[contains(@value, 'Cancel')]")
 	WebElement CancelButton;
@@ -87,6 +87,8 @@ public class PersonalPage extends Base {
 	WebElement ProgressReviewConfirm;
 	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressAddOns;
+
+	
 
 	// ================================================== Initializing the Page Objects =================================================
 	public PersonalPage() {
@@ -361,7 +363,7 @@ public class PersonalPage extends Base {
 	}
 
 	public void SetDateOfBirth(String value) {
-		CommonFunctions.enterElementValue(DateOfBirth, value);
+		CommonFunctions.clearThenEnterElementValue(DateOfBirth, value);
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
@@ -516,5 +518,8 @@ public class PersonalPage extends Base {
 	public void CheckProgressAsset() {
 		CommonFunctions.elementDisplayed(ProgressAbout.findElement(By.xpath(".//following-sibling::a[contains(text(),'Change')]")));
 	}
+	
+
+	
 
 }

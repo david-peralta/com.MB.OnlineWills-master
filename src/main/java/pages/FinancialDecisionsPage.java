@@ -101,6 +101,8 @@ public class FinancialDecisionsPage extends Base {
 	WebElement EnduringPOA_Tooltip2;
 	@FindBy(xpath = "//div[contains(@id,'WhenToAct_Tooltip')]")
 	WebElement WhenToAct_Tooltip;
+	@FindBy(xpath = "//span[@class='fa fa-fw fa-info-circle']//parent::div[contains(@id,'EnduringPOA_Tooltip3')]")
+	WebElement PowerOfAttorney_Tooltip3;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public FinancialDecisionsPage() {
@@ -258,4 +260,12 @@ public class FinancialDecisionsPage extends Base {
 	public void DisplayWhenToAct_Tooltip() {
 		CommonFunctions.elementDisplayed(WhenToAct_Tooltip);
 	}
+	public void clickPowerOfAttorney_Tooltip3() {
+		CommonFunctions.clickElement(PowerOfAttorney_Tooltip3);
+	}
+	
+	public void DisplayPowerOfAttorney_Tooltip3() {
+		CommonFunctions.elementDisplayed(PowerOfAttorney_Tooltip3);
+	}
+
 }

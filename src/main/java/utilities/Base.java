@@ -38,6 +38,7 @@ public class Base {
 			System.setProperty("webdriver.chrome.driver", "/Program Files/Automation Tools/Drivers/chromedriver.exe");
 
 			driver = new ChromeDriver(options);
+			
 		}
 		else if (browserName.equals("ie")) { // Need to put TabProcGrowth with value 0 in HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main in Registry.
 			InternetExplorerOptions options = new InternetExplorerOptions();

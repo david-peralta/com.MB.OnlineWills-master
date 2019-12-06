@@ -121,6 +121,12 @@ public class LoginPage extends Base {
 
 		return new HomePage();
 	}
+	
+	public AddOnsPage clickLoginButton1() {
+		CommonFunctions.clickElement(button_Login);
+
+		return new AddOnsPage();
+	}
 
 	public DashboardPage clickLoginDashboard() {
 		CommonFunctions.clickElement(button_Login);

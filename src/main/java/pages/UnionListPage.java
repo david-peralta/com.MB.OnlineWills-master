@@ -1,15 +1,17 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Base;
 import utilities.CommonFunctions;
 
+
 public class UnionListPage extends Base {
 	// ========================================================= Page Objects ===========================================================
-	// Button
-	@FindBy(xpath = "//input[@value='Add Union']")
+	//Button
+	@FindBy(xpath="//input[@value='Add Union']")
 	WebElement btn_AddUnion;
 	@FindBy(xpath = "//div[contains( @id,'Column1')]//following::input[@value='Cancel']")
 	WebElement btn_Cancel;
@@ -21,9 +23,12 @@ public class UnionListPage extends Base {
 	WebElement btn_Edit_1;
 	@FindBy(xpath = "//table[contains(@id, 'UnionTable')]//tr//td[text() = 'AlphaNumeric1']//parent::tr//span[contains(@class, 'trash')]//parent::a")
 	WebElement btn_Delete;
-
-	// Field
-	@FindBy(xpath = "//input[contains(@id,'Union_Name')]")
+	
+	
+	
+	
+	//Field
+	@FindBy(xpath="//input[contains(@id,'Union_Name')]")
 	WebElement field_UnionName;
 	@FindBy(xpath = "//input[contains(@id,'Union_MinLength')]")
 	WebElement field_UnionMinLength;
@@ -61,10 +66,20 @@ public class UnionListPage extends Base {
 	// Table Content
 	@FindBy(xpath = "//table[contains(@id, 'UnionTable')]//tr//td[text() = 'AlphaNumeric1']")
 	WebElement display_AlphaNumeric1;
-
+	@FindBy(xpath="//span[contains( @id,'Union_Name')]")
+	WebElement alert_Name;	
+	
+	
 	// Required Field
 	@FindBy(xpath = "//span[text()='This Union name already exists.']")
 	WebElement required_Name;
+	
+	@FindBy(xpath="//table[contains(@id, 'UnionTable')]//tr//td[text() = 'Alpha1']//parent::tr//span[contains(@class, 'edit')]//parent::a")
+	WebElement btn_Edit_2;//MW-180
+	
+	
+	
+	
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public UnionListPage() {
@@ -260,6 +275,15 @@ public class UnionListPage extends Base {
 		// CommonFunctions.wait(5000, false);
 	}
 
+		
+	public void fillUpEditUnionDetails_numeric() {
+		CommonFunctions.switchFrameByXPath("//*[text()='Add Union']");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(field_UnionName, "Numeric");
+		CommonFunctions.wait(5000, false);
+		}
+		
+		
 	public void clickDeleteButton() {
 		CommonFunctions.clickElement(btn_Delete);
 	}
@@ -269,9 +293,25 @@ public class UnionListPage extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
+	
+	public void displayDuplicateAlertMessage() {
+		CommonFunctions.elementDisplayed(alert_Name);
+		CommonFunctions.wait(5000, false);
+	}
+	public void clickEditButton2() {
+		CommonFunctions.clickElement(btn_Edit_2);
+		CommonFunctions.wait(5000, false);
+	}
+	
 	public void displayedRequiredName() {
 		CommonFunctions.elementDisplayed(required_Name);
 		CommonFunctions.wait(3000, false);
 	}
+	
+	
+	
+	
 
+	
+	
 }

@@ -311,7 +311,7 @@ public class IDdocsPage extends Base {
 
 		// CommonFunctions.selectValueFromDropdown(Question2B, "Driver's Licence");
 		// CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(Question3, "1234567890");
+		CommonFunctions.enterElementValue(Question3, "First");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.selectValueFromDropdown(Question4, "ACT");
 		CommonFunctions.wait(5000, false);

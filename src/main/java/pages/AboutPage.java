@@ -287,6 +287,10 @@ public class AboutPage extends Base {
 	WebElement Guardian_Tooltip;
 	@FindBy(xpath = "// div[contains(@id,'Guardian_TooltipVideo')]")
 	WebElement Guardian_TooltipVideo;
+	
+	
+	@FindBy(xpath = "//input[contains(@id,'Partner_Email')]")
+	WebElement Field_SpouseEmail;
 
 	@FindBy(xpath = "//span[text()='Please input your spouse/partner’s email so we can send them an invitation to " + "complete their online form. By providing the contact email address, you confirm that you have consent from " + "the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
 	WebElement email_Consent;
@@ -1075,6 +1079,27 @@ public class AboutPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(WillTogetherRadioNo);
 		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(LawNoButton);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(ChildrenNo);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(DependentsNo);
+		CommonFunctions.wait(5000, false);
+	}
+	
+	public void FillUpMandatoryFieldsMarriedWithSpouse() {
+		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question2, "Dim");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question4, "Camuin");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question5, "5");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(WillTogetherRadioNo);
+		CommonFunctions.wait(5000, false);
+		//CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail,"spousesample@gmail.com");
+		//CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);

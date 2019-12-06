@@ -18,16 +18,20 @@ public class PaymentsPage extends Base {
 	WebElement btn_paynow;
 	@FindBy(xpath = "//input[contains(@value,'Proceed')]")
 	WebElement btn_proceed;
-	@FindBy(xpath = "//input[contains(@value,'Download Costs Disclosure and T&Cs')]")
-	WebElement btn_DownloadCostDisclosure;
-
 	@FindBy(xpath = "//div[contains(text(),'$440.00')]//parent::div//parent::div[contains(@class,'all')]")
 	WebElement txt_Addons;
-
+	@FindBy(xpath = "//input[contains(@value,'Download Costs Disclosure and T&Cs')]")
+	WebElement btn_DownloadCostDisclosure;
+	
 	@FindBy(xpath = "//div[contains(text(),'$0.00')]")
 	WebElement dsplay_amount;
 	@FindBy(xpath = "//span[contains(text(),'$0.00')]")
 	WebElement dsplay_total;
+	@FindBy(xpath = "//span[text() = '$839.00']")
+	WebElement TotalStandardWillCostWithPOA;
+	@FindBy(xpath = "//span[text() = '$1039.00']")
+	WebElement TotalCoupleWillCostWithPOA;
+	
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public PaymentsPage() {
@@ -65,24 +69,32 @@ public class PaymentsPage extends Base {
 		CommonFunctions.clickElement(btn_proceed);
 		CommonFunctions.wait(3000, false);
 	}
-
+	
 	public void displaySWLDAmount() {
 		CommonFunctions.elementDisplayed(dsplay_amount);
 	}
-
 	public void displaySWLDTotal() {
 		CommonFunctions.elementDisplayed(dsplay_total);
 		CommonFunctions.wait(3000, false);
 	}
-
 	public CheckOutPage ClickProceed() {
 		CommonFunctions.clickElement(btn_proceed);
 		return new CheckOutPage();
 	}
+	
+	public void DisplayedTotalStandardWillCostWithPOA() {
+		CommonFunctions.elementDisplayed(TotalStandardWillCostWithPOA);
 
+	}
+	public void DisplayedTotalCoupleWillCostWithPOA() {
+		CommonFunctions.elementDisplayed(TotalCoupleWillCostWithPOA);
+
+	}
+	
 	public void clickCostDisclosure() {
 		CommonFunctions.clickElement(btn_DownloadCostDisclosure);
 		CommonFunctions.wait(3000, false);
 	}
+	
 
 }

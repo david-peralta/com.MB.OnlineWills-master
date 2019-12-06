@@ -1,6 +1,6 @@
 Feature: MW - 49 : Affiliated Unions
 
-      @Sprint11
+      @Sprint
   Scenario Outline: 
     # Go to site and log in
     Given user opens browser

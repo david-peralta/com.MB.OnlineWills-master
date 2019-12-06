@@ -28,13 +28,16 @@ public class HomePage extends Base {
 	@FindBy(xpath = "//a[contains(text(),'Logout')]")
 	WebElement link_UserFullNameAccordion_Logout;
 
-	@FindBy(xpath = "//span[text() = 'Single']")
+	//@FindBy(xpath = "//span[text() = 'Single']")
+	@FindBy(xpath = "//input[@value = '2']")
 	WebElement SinglesProduct;
 	@FindBy(xpath = "//span[text() = 'Couple']")
 	WebElement CouplesProduct;
 	@FindBy(xpath = "//input[contains(@id,'StandardCoupleGetStarted')]")
+	//@FindBy(xpath = "//input[@value='Get Started'][1]")
 	WebElement CouplesProductStandardWillBtn;
 	@FindBy(xpath = "//input[contains(@id,'StandardSingleGetStarted3')]")
+	//@FindBy(xpath = "//input[@value='Get Started']")
 	WebElement SinglesProductStandardWillBtn;
 	@FindBy(xpath = "//input[contains(@id,'StandardSingleGetStarted')]")
 	WebElement SinglesProductStandardWillVicBtn;
@@ -66,6 +69,12 @@ public class HomePage extends Base {
 	WebElement AffiliatedUnionsDropdown;
 	@FindBy(xpath = "//span[contains(text(),'$0')]")
 	WebElement Cost;
+	@FindBy(xpath = "//span[text() = '$0.00']")
+	WebElement TotalCost;
+	@FindBy(xpath = "//span[text() = '$440.00']")
+	WebElement TotalCostWithPOA;
+	@FindBy(xpath = "//span[text() = '$839.00']")
+	WebElement TotalStandardWillCostWithPOA;
 
 	/* View Text */
 	@FindBy(xpath = "//span[contains(text(),'Standard Single Will')]")
@@ -172,7 +181,7 @@ public class HomePage extends Base {
 
 	public PersonalPage clickCouplesProductStandardWillBtn() {
 		CommonFunctions.clickElement(CouplesProductStandardWillBtn);
-
+		CommonFunctions.wait(5000, false);
 		return new PersonalPage();
 	}
 
@@ -260,6 +269,15 @@ public class HomePage extends Base {
 
 	public void DisplayedCost() {
 		CommonFunctions.elementDisplayed(Cost);
+
+	}
+	public void DisplayedTotalCost() {
+		CommonFunctions.elementDisplayed(TotalCost);
+
+	}
+	
+	public void DisplayedTotalCostWithPOA() {
+		CommonFunctions.elementDisplayed(TotalCostWithPOA);
 
 	}
 

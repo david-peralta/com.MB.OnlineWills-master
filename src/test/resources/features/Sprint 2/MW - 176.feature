@@ -16,6 +16,7 @@ Feature: MW - 176 : Union - Confirmation
     When user selects "Numeric" as affliated unions
     And user enter "123123" on your member number
     And user click on confirm button
+    Then user check the cost
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal" page
@@ -79,12 +80,13 @@ Feature: MW - 176 : Union - Confirmation
     Then user is on "Add-Ons" page
     And user click the next button without adding POA on the AddOns page
     #Payments
+    When user check the total cost
     Then user is on "Payment" page
     #Check order summary (With POA)
     And Standard will legal document is displayed in the order summary
     #When user clicks on back button on the order summary page
     #User is redirected back to Review and Confirm-------------------------------------------------------------------------
-    #Then user is on "ReviewAndConfirm" page
+    #Then user is on "Review and Confirm" page
     #And user clicks the next button on the review and confirm page to go to add-on page
     #And user clicks on pay now button
     And user clicks on proceed payment button
@@ -111,6 +113,7 @@ Feature: MW - 176 : Union - Confirmation
     When user selects "Numeric" as affliated unions
     And user enter "123123" on your member number
     And user click on confirm button
+    Then user check the cost
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal" page
@@ -174,17 +177,19 @@ Feature: MW - 176 : Union - Confirmation
     Then user is on "Add-Ons" page
     And user click the next button without adding POA on the AddOns page
     #Payments
+    When user check the total cost
     Then user is on "Payment" page
     #Check order summary (With POA)
     And Standard will legal document is displayed in the order summary
     #When user clicks on back button on the order summary page
     #User is redirected back to Review and Confirm-------------------------------------------------------------------------
-    #Then user is on "ReviewAndConfirm" page
+    #Then user is on "Review and Confirm" page
     #And user clicks the next button on the review and confirm page to go to add-on page
     #And user clicks on pay now button
     And user clicks on proceed payment button
     #Thank you page
     Then user is on "Thank You" page
+    Then user close browser
 
     Examples: 
       | email            | password     | Address1  | Suburb         |
@@ -206,18 +211,19 @@ Feature: MW - 176 : Union - Confirmation
     When user selects "Numeric" as affliated unions
     And user enter "123123" on your member number
     And user click on confirm button
+    Then user check the cost
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
     When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
+		When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
     When user inputs "<Address1>" as Residential address line one on personal page
     When user inputs "<Suburb>" as Residential suburb on personal page
     When user selects "VIC" as Residential state on personal page
     When user selects "4103" as Residential Postcode on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
     When user selects Postal Address same as Residential checkbox
     When user selects no on first question
     When user selects no on second question
@@ -288,35 +294,28 @@ Feature: MW - 176 : Union - Confirmation
     Then user click on I do not want a MDM
     Then user click next
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     When user clicks the next button on the review and confirm page to go to payments page
     #Payments
+    When user check the total cost with POA
     Then user is on "Payment" page
     #Check order summary (With POA)
-    #And POA is displayed in the order summary
     And Standard will legal document is displayed in the order summary
-    And POA is displayed in the order summary
-    #When user clicks on back button on the order summary page
+    When user clicks on back button on the order summary page
     #User is redirected back to Review and Confirm-------------------------------------------------------------------------
-    #Then user is on "ReviewAndConfirm" page
-    #And user clicks the next button on the review and confirm page to go to add-on page
+    Then user is on "Review and Confirm" page
+    And user clicks the next button on the review and confirm page to go to add-on page
     And user clicks on pay now button
-    #Checkout page
-    Then user is on "Checkout" page
-    #Scenario2: Checkout - valid details--------------------------
-    Then user enter payment details
-    Then user select month
-    Then user select year
-    When user clicks the pay button
-    #Payment Complete
+    And user clicks on proceed payment button
+    #Thank you page
     Then user is on "Thank You" page
 
     Examples: 
       | email            | password     | Address1  | Suburb         |
       | Jerome@yehey.com | Password123! | Australia | Executive Lane |
-
-  @Sprint
+ 
+ @Sprint
   Scenario Outline: 
     #Scenario 7
     # Go to site and log in-------------------------------------------------------------------------
@@ -329,21 +328,22 @@ Feature: MW - 176 : Union - Confirmation
     #SELECTS UNION - POA
     And user click free standard will
     #Numeric
-    When user selects "Numeric" as affliated unions
+    When user selects "StaffUnion" as affliated unions
     And user enter "123123" on your member number
     And user click on confirm button
+    Then user check the cost
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
     When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
+		When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
     When user inputs "<Address1>" as Residential address line one on personal page
     When user inputs "<Suburb>" as Residential suburb on personal page
     When user selects "VIC" as Residential state on personal page
     When user selects "4103" as Residential Postcode on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
     When user selects Postal Address same as Residential checkbox
     When user selects no on first question
     When user selects no on second question
@@ -414,27 +414,21 @@ Feature: MW - 176 : Union - Confirmation
     Then user click on I do not want a MDM
     Then user click next
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     When user clicks the next button on the review and confirm page to go to payments page
     #Payments
+    When user check the total cost with POA
     Then user is on "Payment" page
     #Check order summary (With POA)
     And Standard will legal document is displayed in the order summary
-    And POA is displayed in the order summary
-    #When user clicks on back button on the order summary page
+    When user clicks on back button on the order summary page
     #User is redirected back to Review and Confirm-------------------------------------------------------------------------
-    #Then user is on "ReviewAndConfirm" page
-    #And user clicks the next button on the review and confirm page to go to add-on page
+    Then user is on "Review and Confirm" page
+    And user clicks the next button on the review and confirm page to go to add-on page
     And user clicks on pay now button
-    #Checkout page
-    Then user is on "Checkout" page
-    #Scenario2: Checkout - valid details--------------------------
-    Then user enter payment details
-    Then user select month
-    Then user select year
-    When user clicks the pay button
-    #Payment Complete
+    And user clicks on proceed payment button
+    #Thank you page
     Then user is on "Thank You" page
 
     Examples: 

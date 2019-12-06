@@ -38,6 +38,9 @@ public class AddOnsPage extends Base {
 	WebElement PowerOfAttorney_Tooltip2;
 	@FindBy(xpath = "//div[contains(@id,'PowerOfAttorney_TooltipVideo2')]")
 	WebElement PowerOfAttorney_Tooltip2Video;
+	@FindBy(xpath = "//div[contains(@id,'Everything')]")
+	WebElement TextBody;
+
 
 	@FindBy(xpath = "//span[text()='By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
 	WebElement Body_spouse;
@@ -131,6 +134,33 @@ public class AddOnsPage extends Base {
 	public void DisplayPowerOfAttorney_Tooltip2Video() {
 		CommonFunctions.elementDisplayed(PowerOfAttorney_Tooltip2Video);
 	}
+	public void TextDisplay() {
+//		WebElement element = driver.findElement(By.xpath("//div[contains(@id,'Everything"));
+//		System.out.println(element.getText());
+//		
+		System.out.println(driver.findElement(By.xpath("//div[contains(@id,'Everything')]")).getText()
+		.contains("Did you know that both you and your spouse/partner need a Will?  This is the best way to ensure your family is protected and you have the confidence that your estate will be distributed as per your wishes." + 
+				"\r\n" + 
+				"You should also consider another equally important document that plays a role while you are still here. Power of Attorney documents give you peace of mind knowing that a trusted person can make vital financial and personal decisions for you when you are no longer able to.\n" + 
+				"\r\n" + 
+				"Maurice Blackburn offers a bundled price for a couple to each have a Will and a huge saving if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today."));
+	}
+	
+	public void CheckText() {
+		CommonFunctions.textDisplayedInPage("Save money and include your spouse/partner at the same time.");
+		CommonFunctions.textDisplayedInPage("Did you know that both you and your spouse/partner need a Will?");
+		CommonFunctions.textDisplayedInPage("This is the best way to ensure your family is protected and you have the confidence that your estate will be distributed as per your wishes. ");
+		
+		CommonFunctions.textDisplayedInPage("You should also consider another equally important document that plays a role while you are still here.");
+		CommonFunctions.textDisplayedInPage(" Power of Attorney documents give you peace of mind knowing that a trusted person can make vital financial and personal decisions for you when you are no longer able to.");
+		CommonFunctions.textDisplayedInPage("Maurice Blackburn offers a bundled price for a couple to each have a Will and a huge saving if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today. ");
+		CommonFunctions.textDisplayedInPage("By adding your spouse/partner now you can take advantage of our bundled price for couples of $599.  This is a saving of $199 with the online couple price and $280 less than the offline price.");
+		CommonFunctions.textDisplayedInPage("Maurice Blackburn offers great value if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today. This bundled package is a savings of $220 over the offline price.  If you and your spouse/partner both include these documents, you can take advantage of our bundled price for couples of $560.  This is a saving of $320.");
+		//CommonFunctions.textDisplayedInPage("");
+		//CommonFunctions.textDisplayedInPage(" Power of Attorney documents give you peace of mind knowing that a trusted person can make vital financial and personal decisions for you when you are no longer able to.");
+		
+	}
+	
 
 	public void clickAddSpouse() {
 		CommonFunctions.clickElement(AddSpouseButton);

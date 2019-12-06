@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import cucumber.api.Scenario;
@@ -90,6 +91,7 @@ public class StepDefinitions extends Base {
 
 	}
 
+
 	@Given("^user opens admin page$")
 	public void user_opens_admin_page() throws Throwable { // Always the start page.
 		driver.get(prop.getProperty("url4"));
@@ -101,8 +103,10 @@ public class StepDefinitions extends Base {
 	public void user_clicks_on_new_order_on_incomplete_order_popup() throws Throwable {
 		if (new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(), 'DEBUG You have an incomplete Order')]")))).isDisplayed()) {
 			homePage.clickNewOrderOnPopUp();
+			
 		}
 		else {
+			homePage.clickCouplesProduct();
 
 		}
 	}
@@ -121,6 +125,7 @@ public class StepDefinitions extends Base {
 	@Then("^user is on \"([^\"]*)\" page$")
 	public void user_is_on_page(String arg1) throws Throwable {
 		CommonFunctions.checkPageTitle(arg1);
+		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^user is on \"([^\"]*)\" popup in page \"([^\"]*)\"$")
@@ -591,6 +596,7 @@ public class StepDefinitions extends Base {
 	@When("^user selects singles product$")
 	public void user_selects_singles_product() throws Throwable {
 		homePage.clickSinglesProduct();
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -737,26 +743,31 @@ public class StepDefinitions extends Base {
 	@When("^user selects Postal Address same as Residential checkbox$")
 	public void user_selects_Postal_Address_same_as_Residential_checkbox() throws Throwable {
 		personalPage.ClickPostalAddressSameAsResidential();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@When("^user selects no on first question$")
 	public void user_selects_no_on_first_question() throws Throwable {
 		personalPage.ClickNoFirstQuestion();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@When("^user selects yes on first question$")
 	public void user_selects_yes_on_first_question() throws Throwable {
 		personalPage.ClickYesFirstQuestion();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@When("^user selects no on second question$")
 	public void user_selects_no_on_second_question() throws Throwable {
 		personalPage.ClickNoSecondQuestion();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@When("^user selects yes on second question$")
 	public void user_selects_yes_on_second_question() throws Throwable {
 		personalPage.ClickYesSecondQuestion();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@When("^user checks if All Postal detail fields is not displayed$")
@@ -1207,6 +1218,7 @@ public class StepDefinitions extends Base {
 	@When("^user clicks on Next button on personal page$")
 	public void user_clicks_on_Next_button_on_personal_page() throws Throwable {
 		aboutPage = personalPage.ClickNextButton();
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -1444,11 +1456,16 @@ public class StepDefinitions extends Base {
 
 	@When("^user inputs \"([^\"]*)\" as date of birth on personal page$")
 	public void user_inputs_as_date_of_birth_on_personal_page(String arg1) throws Throwable {
-		// personalPage.SelectDateToday();
+		//personalPage.SelectDateToday();
 		personalPage.SetDateOfBirth(arg1);
 		// personalPage.SetDateOfBirth(arg1);
 		// CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		// CommonFunctions.wait(5000, false);
+	}
+	
+	@When("^user select today as birth date$")
+	public void user_select_today_as_birth_date() throws Throwable {
+		personalPage.SelectDateToday();
 	}
 
 	@When("^user inputs \"([^\"]*)\" as Phone Number on personal page$")
@@ -1670,6 +1687,11 @@ public class StepDefinitions extends Base {
 	@When("^user fill up the all required fields for married status$")
 	public void user_fill_up_the_all_required_fields_for_married_status() throws Throwable {
 		aboutPage.FillUpMandatoryFieldsMarried();
+	}
+	
+	@When("^user fill up the all required fields for married status with spouse email$")
+	public void user_fill_up_the_all_required_fields_for_married_status_with_spouse_email() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsMarriedWithSpouse();
 	}
 
 	@When("^user fill up the all required fields for married status with children$")
@@ -2052,6 +2074,16 @@ public class StepDefinitions extends Base {
 		loginPage.setPasswordInput(arg2);
 
 		homePage = loginPage.clickLoginButton();
+		CommonFunctions.wait(5000, false);
+	}
+	
+	@When("^user login into app with the \"([^\"]*)\" and \"([^\"]*)\" as the login credentials$")
+	public void user_login_into_app_with_the_and_as_the_login_credentials(String arg1, String arg2) throws Throwable {
+		loginPage.setEmailInput(arg1);
+		loginPage.setPasswordInput(arg2);
+		loginPage.clickLoginButton1();
+
+		addOnsPage = loginPage.clickLoginButton1();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -2582,6 +2614,18 @@ public class StepDefinitions extends Base {
 		homePage.DisplayedCost();
 
 	}
+	
+	
+	@When("^user check the total cost$")
+	public void user_check_the_total_cost() throws Throwable {
+	homePage.DisplayedTotalCost();
+	}
+
+	@When("^user check the total cost with POA$")
+	public void user_check_the_total_cost_with_POA() throws Throwable {
+		homePage.DisplayedTotalCostWithPOA();
+	}
+
 
 	@Then("^user sees validation on mandatory field inside the medical decision page$")
 	public void user_sees_validation_on_mandatory_field_inside_the_medical_decision_page() throws Throwable {
@@ -2828,7 +2872,7 @@ public class StepDefinitions extends Base {
 		else {
 
 		}
-		CommonFunctions.wait(5000, false);
+		
 	}
 	// @Then("^user sees next button on the ID docs page$")
 	// public void user_sees_next_button_on_the_ID_docs_page() throws Throwable {
@@ -3129,7 +3173,9 @@ public class StepDefinitions extends Base {
 
 	@Then("^user fill up add union details$")
 	public void user_fill_up_add_union_details() throws Throwable {
-		unionListPage.fillUpUnionDetails_numeric_alphanumeric();
+		unionListPage.fillUpUnionDetails_alpha();
+	//unionListPage.fillUpUnionDetails_alpha(); for MW-180
+	//unionListPage.fillUpUnionDetails_numeric_alphanumeric for MW-114,115,177
 	}
 
 	@Then("^user click cancel button$")
@@ -3160,12 +3206,16 @@ public class StepDefinitions extends Base {
 	// Edit Union
 	@Then("^user clicks on edit union$")
 	public void user_clicks_on_edit_union() throws Throwable {
-		unionListPage.clickEditButton();
+		unionListPage.clickEditButton2();
+		//unionListPage.clickEditButton2(); for MW - 180
+		//unionListPage.clickEditButton(); for MW - 114,115,177
 	}
 
 	@Then("^user fill up edit union details$")
 	public void user_fill_up_edit_union_details() throws Throwable {
-		unionListPage.fillUpEditUnionDetails_numeric_alphanumeric();
+		unionListPage.fillUpEditUnionDetails_numeric();
+		//unionListPage.fillUpEditUnionDetails_numeric(); for MW - 180
+		//unionListPage.fillUpEditUnionDetails_numeric_alphanumeric();for MW - 114,115,177 
 	}
 
 	@Then("^user check for the edited union$")
@@ -3483,6 +3533,62 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(1500, false);
 		medicalDecisionsPage.clickAdvanceCare_Tooltip();
 	}
+	@Then("^user check for the will price$")
+	public void user_check_for_the_will_price() throws Throwable {
+	    
+	}
+	@Then("^user close browser$")
+	public void user_close_browser() throws Throwable {
+		driver.close();
+	    
+	}
+
+	@Then("^user get text$")
+	public void user_get_text() throws Throwable {
+		WebElement element = driver.findElement(By.xpath("(//div[contains(@id,'Everything')]//div)[1]//span"));
+		System.out.println(element.getText());
+		CommonFunctions.textDisplayedInPage("Same as Residential Address");
+	}
+	
+	@Then("^error message is displayed$")
+	public void error_message_is_displayed() throws Throwable {
+	    unionListPage.displayDuplicateAlertMessage();
+	}
+	
+	@Then("^user check the total standard will cost with POA$")
+	public void user_check_the_total_standard_will_cost_with_POA() throws Throwable {
+	    paymentsPage.DisplayedTotalStandardWillCostWithPOA();
+	}
+	
+	@Then("^user check the total couple will cost with POA$")
+	public void user_check_the_total_couple_will_cost_with_POA() throws Throwable {
+	    paymentsPage.DisplayedTotalStandardWillCostWithPOA();
+	}
+	
+	@Then("^user check on the label$")
+	public void user_check_on_the_label() throws Throwable {
+		reviewConfirmPage.validatePersonalDetails();
+		CommonFunctions.wait(5000, false);
+	}
+	
+	@Then("^Do you want your Enduring Power of Attorney to be for tooltip is displayed$")
+	public void do_you_want_your_Enduring_Power_of_Attorney_to_be_for_tooltip_is_displayed() throws Throwable {
+		CommonFunctions.wait(5000, false);
+		financialDecisionsPage.DisplayPowerOfAttorney_Tooltip3();
+		
+	}
+	
+	@Then("^user clicks on the Do you want your Enduring Power of Attorney to be for tooltip$")
+	public void user_clicks_on_the_Do_you_want_your_Enduring_Power_of_Attorney_to_be_for_tooltip() throws Throwable {
+	    financialDecisionsPage.clickPowerOfAttorney_Tooltip3();
+	}
+	
+	@Then("^user check POA text content$")
+	public void user_check_POA_text_content() throws Throwable {
+	    addOnsPage.TextDisplay();
+	}
+
+
 
 	@Then("^user checks relationship status if single and widowed are not available$")
 	public void user_checks_relationship_status_if_single_and_widowed_are_not_available() throws Throwable {
