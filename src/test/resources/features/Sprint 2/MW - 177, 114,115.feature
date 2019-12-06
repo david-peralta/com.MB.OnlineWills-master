@@ -75,17 +75,12 @@ Feature: MW - 177 114 115: Union List
     
     #MW-114 Scenario 1: Delete Rule
     Then user click delete button
-    And windows alert message is displayed
+    Then user click delete button
+    #And windows alert message is displayed
     When user hits the enter key
     Then user is on "Union List" page
     And user check for the edited union
-    
-    
-    
-    
-    
-    
-    	
+      	
 
     Examples: 
       | email    | password     | Address1  | Suburb         |

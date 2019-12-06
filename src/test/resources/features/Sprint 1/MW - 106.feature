@@ -67,7 +67,7 @@ Feature: MW - 106 : Payments Page
    # And user sees next button on the ID docs page
     Then user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page

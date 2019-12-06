@@ -1,5 +1,6 @@
 package steps;
 
+import java.util.ArrayList;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -2186,6 +2187,11 @@ public class StepDefinitions extends Base {
 		registrationPage.clickPrivacyCheckbox();
 	}
 
+	@When("^user agrees on Maurice Blackburn's Terms and Condition by ticking the checkbox$")
+	public void user_agrees_on_Maurice_Blackburn_s_Terms_and_Condition_by_ticking_the_checkbox() throws Throwable {
+		registrationPage.clickRequiredCheckbox2();
+	}
+
 	@When("^the user hovers on the password policy tooltip$")
 	public void the_user_hovers_on_the_password_policy_tooltip() throws Throwable {
 		registrationPage.HoverOnPasswordToolTip();
@@ -2287,7 +2293,12 @@ public class StepDefinitions extends Base {
 		registrationPage.displayedRequiredPrivacyCheckbox();
 	}
 
-	@When("^user checks if validation on invalid email is displayed$")
+	@Then("^user checks if Maurice Blackburn's Terms and Condition checkbox is mandatory$")
+	public void user_checks_if_Maurice_Blackburn_s_Terms_and_Condition_checkbox_is_mandatory() throws Throwable {
+		registrationPage.displayedRequiredPrivacyCheckbox();
+	}
+
+	@Then("^user checks if validation on invalid email is displayed$")
 	public void user_checks_if_validation_on_invalid_email_is_displayed() throws Throwable {
 		registrationPage.displayedInvalidEmailField();
 	}
@@ -3524,4 +3535,62 @@ public class StepDefinitions extends Base {
 
 	}
 
+	@When("^user clicks on Maurice Blackburn's Terms and Collection$")
+	public void user_clicks_on_Maurice_Blackburn_s_Terms_and_Collection() throws Throwable {
+		registrationPage.clickTermsCondition();
+		CommonFunctions.wait(5000, false);
+		ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs2.get(1));
+		driver.close();
+		driver.switchTo().window(tabs2.get(0));
+		CommonFunctions.wait(3000, false);
+
+	}
+
+	@When("^user clicks on Maurice Blackburn's Collection Statement$")
+	public void user_clicks_on_Maurice_Blackburn_s_Collection_Statement() throws Throwable {
+		registrationPage.clickCollectionStatement();
+		CommonFunctions.wait(5000, false);
+		ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs2.get(1));
+		driver.close();
+		driver.switchTo().window(tabs2.get(0));
+		CommonFunctions.wait(3000, false);
+
+	}
+
+	@When("^user clicks on Maurice Blackburn's Privacy Policy$")
+	public void user_clicks_on_Maurice_Blackburn_s_Privacy_Policy() throws Throwable {
+		registrationPage.clickPrivacyPolicy();
+		CommonFunctions.wait(5000, false);
+		ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs2.get(1));
+		driver.close();
+		driver.switchTo().window(tabs2.get(0));
+		CommonFunctions.wait(3000, false);
+
+	}
+
+	@Then("^user checks spouse invitation message$")
+	public void user_checks_spouse_invitation_message() throws Throwable {
+		addOnsPage.clickAddSpouse();
+		CommonFunctions.wait(3000, false);
+		addOnsPage.checkSpouseBody();
+	}
+
+	@Then("^user input spouse email$")
+	public void user_input_spouse_email() throws Throwable {
+		addOnsPage.setSpouseEmailInput();
+
+	}
+
+	@Then("^user clicks save spouse email$")
+	public void user_clicks_save_spouse_email() throws Throwable {
+		addOnsPage.clickSaveSpouse();
+	}
+
+	@Then("^user checks if union is duplicated$")
+	public void user_checks_if_union_is_duplicated() throws Throwable {
+		unionListPage.displayedRequiredName();
+	}
 }

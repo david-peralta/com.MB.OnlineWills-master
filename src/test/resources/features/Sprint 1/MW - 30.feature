@@ -12,6 +12,7 @@ Feature: MW - 30 : As a customer, I want to list all my children, so I can indic
     Then user is on "Personal" page
     #User filled valid input
     When user selects "Dr" as title on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
     When user inputs "Today" as date of birth on personal page
     When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page

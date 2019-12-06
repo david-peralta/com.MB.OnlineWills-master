@@ -11,6 +11,8 @@ public class AddOnsPage extends Base {
 	// ========================================================== Page Objects ===========================================================
 	@FindBy(xpath = "//input[contains(@id,'AddPOAButtonSingle')]")
 	WebElement AddPOAButton;
+	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]")
+	WebElement AddSpouseButton;
 	@FindBy(xpath = "//input[contains(@value,'Next')]")
 	WebElement btn_Next;
 
@@ -36,6 +38,15 @@ public class AddOnsPage extends Base {
 	WebElement PowerOfAttorney_Tooltip2;
 	@FindBy(xpath = "//div[contains(@id,'PowerOfAttorney_TooltipVideo2')]")
 	WebElement PowerOfAttorney_Tooltip2Video;
+
+	@FindBy(xpath = "//span[text()='By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
+	WebElement Body_spouse;
+	@FindBy(xpath = "//input[contains(@id,'SpouseEmailInput')]")
+	WebElement Email_spouse;
+	@FindBy(xpath = "//input[contains(@value,'Save')]")
+	WebElement btn_SaveSpouse;
+	@FindBy(xpath = "//input[contains(@value,'Cancel')]")
+	WebElement btn_CancelSpouse;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public AddOnsPage() {
@@ -121,4 +132,24 @@ public class AddOnsPage extends Base {
 		CommonFunctions.elementDisplayed(PowerOfAttorney_Tooltip2Video);
 	}
 
+	public void clickAddSpouse() {
+		CommonFunctions.clickElement(AddSpouseButton);
+		CommonFunctions.wait(2500, false);
+		CommonFunctions.switchFrameByXPath("//label[contains(text(),'Spouse/Partner')]");
+	}
+
+	public void checkSpouseBody() {
+		CommonFunctions.elementDisplayed(Body_spouse);
+		CommonFunctions.wait(2500, false);
+	}
+
+	public void setSpouseEmailInput() {
+		CommonFunctions.enterElementValue(Email_spouse, "wife.spouse@email.com");
+		CommonFunctions.wait(2500, false);
+	}
+
+	public void clickSaveSpouse() {
+		CommonFunctions.clickElement(btn_SaveSpouse);
+		CommonFunctions.wait(2500, false);
+	}
 }

@@ -1,14 +1,20 @@
-Feature: CHEAT
+Feature: MW - 192
 
-  @Sprint
+  @Sprint3
   Scenario Outline: 
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    #When user clicks on new order on incomplete order popup
+    When user clicks on new order on incomplete order popup
     #When user clicks on continue on incomplete order popup
     When user selects singles product
+    #SELECTS UNION - POA
+    And user click free standard will
+    #Numeric
+    When user selects "Numeric" as affliated unions
+    And user enter "123123" on your member number
+    And user click on confirm button
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal" page
@@ -64,9 +70,8 @@ Feature: CHEAT
     And user selects Driver License as second identification type
     And user adds driver license details
     And user clicks next button on the ID docs page
-    And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "Review and Confirm" page
+    Then user is on "ReviewAndConfirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page
@@ -92,14 +97,13 @@ Feature: CHEAT
     Then user click on I do not want a MDM
     Then user click next
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "Review and Confirm" page
+    Then user is on "ReviewAndConfirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     When user clicks the next button on the review and confirm page to go to payments page
     #Payments
     Then user is on "Payment" page
-    #Check order summary (With POA)
-    #And POA is displayed in the order summary
-    And Standard will legal document is displayed in the order summary
+    And user clicks download cost disclosure
+    And POA is displayed in the order summary
     #When user clicks on back button on the order summary page
     #User is redirected back to Review and Confirm-------------------------------------------------------------------------
     #Then user is on "ReviewAndConfirm" page
@@ -116,5 +120,5 @@ Feature: CHEAT
     Then user is on "Thank You" page
 
     Examples: 
-      | email            | password     | Address1  | Suburb         |
-      | demeth@gmail.com | Password123! | Australia | Executive Lane |
+      | email                   | password     | Address1  | Suburb         |
+      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |

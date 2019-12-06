@@ -1,6 +1,6 @@
 Feature: MW - 176 : Union - Confirmation
 
-  @Sprint1
+  @Sprint2
   Scenario Outline: 
     #Scenario 1
     # Go to site and log in-------------------------------------------------------------------------
@@ -95,7 +95,7 @@ Feature: MW - 176 : Union - Confirmation
       | email            | password     | Address1  | Suburb         |
       | Jerome@yehey.com | Password123! | Australia | Executive Lane |
 
-  @Sprint
+  @Sprint2
   Scenario Outline: 
     #Scenario 2
     # Go to site and log in-------------------------------------------------------------------------
@@ -190,7 +190,7 @@ Feature: MW - 176 : Union - Confirmation
       | email            | password     | Address1  | Suburb         |
       | Jerome@yehey.com | Password123! | Australia | Executive Lane |
 
-  @Sprint
+  @Sprint2
   Scenario Outline: 
     #Scenario 6
     # Go to site and log in-------------------------------------------------------------------------
@@ -438,5 +438,5 @@ Feature: MW - 176 : Union - Confirmation
     Then user is on "Thank You" page
 
     Examples: 
-      | email            | password     | Address1  | Suburb         |
-      | Jerome@yehey.com | Password123! | Australia | Executive Lane |
+      | email                   | password     | Address1  | Suburb         |
+      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |

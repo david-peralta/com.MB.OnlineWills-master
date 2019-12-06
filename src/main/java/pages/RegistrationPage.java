@@ -18,7 +18,7 @@ public class RegistrationPage extends Base {
 	WebElement PasswordField;
 	@FindBy(xpath = "//input[contains(@id,'ConfirmPasswordField')]")
 	WebElement ConfirmPasswordField;
-	@FindBy(xpath = "//input[contains(@id,'CBPrivacy')]")
+	@FindBy(xpath = "//input[contains(@id,'CBPrivacy1')]")
 	WebElement PrivacyCheckbox;
 	@FindBy(xpath = "//select[contains(@id,'StateDropdown')]")
 	WebElement StateDropdown;
@@ -26,7 +26,7 @@ public class RegistrationPage extends Base {
 	WebElement SourceDropdown;
 	@FindBy(xpath = "//span[text()='Privacy Policy']")
 	WebElement PrivacyPolicyLink;
-	@FindBy(xpath = "//input[@value='Create account']")
+	@FindBy(xpath = "//input[@value='Create Account']")
 	WebElement CreateAccountButton;
 	@FindBy(xpath = "//input[contains(@id,'DescriptionField')]")
 	WebElement DescriptionField;
@@ -62,8 +62,8 @@ public class RegistrationPage extends Base {
 	WebElement RequiredSourceDropdown;
 	@FindBy(xpath = "//input[contains(@id, 'DescriptionField')]//following-sibling::span[text()='Required field']")
 	WebElement RequiredDescriptionField;
-	@FindBy(xpath = "//input[contains(@id,'CBPrivacy')]//following-sibling::span[contains(text(),'You must agree to the ')]")
-	WebElement RequiredPrivacyCheckbox;
+	// @FindBy(xpath = "//input[contains(@id,'CBPrivacy')]//following-sibling::span[contains(text(),'You must agree to the ')]")
+	// WebElement RequiredPrivacyCheckbox;
 
 	// ---
 	@FindBy(xpath = "//div[@class = 'balloon-content' and contains(., 'Be a minimum password length: 8 Characters') and contains(., 'Contain characters from three of the following four categories:') and contains(., 'English uppercase characters (A through Z)') and contains(., 'English lowercase characters (a through z)') and contains(., 'Base 10 digits (0 through 9)')and contains(., 'Non-alphabetic characters (for example, !, $, #, %)')]")
@@ -86,8 +86,14 @@ public class RegistrationPage extends Base {
 	// Checkbox
 	@FindBy(xpath = "//input[contains(@id,'CBPrivacy2')]")
 	WebElement RequiredPrivacyCheckbox2;
-	@FindBy(xpath = "(//input[contains(@id,'CBPrivacy')])[1]")
-	WebElement RequiredPrivacyCheckbox1;
+
+	// Links
+	@FindBy(xpath = "//*[contains(text(),'Terms and Conditions')]")
+	WebElement Link_TermsConditions;
+	@FindBy(xpath = "//*[contains(text(),'Collection Statement')]")
+	WebElement Link_CollectionStatement;
+	@FindBy(xpath = "//*[contains(text(),'Privacy Policy')]")
+	WebElement Link_PrivacyPolicy;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public RegistrationPage() {
@@ -233,7 +239,7 @@ public class RegistrationPage extends Base {
 	}
 
 	public void displayedRequiredPrivacyCheckbox() {
-		CommonFunctions.elementDisplayed(RequiredPrivacyCheckbox);
+		CommonFunctions.elementDisplayed(required_CollectionPolicy);
 	}
 
 	public void setFirstNameField(String Value) {
@@ -261,12 +267,25 @@ public class RegistrationPage extends Base {
 		CommonFunctions.hoverOverElement(PasswordPolicyToolTip);
 	}
 
-	public void clickRequiredCheckbox1() {
-		CommonFunctions.clickElement(RequiredPrivacyCheckbox1);
-	}
-
 	public void clickRequiredCheckbox2() {
 		CommonFunctions.clickElement(RequiredPrivacyCheckbox2);
+	}
+
+	public void displayedRequiredTermsCondition() {
+		CommonFunctions.elementDisplayed(required_TermsCondition);
+
+	}
+
+	public void clickTermsCondition() {
+		CommonFunctions.clickElement(Link_TermsConditions);
+	}
+
+	public void clickCollectionStatement() {
+		CommonFunctions.clickElement(Link_CollectionStatement);
+	}
+
+	public void clickPrivacyPolicy() {
+		CommonFunctions.clickElement(Link_PrivacyPolicy);
 	}
 
 }
