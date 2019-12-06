@@ -3473,7 +3473,6 @@ public class StepDefinitions extends Base {
 		medicalDecisionsPage.clickAdvanceCare_Tooltip();
 	}
 
-
 	@Then("^user checks relationship status if single and widowed are not available$")
 	public void user_checks_relationship_status_if_single_and_widowed_are_not_available() throws Throwable {
 		String[] RelStatus = { "Select One", "Defacto", "Engaged", "Married", "Separated", "Divorced" };
@@ -3488,6 +3487,7 @@ public class StepDefinitions extends Base {
 	@Then("^user clicks download cost disclosure$")
 	public void user_clicks_download_cost_disclosure() throws Throwable {
 		paymentsPage.clickCostDisclosure();
+	}
 
 	@Given("^user opens browser and proceeds to orders page$")
 	public void user_opens_browser_and_proceeds_to_orders_page() throws Throwable {
