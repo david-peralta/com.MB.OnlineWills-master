@@ -88,8 +88,6 @@ public class PersonalPage extends Base {
 	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressAddOns;
 
-	
-
 	// ================================================== Initializing the Page Objects =================================================
 	public PersonalPage() {
 		PageFactory.initElements(driver, this);
@@ -518,8 +516,5 @@ public class PersonalPage extends Base {
 	public void CheckProgressAsset() {
 		CommonFunctions.elementDisplayed(ProgressAbout.findElement(By.xpath(".//following-sibling::a[contains(text(),'Change')]")));
 	}
-	
-
-	
 
 }

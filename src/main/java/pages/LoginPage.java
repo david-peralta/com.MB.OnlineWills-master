@@ -121,7 +121,7 @@ public class LoginPage extends Base {
 
 		return new HomePage();
 	}
-	
+
 	public AddOnsPage clickLoginButton1() {
 		CommonFunctions.clickElement(button_Login);
 
@@ -135,6 +135,12 @@ public class LoginPage extends Base {
 
 	public void setEmailInputAdmin(String password) {
 		CommonFunctions.clearThenEnterElementValue(input_EmailAdmin, password);
+	}
+
+	public IDdocsPage clickIDLogin() {
+		CommonFunctions.clickElement(button_Login);
+
+		return new IDdocsPage();
 	}
 
 }

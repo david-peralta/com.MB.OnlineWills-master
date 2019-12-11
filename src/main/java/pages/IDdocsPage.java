@@ -29,8 +29,8 @@ public class IDdocsPage extends Base {
 	@FindBy(xpath = "(//select[contains(@id,'IdentificationTypeInput')])[1]")
 	WebElement Question2A;
 
-	@FindBy(xpath = "(//select[contains(@id,'IdentificationTypeInput')])[2]")
-	WebElement Question2B;
+	// @FindBy(xpath = "(//select[contains(@id,'IdentificationTypeInput')])[2]")
+	// WebElement Question2B;
 
 	@FindBy(xpath = "//select[contains(@id,'LicenseStateDropdown')]")
 	WebElement Question4;
@@ -126,6 +126,16 @@ public class IDdocsPage extends Base {
 	WebElement ProgressReviewConfirm;
 	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressAddOns;
+
+	// Add Identification Document
+	// @FindBy(xpath = "//a[contains(@id,'AddIdentityDocs')]")
+	@FindBy(xpath = "//a[contains(text(),'Add Identification Document')]")
+	// @FindBy(xpath = "//span[@class='fa fa-fw fa-plus']//parent::a")
+	WebElement AddIdentification;
+	@FindBy(xpath = "//input[contains(@value,'Add')]")
+	WebElement id_Save;
+	@FindBy(xpath = "//input[contains(@value,'Cancel')]")
+	WebElement id_Cancel;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public IDdocsPage() {
@@ -280,7 +290,7 @@ public class IDdocsPage extends Base {
 	}
 
 	public void SelectForeignPassportSecondID() {
-		CommonFunctions.selectValueFromDropdown(Question2B, "Foreign Passport");
+		CommonFunctions.selectValueFromDropdown(Question2A, "Foreign Passport");
 	}
 
 	public void SelectAustralianPassportFirstID() {
@@ -288,7 +298,7 @@ public class IDdocsPage extends Base {
 	}
 
 	public void SelectAustralianPassportSecondID() {
-		CommonFunctions.selectValueFromDropdown(Question2B, "Australian Passport");
+		CommonFunctions.selectValueFromDropdown(Question2A, "Australian Passport");
 	}
 
 	public void SelectDriverLicenseFirstID() {
@@ -296,7 +306,7 @@ public class IDdocsPage extends Base {
 	}
 
 	public void SelectDriverLicenseSecondID() {
-		CommonFunctions.selectValueFromDropdown(Question2B, "Driver's Licence");
+		CommonFunctions.selectValueFromDropdown(Question2A, "Driver's Licence");
 	}
 
 	public void SelectMedicareFirstID() {
@@ -304,7 +314,7 @@ public class IDdocsPage extends Base {
 	}
 
 	public void SelectMedicareSecondID() {
-		CommonFunctions.selectValueFromDropdown(Question2B, "Medicare");
+		CommonFunctions.selectValueFromDropdown(Question2A, "Medicare");
 	}
 
 	public void FillUpDriversLicense() {
@@ -437,5 +447,25 @@ public class IDdocsPage extends Base {
 		CommonFunctions.clickElement(ProgressAddOns);
 
 		return new AddOnsPage();
+	}
+
+	public void clickAddFirstIdentification() {
+		CommonFunctions.clickElement(AddIdentification);
+		CommonFunctions.wait(3000, false);
+	}
+
+	public void clickAddSecondIdentification() {
+		CommonFunctions.clickElement(AddIdentification);
+		CommonFunctions.wait(3000, false);
+	}
+
+	public void clickAddID() {
+		CommonFunctions.clickElement(id_Save);
+		CommonFunctions.wait(2500, false);
+	}
+
+	public void clickCancelID() {
+		CommonFunctions.clickElement(id_Cancel);
+		CommonFunctions.wait(2500, false);
 	}
 }

@@ -287,8 +287,7 @@ public class AboutPage extends Base {
 	WebElement Guardian_Tooltip;
 	@FindBy(xpath = "// div[contains(@id,'Guardian_TooltipVideo')]")
 	WebElement Guardian_TooltipVideo;
-	
-	
+
 	@FindBy(xpath = "//input[contains(@id,'Partner_Email')]")
 	WebElement Field_SpouseEmail;
 
@@ -1086,7 +1085,7 @@ public class AboutPage extends Base {
 		CommonFunctions.clickElement(DependentsNo);
 		CommonFunctions.wait(5000, false);
 	}
-	
+
 	public void FillUpMandatoryFieldsMarriedWithSpouse() {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.wait(5000, false);
@@ -1098,8 +1097,8 @@ public class AboutPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(WillTogetherRadioNo);
 		CommonFunctions.wait(5000, false);
-		//CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail,"spousesample@gmail.com");
-		//CommonFunctions.wait(5000, false);
+		// CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail,"spousesample@gmail.com");
+		// CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);
@@ -1181,12 +1180,12 @@ public class AboutPage extends Base {
 		// CommonFunctions.assembleFilePathsToUpload(GoodPath, "C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/12.84MB.jpg");
 		// CommonFunctions.attachToUploadElement(driver.findElement(By.xpath(".//input[@id='Upload_file']")), GoodPath);
 
-		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/12.84MB.jpg");
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/15mb.jpg");
 
 	}
 
 	public void UploadValidWill() {
-		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/SampleWill.pdf");
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/WillInstructions1.pdf");
 
 	}
 
@@ -1199,8 +1198,8 @@ public class AboutPage extends Base {
 
 	public void UploadWillInvalidFileFormat() {
 		// driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/Proposed MB Online Will Form V1.4.xlsx");
-		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/Proposed MB Online Will Form V1.4.xlsx");
-
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/Proposed MB Online Will Form V2.4.xlsx");
+		CommonFunctions.wait(5000, false);
 	}
 
 	public void ClickRemoveAttachment() {

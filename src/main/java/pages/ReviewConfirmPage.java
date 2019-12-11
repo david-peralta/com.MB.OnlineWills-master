@@ -49,9 +49,9 @@ public class ReviewConfirmPage extends Base {
 	WebElement PersonalInfoHospitalQuestionWithNo;
 	@FindBy(xpath = "(//span[text()='Are you currently in hospital?']//following::div[text()='Yes'])[1]")
 	WebElement PersonalInfoHospitalQuestionWithYes;
-	@FindBy(xpath = "(//span[contains(text(),'Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will?')]//following::div[text()='Yes'])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'Have you been diagnosed with any conditions that affect your cognition or your physical ability to read and sign your Will?')]//following::div[text()='Yes'])[1]")
 	WebElement PersonalInfoDiagnosedQuestionWithYes;
-	@FindBy(xpath = "(//span[contains(text(),'Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will?')]//following::div[text()='No'])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'Have you been diagnosed with any conditions that affect your cognition or your physical ability to read and sign your Will?')]//following::div[text()='No'])[1]")
 	WebElement PersonalInfoDiagnosedQuestionWithNo;
 	@FindBy(xpath = "//td[text()='Have you had a family law property settlement?']//following::td[text()='No']")
 	WebElement FamilyLawPropertyNo;
@@ -241,9 +241,9 @@ public class ReviewConfirmPage extends Base {
 	WebElement ProgressIDDocs;
 	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressAddOns;
-	
-	//Element Labels
-		//Personal Details
+
+	// Element Labels
+	// Personal Details
 	@FindBy(xpath = "//div[contains(@id,'Title') and . /text()='Personal Details']")
 	WebElement Label_PersonalDetails;
 	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Title:')]")
@@ -266,7 +266,7 @@ public class ReviewConfirmPage extends Base {
 	WebElement Label_PersonalDetails_PhoneNo;
 	@FindBy(xpath = "//div[contains(@id,'Column2')]//td[contains(text(),'Occupation:')]")
 	WebElement Label_PersonalDetails_Occupation;
-		//About You
+	// About You
 	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Current Marital Status:')]")
 	WebElement Label_About_You_Status;
 	@FindBy(xpath = "//div[contains(@id,'Column1')]//td[contains(text(),'Length of relationship (years):')]")
@@ -281,19 +281,14 @@ public class ReviewConfirmPage extends Base {
 	WebElement Label_About_You_Mname;
 	@FindBy(xpath = "//div[contains(@id,'Column2')]//td[contains(text(),'Family Name:')]")
 	WebElement Label_About_You_Sname;
-	
-		//Executors
+
+	// Executors
 	@FindBy(xpath = "(//div[@class='card Display']//span[contains(text(),'Name:')])[1]")
 	WebElement Label_Executors_Name;
 	@FindBy(xpath = "(//div[@class='card Display']//span[contains(text(),'Relationship:')])[1]")
 	WebElement Label_Executors_Relationship;
 	@FindBy(xpath = "//div[contains(@id,'Column1')]//span[contains(text(),'When I pass away, I wish to be:')]")
 	WebElement Label_Executors_Wish;
-	
-	
-	
-	
-	
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public ReviewConfirmPage() {
@@ -460,9 +455,23 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.textDisplayedInPage("Name:");
 		CommonFunctions.textDisplayedInPage("Relationship:");
-		
-		
 
+	}
+
+	public void validateVicPersonalDetails() {
+		CommonFunctions.scrollToBottomOfPage();
+		CommonFunctions.wait(2500, false);
+		CommonFunctions.textDisplayedInPage("Personal Details");
+		CommonFunctions.textDisplayedInPage("Title");
+		CommonFunctions.textDisplayedInPage("First Name");
+		CommonFunctions.textDisplayedInPage("Middle Name");
+		CommonFunctions.textDisplayedInPage("Family Name");
+		CommonFunctions.textDisplayedInPage("Residential Address");
+		CommonFunctions.textDisplayedInPage("Postal Address");
+		CommonFunctions.textDisplayedInPage("Date of Birth");
+		CommonFunctions.textDisplayedInPage("Email");
+		CommonFunctions.textDisplayedInPage("Phone Number");
+		CommonFunctions.textDisplayedInPage("Occupation");
 	}
 
 	public void FamilyLawPropertyNo() {
@@ -608,6 +617,7 @@ public class ReviewConfirmPage extends Base {
 
 		return new AddOnsPage();
 	}
+
 	public void ValidateLabels() {
 		CommonFunctions.elementDisplayed(Label_PersonalDetails_Email);
 		CommonFunctions.elementDisplayed(Label_PersonalDetails_Birth);
@@ -630,8 +640,7 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.elementDisplayed(Label_Executors_Name);
 		CommonFunctions.elementDisplayed(Label_Executors_Relationship);
 		CommonFunctions.elementDisplayed(Label_Executors_Wish);
-	
+
 	}
-	
 
 }

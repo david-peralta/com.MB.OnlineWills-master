@@ -2,11 +2,14 @@ Feature: MW - 48
 
   @Sprint
   Scenario Outline: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "david.peralta@yahoo.com" on user dropdown
+    Then user clicks on delete all button
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    When user clicks on new order on incomplete order popup
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
@@ -14,7 +17,6 @@ Feature: MW - 48
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "Today" as date of birth on personal page
     When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
     When user inputs "<Address1>" as Residential address line one on personal page
@@ -59,13 +61,17 @@ Feature: MW - 48
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
+    Then user clicks on first identification document
     And user selects Driver License as first identification type
     And user adds driver license details
+    And user adds first identification
+    Then user clicks on second identification document
     And user selects Medicare as second identification type
     And user adds medicare details
+    And user adds second identification
     And user clicks next button on the ID docs page
     #Review and confirm
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     And user click the next button on the review and confirm page
     #Add ons page
@@ -153,7 +159,7 @@ Feature: MW - 48
     And user sees validation on mandatory field inside the medical decision page
     And user clicks on I do not want to appoint a Medical Decision Maker checkbox
     And user clicks next button on the medical decision page
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user clicks back button on review and confirm page to go back to medical decision page
     Then user is on "MedicalPOA" page
     And user clicks on I do not want to appoint a Medical Decision Maker checkbox
@@ -179,8 +185,8 @@ Feature: MW - 48
     And user hits the enter key
     # Next
     And user clicks next button on the medical decision page
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
 
     Examples: 
-      | email            | password     | Address1                                         | Suburb         |
-      | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email                   | password     | Address1                                         | Suburb         |
+      | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

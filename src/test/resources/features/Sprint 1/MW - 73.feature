@@ -2,11 +2,14 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
 
   @Regression
   Scenario Outline: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "demeth@gmail.com" on user dropdown
+    Then user clicks on delete all button
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    And user clicks on new order on incomplete order popup
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
@@ -14,7 +17,6 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "Today" as date of birth on personal page
     When user inputs "4772834" as Phone Number on personal page
     When user inputs "Consultant" as Occupation on personal page
     When user inputs "<Address1>" as Residential address line one on personal page
@@ -52,10 +54,14 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
+    Then user clicks on first identification document
     And user selects Driver License as first identification type
     And user adds driver license details
+    And user adds first identification
+    Then user clicks on second identification document
     And user selects Medicare as second identification type
     And user adds medicare details
+    And user adds second identification
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page
     And user reviews and confirms will details

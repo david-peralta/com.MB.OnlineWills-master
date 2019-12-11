@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -121,18 +122,21 @@ public class DashboardPage extends Base {
 	}
 
 	public void displayedNewestRow() {
-		CommonFunctions.elementDisplayed(tablerow_NewestRow);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementContainsText(tablerow_OldestRow, "01/12/2019");
 		CommonFunctions.wait(3000, false);
 	}
 
 	public void displayedOldestRow() {
 		CommonFunctions.elementDisplayed(tablerow_OldestRow);
 		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementContainsText(tablerow_OldestRow, "06/12/2019");
+		CommonFunctions.wait(3000, false);
 	}
 
 	public void clickMoreOption() {
 		CommonFunctions.clickElement(link_MoreOption);
-		CommonFunctions.wait(2500, false);
+		CommonFunctions.wait(3000, false);
 	}
 
 	public void clickHideOption() {
@@ -166,7 +170,7 @@ public class DashboardPage extends Base {
 	}
 
 	public void SearchDashboardUser() {
-		CommonFunctions.clearThenEnterElementValue(input_SearchDashboard, "Email");
+		CommonFunctions.clearThenEnterElementValue(input_SearchDashboard, "bam");
 		CommonFunctions.wait(3000, false);
 		CommonFunctions.clickElement(button_Search);
 		CommonFunctions.wait(3000, false);
@@ -184,13 +188,14 @@ public class DashboardPage extends Base {
 	public void UpdateUserActions() {
 		CommonFunctions.selectValueFromDropdown(dropdown_Action, "Made contact");
 		CommonFunctions.wait(3000, false);
-		CommonFunctions.clearThenEnterElementValue(input_ActionDate, "05/09/2001");
+		CommonFunctions.clearThenEnterElementValue(input_ActionDate, "05/09/20");
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(3000, false);
 	}
 
 	public void enterInvalidDate() {
 		CommonFunctions.clearThenEnterElementValue(input_ActionDate, "05/09/111");
-		CommonFunctions.wait(3000, false);
+		CommonFunctions.wait(5000, false);
 	}
 
 	public void SortsColumnInDashboardTable() {
@@ -240,11 +245,11 @@ public class DashboardPage extends Base {
 		CommonFunctions.clickElement(button_Search);
 		return new DashboardPage();
 	}
-	
+
 	public UnionListPage clickUnionList() {
 		CommonFunctions.clickElement(button_UnionList);
 		CommonFunctions.wait(5000, false);
 		return new UnionListPage();
 	}
-	
+
 }
