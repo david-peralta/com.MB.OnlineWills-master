@@ -1,30 +1,31 @@
 Feature: MW - 106 : Payments Page
 
+@WIP
+  Scenario Outline: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+    
+        Examples: 
+      | email      | password     | Address1 | Suburb   			|
+      | bam@bam.com| Password123! | Australia| Executive Lane |
+
+
   @Sprint
   Scenario Outline: 
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    When user clicks on new order on incomplete order popup
-    #When user clicks on continue on incomplete order popup
     #And user check background color
     When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
-    When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
-    When user inputs "Consultant" as Occupation on personal page
-    When user inputs "<Address1>" as Residential address line one on personal page
-    When user inputs "<Suburb>" as Residential suburb on personal page
-    When user selects "VIC" as Residential state on personal page
-    When user selects "4103" as Residential Postcode on personal page
-    When user selects Postal Address same as Residential checkbox
-    When user selects no on first question
-    When user selects no on second question
+		When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single-------------------------------------------------------------------------
@@ -64,7 +65,7 @@ Feature: MW - 106 : Payments Page
     Then user adds driver license details
     And user selects Medicare as second identification type
     Then user adds medicare details
-   # And user sees next button on the ID docs page
+   	#And user sees next button on the ID docs page
     Then user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
@@ -89,11 +90,11 @@ Feature: MW - 106 : Payments Page
     #next button
     And user click the next button with POA on the financial decision page
     #Medical POA page-------------------------------------------------------------------------
-    Then user is on "Medical POA" page
+    Then user is on "MedicalPOA" page
     Then user click on I do not want a MDM
     Then user click next
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     And user clicks the next button on the review and confirm page to go to add-on page
     #Payments
@@ -101,15 +102,12 @@ Feature: MW - 106 : Payments Page
     #Check order summary (With POA)
     And POA is displayed in the order summary
     And Standard will legal document is displayed in the order summary
-    When user clicks on back button on the order summary page
-    #User is redirected back to Review and Confirm
-    Then user is on "ReviewAndConfirm" page
-    And user clicks the next button on the review and confirm page to go to add-on page
     And user clicks on pay now button
+    Then user close browser
     #User is redirected to 
     
     
 
     Examples: 
       | email            | password     | Address1 | Suburb         |
-      | Jerome@yehey.com | Password123! | Australia| Executive Lane |
+      | bam@bam.com| Password123! | Australia| Executive Lane |

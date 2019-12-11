@@ -29,12 +29,12 @@ public class BeneficiariesPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'WishDetail_Input')]")
 	WebElement FuneralWishField;
 
-	@FindBy(xpath = "// *[contains(text(), 'If all of your listed beneficiaries pass away, what would you like us to do with their share?')]")
+	@FindBy(xpath = "// *[contains(text(), 'If all of your chosen beneficiaries pass away')]")
 	WebElement DisasterQuestion;
 	@FindBy(xpath = "//input[contains(@id,'OtherInstruction')]")
 	WebElement DisasterQuestionField;
 
-	@FindBy(xpath = "// *[contains(text(), 'What do you want us to do with it?')]")
+	@FindBy(xpath = "// *[contains(text(), 'Who do you want to leave your estate to?')]")
 	WebElement BeneficiaryQuestion;
 	@FindBy(xpath = "//a[text()='Add Beneficiary']")
 	WebElement AddBeneficiary;

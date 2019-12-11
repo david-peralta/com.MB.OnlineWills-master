@@ -566,25 +566,36 @@ public class AboutPage extends Base {
 	}
 
 	public void CheckAddChildrenRequired() {
+		CommonFunctions.elementDisplayed(AddChildQuestion4Req);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.elementDisplayed(AddChildQuestion5Req);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.elementDisplayed(AddChildQuestion7Req);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.elementDisplayed(AddChildQuestion8Req);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.elementDisplayed(AddChildQuestion9Req);
+		CommonFunctions.wait(5000, false);
+		/*CommonFunctions.elementDisplayed(AddChildQuestion12Req);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.elementDisplayed(AddChildQuestion13Req);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.elementDisplayed(AddChildQuestion14Req);
+		CommonFunctions.wait(5000, false);*/
+		CommonFunctions.clickElement(AddChildCancel);
+
+	}
+	public void CheckAddChildrenRequiredPreReq() {
 		CommonFunctions.clickElement(ChildrenNo);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(ChildrenYes);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(AddChild);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddChildQuestion11);
+		//CommonFunctions.clickElement(AddChildQuestion11);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(AddChildSave);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.elementDisplayed(AddChildQuestion4Req);
-		CommonFunctions.elementDisplayed(AddChildQuestion5Req);
-		CommonFunctions.elementDisplayed(AddChildQuestion7Req);
-		CommonFunctions.elementDisplayed(AddChildQuestion8Req);
-		CommonFunctions.elementDisplayed(AddChildQuestion9Req);
-		CommonFunctions.elementDisplayed(AddChildQuestion12Req);
-		CommonFunctions.elementDisplayed(AddChildQuestion13Req);
-		CommonFunctions.elementDisplayed(AddChildQuestion14Req);
-		CommonFunctions.clickElement(AddChildCancel);
 
 	}
 
@@ -627,8 +638,6 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(AddChildQuestion9);
 		CommonFunctions.elementDisplayed(AddChildQuestion10);
 		CommonFunctions.elementDisplayed(AddChildQuestion11);
-		CommonFunctions.clickElement(AddChild);
-		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(AddChildSave);
 		CommonFunctions.elementDisplayed(AddChildCancel);
 	}

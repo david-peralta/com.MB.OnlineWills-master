@@ -82,6 +82,7 @@ public class StepDefinitions extends Base {
 
 		LogFunctions.endLog(scenario);
 		// driver.quit();
+
 	}
 
 	@Given("^user opens browser$")
@@ -171,6 +172,17 @@ public class StepDefinitions extends Base {
 	@Then("^user sees message \"([^\"]*)\"$")
 	public void user_sees_message(String arg1) throws Throwable {
 		CommonFunctions.textDisplayedInPage(arg1);
+	}
+	
+	@Then("^user sees welcome message$")
+	public void user_sees_welcome_message() throws Throwable {
+		personalPage.DisplayedWelcomeMessage();
+	}
+
+	
+	@Then("^user sees section title$")
+	public void user_sees_section_title() throws Throwable {
+	    personalPage.DisplayedSectionTitle();
 	}
 
 	@Then("^user sees Are you currently in hospital question with no answer in personal info summary$")
@@ -317,6 +329,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user sees question \"([^\"]*)\"$")
 	public void user_sees_question(String arg1) throws Throwable {
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.textDisplayedInPage(arg1);
 	}
 
@@ -364,7 +377,8 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
-	@When("^user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question$")
+
+	@Then("^user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question$")
 	public void user_clicks_no_to_If_any_of_your_children_predecease_you_do_you_want_to_divide_it_equally_amongst_their_children_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion2();
 		CommonFunctions.wait(5000, false);
@@ -1062,16 +1076,23 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 	}
 
-	@Then("^user checks if mandatory fields for Foreign Passport and Australian Passport Identification type$")
-	public void user_checks_if_mandatory_fields_for_Foreign_Passport_and_Australian_Passport_Identification_type() throws Throwable {
-		idDocsPage.displayMandatoryForeignPassport();
-		idDocsPage.displayMandatoryAUPassport();
+	@Then("^user checks if mandatory fields for Foreign Passport Identification type$")
+	public void user_checks_if_mandatory_fields_for_Foreign_Passport_Identification_type() throws Throwable {
+		idDocsPage.displayMandatoryFPValidation();
+		
+	}
+	@Then("^user checks if mandatory fields for Australian Passport Identification type$")
+	public void user_checks_if_mandatory_fields_for_Australian_Passport_Identification_type() throws Throwable {
+		idDocsPage.displayMandatoryAPValidation();
 	}
 
-	@Then("^user checks if mandatory fields for Driver License and Medicare Identification type$")
-	public void user_checks_if_mandatory_fields_for_Driver_License_and_Medicare_Identification_type() throws Throwable {
-		idDocsPage.displayMandatoryDriversLicense();
-		idDocsPage.displayMandatoryMedicare();
+	@Then("^user checks if mandatory fields for Driver License Identification type$")
+	public void user_checks_if_mandatory_fields_for_Driver_License_Identification_type() throws Throwable {
+		idDocsPage.displayMandatoryDLValidation();
+	}
+	@Then("^user checks if mandatory fields for Medicare Identification type$")
+	public void user_checks_if_mandatory_fields_for_Medicare_Identification_type() throws Throwable {
+		idDocsPage.displayMandatoryMedicareValidation();
 	}
 
 	@When("^user adds foreign passport details$")
@@ -1079,6 +1100,8 @@ public class StepDefinitions extends Base {
 		idDocsPage.FillUpForeignPassport();
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.wait(5000, false);
 	}
 
 	@When("^user adds driver license details$")
@@ -1086,6 +1109,8 @@ public class StepDefinitions extends Base {
 		idDocsPage.FillUpDriversLicense();
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.wait(5000, false);
 	}
 
 	@When("^user adds medicare details$")
@@ -1093,13 +1118,17 @@ public class StepDefinitions extends Base {
 		idDocsPage.FillUpMedicare();
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.wait(5000, false);
 	}
 
-	@When("^user adds autralian passport details$")
-	public void user_adds_autralian_passport_details() throws Throwable {
+	@When("^user adds australian passport details$")
+	public void user_adds_australian_passport_details() throws Throwable {
 		idDocsPage.FillUpAustralianPassport();
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.wait(5000, false);
 	}
 
 	@When("^user selects Australian Passport as first identification type$")
@@ -1175,6 +1204,7 @@ public class StepDefinitions extends Base {
 	@Then("^user selects i have other on funeral wishes$")
 	public void user_selects_i_have_other_on_funeral_wishes() throws Throwable {
 		executorsPage.clickQuestion17C();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^user fills up financial decision maker details with Primary Decision Maker$")
@@ -1195,12 +1225,19 @@ public class StepDefinitions extends Base {
 	@Then("^user selects i have cremated on funeral wishes$")
 	public void user_selects_i_have_cremated_on_funeral_wishes() throws Throwable {
 		executorsPage.clickQuestion17B();
+		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^user selects i have buried on funeral wishes$")
 	public void user_selects_i_have_buried_on_funeral_wishes() throws Throwable {
 		executorsPage.clickQuestion17A();
+		CommonFunctions.wait(5000, false);
 	}
+	@Then("^user sees buried wish detail$")
+	public void user_sees_buried_wish_detail() throws Throwable {
+	    executorsPage.displayBuriedWishDetails();
+	}
+
 
 	@Then("^user sees funeral wishes field$")
 	public void user_sees_funeral_wishes_field() throws Throwable {
@@ -1224,6 +1261,7 @@ public class StepDefinitions extends Base {
 	@When("^user clicks next page to review and confirm details$")
 	public void user_clicks_next_page_to_review_and_confirm_details() throws Throwable {
 		reviewConfirmPage = personalPage.clickNextToReviewConfirm();
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -1849,7 +1887,9 @@ public class StepDefinitions extends Base {
 
 	@When("^user check if mandatory fields validation in adding children is implemented$")
 	public void user_check_if_mandatory_fields_validation_in_adding_children_is_implemented() throws Throwable {
+		aboutPage.CheckAddChildrenRequiredPreReq();
 		aboutPage.CheckAddChildrenRequired();
+		
 	}
 
 	@Then("^user check if Residential Suburb field is mandatory$")
@@ -2080,9 +2120,8 @@ public class StepDefinitions extends Base {
 	public void user_login_into_app_with_the_and_as_the_login_credentials(String arg1, String arg2) throws Throwable {
 		loginPage.setEmailInput(arg1);
 		loginPage.setPasswordInput(arg2);
-		loginPage.clickLoginButton1();
-
-		addOnsPage = loginPage.clickLoginButton1();
+		
+		executorsPage = loginPage.clickLoginButton1();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -2458,7 +2497,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks the next button on the review and confirm page to go to add-on page$")
 	public void user_clicks_the_next_button_on_the_review_and_confirm_page_to_go_to_addon_page() throws Throwable {
-		addOnsPage = reviewConfirmPage.clickNextAddOnsButton();
+		paymentsPage = reviewConfirmPage.clickNextAddOnsButton();
 	}
 
 	@When("^user clicks the next button on the add-ons page$")
@@ -2525,6 +2564,8 @@ public class StepDefinitions extends Base {
 	public void user_reviews_personal_details() throws Throwable {
 		CommonFunctions.wait(5000, false);
 		reviewConfirmPage.validateVicPersonalDetails();
+		reviewConfirmPage.validatePersonalDetailsMyLifeWill();
+
 	}
 
 	@Then("^user confirms will details$")
@@ -3548,7 +3589,7 @@ public class StepDefinitions extends Base {
 	@Then("^user close browser$")
 	public void user_close_browser() throws Throwable {
 		driver.close();
-
+		driver.quit();
 	}
 
 	@Then("^user get text$")
@@ -3622,7 +3663,7 @@ public class StepDefinitions extends Base {
 	@Then("^user selects \"([^\"]*)\" on user dropdown$")
 	public void user_selects_on_user_dropdown(String arg1) throws Throwable {
 		ordersPage.SetSelectUser(arg1);
-		CommonFunctions.wait(1500, false);
+		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^user clicks on delete all button$")
@@ -3637,6 +3678,8 @@ public class StepDefinitions extends Base {
 		Alert alert = driver.switchTo().alert();
 		System.out.println(alert.getText());
 		alert.accept();
+		CommonFunctions.wait(5000, false);
+		System.out.println("Deleted");
 
 	}
 

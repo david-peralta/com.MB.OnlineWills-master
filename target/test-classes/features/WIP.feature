@@ -1,11 +1,12 @@
 Feature: Order
 
-  @Sprint11
+  @WIP
   Scenario Outline: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "angietest@test.com" on user dropdown
+    Then user selects "bam@bam.com" on user dropdown
     Then user clicks on delete all button
+    Then user close browser
 
     Examples: 
       | email            | password     | Address1                                         | Suburb         |

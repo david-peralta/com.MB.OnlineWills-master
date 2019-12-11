@@ -190,7 +190,6 @@ public class FinancialDecisionsPage extends Base {
 		CommonFunctions.enterElementValue(POAFirstName, "Demeth");
 		CommonFunctions.enterElementValue(POAMiddleName, "Rey");
 		CommonFunctions.enterElementValue(POALastName, "Camuin");
-		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.enterElementValue(POAPhone, "4770344");
 		CommonFunctions.selectValueFromDropdown(POARel, "Son");
@@ -200,6 +199,7 @@ public class FinancialDecisionsPage extends Base {
 		CommonFunctions.enterElementValue(POASuburb, "Australia");
 		CommonFunctions.selectValueFromDropdown(POAState, "VIC");
 		CommonFunctions.enterElementValue(POAPostCode, "1234");
+		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
 		CommonFunctions.clickElement(POAPDMYes);
 	}
 
@@ -208,7 +208,6 @@ public class FinancialDecisionsPage extends Base {
 		CommonFunctions.enterElementValue(POAFirstName, "POA FirstName");
 		CommonFunctions.enterElementValue(POAMiddleName, "POA MiddleName");
 		CommonFunctions.enterElementValue(POALastName, "POA LastName");
-		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.enterElementValue(POAPhone, "4770344");
 		CommonFunctions.selectValueFromDropdown(POARel, "Aunt");
@@ -218,7 +217,9 @@ public class FinancialDecisionsPage extends Base {
 		CommonFunctions.enterElementValue(POASuburb, "Australia");
 		CommonFunctions.selectValueFromDropdown(POAState, "VIC");
 		CommonFunctions.enterElementValue(POAPostCode, "1234");
+		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
 		CommonFunctions.clickElement(POAPDMNo);
+		CommonFunctions.wait(5000, false);
 	}
 
 	public void FinancialDecisionsMandatoryFieldsFinancial() {

@@ -24,6 +24,10 @@ public class PersonalPage extends Base {
 	WebElement PhoneNumber;
 	@FindBy(xpath = "//input[contains(@id,'PersonalInfo_Occupation_Input')]")
 	WebElement Occupation;
+	@FindBy(xpath = "//span[text()='Please ensure that you are the one filling in this form.']")
+	WebElement SectionTitle;
+	@FindBy(xpath = "//span[text()='Hi bam!']")
+	WebElement WelcomeMessage;
 
 	@FindBy(xpath = "//input[contains(@id,'PersonalInfo_Line1ResAddress_Input')]")
 	WebElement ResidentialAddressLine1;
@@ -202,6 +206,16 @@ public class PersonalPage extends Base {
 		CommonFunctions.elementDisplayed(PostalPostCode);
 
 	}
+	public void DisplayedWelcomeMessage() {
+		CommonFunctions.elementDisplayed(WelcomeMessage);
+
+	}
+	
+	public void DisplayedSectionTitle() {
+		CommonFunctions.elementDisplayed(SectionTitle);
+
+	}
+	
 
 	public void ClickNoFirstQuestion() {
 		CommonFunctions.clickElement(NoQuestion1);

@@ -1,4 +1,11 @@
 Feature: MW - 65 : Checkout
+  @WIP
+  Scenario Outline: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
 
   @Sprint
   Scenario Outline:
@@ -144,16 +151,23 @@ Feature: MW - 65 : Checkout
 		Then user select year
 		When user clicks the pay button
 		#Payment Complete
-		Then user is on "Thank You" page    
+		Then user is on "Thank You" page  
+		Then user close browser  
 
     Examples: 
       | email            | password     | Address1  | Suburb         |
-      | Jerome@yehey.com | Password123! | Australia | Executive Lane |
+      | bam@bam.com | Password123! | Australia | Executive Lane |
       
       
       
       
-      
+        @WIP
+  Scenario Outline: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
       
  @Sprint
   Scenario Outline:

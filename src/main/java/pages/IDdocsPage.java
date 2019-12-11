@@ -126,7 +126,55 @@ public class IDdocsPage extends Base {
 	WebElement ProgressReviewConfirm;
 	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
 	WebElement ProgressAddOns;
-
+	
+	//Alert Messages
+	//Foreign Passport
+	@FindBy(xpath = "//span[contains(@id,'ForeignPassportNo')]")
+	WebElement FPPNo;
+	@FindBy(xpath = "//span[contains(@id,'ForeignPassportDOBInput')]")
+	WebElement FPDOB;
+	@FindBy(xpath = "//span[contains(@id,'ForeignPassportCountryOfIssue')]")
+	WebElement FPCI;
+	@FindBy(xpath = "//span[contains(@id,'ForeignPassportFname')]")
+	WebElement FPFName;
+	@FindBy(xpath = "//span[contains(@id,'ForeignPassportSurname')]")
+	WebElement FPSurName;
+	//Australian Passport
+	@FindBy(xpath = "//span[contains(@id,'AusPassportNo')]")
+	WebElement APPNo;
+	@FindBy(xpath = "(//span[contains(@id,'PassportDOBInput')])[2]")
+	WebElement APDOB;
+	@FindBy(xpath = "//span[contains(@id,'AusPassportGender')]")
+	WebElement APGender;
+	@FindBy(xpath = "//span[contains(@id,'AusPassportFname')]")
+	WebElement APFName;
+	@FindBy(xpath = "//span[contains(@id,'AusPassportSurName')]")
+	WebElement APSurName;
+	//Drivers License
+	@FindBy(xpath = "//span[contains(@id,'LicenseNo')]")
+	WebElement DLNo;
+	@FindBy(xpath = "//span[contains(@id,'LicenseDOBInput')]")
+	WebElement DLDOB;
+	@FindBy(xpath = "//span[contains(@id,'LicenseStateDropdown')]")
+	WebElement DLSOI;
+	@FindBy(xpath = "//span[contains(@id,'LicenseFname')]")
+	WebElement DLFName;
+	@FindBy(xpath = "//span[contains(@id,'LicenseSurName')]")
+	WebElement DLSurName;
+	//Medicare
+	@FindBy(xpath = "//span[contains(@id,'MedicareNo')]")
+	WebElement MNo;
+	@FindBy(xpath = "//span[contains(@id,'MedicareDOBInput')]")
+	WebElement MDOB;
+	@FindBy(xpath = "//span[contains(@id,'MedicareExpiryDateInput')]")
+	WebElement MExpDate;
+	@FindBy(xpath = "//span[contains(@id,'MedicareGivenName')]")
+	WebElement MFName;
+	@FindBy(xpath = "//span[contains(@id,'MedicareIndividualReferenceNumber')]")
+	WebElement MRefNo;
+	@FindBy(xpath = "//span[contains(@id,'MedicareCardColour')]")
+	WebElement MCardColor;
+	
 	// Add Identification Document
 	// @FindBy(xpath = "//a[contains(@id,'AddIdentityDocs')]")
 	@FindBy(xpath = "//a[contains(text(),'Add Identification Document')]")
@@ -151,7 +199,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.clickElement(Question1);
 	}
 
-	/* Drivers License */
+	/* Drivers License 
 
 	public void displayMandatoryDriversLicense() {
 		CommonFunctions.elementDisplayed(Question3.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
@@ -160,6 +208,19 @@ public class IDdocsPage extends Base {
 		CommonFunctions.elementDisplayed(Question7.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Question8.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
 
+	}*/
+	
+	public void displayMandatoryDLValidation() {
+		CommonFunctions.elementDisplayed(DLNo);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(DLDOB);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(DLSOI);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(DLFName);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(DLSurName);
+		CommonFunctions.wait(1500, false);
 	}
 
 	public void displayQuestion3() {
@@ -182,7 +243,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.elementDisplayed(Question8.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
 
-	/* Medicare */
+	/* Medicare 
 
 	public void displayMandatoryMedicare() {
 		CommonFunctions.elementDisplayed(Question9.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
@@ -192,6 +253,21 @@ public class IDdocsPage extends Base {
 		CommonFunctions.elementDisplayed(Question13.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
 		CommonFunctions.elementDisplayed(Question14.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
 
+	}*/
+	
+	public void displayMandatoryMedicareValidation() {
+		CommonFunctions.elementDisplayed(MNo);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(MDOB);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(MExpDate);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(MFName);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(MRefNo);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(MCardColor);
+		CommonFunctions.wait(1500, false);
 	}
 
 	public void displayQuestion9() {
@@ -218,13 +294,25 @@ public class IDdocsPage extends Base {
 		CommonFunctions.elementDisplayed(Question14.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
 	}
 
-	/* Australian Passport */
+	/* Australian Passport 
 	public void displayMandatoryAUPassport() {
 		CommonFunctions.elementDisplayed(Question15.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Question16.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Question18.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Question19.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
 		CommonFunctions.elementDisplayed(AusPassportGender.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}*/
+	public void displayMandatoryAPValidation() {
+		CommonFunctions.elementDisplayed(APPNo);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(APDOB);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(APGender);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(APFName);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(APSurName);
+		CommonFunctions.wait(1500, false);
 	}
 
 	public void displayQuestion15() {
@@ -251,7 +339,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.elementDisplayed(AusPassportGender.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
 
-	/* ForeignPassport */
+	/* ForeignPassport 
 
 	public void displayMandatoryForeignPassport() {
 		CommonFunctions.elementDisplayed(Question20.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
@@ -259,6 +347,19 @@ public class IDdocsPage extends Base {
 		CommonFunctions.elementDisplayed(Question22.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Question24.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(Question25.findElement(By.xpath(".//following-sibling::span[text()='Invalid Date!']")));
+	}*/
+	
+	public void displayMandatoryFPValidation() {
+		CommonFunctions.elementDisplayed(FPPNo);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(FPDOB);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(FPCI);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(FPFName);
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.elementDisplayed(FPSurName);
+		CommonFunctions.wait(1500, false);
 	}
 
 	public void displayQuestion20() {
@@ -319,7 +420,7 @@ public class IDdocsPage extends Base {
 
 	public void FillUpDriversLicense() {
 
-		// CommonFunctions.selectValueFromDropdown(Question2B, "Driver's Licence");
+		// CommonFunctions.selectValueFromDropdown(Question2B, "Driver's License");
 		// CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question3, "First");
 		CommonFunctions.wait(5000, false);
@@ -332,6 +433,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.enterElementValue(Question7, "Address1Test");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question8, "05/09/1990");
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 	}
@@ -351,6 +453,8 @@ public class IDdocsPage extends Base {
 		CommonFunctions.clearThenEnterElementValue(Question13, "01/01/2025");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question14, "05/09/1990");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 	}
@@ -366,7 +470,11 @@ public class IDdocsPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question18, "User");
 		CommonFunctions.wait(5000, false);
+		CommonFunctions.selectValueFromDropdown(AusPassportGender, "Male");
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question19, "05/09/1990");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 	}
@@ -385,6 +493,8 @@ public class IDdocsPage extends Base {
 		CommonFunctions.enterElementValue(Question24, "User");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question25, "05/09/1990");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 	}

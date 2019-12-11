@@ -146,6 +146,12 @@ public class ExecutorsPage extends Base {
 
 	@FindBy(xpath = "//div[contains(@id,'LawyersOfEstate_Tooltip')]")
 	WebElement LawyersOfEstate_Tooltip;
+	
+	@FindBy(xpath = "//label[contains(@id,'WishDetail')]")
+	WebElement BuriedWishDetails;
+	
+	
+	
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public ExecutorsPage() {
@@ -526,6 +532,9 @@ public class ExecutorsPage extends Base {
 
 	public void ClickLawyersOfEstate_Tooltip() {
 		CommonFunctions.clickElement(LawyersOfEstate_Tooltip);
+	}
+	public void displayBuriedWishDetails() {
+		CommonFunctions.elementDisplayed(BuriedWishDetails);
 	}
 
 }

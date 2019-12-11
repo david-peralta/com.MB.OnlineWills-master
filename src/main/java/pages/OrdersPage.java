@@ -28,6 +28,7 @@ public class OrdersPage extends Base {
 	// ============================================================= Actions =============================================================
 	public void SetSelectUser(String value) {
 		CommonFunctions.selectValueFromDropdown(SelectUser, value);
+		CommonFunctions.wait(5000, false);
 	}
 
 	public void SetOrderStatus(String value) {

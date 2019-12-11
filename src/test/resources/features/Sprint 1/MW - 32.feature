@@ -1,4 +1,11 @@
 Feature: MW - 32 : As a customer, I want to nominate a guardian for my children below 18 years old, so they can be looked after when I have passed away
+  @WIP
+  Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
 
   @Sprint1
   Scenario Outline: MW - 32 : As a customer, I want to nominate a guardian for my children below 18 years old, so they can be looked after when I have passed away
@@ -11,18 +18,7 @@ Feature: MW - 32 : As a customer, I want to nominate a guardian for my children 
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
-    When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "Today" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
-    When user inputs "Consultant" as Occupation on personal page
-    When user inputs "<Address1>" as Residential address line one on personal page
-    When user inputs "<Suburb>" as Residential suburb on personal page
-    When user selects "VIC" as Residential state on personal page
-    When user selects "4103" as Residential Postcode on personal page
-    When user selects Postal Address same as Residential checkbox
-    When user selects no on first question
-    When user selects no on second question
+    When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #About you page
@@ -33,7 +29,7 @@ Feature: MW - 32 : As a customer, I want to nominate a guardian for my children 
     #Add child
     And user adds a legitimate child
     #Scenario 1: Customer indicates they have a child/children under 18
-    And user sees question "Would you like to appoint someone to look after your child/children (their Guardian)?"
+    And user sees question "Do you want to appoint someone to look after your child/children"
     And user click the next button on the about page
     And user checks if guardian question is mandatory
     And user selects yes on guardian question
@@ -48,9 +44,10 @@ Feature: MW - 32 : As a customer, I want to nominate a guardian for my children 
     When user edits the detials of secondary guardian
     #Delete
     When user deletes the secondary guardian
+    Then user close browser
     
     #Scenario 7: Customer cancels with no unsaved changes
 
     Examples: 
-      | email            | password     | Address1                                         | Suburb         |
-      | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email       | password     | Address1                                         | Suburb         |
+      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

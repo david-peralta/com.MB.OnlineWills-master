@@ -302,10 +302,10 @@ public class ReviewConfirmPage extends Base {
 		return new PaymentsPage();
 	}
 
-	public AddOnsPage clickNextAddOnsButton() {
+	public PaymentsPage clickNextAddOnsButton() {
 		CommonFunctions.clickElement(btn_Next);
 
-		return new AddOnsPage();
+		return new PaymentsPage();
 	}
 
 	public ThankYouPage clickNextThankYou() {
@@ -417,6 +417,22 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.textDisplayedInPage("Assets");
 		CommonFunctions.textDisplayedInPage("Beneficiaries");
 		CommonFunctions.textDisplayedInPage("ID Docs");
+	}
+	
+	public void validatePersonalDetailsMyLifeWill() {
+		CommonFunctions.scrollToBottomOfPage();
+		CommonFunctions.wait(2500, false);
+		CommonFunctions.textDisplayedInPage("Personal Details");
+		CommonFunctions.textDisplayedInPage("Title");
+		CommonFunctions.textDisplayedInPage("First Name");
+		CommonFunctions.textDisplayedInPage("Middle Name");
+		CommonFunctions.textDisplayedInPage("Family Name");
+		CommonFunctions.textDisplayedInPage("Residential Address");
+		CommonFunctions.textDisplayedInPage("Postal Address");
+		CommonFunctions.textDisplayedInPage("Date of Birth");
+		CommonFunctions.textDisplayedInPage("Email");
+		CommonFunctions.textDisplayedInPage("Phone Number");
+		CommonFunctions.textDisplayedInPage("Occupation");
 	}
 
 	public void validatePersonalDetails() {

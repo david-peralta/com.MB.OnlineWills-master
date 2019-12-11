@@ -1,7 +1,15 @@
 Feature: MW - 24 : As a customer, I want to enter the required details about myself, so I can process my Will
 
-  @Sprint1
-  Scenario Outline: Scenario 1 to 4: Customer views Personal Details page
+  	@WIP
+   	Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+
+  	@Sprint1
+ 		Scenario Outline: Scenario 1 to 4: Customer views Personal Details page
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -10,8 +18,8 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     When user clicks Standard will product for couples
     Then user is on "Personal" page
     #Check welcome message
-    And user sees message "<Welcome Message>"
-    And user sees message "Please ensure that you are the one filling in this form."
+    And user sees welcome message
+    And user sees section title
     #Check if 22 elements is displayed (based on MB online will form)
     And user checks if the personal details content is complete
     #validation on title dropdown
@@ -81,14 +89,23 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     #If 'UnChecked', Display questions#14-18
     And user checks if All Postal detail fields is displayed
 
+
     #Scenario 4: Mandatory fields not filled in (DONE IN VALIDATIONS IN SCENARIO 1)
     #Scenario 5: Mandatory fields filled in
     Examples: 
-      | email            | password     | Welcome Message |
-      | demeth@gmail.com | Password123! | Hi dim!         |
+      | email       | password		 | Welcome Message |
+      | bam@bam.com | Password123! | Hi bam!         |
+      
+ 		@WIP
+  	Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
 
-  @Sprint1
-  Scenario Outline: Scenario 5: Mandatory fields filled in
+ 	  @Sprint1
+ 		Scenario Outline: Scenario 5: Mandatory fields filled in
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -97,16 +114,7 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     When user clicks Standard will product for couples
     Then user is on "Personal" page
     #User filled valid input
-    When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "Today" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
-    When user inputs "Consultant" as Occupation on personal page
-    When user inputs "<Address1>" as Residential address line one on personal page
-    When user inputs "<Suburb>" as Residential suburb on personal page
-    When user selects "VIC" as Residential state on personal page
-    When user selects "4103" as Residential Postcode on personal page
-    When user selects Postal Address same as Residential checkbox
+    When user fills up mandatory fields inside the personal page for victorian
     #Answer NO on Are you currently in hospital? question
     When user selects no on first question
     #Answer NO on Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will? question
@@ -115,10 +123,19 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     When user clicks on Next button on personal page
     #User checks if About you page is displayed
     Then user is on "About you" page
+    Then user close browser
 
     Examples: 
       | email            | password     | Address1                                         | Suburb         |
-      | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+		@WIP
+ 		Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+      
   @Sprint1
   Scenario Outline: Answer Yes on Are you currently in hospital? question
     # Go to site and log in
@@ -129,16 +146,7 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     When user clicks Standard will product for couples
     Then user is on "Personal" page
     #User filled valid input
-    When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "Today" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
-    When user inputs "Consultant" as Occupation on personal page
-    When user inputs "<Address1>" as Residential address line one on personal page
-    When user inputs "<Suburb>" as Residential suburb on personal page
-    When user selects "VIC" as Residential state on personal page
-    When user selects "4103" as Residential Postcode on personal page
-    When user selects Postal Address same as Residential checkbox
+    When user fills up mandatory fields inside the personal page for victorian
     #Answer Yes on Are you currently in hospital? question
     When user selects yes on first question
     #Answer NO on Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will? question
@@ -147,12 +155,24 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     When user clicks on Next button on personal page
     #User checks if About you page is displayed
     Then user is on "ReviewAndConfirm" page
+    Then user close browser
 
     Examples: 
       | email            | password     | Address1                                         | Suburb         |
-      | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane | 
-   @Sprint1
-  Scenario Outline: Yes on Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will? question
+      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane | 
+		@WIP
+    Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+    @Sprint1
+ 		Scenario Outline: Yes on Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will? question
+   	Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -161,16 +181,7 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     When user clicks Standard will product for couples
     Then user is on "Personal" page
     #User filled valid input
-    When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "Today" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
-    When user inputs "Consultant" as Occupation on personal page
-    When user inputs "<Address1>" as Residential address line one on personal page
-    When user inputs "<Suburb>" as Residential suburb on personal page
-    When user selects "VIC" as Residential state on personal page
-    When user selects "4103" as Residential Postcode on personal page
-    When user selects Postal Address same as Residential checkbox
+    When user fills up mandatory fields inside the personal page for victorian
     #Answer No on Are you currently in hospital? question
     When user selects no on first question
     #Answer Yes on Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will? question
@@ -179,12 +190,21 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     When user clicks on Next button on personal page
     #User checks if About you page is displayed
     Then user is on "ReviewAndConfirm" page
+    Then user close browser
 
     Examples: 
       | email            | password     | Address1                                         | Suburb         |
-      | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane | 
+      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane | 
+		@WIP
+    Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+    
     @Sprint1
-  Scenario Outline: Yes/Yes first and second
+  	Scenario Outline: Yes/Yes first and second
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -193,16 +213,7 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     When user clicks Standard will product for couples
     Then user is on "Personal" page
     #User filled valid input
-    When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "Today" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
-    When user inputs "Consultant" as Occupation on personal page
-    When user inputs "<Address1>" as Residential address line one on personal page
-    When user inputs "<Suburb>" as Residential suburb on personal page
-    When user selects "VIC" as Residential state on personal page
-    When user selects "4103" as Residential Postcode on personal page
-    When user selects Postal Address same as Residential checkbox
+    When user fills up mandatory fields inside the personal page for victorian
     #Answer Yes on Are you currently in hospital? question
     When user selects yes on first question
     #Answer Yes on Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will? question
@@ -211,10 +222,11 @@ Feature: MW - 24 : As a customer, I want to enter the required details about mys
     When user clicks on Next button on personal page
     #User checks if About you page is displayed
     Then user is on "ReviewAndConfirm" page
+    Then user close browser
 
     Examples: 
       | email            | password     | Address1                                         | Suburb         |
-      | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane | 
+      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane | 
  
   #@Sprint1
   #Scenario Outline: Scenario 6: Customer cancels with no unsaved changes

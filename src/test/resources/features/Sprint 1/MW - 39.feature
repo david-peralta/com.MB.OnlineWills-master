@@ -1,29 +1,24 @@
 Feature: MW - 39 : As a customer, I want to enter the required details about my funeral wishes, so I can specify what I want done to my body when I pass away
+    @WIP
+    Scenario: 
+    Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
 
-  @Sprint11
+  @Sprint1
   Scenario Outline: 
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    When user clicks on new order on incomplete order popup
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
-    When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "Today" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
-    When user inputs "Consultant" as Occupation on personal page
-    When user inputs "<Address1>" as Residential address line one on personal page
-    When user inputs "<Suburb>" as Residential suburb on personal page
-    When user selects "VIC" as Residential state on personal page
-    When user selects "4103" as Residential Postcode on personal page
-    When user selects Postal Address same as Residential checkbox
-    When user selects no on first question
-    When user selects no on second question
+    When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single
@@ -58,7 +53,8 @@ Feature: MW - 39 : As a customer, I want to enter the required details about my 
     And user checks if funeral wishes question is mandatory
     #Buried
     And user selects i have buried on funeral wishes
-    And user sees message "I want body buried at:"
+    #And user sees buried wish detail
+    And user sees message "I wish to be buried at"
     And user sees funeral wishes field
     And user click the next button on the executors page
     Then user is on "ID Check" page
@@ -66,7 +62,7 @@ Feature: MW - 39 : As a customer, I want to enter the required details about my 
     Then user is on "Executors" page
     #Cremated
     And user selects i have cremated on funeral wishes
-    And user sees message "I wish for my ashes to be:"
+    And user sees message "I wish for my ashes to be"
     And user sees funeral wishes field
     And user click the next button on the executors page
     Then user is on "ID Check" page
@@ -74,7 +70,7 @@ Feature: MW - 39 : As a customer, I want to enter the required details about my 
     Then user is on "Executors" page
     #Other
     And user selects i have other on funeral wishes
-    And user sees question "I want..."
+    And user sees question "I wish"
     And user sees funeral wishes field
     And user click the next button on the executors page
     Then user is on "ID Check" page
@@ -84,7 +80,8 @@ Feature: MW - 39 : As a customer, I want to enter the required details about my 
     And user selects i have no wish on funeral wishes
     And user click the next button on the executors page
     Then user is on "ID Check" page
+    Then user close browser
 
     Examples: 
-      | email            | password     | Address1                                         | Suburb         |
-      | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email       | password     | Address1                                         | Suburb         |
+      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
