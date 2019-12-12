@@ -291,13 +291,13 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(AddBeneficiariesCharityNameReq);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesAmountFieldReq);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountFieldReq);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(SaveBeneficiaries);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesPercentageFieldReq);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageFieldReq);
 		CommonFunctions.wait(5000, false);
 
 	}
@@ -321,19 +321,19 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(AddBeneficiariesPostcodeReq);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.elementDisplayed(AddBeneficiariesShareTypeReq);
+		// CommonFunctions.elementDisplayed(AddBeneficiariesShareTypeReq);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(SaveBeneficiaries);
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesAmountFieldReq);
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(SaveBeneficiaries);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesPercentageFieldReq);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountFieldReq);
+		CommonFunctions.wait(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+		CommonFunctions.wait(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageFieldReq);
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -358,11 +358,11 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.selectValueFromDropdown(AddBeneficiariesState, "VIC");
 		CommonFunctions.wait(10000, false);
-		CommonFunctions.selectValueFromDropdown(AddBeneficiariesPostcode, "1111");
+		CommonFunctions.enterElementValue(AddBeneficiariesPostcode, "1111");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(AddBeneficiariesAmountField, "9999999999");
+		CommonFunctions.enterElementValue(AddBeneficiariesAmountField, "9999999999");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(SaveBeneficiaries);
 	}
@@ -390,9 +390,9 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.selectValueFromDropdown(AddBeneficiariesPostcode, "1111");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(AddBeneficiariesAmountField, "9999999999");
+		CommonFunctions.enterElementValue(AddBeneficiariesAmountField, "9999999999");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(SaveBeneficiaries);
 	}
@@ -418,11 +418,11 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.selectValueFromDropdown(AddBeneficiariesState, "VIC");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(AddBeneficiariesPostcode, "1111");
+		CommonFunctions.enterElementValue(AddBeneficiariesPostcode, "1111");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(AddBeneficiariesPercentageField, "9999999999");
+		CommonFunctions.enterElementValue(AddBeneficiariesPercentageField, "9999999999");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(SaveBeneficiaries);
 	}
@@ -431,9 +431,9 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.enterElementValue(AddBeneficiariesCharityName, "Demeth Camuin Foundation");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(AddBeneficiariesPercentageField, "9999999999");
+		CommonFunctions.enterElementValue(AddBeneficiariesPercentageField, "9999999999");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(SaveBeneficiaries);
 	}
@@ -442,9 +442,9 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.enterElementValue(AddBeneficiariesCharityName, "Demeth Camuin Foundation");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.selectValueFromDropdown(AddBeneficiariesAmountField, "9999999999");
+		CommonFunctions.enterElementValue(AddBeneficiariesAmountField, "9999999999");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(SaveBeneficiaries);
 	}
@@ -612,43 +612,43 @@ public class BeneficiariesPage extends Base {
 	}
 
 	public AboutPage ProgressChangeAbout() {
-		CommonFunctions.clickElement(NextButton);
+		CommonFunctions.clickElement(ProgressAbout);
 
 		return new AboutPage();
 	}
 
 	public PersonalPage ProgressChangePersonal() {
-		CommonFunctions.clickElement(NextButton);
+		CommonFunctions.clickElement(ProgressPersonal);
 
 		return new PersonalPage();
 	}
 
 	public AssetsPage ProgressChangeAssets() {
-		CommonFunctions.clickElement(NextButton);
+		CommonFunctions.clickElement(ProgressAssets);
 
 		return new AssetsPage();
 	}
 
 	public ExecutorsPage ProgressChangeExecutors() {
-		CommonFunctions.clickElement(NextButton);
+		CommonFunctions.clickElement(ProgressExecutors);
 
 		return new ExecutorsPage();
 	}
 
 	public IDdocsPage ProgressChangeIDdocs() {
-		CommonFunctions.clickElement(NextButton);
+		CommonFunctions.clickElement(ProgressIDDocs);
 
 		return new IDdocsPage();
 	}
 
 	public ReviewConfirmPage ProgressChangeReviewConfirm() {
-		CommonFunctions.clickElement(NextButton);
+		CommonFunctions.clickElement(ProgressReviewConfirm);
 
 		return new ReviewConfirmPage();
 	}
 
 	public AddOnsPage ProgressChangeAddOns() {
-		CommonFunctions.clickElement(NextButton);
+		CommonFunctions.clickElement(ProgressAddOns);
 
 		return new AddOnsPage();
 	}

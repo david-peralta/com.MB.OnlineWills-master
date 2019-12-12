@@ -173,16 +173,15 @@ public class StepDefinitions extends Base {
 	public void user_sees_message(String arg1) throws Throwable {
 		CommonFunctions.textDisplayedInPage(arg1);
 	}
-	
+
 	@Then("^user sees welcome message$")
 	public void user_sees_welcome_message() throws Throwable {
 		personalPage.DisplayedWelcomeMessage();
 	}
 
-	
 	@Then("^user sees section title$")
 	public void user_sees_section_title() throws Throwable {
-	    personalPage.DisplayedSectionTitle();
+		personalPage.DisplayedSectionTitle();
 	}
 
 	@Then("^user sees Are you currently in hospital question with no answer in personal info summary$")
@@ -376,7 +375,6 @@ public class StepDefinitions extends Base {
 		beneficiariesPage.ClickYesQuestion2();
 		CommonFunctions.wait(5000, false);
 	}
-
 
 	@Then("^user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question$")
 	public void user_clicks_no_to_If_any_of_your_children_predecease_you_do_you_want_to_divide_it_equally_amongst_their_children_question() throws Throwable {
@@ -1079,8 +1077,9 @@ public class StepDefinitions extends Base {
 	@Then("^user checks if mandatory fields for Foreign Passport Identification type$")
 	public void user_checks_if_mandatory_fields_for_Foreign_Passport_Identification_type() throws Throwable {
 		idDocsPage.displayMandatoryFPValidation();
-		
+
 	}
+
 	@Then("^user checks if mandatory fields for Australian Passport Identification type$")
 	public void user_checks_if_mandatory_fields_for_Australian_Passport_Identification_type() throws Throwable {
 		idDocsPage.displayMandatoryAPValidation();
@@ -1090,6 +1089,7 @@ public class StepDefinitions extends Base {
 	public void user_checks_if_mandatory_fields_for_Driver_License_Identification_type() throws Throwable {
 		idDocsPage.displayMandatoryDLValidation();
 	}
+
 	@Then("^user checks if mandatory fields for Medicare Identification type$")
 	public void user_checks_if_mandatory_fields_for_Medicare_Identification_type() throws Throwable {
 		idDocsPage.displayMandatoryMedicareValidation();
@@ -1233,11 +1233,11 @@ public class StepDefinitions extends Base {
 		executorsPage.clickQuestion17A();
 		CommonFunctions.wait(5000, false);
 	}
+
 	@Then("^user sees buried wish detail$")
 	public void user_sees_buried_wish_detail() throws Throwable {
-	    executorsPage.displayBuriedWishDetails();
+		executorsPage.displayBuriedWishDetails();
 	}
-
 
 	@Then("^user sees funeral wishes field$")
 	public void user_sees_funeral_wishes_field() throws Throwable {
@@ -1889,7 +1889,7 @@ public class StepDefinitions extends Base {
 	public void user_check_if_mandatory_fields_validation_in_adding_children_is_implemented() throws Throwable {
 		aboutPage.CheckAddChildrenRequiredPreReq();
 		aboutPage.CheckAddChildrenRequired();
-		
+
 	}
 
 	@Then("^user check if Residential Suburb field is mandatory$")
@@ -2120,7 +2120,7 @@ public class StepDefinitions extends Base {
 	public void user_login_into_app_with_the_and_as_the_login_credentials(String arg1, String arg2) throws Throwable {
 		loginPage.setEmailInput(arg1);
 		loginPage.setPasswordInput(arg2);
-		
+
 		executorsPage = loginPage.clickLoginButton1();
 		CommonFunctions.wait(5000, false);
 	}
@@ -3783,6 +3783,12 @@ public class StepDefinitions extends Base {
 	@Then("^user clicks change to go back to personal page$")
 	public void user_clicks_change_to_go_back_to_personal_page() throws Throwable {
 		personalPage = reviewConfirmPage.ProgressChangePersonal();
+		CommonFunctions.wait(3000, false);
+	}
+
+	@Then("^user clicks change to go back to assets page$")
+	public void user_clicks_change_to_go_back_to_assets_page() throws Throwable {
+		assetsPage = executorsPage.ProgressChangeAssets();
 		CommonFunctions.wait(3000, false);
 	}
 

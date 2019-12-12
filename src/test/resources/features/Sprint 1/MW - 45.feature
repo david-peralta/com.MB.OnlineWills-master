@@ -7,7 +7,7 @@ Feature: MW - 45 : As a customer, I want my account locked after a number of uns
     Then user clicks on delete all button
     Then user close browser
 
-	@Sprint1
+	@Regression
 	Scenario Outline: 1: Customer locks account
 		Given user opens browser
 		When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -25,7 +25,7 @@ Feature: MW - 45 : As a customer, I want my account locked after a number of uns
 		And user logs into app with the "<email>" and "<password>" as the login credentials
 		And user logs into app with the "<email>" and "<password>" as the login credentials
 		Then user is on "Login" page
-		And user sees feedback message "Too many failed login attempts. Please try again in a few minutes."
+		And user sees feedback message "Too many failed login attempts. Please try again in 60 minutes."
 		When user becomes inactive for "30" minutes
 		And user logs into app with the "<email>" and "<password>" as the login credentials
 		Then user sees feedback message "Invalid username or password."

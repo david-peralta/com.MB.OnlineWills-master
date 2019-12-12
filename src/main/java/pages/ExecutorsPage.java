@@ -146,12 +146,9 @@ public class ExecutorsPage extends Base {
 
 	@FindBy(xpath = "//div[contains(@id,'LawyersOfEstate_Tooltip')]")
 	WebElement LawyersOfEstate_Tooltip;
-	
+
 	@FindBy(xpath = "//label[contains(@id,'WishDetail')]")
 	WebElement BuriedWishDetails;
-	
-	
-	
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public ExecutorsPage() {
@@ -533,8 +530,31 @@ public class ExecutorsPage extends Base {
 	public void ClickLawyersOfEstate_Tooltip() {
 		CommonFunctions.clickElement(LawyersOfEstate_Tooltip);
 	}
+
 	public void displayBuriedWishDetails() {
 		CommonFunctions.elementDisplayed(BuriedWishDetails);
+	}
+
+	public void checkMandatoryFields() {
+		CommonFunctions.clickElement(btn_Add);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.elementDisplayed(Question3.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(Question4.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(Question6.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(Question7.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(Question9.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(Question11.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(Question12A.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.elementDisplayed(Question13.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.wait(3000, false);
+
 	}
 
 }
