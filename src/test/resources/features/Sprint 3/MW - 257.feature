@@ -1,31 +1,28 @@
 Feature: WIP: 257 Add new Tooltip for Financial and Personal Decision Maker
- @Sprint
-  Scenario Outline:
-  
-  	#With POA
-   
+
+  @WIP
+  Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "david.peralta@yahoo.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+
+  @Sprint
+  Scenario Outline: 
+    #With POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-   				 #When user clicks on new order on incomplete order popup
-    		 	 #When user clicks on continue on incomplete order popup
-     When user selects singles product
+    #When user clicks on new order on incomplete order popup
+    #When user clicks on continue on incomplete order popup
+    When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
-    When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
-    When user inputs "Consultant" as Occupation on personal page
-    When user inputs "<Address1>" as Residential address line one on personal page
-    When user inputs "<Suburb>" as Residential suburb on personal page
-    When user selects "VIC" as Residential state on personal page
-    When user selects "4103" as Residential Postcode on personal page
-    When user selects Postal Address same as Residential checkbox
-    When user selects no on first question
-    When user selects no on second question
+    When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single-------------------------------------------------------------------------
@@ -35,12 +32,7 @@ Feature: WIP: 257 Add new Tooltip for Financial and Personal Decision Maker
     Then user is on "Assets" page
     And user clicks no to do you have assets question
     #Asset answer "no" to other question
-    And user clicks no to do you have debts question
-    And user clicks no to do you have any superannuation question
-    And user clicks no to do you have life insurance separate from your superannuation
-    And user clicks no to do you control a trust question
-    And user clicks no to do you control a self-managed superannuation fund question
-    And user clicks no to do you own your own business or are you a partner in a partnership question
+    And user clicks no to all assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
     And user clicks yes to Do you want to include any children you have in the future question
@@ -61,10 +53,14 @@ Feature: WIP: 257 Add new Tooltip for Financial and Personal Decision Maker
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
+    Then user clicks on first identification document
     And user selects Driver License as first identification type
     And user adds driver license details
+    And user adds first identification
+    Then user clicks on second identification document
     And user selects Medicare as second identification type
     And user adds medicare details
+    And user adds second identification
     And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
@@ -95,28 +91,27 @@ Feature: WIP: 257 Add new Tooltip for Financial and Personal Decision Maker
     Then user click on I do not want a MDM
     Then user click next
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    When user clicks the next button on the review and confirm page to go to payments page  
+    When user clicks the next button on the review and confirm page to go to payments page
     #Payments
     Then user is on "Payment" page
     #Check order summary (With POA)
     And POA is displayed in the order summary
-    And Standard will legal document is displayed in the order summary 
-    And user clicks on pay now button   
+    And Standard will legal document is displayed in the order summary
+    And user clicks on pay now button
     #User is redirected to checkout
     #Scenario1: Checkout - invalid details--------------------------
     Then user is on "Checkout" page
-		#Scenario2: Checkout - valid details--------------------------
-		Then user enter payment details
-		Then user select month
-		Then user select year
-		When user clicks the pay button
-		#Payment Complete
-		Then user is on "Thank You" page
-		Then user close browser  
+    #Scenario2: Checkout - valid details--------------------------
+    Then user enter payment details
+    Then user select month
+    Then user select year
+    When user clicks the pay button
+    #Payment Complete
+    Then user is on "Thank You" page
+    Then user close browser
 
     Examples: 
-      | email            | password     | Address1  | Suburb         |
-      | bam@bam.com | Password123! | Australia | Executive Lane |
-      
+      | email                   | password     | Address1  | Suburb         |
+      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |

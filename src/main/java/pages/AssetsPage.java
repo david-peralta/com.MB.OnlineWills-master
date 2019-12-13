@@ -119,7 +119,7 @@ public class AssetsPage extends Base {
 	WebElement BankAccountFinancialInstitutionReq;
 
 	// Asset - Debt
-	@FindBy(xpath = "(//input[contains(@id,'RadioButton_DebtNo')]//following::label//following::div[text()='Required field'])[1]")
+	@FindBy(xpath = "//input[contains(@id,'DebtOwedTo')]//following::span[text()='Required field']")
 	WebElement NoQuestion2Required;
 	@FindBy(xpath = "//div[contains(@id,'SectionTitle')]//span[text()='Please add debt']")
 	WebElement NoQuestion2AddDebt;
@@ -343,10 +343,12 @@ public class AssetsPage extends Base {
 
 	public void ClickAddSuperSave() {
 		CommonFunctions.clickElement(SuperSave);
+		CommonFunctions.wait(3000, false);
 	}
 
 	public void ClickAddSuperCancel() {
 		CommonFunctions.clickElement(SuperCancel);
+		CommonFunctions.wait(3000, false);
 	}
 
 	public void ClickYesQuestion1() {
@@ -440,12 +442,22 @@ public class AssetsPage extends Base {
 
 	public void ClickDeleteDebt1() {
 		CommonFunctions.clickElement(DebtDelete1);
+		CommonFunctions.clickElement(DebtDelete1);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.clickElement(DebtDelete1);
+		CommonFunctions.wait(3000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.wait(1500, false);
 	}
 
 	public void ClickDeleteDebt2() {
 		CommonFunctions.clickElement(DebtDelete2);
+		CommonFunctions.clickElement(DebtDelete2);
+		CommonFunctions.wait(3000, false);
+		CommonFunctions.clickElement(DebtDelete2);
+		CommonFunctions.wait(3000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.wait(1500, false);
 	}
 
 	public void ClickCancelDebt() {
@@ -463,6 +475,7 @@ public class AssetsPage extends Base {
 
 	public void clickAddDebt() {
 		CommonFunctions.clickElement(AddDebt);
+		CommonFunctions.wait(1500, false);
 	}
 
 	public void DisplayedAddDebt() {
@@ -510,6 +523,7 @@ public class AssetsPage extends Base {
 		CommonFunctions.clickElement(DebtSave);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(NoQuestion2Required);
+		CommonFunctions.wait(5000, false);
 	}
 
 	public void CheckRequiredDebtOwedTo() {
@@ -608,9 +622,9 @@ public class AssetsPage extends Base {
 	public void UpdateDebtFields() {
 		CommonFunctions.clickElement(DebtEdit);
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(DebtOwedTo, "Update");
+		CommonFunctions.clearThenEnterElementValue(DebtOwedTo, "Update");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.enterElementValue(DebtApproxValue, "150");
+		CommonFunctions.clearThenEnterElementValue(DebtApproxValue, "150");
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(DebtSave);
 		CommonFunctions.wait(5000, false);

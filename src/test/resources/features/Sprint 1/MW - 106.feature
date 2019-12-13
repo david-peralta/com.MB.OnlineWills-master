@@ -1,17 +1,16 @@
 Feature: MW - 106 : Payments Page
 
-@WIP
+  @WIP
   Scenario Outline: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "bam@bam.com" on user dropdown
+    Then user selects "david.peralta@yahoo.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
-    
-        Examples: 
-      | email      | password     | Address1 | Suburb   			|
-      | bam@bam.com| Password123! | Australia| Executive Lane |
 
+    Examples: 
+      | email                   | password     | Address1  | Suburb         |
+      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |
 
   @Sprint
   Scenario Outline: 
@@ -25,7 +24,7 @@ Feature: MW - 106 : Payments Page
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
-		When user fills up mandatory fields inside the personal page for victorian
+    When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single-------------------------------------------------------------------------
@@ -61,16 +60,21 @@ Feature: MW - 106 : Payments Page
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
-    When user selects Driver License as first identification type
-    Then user adds driver license details
+    Then user clicks on first identification document
+    And user selects Driver License as first identification type
+    And user adds driver license details
+    And user adds first identification
+    Then user clicks on second identification document
     And user selects Medicare as second identification type
-    Then user adds medicare details
-   	#And user sees next button on the ID docs page
+    And user adds medicare details
+    And user adds second identification
+    And user clicks next button on the ID docs page
+    #And user sees next button on the ID docs page
     Then user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
     Then user clicks on add POA on addons page
@@ -96,7 +100,7 @@ Feature: MW - 106 : Payments Page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user clicks the next button on the review and confirm page
     #Payments
     Then user is on "Payment" page
     #Check order summary (With POA)
@@ -104,10 +108,9 @@ Feature: MW - 106 : Payments Page
     And Standard will legal document is displayed in the order summary
     And user clicks on pay now button
     Then user close browser
-    #User is redirected to 
+    #User is redirected to
     
     
-
     Examples: 
-      | email            | password     | Address1 | Suburb         |
-      | bam@bam.com| Password123! | Australia| Executive Lane |
+      | email                   | password     | Address1  | Suburb         |
+      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |

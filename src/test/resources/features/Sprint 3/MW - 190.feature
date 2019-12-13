@@ -1,13 +1,19 @@
 Feature: MW - 190 - Cost Disclosure Form - Skeleton
 
+  @WIP
+  Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "david.peralta@yahoo.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+
   @Sprint3
   Scenario Outline: 
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    When user clicks on new order on incomplete order popup
-    #When user clicks on continue on incomplete order popup
     When user selects singles product
     #SELECTS UNION - POA
     And user click free standard will
@@ -19,17 +25,7 @@ Feature: MW - 190 - Cost Disclosure Form - Skeleton
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
-    When user selects "Dr" as title on personal page
-    When user inputs "01/01/1993" as date of birth on personal page
-    When user inputs "4772834" as Phone Number on personal page
-    When user inputs "Consultant" as Occupation on personal page
-    When user inputs "<Address1>" as Residential address line one on personal page
-    When user inputs "<Suburb>" as Residential suburb on personal page
-    When user selects "VIC" as Residential state on personal page
-    When user selects "4103" as Residential Postcode on personal page
-    When user selects Postal Address same as Residential checkbox
-    When user selects no on first question
-    When user selects no on second question
+    When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single-------------------------------------------------------------------------
@@ -39,12 +35,7 @@ Feature: MW - 190 - Cost Disclosure Form - Skeleton
     Then user is on "Assets" page
     And user clicks no to do you have assets question
     #Asset answer "no" to other question
-    And user clicks no to do you have debts question
-    And user clicks no to do you have any superannuation question
-    And user clicks no to do you have life insurance separate from your superannuation
-    And user clicks no to do you control a trust question
-    And user clicks no to do you control a self-managed superannuation fund question
-    And user clicks no to do you own your own business or are you a partner in a partnership question
+    And user clicks no to all assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
     And user clicks yes to Do you want to include any children you have in the future question
@@ -65,11 +56,16 @@ Feature: MW - 190 - Cost Disclosure Form - Skeleton
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
-    And user selects Foreign Passport as first identification type
-    And user adds foreign passport details
-    And user selects Driver License as second identification type
+    Then user clicks on first identification document
+    And user selects Driver License as first identification type
     And user adds driver license details
+    And user adds first identification
+    Then user clicks on second identification document
+    And user selects Medicare as second identification type
+    And user adds medicare details
+    And user adds second identification
     And user clicks next button on the ID docs page
+    Then user is on "Review and Confirm" page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
@@ -97,7 +93,7 @@ Feature: MW - 190 - Cost Disclosure Form - Skeleton
     Then user click on I do not want a MDM
     Then user click next
     #Review and confirm-------------------------------------------------------------------------
-    Then user is on "ReviewAndConfirm" page
+    Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     When user clicks the next button on the review and confirm page to go to payments page
     #Payments

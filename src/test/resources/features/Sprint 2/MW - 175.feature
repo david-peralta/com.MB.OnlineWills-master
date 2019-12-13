@@ -7,8 +7,6 @@ Feature: MW - 175 : Union Member Payments
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    When user clicks on new order on incomplete order popup
-    #When user clicks on continue on incomplete order popup
 		And user click free standard will
 		#Union details
     Then pop-up header is displayed
@@ -87,8 +85,6 @@ Feature: MW - 175 : Union Member Payments
     And user click the next button with POA on the AddOns page
     #Payments
     Then user is on "Payment" page
-    And user check on the total
-    Then user clicks on proceed button
     #Payment Complete
     Then user is on "Thank You" page
     
@@ -106,8 +102,6 @@ Feature: MW - 175 : Union Member Payments
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    #When user clicks on new order on incomplete order popup
-    #When user clicks on continue on incomplete order popup
 	
 	And user click free standard will
 		#Union details
@@ -189,8 +183,6 @@ Feature: MW - 175 : Union Member Payments
     And user click the next button with POA on the AddOns page
     #Payments
     Then user is on "Payment" page
-    And user check on the total
-    Then user clicks on proceed button
     #Payment Complete
     Then user is on "Thank You" page
       
@@ -206,8 +198,6 @@ Feature: MW - 175 : Union Member Payments
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    #When user clicks on new order on incomplete order popup
-    #When user clicks on continue on incomplete order popup
 	
 	And user click free standard will
 		#Union details
@@ -319,7 +309,6 @@ Feature: MW - 175 : Union Member Payments
     #User is redirected back to Review and Confirm-------------------------------------------------------------------------
     #Then user is on "ReviewAndConfirm" page
     #And user clicks the next button on the review and confirm page to go to add-on page
-    Then user check amount for the standard will document
     And user clicks on pay now button
     #Checkout page
     Then user is on "Checkout" page

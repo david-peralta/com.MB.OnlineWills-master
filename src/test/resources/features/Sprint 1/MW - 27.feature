@@ -1,9 +1,10 @@
 Feature: MW - 27 : As a customer, I want to list my beneficiaries so I can allocate my Will
+
   @WIP
   Scenario Outline: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "bam@bam.com" on user dropdown
+    Then user selects "david.peralta@yahoo.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
 
@@ -59,5 +60,5 @@ Feature: MW - 27 : As a customer, I want to list my beneficiaries so I can alloc
     Then user close browser
 
     Examples: 
-      | email            | password     | Address1                                         | Suburb         |
-      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email                   | password     | Address1                                         | Suburb         |
+      | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

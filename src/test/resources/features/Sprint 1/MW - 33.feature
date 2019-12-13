@@ -1,9 +1,10 @@
 Feature: MW - 33 : Assests - Debt
+
   @WIP
   Scenario: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "bam@bam.com" on user dropdown
+    Then user selects "david.peralta@yahoo.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
 
@@ -33,22 +34,13 @@ Feature: MW - 33 : Assests - Debt
     And user clicks on add debt
     And user checks mandatory fields in debt
     And user fills up debt
+    And user clicks on add debt
     And user adds another debt
     And user edits debt
     And user removes debt
     And user cancels debt with unsaved changes
-    Then user close browser
+    #Then user close browser
 
-    #
-    #
-    #And user clicks no to do you have any superannuation question
-    #And user clicks no to do you have life insurance separate from your superannuation
-    #And user clicks no to do you control a trust question
-    #And user clicks no to do you control a self-managed superannuation fund question
-    #And user clicks no to do you own your own business or are you a partner in a partnership question
-    #And user click the next button on the assets page
-    
-    
     Examples: 
-      | email            | password     | Address1                                         | Suburb         |
-      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email                   | password     | Address1                                         | Suburb         |
+      | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

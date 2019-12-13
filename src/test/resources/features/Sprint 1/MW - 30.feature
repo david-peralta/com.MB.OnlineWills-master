@@ -1,19 +1,19 @@
 Feature: MW - 30 : As a customer, I want to list all my children, so I can indicate my family situation in my Will
 
-		@WIP
-  	Scenario: 
+  @WIP
+  Scenario: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "bam@bam.com" on user dropdown
+    Then user selects "david.peralta@yahoo.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
- 
- 		@Sprint1
-  	Scenario Outline: Scenario 1: Customer indicates they have a child/children
+
+  @Sprint1
+  Scenario Outline: Scenario 1: Customer indicates they have a child/children
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
-  	Then user is on "Landing" page
+    Then user is on "Landing" page
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
@@ -41,6 +41,7 @@ Feature: MW - 30 : As a customer, I want to list all my children, so I can indic
     #Scenario 6: Customer removes child record from the table
     And user removes second child
     Then user close browser
+
     Examples: 
-      | email       | password     | Address1                                         | Suburb         |
-      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email                   | password     | Address1                                         | Suburb         |
+      | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

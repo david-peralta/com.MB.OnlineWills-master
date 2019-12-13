@@ -1,17 +1,16 @@
 Feature: MW - 65 : Checkout
+
   @WIP
   Scenario Outline: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "bam@bam.com" on user dropdown
+    Then user selects "david.peralta@yahoo.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
 
   @Sprint
-  Scenario Outline:
-  
-  	#Without POA
-   
+  Scenario Outline: 
+    #Without POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -58,13 +57,15 @@ Feature: MW - 65 : Checkout
     #Executors Page-------------------------------------------------------------------------
     Then user is on "Executors" page
     #And user adds first option executor
-    And user clicks on add executor
-    And user adds first option executor
-    And user clicks on add executor
-    And user adds back up executor
-    And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
-    And user selects i have no wish on funeral wishes
-    And user click the next button on the executors page
+    Then user clicks on first identification document
+    And user selects Driver License as first identification type
+    And user adds driver license details
+    And user adds first identification
+    Then user clicks on second identification document
+    And user selects Medicare as second identification type
+    And user adds medicare details
+    And user adds second identification
+    And user clicks next button on the ID docs page
     #ID docs Page
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
@@ -103,7 +104,7 @@ Feature: MW - 65 : Checkout
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    When user clicks the next button on the review and confirm page to go to payments page  
+    When user clicks the next button on the review and confirm page to go to payments page
     #Payments
     Then user is on "Payment" page
     #Check order summary (With POA)
@@ -114,7 +115,6 @@ Feature: MW - 65 : Checkout
     #Then user is on "Review and Confirm" page
     #And user clicks the next button on the review and confirm page to go to add-on page
     And user clicks on pay now button
-    
     #User is redirected to checkout
     #Scenario1: Checkout - invalid details--------------------------
     Then user is on "Checkout" page
@@ -124,7 +124,7 @@ Feature: MW - 65 : Checkout
     And user sees expiration date year selection
     And user sees CVN input
     When user clicks the pay button
-    Then error message Card type is a required field is displayed 
+    Then error message Card type is a required field is displayed
     Then error message Enter a valid card number is displayed
     Then error message Enter a valid expiry date is displayed
     And user clicks the cancel button
@@ -141,39 +141,34 @@ Feature: MW - 65 : Checkout
     Then user is on "Landing" page
     When user clicks on continue on incomplete order popup
     #Payment Page
-		Then user is on "Payment" page
-		And user clicks on pay now button
-		#Checkout page
-		Then user is on "Checkout" page
-		#Scenario2: Checkout - valid details--------------------------
-		Then user enter payment details
-		Then user select month
-		Then user select year
-		When user clicks the pay button
-		#Payment Complete
-		Then user is on "Thank You" page  
-		Then user close browser  
+    Then user is on "Payment" page
+    And user clicks on pay now button
+    #Checkout page
+    Then user is on "Checkout" page
+    #Scenario2: Checkout - valid details--------------------------
+    Then user enter payment details
+    Then user select month
+    Then user select year
+    When user clicks the pay button
+    #Payment Complete
+    Then user is on "Thank You" page
+    Then user close browser
 
     Examples: 
-      | email            | password     | Address1  | Suburb         |
-      | bam@bam.com | Password123! | Australia | Executive Lane |
-      
-      
-      
-      
-        @WIP
+      | email                   | password     | Address1  | Suburb         |
+      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |
+
+  @WIP
   Scenario Outline: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "bam@bam.com" on user dropdown
+    Then user selects "david.peralta@yahoo.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
-      
- @Sprint
-  Scenario Outline:
-  
-  	#With POA
-   
+
+  @Sprint
+  Scenario Outline: 
+    #With POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -265,7 +260,7 @@ Feature: MW - 65 : Checkout
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    When user clicks the next button on the review and confirm page to go to payments page  
+    When user clicks the next button on the review and confirm page to go to payments page
     #Payments
     Then user is on "Payment" page
     #Check order summary (With POA)
@@ -276,7 +271,6 @@ Feature: MW - 65 : Checkout
     Then user is on "Review and Confirm" page
     And user clicks the next button on the review and confirm page to go to add-on page
     And user clicks on pay now button
-    
     #User is redirected to checkout
     #Scenario1: Checkout - invalid details--------------------------
     Then user is on "Checkout" page
@@ -286,7 +280,7 @@ Feature: MW - 65 : Checkout
     And user sees expiration date year selection
     And user sees CVN input
     When user clicks the pay button
-    Then error message Card type is a required field is displayed 
+    Then error message Card type is a required field is displayed
     Then error message Enter a valid card number is displayed
     Then error message Enter a valid expiry date is displayed
     And user clicks the cancel button
@@ -303,19 +297,18 @@ Feature: MW - 65 : Checkout
     Then user is on "Landing" page
     When user clicks on continue on incomplete order popup
     #Payment Page
-		Then user is on "Payment" page
-		And user clicks on pay now button
-		#Checkout page
-		Then user is on "Checkout" page
-		#Scenario2: Checkout - valid details--------------------------
-		Then user enter payment details
-		Then user select month
-		Then user select year
-		When user clicks the pay button
-		#Payment Complete
-		Then user is on "Thank You" page    
+    Then user is on "Payment" page
+    And user clicks on pay now button
+    #Checkout page
+    Then user is on "Checkout" page
+    #Scenario2: Checkout - valid details--------------------------
+    Then user enter payment details
+    Then user select month
+    Then user select year
+    When user clicks the pay button
+    #Payment Complete
+    Then user is on "Thank You" page
 
     Examples: 
-      | email            | password     | Address1  | Suburb         |
-      | bam@bam.com | Password123! | Australia | Executive Lane |
-      
+      | email                   | password     | Address1  | Suburb         |
+      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |

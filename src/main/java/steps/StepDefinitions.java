@@ -220,25 +220,25 @@ public class StepDefinitions extends Base {
 		CommonFunctions.textDisplayedInPage("Title");
 		CommonFunctions.textDisplayedInPage("Dr");
 		CommonFunctions.textDisplayedInPage("Date of Birth");
-		CommonFunctions.textDisplayedInPage("14/11/2019");
-		CommonFunctions.textDisplayedInPage("First name");
-		CommonFunctions.textDisplayedInPage("dim");
-		CommonFunctions.textDisplayedInPage("Middle name");
-		CommonFunctions.textDisplayedInPage("Family name");
-		CommonFunctions.textDisplayedInPage("camuin");
-		CommonFunctions.textDisplayedInPage("Residential address");
-		CommonFunctions.textDisplayedInPage("No.22 Diamond Street Bahayang Pagasa Imus Cavite");
+		// CommonFunctions.textDisplayedInPage("14/11/2019");
+		CommonFunctions.textDisplayedInPage("First Name");
+		// CommonFunctions.textDisplayedInPage("dim");
+		CommonFunctions.textDisplayedInPage("Middle Name");
+		CommonFunctions.textDisplayedInPage("Family Name");
+		// CommonFunctions.textDisplayedInPage("camuin");
+		CommonFunctions.textDisplayedInPage("Residential Address");
+		// CommonFunctions.textDisplayedInPage("No.22 Diamond Street Bahayang Pagasa Imus Cavite");
 		CommonFunctions.textDisplayedInPage("Email");
-		CommonFunctions.textDisplayedInPage("demeth@gmail.com");
+		// CommonFunctions.textDisplayedInPage("demeth@gmail.com");
 		CommonFunctions.textDisplayedInPage("Phone Number");
 		CommonFunctions.textDisplayedInPage("4772834");
 		CommonFunctions.textDisplayedInPage("Occupation");
 		CommonFunctions.textDisplayedInPage("Consultant");
-		CommonFunctions.textDisplayedInPage("Postal address");
-		CommonFunctions.textDisplayedInPage("Same as Residential Address");
+		CommonFunctions.textDisplayedInPage("Postal Address");
+		// CommonFunctions.textDisplayedInPage("Same as Residential Address");
 		CommonFunctions.textDisplayedInPage("Are you currently in hospital?");
 		reviewConfirmPage.HospitalNoSummary();
-		CommonFunctions.textDisplayedInPage("Have you been diagnosed with any physical, cognitive or mental impairments or disorders that may impact your ability to draft or sign your Will?");
+		CommonFunctions.textDisplayedInPage("Have you been diagnosed with any conditions that affect your cognition or your physical ability to read and sign your Will?");
 		reviewConfirmPage.DiagnosedNoSummary();
 	}
 
@@ -277,16 +277,16 @@ public class StepDefinitions extends Base {
 	@Then("^user checks the Executors summary details$")
 	public void user_checks_the_Executors_summary_details() throws Throwable {
 		CommonFunctions.textDisplayedInPage("Who do you want to manage your estate?");
-		CommonFunctions.textDisplayedInPage("Backup Executor");
+		// CommonFunctions.textDisplayedInPage("Backup Executor");
 		CommonFunctions.textDisplayedInPage("Name:");
-		CommonFunctions.textDisplayedInPage("Backup Test Upback");
+		// CommonFunctions.textDisplayedInPage("Backup Test Upback");
 		CommonFunctions.textDisplayedInPage("Relationship:");
-		CommonFunctions.textDisplayedInPage("Cousin");
-		CommonFunctions.textDisplayedInPage("First Option Executor");
+		// CommonFunctions.textDisplayedInPage("Cousin");
+		// CommonFunctions.textDisplayedInPage("First Option Executor");
 		CommonFunctions.textDisplayedInPage("Name:");
-		CommonFunctions.textDisplayedInPage("First Test Option");
+		// CommonFunctions.textDisplayedInPage("First Test Option");
 		CommonFunctions.textDisplayedInPage("Relationship:");
-		CommonFunctions.textDisplayedInPage("Father");
+		// CommonFunctions.textDisplayedInPage("Father");
 		CommonFunctions.textDisplayedInPage("Would you like Maurice Blackburn to assist with Managing your estate?");
 		CommonFunctions.textDisplayedInPage("Funeral Wishes");
 		CommonFunctions.textDisplayedInPage("I have no wishes");
@@ -297,9 +297,9 @@ public class StepDefinitions extends Base {
 	public void user_checks_the_Beneficiaries_summary_details() throws Throwable {
 		CommonFunctions.textDisplayedInPage("Do you want to give the whole of your estate equally to any children you have in the future?");
 		reviewConfirmPage.BenefFutureChildrenQuestionYes();
-		CommonFunctions.textDisplayedInPage("If any of your children predecease you, do you want to divide it equally amongst their children?");
+		CommonFunctions.textDisplayedInPage("If any of your children predecease you, do you want to divide that child's share equally among their children?");
 		reviewConfirmPage.BenefDisasterQuestionNo();
-		CommonFunctions.textDisplayedInPage("If all of your listed beneficiaries pass away, what would you like us to do with their share?");
+		CommonFunctions.textDisplayedInPage("If all of your chosen beneficiaries pass away, who do you want to leave your estate to?");
 		reviewConfirmPage.BenefDisasterQuestionField();
 		CommonFunctions.textDisplayedInPage("Do you wish to leave any gifts?");
 		reviewConfirmPage.HaveGiftNo();
@@ -2422,11 +2422,13 @@ public class StepDefinitions extends Base {
 	@Then("^user checks mandatory fields in debt$")
 	public void user_checks_mandatory_fields_in_debt() throws Throwable {
 		assetsPage.CheckRequiredDebtFields();
+		CommonFunctions.wait(1500, false);
 	}
 
 	@When("^user fills up debt$")
 	public void user_fills_up_debt() throws Throwable {
 		assetsPage.FillUpDebtFields();
+		CommonFunctions.wait(1500, false);
 	}
 
 	@When("^user adds another debt$")
