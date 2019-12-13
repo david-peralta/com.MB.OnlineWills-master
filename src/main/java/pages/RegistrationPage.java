@@ -20,6 +20,8 @@ public class RegistrationPage extends Base {
 	WebElement ConfirmPasswordField;
 	@FindBy(xpath = "//input[contains(@id,'CBPrivacy1')]")
 	WebElement PrivacyCheckbox;
+	@FindBy(xpath = "//input[contains(@id,'CBPrivacy2')]")
+	WebElement PrivacyCheckbox1;
 	@FindBy(xpath = "//select[contains(@id,'StateDropdown')]")
 	WebElement StateDropdown;
 	@FindBy(xpath = "//select[contains(@id,'SourceDropdown')]")
@@ -48,7 +50,8 @@ public class RegistrationPage extends Base {
 	WebElement RegisteredEmailField;
 	@FindBy(xpath = "//input[contains(@id, 'PasswordField')]//following-sibling::span[text()='Required field']")
 	WebElement RequiredPasswordField;
-	@FindBy(xpath = "//input[contains(@id, 'PasswordField')]//following-sibling::span[text()='Password entered does not meet our password policy. Please try again.']")
+	//@FindBy(xpath = "//input[contains(@id, 'PasswordField')]//following-sibling::span[text()='Password entered does not meet our password policy. Please try again.']")
+	@FindBy(xpath = "(//input[contains(@name, 'PasswordField')])[1]//following-sibling::div[text()='Password must be at least 8 characters and contain 3 of the following:']")
 	WebElement InvalidPasswordField;
 
 	@FindBy(xpath = "//input[contains(@id, 'ConfirmPasswordField')]//following-sibling::span[text()='Passwords do not match, please try again.']")
@@ -66,7 +69,7 @@ public class RegistrationPage extends Base {
 	// WebElement RequiredPrivacyCheckbox;
 
 	// ---
-	@FindBy(xpath = "//div[@class = 'balloon-content' and contains(., 'Be a minimum password length: 8 Characters') and contains(., 'Contain characters from three of the following four categories:') and contains(., 'English uppercase characters (A through Z)') and contains(., 'English lowercase characters (a through z)') and contains(., 'Base 10 digits (0 through 9)')and contains(., 'Non-alphabetic characters (for example, !, $, #, %)')]")
+	@FindBy(xpath = "//span[contains(@id,'tooltip_block')]")
 	WebElement ToolTipContent1;
 	@FindBy(xpath = "//div[@class = 'tool-tex' and contains(., 'Must include an uppercase character')]")
 	WebElement ToolTipContent2;
@@ -94,6 +97,8 @@ public class RegistrationPage extends Base {
 	WebElement Link_CollectionStatement;
 	@FindBy(xpath = "//*[contains(text(),'Privacy Policy')]")
 	WebElement Link_PrivacyPolicy;
+	@FindBy(xpath = "//span[text()='Thank you for registering']")
+	WebElement text_Thankyou;
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public RegistrationPage() {
@@ -102,7 +107,7 @@ public class RegistrationPage extends Base {
 
 	// ============================================================= Actions =============================================================
 	public void CheckToolTipContent1() {
-		CommonFunctions.elementDisplayed(ToolTipContent1);
+		CommonFunctions.clickElement(ToolTipContent1);
 	}
 
 	public void CheckToolTipContent2() {
@@ -123,6 +128,10 @@ public class RegistrationPage extends Base {
 
 	public void clickPrivacyCheckbox() {
 		CommonFunctions.clickElement(PrivacyCheckbox);
+	}
+	
+	public void clickPrivacyCheckbox1() {
+		CommonFunctions.clickElement(PrivacyCheckbox1);
 	}
 
 	public void clickCreateAccountButton() {
@@ -286,6 +295,10 @@ public class RegistrationPage extends Base {
 
 	public void clickPrivacyPolicy() {
 		CommonFunctions.clickElement(Link_PrivacyPolicy);
+	}
+	public void displayedThankYou() {
+		CommonFunctions.elementDisplayed(text_Thankyou);
+
 	}
 
 }

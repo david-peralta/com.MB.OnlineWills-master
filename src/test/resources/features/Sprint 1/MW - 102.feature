@@ -1,17 +1,18 @@
 Feature: MW - 102
 
-  @WIP
+@WIP
   Scenario Outline: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "victorian@gmail.com" on user dropdown
+    Then user selects "spousesample@gmail.com" on user dropdown
     Then user clicks on delete all button
-
     #Then user close browser
-    Examples: 
-      | email                   | password     | Address1                                         | Suburb         |
-      | victorian@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
 
+    Examples: 
+      | email            | password     | Address1                                         | Suburb         |
+      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      
+      
   @Regression
   Scenario Outline: 
     # Go to site and log in
@@ -34,7 +35,9 @@ Feature: MW - 102
     When user clicks the next button to confirm will
     Then user is on "Thank You" page
     And user sees message "Thank you"
+    Then user close browser
+    
 
     Examples: 
-      | email                   | password     | Address1                                         | Suburb         |
-      | victorian@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email               | password     | Address1                                         | Suburb         |
+      | spousesample@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

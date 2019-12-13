@@ -1,12 +1,13 @@
 Feature: MW - 136 : Date of Birth cannot be current date or future date
-
-  @WIP
-  Scenario: 
+ 
+ @WIP
+  Scenario Outline: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "david.peralta@yahoo.com" on user dropdown
+    Then user selects "bam@bam.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
+
 
   @Sprint
   Scenario Outline: 
@@ -22,6 +23,9 @@ Feature: MW - 136 : Date of Birth cannot be current date or future date
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
+    Then user sees message "Date of Birth should not be a current or future date."
+    When user inputs "01/01/1993" as date of birth on personal page
+    When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single-------------------------------------------------------------------------
     When user selects "Single" as Relationship Status on about page
@@ -29,6 +33,8 @@ Feature: MW - 136 : Date of Birth cannot be current date or future date
     And user click the next button on the about page
     Then user is on "Assets" page
     #Assets Clicks No To All
+    And user clicks no to do you have assets question
+    #Asset answer "no" to other question
     And user clicks no to all assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
@@ -75,5 +81,8 @@ Feature: MW - 136 : Date of Birth cannot be current date or future date
     Then user close browser
 
     Examples: 
-      | email                   | password     | Address1                                         | Suburb         |
-      | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email       | password     | Address1                                         | Suburb         |
+      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      
+  
+ 

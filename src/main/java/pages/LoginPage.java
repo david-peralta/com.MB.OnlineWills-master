@@ -124,10 +124,10 @@ public class LoginPage extends Base {
 		return new HomePage();
 	}
 
-	public ExecutorsPage clickLoginButton1() {
+	public BeneficiariesPage clickLoginButton1() {
 		CommonFunctions.clickElement(button_Login);
 
-		return new ExecutorsPage();
+		return new BeneficiariesPage();
 	}
 
 	public DashboardPage clickLoginDashboard() {

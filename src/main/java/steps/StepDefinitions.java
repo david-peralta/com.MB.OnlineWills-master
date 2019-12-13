@@ -172,6 +172,7 @@ public class StepDefinitions extends Base {
 	@Then("^user sees message \"([^\"]*)\"$")
 	public void user_sees_message(String arg1) throws Throwable {
 		CommonFunctions.textDisplayedInPage(arg1);
+		CommonFunctions.wait(5000, false);
 	}
 
 	@Then("^user sees welcome message$")
@@ -736,11 +737,10 @@ public class StepDefinitions extends Base {
 		personalPage.CheckAdditionalQuestion1();
 		personalPage.CheckYesQuestion1();
 		personalPage.CheckNoQuestion1();
-		personalPage.CheckAdditionalQuestion2();
+		//personalPage.CheckAdditionalQuestion2();
 		personalPage.CheckYesQuestion2();
 		personalPage.CheckYesQuestion2();
 		personalPage.CheckNextButton();
-		personalPage.CheckCancelButton();
 
 	}
 
@@ -2121,7 +2121,8 @@ public class StepDefinitions extends Base {
 		loginPage.setEmailInput(arg1);
 		loginPage.setPasswordInput(arg2);
 
-		executorsPage = loginPage.clickLoginButton1();
+
+		beneficiariesPage = loginPage.clickLoginButton1();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -2251,6 +2252,11 @@ public class StepDefinitions extends Base {
 		registrationPage = loginPage.clickForgottenRegisterLink();
 		CommonFunctions.wait(5000, false);
 	}
+	@When("^user agress on I have read and agree to the MyLife Wills$")
+	public void user_agress_on_I_have_read_and_agree_to_the_MyLife_Wills() throws Throwable {
+	    registrationPage.clickPrivacyCheckbox1();
+	}
+
 
 	@When("^user agrees on Maurice Blackburn's Privacy Policy by ticking the checkbox$")
 	public void user_agrees_on_Maurice_Blackburn_s_Privacy_Policy_by_ticking_the_checkbox() throws Throwable {
@@ -2279,9 +2285,17 @@ public class StepDefinitions extends Base {
 		registrationPage.clickCreateAccountButton();
 		CommonFunctions.wait(8000, false);
 	}
+	
+	@When("^user sees text message$")
+	public void user_sees_text_message() throws Throwable {
+	    registrationPage.displayedThankYou();
+	}
 
 	@When("^the user clicks on Privacy policy link$")
 	public void the_user_clicks_on_Privacy_policy_link() throws Throwable {
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.wait(5000, false);
 		registrationPage.clickPrivacyLink();
 		CommonFunctions.wait(5000, false);
 	}
@@ -3786,6 +3800,10 @@ public class StepDefinitions extends Base {
 	public void user_clicks_change_to_go_back_to_personal_page() throws Throwable {
 		personalPage = reviewConfirmPage.ProgressChangePersonal();
 		CommonFunctions.wait(3000, false);
+	}
+	@Then("^user checks on billing information fields$")
+	public void user_checks_on_billing_information_fields() throws Throwable {
+	    checkOutPage.displayBillingInformation();
 	}
 
 	@Then("^user clicks change to go back to assets page$")

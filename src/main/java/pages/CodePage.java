@@ -11,7 +11,7 @@ public class CodePage extends Base {
 	// ========================================================= Page Objects ===========================================================
 	@FindBy(xpath = "//input[contains(@id, 'PasswordInput')]")
 	WebElement input_Password;
-	@FindBy(xpath = "(//table[contains(@id, 'UserAccountTable')]//tbody//tr//td[contains(text(), 'reset@password.com')]//following-sibling::td)[2]//a")
+	@FindBy(xpath = "//table[contains(@id,'UserAccountTable')]//tr//td[text()='JF@test.com.au']//parent::tr//a[contains(@id,'30')]")
 	WebElement CodeResetPasswordLink;
 
 	// ================================================== Initializing the Page Objects ==================================================

@@ -27,12 +27,7 @@ Feature: MW - 27B Questions : As a customer, I want to list my beneficiaries so 
     Then user is on "Assets" page
     And user clicks no to do you have assets question
     #Asset answer "no" to other question
-    And user clicks no to do you have debts question
-    And user clicks no to do you have any superannuation question
-    And user clicks no to do you have life insurance separate from your superannuation
-    And user clicks no to do you control a trust question
-    And user clicks no to do you control a self-managed superannuation fund question
-    And user clicks no to do you own your own business or are you a partner in a partnership question
+    And user clicks no to all assets question
     And user click the next button on the assets page
     #No Spouse and Yes Children
     And user sees question "Do you want to give the whole estate equally to your children?"

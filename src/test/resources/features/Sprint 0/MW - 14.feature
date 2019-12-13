@@ -9,14 +9,14 @@ Feature: MW - 14 : As a customer, I want to change my forgotten password so that
     Then user is on "Login" page
     When the user clicks on forgot password link
     Then user is on "ForgottenPassword" page
-    When user inputs an "reset@password.com" in the forgotten password email field
+    When user inputs an "JF@test.com.au" in the forgotten password email field
     Given user opens browser and decides to proceed to the activation links page
     Then user is on "Codes" page
     When the user clicks on reset password link
     Then user is on "ChangePassword" page
     Then user checks the content of the change password page
     When the user hovers on the password policy tooltip on change password page
-    And user sees password policy on tooltip on change password page
+    #And user sees password policy on tooltip on change password page
     #Scenario: Scenario 3:  Reset Password link has not been used
     When the user clicks on submit button on change password page
     And user checks if validation on required field on change password page is displayed
@@ -32,3 +32,4 @@ Feature: MW - 14 : As a customer, I want to change my forgotten password so that
     When user inputs "Password123!" in the Confirm Password field on change password page
     When the user clicks on submit button on change password page
     And user sees message "Your password has been successfully updated. You can now log in."
+    Then user close browser

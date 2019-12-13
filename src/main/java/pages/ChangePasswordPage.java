@@ -12,7 +12,7 @@ public class ChangePasswordPage extends Base {
 	WebElement NewPassword;
 	@FindBy(xpath = "//input[contains(@id,'ConfirmPasswordField')]")
 	WebElement ConfirmPassword;
-	@FindBy(xpath = "//input[@value='Update password']")
+	@FindBy(xpath = "//input[@value='Update Password']")
 	WebElement SubmitButton;
 	@FindBy(xpath = "//span[@class='fa fa-fw fa-info-circle']")
 	WebElement PasswordPolicyToolTip;
@@ -86,7 +86,7 @@ public class ChangePasswordPage extends Base {
 	}
 
 	public void HoverOnPasswordToolTip() {
-		CommonFunctions.hoverOverElement(PasswordPolicyToolTip);
+		CommonFunctions.clickElement(PasswordPolicyToolTip);
 	}
 
 	public void clickOnSubmitButton() {

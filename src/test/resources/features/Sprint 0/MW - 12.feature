@@ -18,4 +18,4 @@ Feature: MW - 12 : As a user, I want to log out of the portal so that no one els
     Then user is on "Login" page
     Examples:
     |user name|
-    |dim camuin|
+    |bam bam|

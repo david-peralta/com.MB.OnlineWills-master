@@ -8,6 +8,32 @@ import utilities.CommonFunctions;
 
 public class CheckOutPage extends Base {
 	// ========================================================== Page Objects ===========================================================
+	//Billing information
+	
+	@FindBy(xpath = "//input[contains(@id,'bill_to_forename')]")
+	WebElement Field_FName;
+	@FindBy(xpath = "//input[contains(@id,'bill_to_surname')]")
+	WebElement Field_SNAme;
+	@FindBy(xpath = "//input[contains(@id,'bill_to_address_line1')]")
+	WebElement Field_Address1;
+	@FindBy(xpath = "//input[contains(@id,'bill_to_address_line2')]")
+	WebElement Field_Address2;
+	@FindBy(xpath = "//input[contains(@id,'bill_to_address_city')]")
+	WebElement Field_City;
+	@FindBy(xpath = "//select[contains(@id,'bill_to_address_country')]")
+	WebElement Selection_Country;
+	@FindBy(xpath = "//input[contains(@id,'bill_to_address_state')]")
+	WebElement Field_State;
+	@FindBy(xpath = "//input[contains(@id,'bill_to_address_postal_code')]")
+	WebElement Field_Postal;
+	@FindBy(xpath = "//input[contains(@id,'bill_to_phone')]")
+	WebElement Field_PhoneNo;
+	@FindBy(xpath = "//input[contains(@id,'bill_to_email')]")
+	WebElement Field_Email;
+	
+	
+	
+	//Payment Details
 	@FindBy(xpath = "//ol[contains(@id,'card_type_selection')]")
 	WebElement Selection_CardType;
 	@FindBy(xpath = "//input[contains(@id,'card_type_001')]")
@@ -105,6 +131,20 @@ public class CheckOutPage extends Base {
 	public void displayCVN() {
 		CommonFunctions.elementDisplayed(Field_CVN);
 	}
+	
+	public void displayBillingInformation() {
+		CommonFunctions.elementDisplayed(Field_FName);
+		CommonFunctions.elementDisplayed(Field_SNAme);
+		CommonFunctions.elementDisplayed(Field_Address1);
+		CommonFunctions.elementDisplayed(Field_Address2);
+		CommonFunctions.elementDisplayed(Field_City);
+		CommonFunctions.elementDisplayed(Selection_Country);
+		CommonFunctions.elementDisplayed(Field_State);
+		CommonFunctions.elementDisplayed(Field_Postal);
+		CommonFunctions.elementDisplayed(Field_PhoneNo);
+		CommonFunctions.elementDisplayed(Field_Email);
+	}
+	
 
 	// Payment Details
 	public void fillUpPaymentDetails() {

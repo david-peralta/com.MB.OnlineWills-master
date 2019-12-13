@@ -475,7 +475,7 @@ public class ReviewConfirmPage extends Base {
 	}
 
 	public void validateVicPersonalDetails() {
-		CommonFunctions.scrollToBottomOfPage();
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.wait(2500, false);
 		CommonFunctions.textDisplayedInPage("Personal Details");
 		CommonFunctions.textDisplayedInPage("Title");

@@ -103,11 +103,11 @@ public class PersonalPage extends Base {
 	}
 
 	public void MaxlengthResPostcode() {
-		CommonFunctions.elementAttributeContainsValue(ResidentialPostCode, "maxlength", "10");
+		CommonFunctions.elementAttributeContainsValue(ResidentialPostCode, "maxlength", "4");
 	}
 
 	public void MaxlengthPostalPostcode() {
-		CommonFunctions.elementAttributeContainsValue(PostalPostCode, "maxlength", "10");
+		CommonFunctions.elementAttributeContainsValue(PostalPostCode, "maxlength", "4");
 	}
 
 	public void MaxlengthFirstName() {

@@ -1,4 +1,11 @@
 Feature: MW - 53
+  @WIP
+  Scenario Outline: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
 
   @Sprint
   Scenario Outline: 
@@ -34,7 +41,8 @@ Feature: MW - 53
     And user click the next button on the about page
     #Assets
     Then user is on "Assets" page
+    Then user close browser
 
     Examples: 
       | email                   | password     | Address1                                         | Suburb         |
-      | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

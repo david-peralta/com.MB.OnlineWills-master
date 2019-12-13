@@ -14,6 +14,7 @@ Feature: MW - 16 : As a customer, I want to activate my account so that I can lo
     When user inputs "<Password>" in the Password field on registration page
     When user inputs "<Confirm Password>" in the Confirm Password field on registration page
     When user selects "<Source>" on source dropdown
+    When user agress on I have read and agree to the MyLife Wills
     When user agrees on Maurice Blackburn's Privacy Policy by ticking the checkbox
     When the user clicks on create account button
     And user sees message "Thank you for registering"
@@ -29,6 +30,7 @@ Feature: MW - 16 : As a customer, I want to activate my account so that I can lo
     And user sees message "Looks like you have already activated your account"
     #Scenario 3: Activation link has expired (Hard to replicate link)
     #Scenario 4: User Re-sends Activation link email (Hard to replicate link)
+    Then user close browser
 
     Examples: 
       | First Name | Family Name | Email            | State | Password     | Confirm Password | Source        |

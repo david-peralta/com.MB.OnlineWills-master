@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -51,7 +52,7 @@ public class HomePage extends Base {
 	WebElement ContinueOrderPopUp;
 	@FindBy(xpath = "//div[contains(@id,'VoucherUnion_block_wtTitle')]")
 	WebElement PopupHeader;
-	@FindBy(xpath = "//a[contains(text(),'Click here to check if you qualify for a free standard Will')]")
+	@FindBy(xpath = "//a[contains(text(),'Union members click here')]")
 	WebElement FreeStandardWill;
 	@FindBy(xpath = "//input[contains(@id,'MemberNumberId')]")
 	WebElement YourMemberNumber;
@@ -186,6 +187,7 @@ public class HomePage extends Base {
 	}
 
 	public PersonalPage clickSinglesProductStandardWillBtn() {
+		CommonFunctions.elementDisplayed(SinglesProductStandardWillBtn);
 		CommonFunctions.clickElement(SinglesProductStandardWillBtn);
 
 		return new PersonalPage();
@@ -211,6 +213,7 @@ public class HomePage extends Base {
 
 	public void ClickFreeStandardWill() {
 		CommonFunctions.clickElement(FreeStandardWill);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.wait(3000, false);
 	}
 

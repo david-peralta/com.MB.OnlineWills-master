@@ -8,6 +8,7 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     Then user is on "Registration" page
     And user checks if the registration page contents is complete
     And user checks if describe field is displayed when "Other" is selected as source dropdown
+    Then user close browser
 
   @Regression
   Scenario Outline: Scenario 2: Mandatory fields not filled in
@@ -29,6 +30,7 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     #Scenario 7: Privacy Policy not acknowledged
     When the user clicks on create account button
     And user checks if Maurice Blackburn's Privacy Policy checkbox is mandatory
+    Then user close browser
 
     Examples: 
       | First Name | Family Name | Email            | State | Password     | Confirm Password | Source        |
@@ -43,6 +45,7 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     When user inputs "<Email>" in the Email field on registration page
     When the user clicks on create account button
     And user checks if validation on invalid email is displayed
+    Then user close browser
 
     Examples: 
       | Email           |
@@ -58,6 +61,7 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     When the user clicks on create account button
     #And user sees message "Email address already registered.  Try another"
    And user checks if validation on registered email is displayed
+   Then user close browser
 
   @Regression
   Scenario Outline: Scenario 5: Password does not match password policy
@@ -68,6 +72,7 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     When user inputs "<Invalid Password>" in the Password field on registration page
     When the user clicks on create account button
     And user checks if validation on invalid password is displayed
+    Then user close browser
 
     Examples: 
       | Invalid Password |
@@ -83,12 +88,13 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     When user inputs "<Invalid Confirm Password>" in the Confirm Password field on registration page
     When the user clicks on create account button
     And user checks if validation on invalid confirm password is displayed
+    Then user close browser
 
     Examples: 
       | Password     | Invalid Confirm Password |
-      | Password123! |                     1234 |
+      | Password123! | P123! |
 
-  @Regression
+  @Regression1
   Scenario Outline: Scenario 8: Patient successfully completes registration
     Given user opens browser
     Then user is on "Login" page
@@ -102,9 +108,11 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     When user inputs "<Password>" in the Password field on registration page
     When user inputs "<Confirm Password>" in the Confirm Password field on registration page
     When user selects "<Source>" on source dropdown
+    When user agress on I have read and agree to the MyLife Wills
     When user agrees on Maurice Blackburn's Privacy Policy by ticking the checkbox
     When the user clicks on create account button
     And user sees message "Thank you for registering"
+    Then user close browser
 
     #Not automated
     #And an activation email is sent to the email address they entered during registration
@@ -121,6 +129,7 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     Then user is on "Registration" page
     When the user hovers on the password policy tooltip
     And user sees password policy on tooltip
+    Then user close browser
 
   @Regression
   Scenario: Scenario 10: Customer views Privacy policy
@@ -131,3 +140,4 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     When the user clicks on Privacy policy link
     #Then user is on "PrivacyPolicy" page
     #And user sees message "Privacy Policy"
+    Then user close browser

@@ -1,16 +1,17 @@
 Feature: MW - 106 : Payments Page
 
-  @WIP
+@WIP
   Scenario Outline: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "david.peralta@yahoo.com" on user dropdown
+    Then user selects "bam@bam.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
+    
+        Examples: 
+      | email      | password     | Address1 | Suburb   			|
+      | bam@bam.com| Password123! | Australia| Executive Lane |
 
-    Examples: 
-      | email                   | password     | Address1  | Suburb         |
-      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |
 
   @Sprint
   Scenario Outline: 
@@ -34,12 +35,7 @@ Feature: MW - 106 : Payments Page
     Then user is on "Assets" page
     And user clicks no to do you have assets question
     #Asset answer "no" to other question
-    And user clicks no to do you have debts question
-    And user clicks no to do you have any superannuation question
-    And user clicks no to do you have life insurance separate from your superannuation
-    And user clicks no to do you control a trust question
-    And user clicks no to do you control a self-managed superannuation fund question
-    And user clicks no to do you own your own business or are you a partner in a partnership question
+    And user clicks no to do you have assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
     And user clicks yes to Do you want to include any children you have in the future question
@@ -100,7 +96,7 @@ Feature: MW - 106 : Payments Page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    And user clicks the next button on the review and confirm page
+    And user clicks the next button on the review and confirm page to go to add-on page
     #Payments
     Then user is on "Payment" page
     #Check order summary (With POA)
@@ -112,5 +108,5 @@ Feature: MW - 106 : Payments Page
     
     
     Examples: 
-      | email                   | password     | Address1  | Suburb         |
-      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |
+      | email            | password     | Address1 | Suburb         |
+      | bam@bam.com| Password123! | Australia| Executive Lane |
