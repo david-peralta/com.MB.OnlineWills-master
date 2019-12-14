@@ -40,8 +40,17 @@ Feature: MW - 11 : As a registered customer, I want to log in to MB's portal so 
     Then user close browser
 
     Examples: 
-      | email            | password     |
+      | email       | password     |
       | bam@bam.com | P4ssword123! |
+      
+    @WIP
+   	Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "bam@bam.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+      
 
   @Regression
   Scenario Outline: Scenario 4: Valid Credentials Entered

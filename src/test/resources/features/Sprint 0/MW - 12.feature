@@ -16,6 +16,7 @@ Feature: MW - 12 : As a user, I want to log out of the portal so that no one els
     When user clicks on "<user name>" and logs out
     And user clicks on yes button
     Then user is on "Login" page
+    Then user close browser
     Examples:
     |user name|
     |bam bam|

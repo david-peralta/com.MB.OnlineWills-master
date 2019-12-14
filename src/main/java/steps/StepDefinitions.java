@@ -445,7 +445,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question$")
 	public void user_clicks_yes_to_Do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
-		beneficiariesPage.ClickYesQuestion1();
+		beneficiariesPage.ClickYesQuestion1SingleWithChildren();
 		CommonFunctions.wait(5000, false);
 	}
 
@@ -746,7 +746,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^the user checks if titles inside the Title dropdown is complete$")
 	public void the_user_checks_if_titles_inside_the_Title_dropdown_is_complete() throws Throwable {
-		String[] TitledropdownValues = { "Select one", "Dr", "Miss", "Mr", "Mrs.", "Ms", "Professor", "Reverend" };
+		String[] TitledropdownValues = { "Select one", "Dr", "Miss", "Mr", "Mrs", "Ms", "Professor", "Reverend" };
 		personalPage.CheckTitleDropdownValues(TitledropdownValues);
 
 	}
@@ -3605,7 +3605,7 @@ public class StepDefinitions extends Base {
 	@Then("^user close browser$")
 	public void user_close_browser() throws Throwable {
 		driver.close();
-		driver.quit();
+		//driver.quit();
 	}
 
 	@Then("^user get text$")
@@ -3670,7 +3670,7 @@ public class StepDefinitions extends Base {
 	}
 
 	@Given("^user opens browser and proceeds to orders page$")
-	public void user_opens_browser_and_proceeds_to_orders_page() throws Throwable {
+	public void user_opens_browser_and_proceeds_to_orders_page() throws InterruptedException {
 		driver.get(prop.getProperty("orders"));
 		ordersPage = new OrdersPage();
 		CommonFunctions.wait(1500, false);
