@@ -122,15 +122,12 @@ public class DashboardPage extends Base {
 	}
 
 	public void displayedNewestRow() {
-		CommonFunctions.wait(3000, false);
-		CommonFunctions.elementContainsText(tablerow_OldestRow, "01/12/2019");
+		CommonFunctions.elementDisplayed(tablerow_NewestRow);
 		CommonFunctions.wait(3000, false);
 	}
 
 	public void displayedOldestRow() {
 		CommonFunctions.elementDisplayed(tablerow_OldestRow);
-		CommonFunctions.wait(3000, false);
-		CommonFunctions.elementContainsText(tablerow_OldestRow, "06/12/2019");
 		CommonFunctions.wait(3000, false);
 	}
 

@@ -183,42 +183,68 @@ public class FinancialDecisionsPage extends Base {
 		CommonFunctions.elementDisplayed(POAStateReq);
 		CommonFunctions.elementDisplayed(POAPostCodeReq);
 		CommonFunctions.elementDisplayed(POAPDMReq);
+		CommonFunctions.wait(5000, false);
 	}
 
 	public void SetFinancialDecisionsMandatoryFieldsOnAddingFinancialPDMYes() {
 		CommonFunctions.selectValueFromDropdown(POATitle, "Dr");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAFirstName, "Demeth");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAMiddleName, "Rey");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POALastName, "Camuin");
-		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAPhone, "4770344");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.selectValueFromDropdown(POARel, "Son");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.selectValueFromDropdown(POACountry, "AUSTRALIA");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAAddressLine1, "Australia");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAAddressLine2, "Australia");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POASuburb, "Australia");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.selectValueFromDropdown(POAState, "VIC");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAPostCode, "1234");
-		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.clickElement(POAPDMYes);
+		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.wait(5000, false);
 	}
 
 	public void SetFinancialDecisionsMandatoryFieldsOnAddingFinancialPDMNo() {
 		CommonFunctions.selectValueFromDropdown(POATitle, "Dr");
-		CommonFunctions.enterElementValue(POAFirstName, "POA FirstName");
-		CommonFunctions.enterElementValue(POAMiddleName, "POA MiddleName");
-		CommonFunctions.enterElementValue(POALastName, "POA LastName");
-		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.enterElementValue(POAFirstName, "Demeth");
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.enterElementValue(POAMiddleName, "Rey");
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.enterElementValue(POALastName, "Camuin");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAPhone, "4770344");
-		CommonFunctions.selectValueFromDropdown(POARel, "Aunt");
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.selectValueFromDropdown(POARel, "Son");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.selectValueFromDropdown(POACountry, "AUSTRALIA");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAAddressLine1, "Australia");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAAddressLine2, "Australia");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POASuburb, "Australia");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.selectValueFromDropdown(POAState, "VIC");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.enterElementValue(POAPostCode, "1234");
-		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
+		CommonFunctions.wait(1500, false);
 		CommonFunctions.clickElement(POAPDMNo);
+		CommonFunctions.enterElementValue(POADOB, "05/09/1990");
+		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.wait(5000, false);
 	}
 

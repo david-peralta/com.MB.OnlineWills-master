@@ -36,15 +36,15 @@ public class AboutPage extends Base {
 	WebElement Question4;
 	@FindBy(xpath = "//input[contains(@id,'LengthOfRelationship')]")
 	WebElement Question5;
-	@FindBy(xpath = "//label[text()='Do you plan to get married?']")
+	@FindBy(xpath = "//label[text()='Do you plan to marry or re-marry?']")
 	WebElement Question6;
 	@FindBy(xpath = "//input[contains(@id,'WillMarryRadioYes')]")
 	WebElement WillMarryYes;
 	@FindBy(xpath = "//input[contains(@id,'WillMarryRadioNo')]")
 	WebElement WillMarryNo;
-	@FindBy(xpath = "//span[text()='If you are planning to marry, we will draft your Will so it is not revoked when you marry.']")
+	@FindBy(xpath = "//span[text()='Note : Your Will will be revoked once you marry or re-marry.']")
 	WebElement WillMarryNote;
-	@FindBy(xpath = "//label[text()='Do you want to do your Will together with your spouse/partner']")
+	@FindBy(xpath = "//label[text()='Do you want to do your will together with your spouse or partner']")
 	WebElement Question7;
 	@FindBy(xpath = "//input[contains(@id,'WillTogetherRadioYes')]")
 	WebElement WillTogetherRadioYes;
@@ -56,7 +56,7 @@ public class AboutPage extends Base {
 	WebElement Question10;
 	@FindBy(xpath = "//input[contains(@id,'YearSettlement')]")
 	WebElement Question11;
-	@FindBy(xpath = "//label[text()='What year did you separate/divorce?']//following-sibling::input")
+	@FindBy(xpath = "//label[text()='What year did you separated or get divorced?']//following-sibling::input")
 	WebElement Question12;
 
 	@FindBy(xpath = "//input[contains(@id,'ChildrenRadioYes')]")
@@ -638,6 +638,8 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(AddChildQuestion9);
 		CommonFunctions.elementDisplayed(AddChildQuestion10);
 		CommonFunctions.elementDisplayed(AddChildQuestion11);
+		CommonFunctions.clickElement(AddChild);
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(AddChildSave);
 		CommonFunctions.elementDisplayed(AddChildCancel);
 	}
@@ -816,7 +818,7 @@ public class AboutPage extends Base {
 
 	public void AdditionalQuestionsForDefactoAndEngaged() {
 		// Questions that are hidden
-		//CommonFunctions.elementHidden(Question12);
+		CommonFunctions.elementHidden(Question12);
 		// Questions displayed
 		CommonFunctions.elementDisplayed(Question1);
 		CommonFunctions.elementDisplayed(Question2);
@@ -867,7 +869,7 @@ public class AboutPage extends Base {
 		// Check if yes and no
 		CommonFunctions.elementDisplayed(Question10);
 		CommonFunctions.clickElement(LawYesButton);
-		CommonFunctions.elementHidden(Question11);
+		CommonFunctions.elementDisplayed(Question11);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.elementHidden(Question11);
 		CommonFunctions.elementDisplayed(Question12);

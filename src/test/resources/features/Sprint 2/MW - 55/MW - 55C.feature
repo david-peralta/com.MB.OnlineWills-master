@@ -1,5 +1,7 @@
-Feature: MW - 54 : 
-Scenario Outline: 
+Feature: MW - 55
+
+  @Sprint1
+  Scenario Outline: 
     #Delete Order for a fresh start
     Given user opens browser and proceeds to orders page
     Then user selects "<email>" on user dropdown
@@ -7,22 +9,24 @@ Scenario Outline:
 
     Examples: 
       | email            |
-      | david.peralta@yahoo.com  |
+      | demeth@gmail.com |
 
-  @Sprint
+
+
+  @Regression2
   Scenario Outline: 
-    # Go to site and log in-------------------------------------------------------------------------
+    #Scenario3
+    # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-   #When user clicks on new order on incomplete order popup
-    #When user clicks on continue on incomplete order popup
+   # When user clicks on new order on incomplete order popup
     When user selects singles product
-    #Select Standard will Package-------------------------------------------------------------------------
+    #Select Standard will Package
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
-     And user fills up mandatory fields inside the personal page for victorian
+   And user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single
@@ -30,6 +34,7 @@ Scenario Outline:
     And user fill up the all required fields for single status
     And user click the next button on the about page
     Then user is on "Assets" page
+    And user clicks no to do you have assets question
     #Asset answer "no" to other question
     And user clicks no to all assets question
     And user click the next button on the assets page
@@ -68,5 +73,6 @@ Scenario Outline:
     #When user redirects to "Executors" page
     #When user redirects to "ID Check" page
     Examples: 
-      | email                   | password     |
-      | david.peralta@yahoo.com | Password123! |
+      | email                   | password     | 
+      | demeth.camuin@gmail.com | Password123! | 
+

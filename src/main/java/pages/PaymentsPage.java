@@ -27,6 +27,8 @@ public class PaymentsPage extends Base {
 	WebElement dsplay_amount;
 	@FindBy(xpath = "//span[contains(text(),'$0.00')]")
 	WebElement dsplay_total;
+	@FindBy(xpath = "//span[contains(text(),'$440.00')]")
+	WebElement dsplay_totalWithPOA;
 	@FindBy(xpath = "//span[text() = '$839.00']")
 	WebElement TotalStandardWillCostWithPOA;
 	@FindBy(xpath = "//span[text() = '$1039.00']")
@@ -75,6 +77,10 @@ public class PaymentsPage extends Base {
 	}
 	public void displaySWLDTotal() {
 		CommonFunctions.elementDisplayed(dsplay_total);
+		CommonFunctions.wait(3000, false);
+	}
+	public void displaySWLDTotalWithPOA() {
+		CommonFunctions.elementDisplayed(dsplay_totalWithPOA);
 		CommonFunctions.wait(3000, false);
 	}
 	public CheckOutPage ClickProceed() {

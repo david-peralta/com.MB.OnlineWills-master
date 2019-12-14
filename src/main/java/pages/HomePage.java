@@ -163,6 +163,9 @@ public class HomePage extends Base {
 	}
 
 	public void clickSinglesProduct() {
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.wait(1500, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 		CommonFunctions.clickElement(SinglesProduct.findElement(By.xpath(".//parent::label")));
 	}
 

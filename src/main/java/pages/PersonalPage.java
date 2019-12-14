@@ -170,6 +170,8 @@ public class PersonalPage extends Base {
 	}
 
 	public AboutPage ClickNextButton() {
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.wait(2000, false);
 		CommonFunctions.clickElement(NextButton);
 
 		return new AboutPage();

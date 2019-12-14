@@ -1,5 +1,7 @@
-Feature: MW - 54 : 
-Scenario Outline: 
+Feature: MW - 55
+
+  @Sprint1
+  Scenario Outline: 
     #Delete Order for a fresh start
     Given user opens browser and proceeds to orders page
     Then user selects "<email>" on user dropdown
@@ -7,22 +9,22 @@ Scenario Outline:
 
     Examples: 
       | email            |
-      | david.peralta@yahoo.com  |
+      | demeth@gmail.com |
 
-  @Sprint
+  @Regression2
   Scenario Outline: 
-    # Go to site and log in-------------------------------------------------------------------------
+    #Scenario2
+    # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-   #When user clicks on new order on incomplete order popup
-    #When user clicks on continue on incomplete order popup
+   # When user clicks on new order on incomplete order popup
     When user selects singles product
-    #Select Standard will Package-------------------------------------------------------------------------
+    #Select Standard will Package
     When user clicks Standard will product for singles
     Then user is on "Personal" page
     #User filled valid input
-     And user fills up mandatory fields inside the personal page for victorian
+    And user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single
@@ -30,6 +32,7 @@ Scenario Outline:
     And user fill up the all required fields for single status
     And user click the next button on the about page
     Then user is on "Assets" page
+    And user clicks no to do you have assets question
     #Asset answer "no" to other question
     And user clicks no to all assets question
     And user click the next button on the assets page
@@ -50,23 +53,25 @@ Scenario Outline:
     And user click the next button on the executors page
     #ID docs Page
     Then user is on "ID Check" page
-    #Progress Bar Navigation
-    When user redirects to Personal Details page
-    Then user is on "Personal Details" page
-    When user redirects to About You page
-    Then user is on "About you" page
-    When user redirects to Assets page
-    Then user is on "Assets" page
-    When user redirects to Beneficiaries page
-    Then user is on "Beneficiaries" page
-    When user redirects to Executors page
-    Then user is on "Executors" page
+    And user agrees to terms and agreement inside the ID docs Page
+    #ADD ID
+    Then user clicks on first identification document
+    And user selects Driver License as first identification type
+    And user adds driver license details
+    And user adds first identification
+    Then user clicks on second identification document
+    And user selects Medicare as second identification type
+    And user adds medicare details
+    And user adds second identification
+    And user clicks next button on the ID docs page
+    #Review and confirm
+    Then user is on "Review and Confirm" page
+    And user confirms on the acknowledgement inside the review and confirm page
+    And user click the next button on the review and confirm page
+    #Add ons page
+    Then user is on "Add-Ons" page
+    Then user clicks on add POA on addons page
 
-    #When user redirects to "About You" page
-    #When user redirects to "Assets" page
-    #When user redirects to "Beneficiaries" page
-    #When user redirects to "Executors" page
-    #When user redirects to "ID Check" page
     Examples: 
-      | email                   | password     |
-      | david.peralta@yahoo.com | Password123! |
+      | email            | password     |
+      | demeth@gmail.com | Password123! |

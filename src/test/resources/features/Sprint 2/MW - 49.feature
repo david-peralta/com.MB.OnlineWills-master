@@ -1,12 +1,22 @@
 Feature: MW - 49 : Affiliated Unions
+  @Sprint1
+   Scenario Outline: 
+    #Delete Order for a fresh start
+    Given user opens browser and proceeds to orders page
+    Then user selects "<email>" on user dropdown
+    Then user clicks on delete all button
 
+    Examples: 
+      | email            |
+      | demeth@gmail.com |
+  
       @Sprint
   Scenario Outline: 
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    And user hits the escape key
+   # And user hits the escape key
     And user click free standard will
     #Union details
     Then pop-up header is displayed
@@ -82,13 +92,7 @@ Feature: MW - 49 : Affiliated Unions
       And user click free standard will
       And user click on cancel button
       And user is on "Landing" page
-      
-      
-     
-   
-
-    
-   
+ 
     Examples: 
-      | email            | password     | Address1                                         | Suburb         |
-      | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | email            | password     | 
+      | demeth@gmail.com | Password123! | 
