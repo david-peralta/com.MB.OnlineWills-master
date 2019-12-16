@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import cucumber.api.java.gl.E;
 import utilities.Base;
 import utilities.CommonFunctions;
 
@@ -122,6 +120,12 @@ public class LoginPage extends Base {
 		CommonFunctions.clickElement(button_Login);
 
 		return new HomePage();
+	}
+
+	public AddOnsPage clickLoginButton2() {
+		CommonFunctions.clickElement(button_Login);
+
+		return new AddOnsPage();
 	}
 
 	public BeneficiariesPage clickLoginButton1() {

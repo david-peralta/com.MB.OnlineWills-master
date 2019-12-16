@@ -33,30 +33,11 @@ Feature: MW-174
     And user clicks on add executor
     And user adds first option executor
     And user clicks on add executor
-    And user adds back up executor
-    #Scenario2
+   	And user adds second option executor
     And user clicks on add executor
     And user adds back up executor
     And user clicks on add executor
-    And user adds first option executor
-    #Scenario3
-    And user clicks on add executor
-    And user adds first option executor
-    And user clicks on add executor
-    And user adds back up executor
-    And user clicks on add executor
-    And user adds first option executor
-    And user clicks on add executor
-    And user adds back up executor
-    #Scenario4
-    And user clicks on add executor
-    And user adds first option executor
-    And user clicks on add executor
-    And user adds back up executor
-    And user clicks on add executor
-    And user adds back up executor
-    And user clicks on add executor
-    And user adds first option executor
+    And user adds second back up executor
     And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
     And user selects i have no wish on funeral wishes
     And user click the next button on the executors page
@@ -64,3 +45,32 @@ Feature: MW-174
     Examples: 
       | email                   | password     | Address1  | Suburb         |
       | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |
+    
+    #
+    #Scenario2
+    #And user clicks on add executor
+    #And user adds back up executor
+    #And user clicks on add executor
+    #And user adds first option executor
+    #Scenario3
+    #And user clicks on add executor
+    #And user adds first option executor
+    #And user clicks on add executor
+    #And user adds back up executor
+    #And user clicks on add executor
+    #And user adds first option executor
+    #And user clicks on add executor
+    #And user adds back up executor
+    #Scenario4
+    #And user clicks on add executor
+    #And user adds first option executor
+    #And user clicks on add executor
+    #And user adds back up executor
+    #And user clicks on add executor
+    #And user adds back up executor
+    #And user clicks on add executor
+    #And user adds first option executor
+    #And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
+    #And user selects i have no wish on funeral wishes
+    #And user click the next button on the executors page
+

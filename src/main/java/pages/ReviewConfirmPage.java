@@ -187,9 +187,9 @@ public class ReviewConfirmPage extends Base {
 	@FindBy(xpath = "(//span[contains(text(),'Do you want to give the whole of your estate equally to any children you have in the future?')]//following::div[text()='No'])[1]")
 	WebElement BenefFutureChildrenQuestionNo;
 
-	@FindBy(xpath = "(//span[contains(text(),'If any of your children predecease you, do you want to divide it equally amongst their children?')]//following::div[text()='Yes'])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'If any of your children predecease you')]//following::div[text()='Yes'])[1]")
 	WebElement BenefDisasterQuestionYes;
-	@FindBy(xpath = "(//span[contains(text(),'If any of your children predecease you, do you want to divide it equally amongst their children?')]//following::div[text()='No'])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'If any of your children predecease you')]//following::div[text()='No'])[1]")
 	WebElement BenefDisasterQuestionNo;
 	@FindBy(xpath = "(//div[contains(@id,'Content')])[120]")
 	WebElement BenefDisasterQuestionField;
@@ -418,7 +418,7 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.textDisplayedInPage("Beneficiaries");
 		CommonFunctions.textDisplayedInPage("ID Docs");
 	}
-	
+
 	public void validatePersonalDetailsMyLifeWill() {
 		CommonFunctions.scrollToBottomOfPage();
 		CommonFunctions.wait(2500, false);
