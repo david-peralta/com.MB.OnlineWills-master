@@ -1,5 +1,13 @@
 Feature: MW-184	Updates to About you page for Email consent
 
+  @WIP
+  Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "david.peralta@yahoo.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+
   @Sprint3
   Scenario Outline: 
     #Scenario 1

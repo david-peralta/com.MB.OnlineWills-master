@@ -44,6 +44,9 @@ Feature: MW-174
     And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
     And user selects i have no wish on funeral wishes
     And user click the next button on the executors page
+    #ID docs Page
+    Then user is on "ID Check" page
+    And user agrees to terms and agreement inside the ID docs Page
     #ADD ID DOCS
     Then user clicks on first identification document
     And user selects Driver License as first identification type
@@ -54,13 +57,17 @@ Feature: MW-174
     And user adds medicare details
     And user adds second identification
     And user clicks next button on the ID docs page
-    #Review And Confirm
+		#Review And Confirm
     And user is on "Review and Confirm" page
     And user confirms will details
     When user click the next button on the review and confirm page
+    
+
     Then user is on "Add-Ons" page
-    And user sees the add your spouse/partner option
-    And user checks spouse invitation message
+    And user sees message "Add your Partner"
+    #And user sees the add your spouse/partner option
+    #And user checks spouse invitation message
+    Then user clicks on add partner button
     When user input spouse email
     Then user clicks save spouse email
 

@@ -11,10 +11,14 @@ public class AddOnsPage extends Base {
 	// ========================================================== Page Objects ===========================================================
 	@FindBy(xpath = "//input[contains(@id,'AddPOAButtonSingle')]")
 	WebElement AddPOAButton;
-	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]")
+	//@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]|//input[@value=Add]")
+	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]//parent::span[contains(@id,'IsSpouseEmailNull2')]")
 	WebElement AddSpouseButton;
 	@FindBy(xpath = "//input[contains(@value,'Next')]")
 	WebElement btn_Next;
+	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]//parent::span[contains(@id,'IsSpouseEmailNull2')]")
+	WebElement Btn_AddPartner;
+	
 
 	/* Progess Bar */
 	@FindBy(xpath = "//div[text()='Personal Details']//following-sibling::a[contains(text(),'Change')]")
@@ -41,7 +45,11 @@ public class AddOnsPage extends Base {
 	@FindBy(xpath = "//div[contains(@id,'Everything')]")
 	WebElement TextBody;
 
-	@FindBy(xpath = "//span[text()='By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
+
+	//@FindBy(xpath = "//span[text()='By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
+
+
+	@FindBy(xpath = "//span[text()='By adding your partner now you can take advantage of our bundled price for couples of $599']")
 	WebElement Body_spouse;
 	@FindBy(xpath = "//input[contains(@id,'SpouseEmailInput')]")
 	WebElement Email_spouse;
@@ -163,8 +171,8 @@ public class AddOnsPage extends Base {
 
 	public void clickAddSpouse() {
 		CommonFunctions.clickElement(AddSpouseButton);
-		CommonFunctions.wait(2500, false);
-		CommonFunctions.switchFrameByXPath("//label[contains(text(),'Spouse/Partner')]");
+		//CommonFunctions.wait(2500, false);
+		//CommonFunctions.switchFrameByXPath("//label[contains(text(),'Spouse/Partner')]");
 	}
 
 	public void checkSpouseBody() {
@@ -182,6 +190,7 @@ public class AddOnsPage extends Base {
 		CommonFunctions.wait(2500, false);
 	}
 
+
 	public void clickCouplePOA() {
 		CommonFunctions.clickElement(AddCouple_POA);
 		CommonFunctions.wait(2500, false);
@@ -193,6 +202,13 @@ public class AddOnsPage extends Base {
 		CommonFunctions.clickElement(btn_Next);
 
 		return new PendingSpousePage();
+	}
+
+
+	
+	public void clickAddPartner() {
+		CommonFunctions.clickElement(Btn_AddPartner);
+		CommonFunctions.wait(2500, false);
 	}
 
 }
