@@ -69,7 +69,7 @@ Feature: MW - 191 - Cost Disclosure Form - Client Details
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
     Then user clicks on add POA on addons page
