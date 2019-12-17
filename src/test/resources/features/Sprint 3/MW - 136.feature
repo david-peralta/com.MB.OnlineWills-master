@@ -1,13 +1,12 @@
 Feature: MW - 136 : Date of Birth cannot be current date or future date
- 
- @WIP
+
+  @WIP
   Scenario: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "bam@bam.com" on user dropdown
+    Then user selects "david.peralta@yahoo.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
-
 
   @Sprint
   Scenario Outline: 
@@ -78,22 +77,26 @@ Feature: MW - 136 : Date of Birth cannot be current date or future date
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
-    And user click the next button with POA on the AddOns page
+    And user click the next button without adding POA on the AddOns page
     #Payments
     #And user check on the total
-    #Then user is on "Payment" page
+    Then user is on "Payment" page
     #And user check on the total
-    #Then user clicks on pay now button
+    Then user clicks on pay now button
+    #Checkout page
+    Then user is on "Checkout" page
+    #Scenario2: Checkout - valid details--------------------------
+    Then user enter payment details
+    Then user select month
+    Then user select year
+    When user clicks the pay button
     #Payment Complete
     Then user is on "Thank You" page
     Then user close browser
 
     Examples: 
-      | email       | password     | Address1                                         | Suburb         |
-      | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
-      
-  
- 
+      | email                   | password     | Address1                                         | Suburb         |
+      | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

@@ -8,7 +8,7 @@ import utilities.Base;
 import utilities.CommonFunctions;
 
 public class AboutPage extends Base {
-	// ========================================================== Page Objects ===========================================================
+	// ========================================================== Page Objects ==========================================================
 	@FindBy(xpath = "//select[contains(@id,'Select_PartnerRelationshipId')]")
 	WebElement RelationshipStatus;
 	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
@@ -576,15 +576,14 @@ public class AboutPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.elementDisplayed(AddChildQuestion9Req);
 		CommonFunctions.wait(5000, false);
-		/*CommonFunctions.elementDisplayed(AddChildQuestion12Req);
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.elementDisplayed(AddChildQuestion13Req);
-		CommonFunctions.wait(5000, false);
-		CommonFunctions.elementDisplayed(AddChildQuestion14Req);
-		CommonFunctions.wait(5000, false);*/
+		/*
+		 * CommonFunctions.elementDisplayed(AddChildQuestion12Req); CommonFunctions.wait(5000, false); CommonFunctions.elementDisplayed(AddChildQuestion13Req); CommonFunctions.wait(5000, false);
+		 * CommonFunctions.elementDisplayed(AddChildQuestion14Req); CommonFunctions.wait(5000, false);
+		 */
 		CommonFunctions.clickElement(AddChildCancel);
 
 	}
+
 	public void CheckAddChildrenRequiredPreReq() {
 		CommonFunctions.clickElement(ChildrenNo);
 		CommonFunctions.wait(5000, false);
@@ -592,7 +591,7 @@ public class AboutPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(AddChild);
 		CommonFunctions.wait(5000, false);
-		//CommonFunctions.clickElement(AddChildQuestion11);
+		// CommonFunctions.clickElement(AddChildQuestion11);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(AddChildSave);
 		CommonFunctions.wait(5000, false);
