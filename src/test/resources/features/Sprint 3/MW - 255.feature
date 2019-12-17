@@ -4,7 +4,7 @@ Feature: MW - 255:Standard Will Review Page - Updates
   Scenario: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "david.peralta@yahoo.com" on user dropdown
+    Then user selects "bam@bam.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
 
@@ -34,8 +34,10 @@ Feature: MW - 255:Standard Will Review Page - Updates
     And user clicks no to all assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
-    And user clicks yes to Do you want to include any children you have in the future question
-    And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
+    #And user clicks yes to Do you want to include any children you have in the future question
+    And user clicks yes to Do you want to leave your whole estate to your spouse/partner if they survive you question
+    #And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
+    And user clicks no to Do you want to give the whole of your estate equally to any children you have in the future question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
     #Executors Page-------------------------------------------------------------------------
@@ -66,36 +68,8 @@ Feature: MW - 255:Standard Will Review Page - Updates
     Then user check on the label
     And user confirms on the acknowledgement inside the review and confirm page
     And user clicks the next button on the review and confirm page to go to add-on page
-    #Add ons page
-    Then user is on "Add-Ons" page
-    Then user clicks on add POA on addons page
-    And user click the next button with POA on the AddOns page
-    #Financial Decisions
-    Then user is on "Enduring Power Of Attorney" page
-    #Add Financial Decision Maker-------------------------------------------------------------------------
-    #1
-    And user selects Only financial matters on enduring power of attorney options
-    And user clicks on add financial decision maker on financial decision page
-    And user fills up financial decision maker details with Primary Decision Maker
-    And user clicks on add financial decision maker
-    #Select immediately on start to act dropdown
-    And user selects "Immediately" on When do you want your Financial/Personal Decision Makers to start to act dropdown
-    #Input limitation
-    And user enter "This a test Limitation" as limitation value
-    #next button
-    And user click the next button with POA on the financial decision page
-    #Medical POA page-------------------------------------------------------------------------
-    Then user is on "MedicalPOA" page
-    Then user click on I do not want a MDM
-    Then user click next
-    #Review and confirm-------------------------------------------------------------------------
-    Then user is on "Review and Confirm" page
-    And user confirms on the acknowledgement inside the review and confirm page
-    When user clicks the next button on the review and confirm page to go to payments page
-    #Pending Spouse
-    Then user is on "Pending Spouse" page
-    Then user close browser
+   
 
     Examples: 
       | email                   | password     | Address1  | Suburb         |
-      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |
+      | bam@bam.com | Password123! | Australia | Executive Lane |

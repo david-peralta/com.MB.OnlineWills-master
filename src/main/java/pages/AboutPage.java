@@ -291,7 +291,7 @@ public class AboutPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'Partner_Email')]")
 	WebElement Field_SpouseEmail;
 
-	@FindBy(xpath = "//span[text()='Please input your spouse/partner’s email so we can send them an invitation to " + "complete their online form. By providing the contact email address, you confirm that you have consent from " + "the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
+	@FindBy(xpath = "//span[text()='Please input your spouse/partner’s email so we can send them an invitation to complete their online form. By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
 	WebElement email_Consent;
 
 	// ================================================== Initializing the Page Objects ==================================================
@@ -1314,7 +1314,7 @@ public class AboutPage extends Base {
 	}
 
 	public void displayEmailConsent() {
-		CommonFunctions.scrollToElement(email_Consent);
+		//CommonFunctions.scrollToElement(email_Consent);
 		CommonFunctions.elementDisplayed(email_Consent);
 		CommonFunctions.wait(2500, false);
 	}

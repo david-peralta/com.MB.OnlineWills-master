@@ -1,4 +1,4 @@
-Feature: MW - 191 - Cost Disclosure Form - Client Details
+Feature: MW - 207: Given I am a primary user, and my spouse and I have both added on POAs, then a discounted rate will show on the order summary
 
   @WIP
   Scenario: 
@@ -8,29 +8,26 @@ Feature: MW - 191 - Cost Disclosure Form - Client Details
     Then user clicks on delete all button
     Then user close browser
 
-  @Sprint3
+  @Sprint
   Scenario Outline: 
+    #Couple With POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    When user selects singles product
-    #SELECTS UNION - POA
-    And user click free standard will
-    #Numeric
-    When user selects "Numeric" as affliated unions
-    And user enter "123123" on your member number
-    And user click on confirm button
+    #When user clicks on new order on incomplete order popup
+    #When user clicks on continue on incomplete order popup
+    When user selects couples product
     #Select Standard will Package-------------------------------------------------------------------------
-    When user clicks Standard will product for singles
+    When user clicks Standard will product for couples
     Then user is on "Personal" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
-    #Single-------------------------------------------------------------------------
-    When user selects "Single" as Relationship Status on about page
-    And user fill up the all required fields for single status
+    #Married-------------------------------------------------------------------------
+    When user selects "Married" as Relationship Status on about page
+    And user fill up the all required fields for married status with spouse email
     And user click the next button on the about page
     Then user is on "Assets" page
     And user clicks no to do you have assets question
@@ -95,10 +92,12 @@ Feature: MW - 191 - Cost Disclosure Form - Client Details
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     When user clicks the next button on the review and confirm page to go to payments page
+    #Pending Spouse
+    Then user is on "Pending Spouse" page
     #Payments
     Then user is on "Payment" page
-    And user clicks download cost disclosure
+    Then user close browser
 
     Examples: 
-      | email                   | password     | Address1  | Suburb         |
+      | email       | password     | Address1  | Suburb         |
       | bam@bam.com | Password123! | Australia | Executive Lane |

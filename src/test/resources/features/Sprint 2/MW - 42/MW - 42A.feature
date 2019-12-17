@@ -24,11 +24,16 @@ Feature: MW - 42 : As a customer, I want to view additional products I can purch
     And user clicks no to all assets question
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
-    And user clicks yes to Do you want to give the whole estate equally to your children question
-    And user clicks no to Do you want to include any children you have in the future question
-    And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
-    And user clicks no to Do you wish to leave any gifts question
+    And user click YES on Do you want to give the whole of your estate equally to any children you have in the future question
+    And user click NO If any of your children predecease you, do you want to divide that child's share equally among their children question
+    And user clicks NO to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
+
+    #And user clicks yes to Do you want to give the whole estate equally to your children question
+    #And user clicks no to Do you want to include any children you have in the future question
+    #And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
+    #And user clicks no to Do you wish to leave any gifts question
+
     Then user is on "Executors" page
     And user clicks on add executor
     And user adds first option executor

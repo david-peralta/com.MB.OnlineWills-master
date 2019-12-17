@@ -10,6 +10,7 @@ import utilities.CommonFunctions;
 public class AddOnsPage extends Base {
 	// ========================================================== Page Objects ===========================================================
 	@FindBy(xpath = "//input[contains(@id,'AddPOAButtonSingle')]")
+	//@FindBy(xpath = "input[value='Add']")
 	WebElement AddPOAButton;
 	//@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]|//input[@value=Add]")
 	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]//parent::span[contains(@id,'IsSpouseEmailNull2')]")
@@ -18,6 +19,7 @@ public class AddOnsPage extends Base {
 	WebElement btn_Next;
 	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]//parent::span[contains(@id,'IsSpouseEmailNull2')]")
 	WebElement Btn_AddPartner;
+
 	
 
 	/* Progess Bar */
@@ -61,6 +63,7 @@ public class AddOnsPage extends Base {
 	// POA - Couple
 	@FindBy(xpath = "//input[contains(@id,'AddPOAButtonNonCouple')]")
 	WebElement AddCouple_POA;
+
 
 	// ================================================== Initializing the Page Objects ==================================================
 	public AddOnsPage() {

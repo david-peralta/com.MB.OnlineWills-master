@@ -15,7 +15,7 @@ Feature: MW-184	Updates to About you page for Email consent
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    When user clicks on new order on incomplete order popup
+    #When user clicks on new order on incomplete order popup
     #When user clicks on continue on incomplete order popup
     When user selects singles product
     #SELECTS UNION - POA
