@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -202,7 +203,8 @@ public class AddOnsPage extends Base {
 	}
 
 	public PendingSpousePage clickNextSpouse() {
-		CommonFunctions.scrollToElement(btn_Next);
+		// CommonFunctions.scrollToElement(btn_Next);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.wait(4000, false);
 		CommonFunctions.clickElement(btn_Next);
 

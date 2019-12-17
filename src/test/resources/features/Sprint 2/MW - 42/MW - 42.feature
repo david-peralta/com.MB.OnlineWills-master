@@ -462,15 +462,13 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
       | email            | password     |
       | Demeth@gmail.com | Password123! |
 
-    @42-9
-  Scenario: 
+ 	Scenario: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "demeth@gmail.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
 
-  @42-9
   Scenario Outline: 3-Married: Couple who does not live in VIC and did not select the couple package
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -515,8 +513,8 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user confirms on the acknowledgement inside the review and confirm page
     When user click the next button on the review and confirm page
     Then user is on "Add-Ons" page
-    And user sees the add your spouse/partner option
-    Then user clicks on add POA Couple on addons page
+    And user sees the add your partner option
+    Then user clicks on add couple POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page
@@ -544,7 +542,6 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
       | email            | password     | Address1  | Suburb         |
       | demeth@gmail.com | Password123! | Australia | Executive Lane |
 
-  @42-10
   Scenario: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
@@ -552,7 +549,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     Then user clicks on delete all button
     Then user close browser
 
-  @42-10
+
   Scenario Outline: 3-Defacto: Couple who does not live in VIC and did not select the couple package
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -597,7 +594,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     When user confirms that he completed the form himself
     And user clicks the next button on the review and confirm page to go to add-on page
     Then user is on "Add-Ons" page
-    And user sees the add your spouse/partner option
+    And user sees the add your partner option
 
     Examples: 
       | email            | password     |
@@ -629,7 +626,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+	And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -654,9 +651,9 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page
     When user confirms that he completed the form himself
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     Then user is on "Add-Ons" page
-    And user sees the add your spouse/partner option
+    And user sees the add your partner option
 
     Examples: 
       | email            | password     |
@@ -689,7 +686,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+	And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -748,7 +745,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+	And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -807,7 +804,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+    And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -832,7 +829,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page
     When user confirms that he completed the form himself
-    And user clicks the next button on the review and confirm page
+    And user click the next button on the review and confirm page
     Then user is on "Add-Ons" page
 
     Examples: 
@@ -865,7 +862,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+    And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -890,10 +887,10 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page
     When user confirms that he completed the form himself
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     Then user is on "Add-Ons" page
     And user sees the power of attorney product
-    And user sees the add your spouse/partner option
+    And user sees the add your partner option
 
     Examples: 
       | email            | password     |
@@ -925,7 +922,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+    And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -953,7 +950,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user clicks the next button on the review and confirm page
     Then user is on "Add-Ons" page
     And user sees the power of attorney product
-    And user sees the add your spouse/partner option
+    And user sees the add your partner option
 
     Examples: 
       | email            | password     |
@@ -989,7 +986,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user clicks no to do you own your own business or are you a partner in a partnership question
     And user click the next button on the assets page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+    And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -1013,10 +1010,10 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page
     When user confirms that he completed the form himself
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     Then user is on "Add-Ons" page
     And user sees the power of attorney product
-    And user sees the add your spouse/partner option
+    And user sees the add your partner option
 
     Examples: 
       | email            | password     |
@@ -1049,7 +1046,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+    And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -1073,7 +1070,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page
     When user confirms that he completed the form himself
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     Then user is on "Add-Ons" page
     And user sees the power of attorney product
 
@@ -1109,7 +1106,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+    And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -1134,7 +1131,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page
     When user confirms that he completed the form himself
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     Then user is on "Add-Ons" page
     And user sees the power of attorney product
 
@@ -1173,7 +1170,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+    And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -1199,7 +1196,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page
     When user confirms that he completed the form himself
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     Then user is on "Add-Ons" page
     And user sees the power of attorney product
     When user clicks the next button for pending spouse

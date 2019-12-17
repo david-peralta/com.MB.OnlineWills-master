@@ -2516,7 +2516,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks the next button on the review and confirm page to go to add-on page$")
 	public void user_clicks_the_next_button_on_the_review_and_confirm_page_to_go_to_addon_page() throws Throwable {
-		addOnsPage = reviewConfirmPage.clickNextAddOnsButton();
+		paymentsPage = reviewConfirmPage.clickNextAddOnsButton();
 	}
 
 	@When("^user clicks the next button on the add-ons page$")
@@ -2534,14 +2534,14 @@ public class StepDefinitions extends Base {
 		aboutPage.clickWillTogetherRadioNoRadioButton();
 	}
 
-		@When("^user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question$")
+	@When("^user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question$")
 	public void user_clicks_no_to_do_you_want_to_leave_your_whole_estate_to_your_spouse_partner_if_they_survive_you_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion1WithSpouse();
 	}
 
-	@Then("^user sees the add your spouse/partner option$")
-	public void user_sees_the_add_your_spouse_partner_option() throws Throwable {
-		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("//*[text() = 'Add your Spouse/Partner']")));
+	@Then("^user sees the add your partner option$")
+	public void user_sees_the_add_your_partner_option() throws Throwable {
+		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("//*[text() = 'Add your Partner']")));
 	}
 
 	@When("^user clicks yes to do you want to do your will with your spouse or partner question$")
@@ -3827,31 +3827,34 @@ public class StepDefinitions extends Base {
 		CommonFunctions.wait(5000, false);
 		addOnsPage.clickAddPartner();
 	}
+
 	@Then("^user clicks on add couple POA on addons page$")
 	public void user_clicks_on_add_couple_POA_on_addons_page() throws Throwable {
-	     addOnsPage.clickCouplePOA();
+		addOnsPage.clickCouplePOA();
 	}
-	//MW - 42
+
+	// MW - 42
 	@Then("^user click YES on Do you want to give the whole of your estate equally to any children you have in the future question$")
 	public void user_click_YES_on_Do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
-	    beneficiariesPage.ClickYesQuestion1();
+		beneficiariesPage.ClickYesQuestion1();
 	}
+
 	@Then("^user click NO If any of your children predecease you, do you want to divide that child's share equally among their children question$")
 	public void user_click_NO_If_any_of_your_children_predecease_you_do_you_want_to_divide_that_child_s_share_equally_among_their_children_question() throws Throwable {
-	    beneficiariesPage.ClickNoQuestion2();
-	    
+		beneficiariesPage.ClickNoQuestion2();
+
 	}
+
 	@Then("^user clicks NO to Do you wish to leave any gifts question$")
 	public void user_clicks_NO_to_Do_you_wish_to_leave_any_gifts_question() throws Throwable {
 		CommonFunctions.wait(5000, false);
-	    beneficiariesPage.ClickGiftNo();
+		beneficiariesPage.ClickGiftNo();
 	}
+
 	@Then("^user clicks NO to do you want to leave your whole estate to your spouse/partner if they survive you question$")
 	public void user_clicks_NO_to_do_you_want_to_leave_your_whole_estate_to_your_spouse_partner_if_they_survive_you_question() throws Throwable {
-	    beneficiariesPage.ClickNoQuestion1WithSpouse();
+		beneficiariesPage.ClickNoQuestion1WithSpouse();
 	}
-
-
 
 	@Then("^user clicks the next button for pending spouse$")
 	public void user_clicks_the_next_button_for_pending_spouse() throws Throwable {
@@ -3876,4 +3879,21 @@ public class StepDefinitions extends Base {
 		executorsPage.FillUpExecutorThirdOption();
 
 	}
+
+	@Then("^user check on the total$")
+	public void user_check_on_the_total() throws Throwable {
+		paymentsPage.displaySWLDTotal();
+	}
+
+	@Then("^user check on the total with POA$")
+	public void user_check_on_the_total_with_POA() throws Throwable {
+		paymentsPage.checkAddonsDisplayed();
+	}
+
+	@When("^user clicks yes to Do you want to give to your children question$")
+	public void user_clicks_yes_to_Do_you_want_to_give_to_your_children_question() throws Throwable {
+		beneficiariesPage.ClickYesQuestion1();
+		CommonFunctions.wait(5000, false);
+	}
+
 }

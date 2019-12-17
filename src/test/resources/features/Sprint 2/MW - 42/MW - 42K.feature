@@ -1,10 +1,10 @@
 Feature: MW - 42A : As a customer, I want to view additional products I can purchase
 
- @42-11
+  @42-11
   Scenario: 
     #Go to site and log in
     Given user opens browser and proceeds to orders page
-    Then user selects "demeth@gmail.com" on user dropdown
+    Then user selects "david.peralta@yahoo.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
 
@@ -26,7 +26,7 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     And user click the next button on the assets page
     Then user is on "Beneficiaries" page
     And user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user clicks yes to Do you want to give the whole estate equally to your children question
+    And user clicks yes to Do you want to give to your children question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
@@ -53,8 +53,8 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     When user confirms that he completed the form himself
     And user clicks the next button on the review and confirm page to go to add-on page
     Then user is on "Add-Ons" page
-    And user sees the add your spouse/partner option
+    And user sees the add your partner option
 
     Examples: 
-      | email            | password     |
-      | demeth@gmail.com | Password123! |
+      | email                   | password     |
+      | david.peralta@yahoo.com | Password123! |

@@ -59,6 +59,7 @@ Feature: MW-185	Updates to the Account Registration page to include Privacy requ
     Then user is on "Add-Ons" page
     And user sees message "Add your Partner"
     #And user sees the add your spouse/partner option
+	And user sees the add your partner option
     And user checks spouse invitation message
 
     Examples: 

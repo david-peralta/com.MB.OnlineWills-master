@@ -65,7 +65,7 @@ Feature: MW-174
 
     Then user is on "Add-Ons" page
     And user sees message "Add your Partner"
-    #And user sees the add your spouse/partner option
+    #And user sees the add your partner option
     #And user checks spouse invitation message
     Then user clicks on add partner button
     When user input spouse email
