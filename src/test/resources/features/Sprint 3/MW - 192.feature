@@ -56,15 +56,20 @@ Feature: MW - 192
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
-    And user selects Foreign Passport as first identification type
-    And user adds foreign passport details
-    And user selects Driver License as second identification type
+    Then user clicks on first identification document
+    And user selects Driver License as first identification type
     And user adds driver license details
+    And user adds first identification
+    Then user clicks on second identification document
+    And user selects Medicare as second identification type
+    And user adds medicare details
+    And user adds second identification
     And user clicks next button on the ID docs page
+    Then user is on "Review and Confirm" page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    And user clicks the next button on the review and confirm page to go to add-on page
+    And user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
     Then user clicks on add POA on addons page

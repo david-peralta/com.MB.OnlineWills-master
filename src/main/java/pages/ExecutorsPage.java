@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -219,7 +218,8 @@ public class ExecutorsPage extends Base {
 
 	public void clickDeleteExecutor() {
 		CommonFunctions.clickElement(btn_Delete);
-		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.wait(2500, false);
+		// CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
 	}
 
 	public void UpdateFromBackUpToFirstOption() {

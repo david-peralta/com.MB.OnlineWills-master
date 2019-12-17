@@ -47,6 +47,8 @@ public class AddOnsPage extends Base {
 	@FindBy(xpath = "//div[contains(@id,'Everything')]")
 	WebElement TextBody;
 
+	// @FindBy(xpath = "//span[text()='By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection
+	// with the service.']")
 
 	//@FindBy(xpath = "//span[text()='By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
 

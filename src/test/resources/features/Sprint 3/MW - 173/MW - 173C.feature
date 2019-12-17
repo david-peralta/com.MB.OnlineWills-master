@@ -1,4 +1,12 @@
-Feature: MW-174
+Feature: MW-17C
+
+  @Sprint3
+  Scenario: 
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "david.peralta@yahoo.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
 
   @Sprint3
   Scenario Outline: 
@@ -18,7 +26,7 @@ Feature: MW-174
     And user clicks no to do you want to do your will with your spouse or partner question
     And user click the next button on the about page
     #Assets
-  	Then user is on "Assets" page
+    Then user is on "Assets" page
     And user clicks no to do you have assets question
     #Asset answer "no" to other question
     And user clicks no to all assets question
@@ -29,13 +37,17 @@ Feature: MW-174
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
-    #Scenario1
+    #Scenario3
+    #First Option
     And user clicks on add executor
     And user adds first option executor
-    And user clicks on add executor
-   	And user adds second option executor
+    #First Backup
     And user clicks on add executor
     And user adds back up executor
+    #Second Option
+    And user clicks on add executor
+    And user adds second option executor
+    #Second Backup
     And user clicks on add executor
     And user adds second back up executor
     And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
@@ -45,32 +57,3 @@ Feature: MW-174
     Examples: 
       | email                   | password     | Address1  | Suburb         |
       | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |
-    
-    #
-    #Scenario2
-    #And user clicks on add executor
-    #And user adds back up executor
-    #And user clicks on add executor
-    #And user adds first option executor
-    #Scenario3
-    #And user clicks on add executor
-    #And user adds first option executor
-    #And user clicks on add executor
-    #And user adds back up executor
-    #And user clicks on add executor
-    #And user adds first option executor
-    #And user clicks on add executor
-    #And user adds back up executor
-    #Scenario4
-    #And user clicks on add executor
-    #And user adds first option executor
-    #And user clicks on add executor
-    #And user adds back up executor
-    #And user clicks on add executor
-    #And user adds back up executor
-    #And user clicks on add executor
-    #And user adds first option executor
-    #And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
-    #And user selects i have no wish on funeral wishes
-    #And user click the next button on the executors page
-

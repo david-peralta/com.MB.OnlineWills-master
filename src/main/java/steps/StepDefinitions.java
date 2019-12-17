@@ -29,6 +29,7 @@ import pages.LoginPage;
 import pages.MedicalDecisionsPage;
 import pages.OrdersPage;
 import pages.PaymentsPage;
+import pages.PendingSpousePage;
 import pages.PersonalPage;
 import pages.RegistrationPage;
 import pages.ReviewConfirmPage;
@@ -61,6 +62,7 @@ public class StepDefinitions extends Base {
 	String Email;
 	CheckOutPage checkOutPage;
 	OrdersPage ordersPage;
+	PendingSpousePage pendingspousePage;
 
 	// ================================================== Universal Functions ==================================================
 	@Before
@@ -81,7 +83,7 @@ public class StepDefinitions extends Base {
 		}
 
 		LogFunctions.endLog(scenario);
-		//driver.quit();
+		// driver.quit();
 
 	}
 
@@ -2123,7 +2125,6 @@ public class StepDefinitions extends Base {
 		loginPage.setEmailInput(arg1);
 		loginPage.setPasswordInput(arg2);
 
-
 		beneficiariesPage = loginPage.clickLoginButton1();
 		CommonFunctions.wait(5000, false);
 	}
@@ -2254,11 +2255,11 @@ public class StepDefinitions extends Base {
 		registrationPage = loginPage.clickForgottenRegisterLink();
 		CommonFunctions.wait(5000, false);
 	}
+
 	@When("^user agress on I have read and agree to the MyLife Wills$")
 	public void user_agress_on_I_have_read_and_agree_to_the_MyLife_Wills() throws Throwable {
-	    registrationPage.clickPrivacyCheckbox1();
+		registrationPage.clickPrivacyCheckbox1();
 	}
-
 
 	@When("^user agrees on Maurice Blackburn's Privacy Policy by ticking the checkbox$")
 	public void user_agrees_on_Maurice_Blackburn_s_Privacy_Policy_by_ticking_the_checkbox() throws Throwable {
@@ -2290,7 +2291,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user sees text message$")
 	public void user_sees_text_message() throws Throwable {
-	    registrationPage.displayedThankYou();
+		registrationPage.displayedThankYou();
 	}
 
 	@When("^the user clicks on Privacy policy link$")
@@ -2588,7 +2589,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user confirms will details$")
 	public void user_confirms_will_details() throws Throwable {
-		//CommonFunctions.scrollToBottomOfPage();
+		// CommonFunctions.scrollToBottomOfPage();
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
@@ -3610,7 +3611,7 @@ public class StepDefinitions extends Base {
 	@Then("^user close browser$")
 	public void user_close_browser() throws Throwable {
 		driver.close();
-		//driver.quit();
+		// driver.quit();
 	}
 
 	@Then("^user get text$")
@@ -3752,8 +3753,8 @@ public class StepDefinitions extends Base {
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.wait(5000, false);
 		addOnsPage.clickAddSpouse();
-		//CommonFunctions.wait(3000, false);
-		//addOnsPage.checkSpouseBody();
+		// CommonFunctions.wait(3000, false);
+		// addOnsPage.checkSpouseBody();
 	}
 
 	@Then("^user input spouse email$")
@@ -3819,12 +3820,12 @@ public class StepDefinitions extends Base {
 		assetsPage = executorsPage.ProgressChangeAssets();
 		CommonFunctions.wait(3000, false);
 	}
-	
+
 	@Then("^user clicks on add partner button$")
 	public void user_clicks_on_add_partner_button() throws Throwable {
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.wait(5000, false);
-	    addOnsPage.clickAddPartner();
+		addOnsPage.clickAddPartner();
 	}
 	@Then("^user clicks on add couple POA on addons page$")
 	public void user_clicks_on_add_couple_POA_on_addons_page() throws Throwable {
@@ -3852,4 +3853,27 @@ public class StepDefinitions extends Base {
 
 
 
+	@Then("^user clicks the next button for pending spouse$")
+	public void user_clicks_the_next_button_for_pending_spouse() throws Throwable {
+		pendingspousePage = addOnsPage.clickNextSpouse();
+		CommonFunctions.wait(3000, false);
+	}
+
+	@When("^user adds second option executor$")
+	public void user_adds_second_option_executor() throws Throwable {
+		executorsPage.FillUpExecutorSecondOption();
+
+	}
+
+	@When("^user adds second back up executor$")
+	public void user_adds_second_back_up_executor() throws Throwable {
+		executorsPage.FillUpExecutorFirstBackup();
+
+	}
+
+	@When("^user adds third option executor$")
+	public void user_adds_third_option_executor() throws Throwable {
+		executorsPage.FillUpExecutorThirdOption();
+
+	}
 }
