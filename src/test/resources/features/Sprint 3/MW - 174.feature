@@ -32,8 +32,8 @@ Feature: MW-174
     And user clicks no to all assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
-    And user clicks yes to Do you want to include any children you have in the future question
-    And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
+    And user clicks yes to Do you want to leave your whole estate to your spouse/partner if they survive you question
+    And user clicks no to if your spouse/partner predeceases you, do you want to give the whole of your estate equally to any children you have in the future question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
     #ExecutorsPage
@@ -59,10 +59,8 @@ Feature: MW-174
     And user clicks next button on the ID docs page
 		#Review And Confirm
     And user is on "Review and Confirm" page
-    And user confirms will details
+     And user confirms on the acknowledgement inside the review and confirm page
     When user click the next button on the review and confirm page
-    
-
     Then user is on "Add-Ons" page
     And user sees message "Add your Partner"
     #And user sees the add your partner option

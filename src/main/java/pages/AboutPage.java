@@ -1105,10 +1105,10 @@ public class AboutPage extends Base {
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.enterElementValue(Question5, "5");
 		CommonFunctions.wait(5000, false);
-		CommonFunctions.clickElement(WillTogetherRadioNo);
+		CommonFunctions.clickElement(WillTogetherRadioYes);
 		CommonFunctions.wait(5000, false);
-		// CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail,"spousesample@gmail.com");
-		// CommonFunctions.wait(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail,"spousesample@gmail.com");
+		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.wait(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);
@@ -1116,6 +1116,27 @@ public class AboutPage extends Base {
 		CommonFunctions.clickElement(DependentsNo);
 		CommonFunctions.wait(5000, false);
 	}
+	public void FillUpMandatoryFieldsMarriedWithOutSpouseEmail() {
+		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question2, "Dim");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question4, "Camuin");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.enterElementValue(Question5, "5");
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(WillTogetherRadioNo);
+		CommonFunctions.wait(5000, false);
+		//CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail,"spousesample@gmail.com");
+		//CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(LawNoButton);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(ChildrenNo);
+		CommonFunctions.wait(5000, false);
+		CommonFunctions.clickElement(DependentsNo);
+		CommonFunctions.wait(5000, false);
+	}
+
 
 	public void DisplayedYearSettlement() {
 		CommonFunctions.elementDisplayed(Question11);

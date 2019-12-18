@@ -126,8 +126,9 @@ public class StepDefinitions extends Base {
 
 	@Then("^user is on \"([^\"]*)\" page$")
 	public void user_is_on_page(String arg1) throws Throwable {
-		CommonFunctions.checkPageTitle(arg1);
 		CommonFunctions.wait(5000, false);
+		CommonFunctions.checkPageTitle(arg1);
+		
 	}
 
 	@Then("^user is on \"([^\"]*)\" popup in page \"([^\"]*)\"$")
@@ -1544,7 +1545,8 @@ public class StepDefinitions extends Base {
 	@When("^user click the next button on the assets page$")
 	public void user_click_the_next_button_on_the_assets_page() throws Throwable {
 		beneficiariesPage = assetsPage.ClickNextButton();
-		CommonFunctions.wait(10000, false);
+		CommonFunctions.wait(15000, false);
+		
 	}
 
 	@When("^user click the back button on the assets page$")
@@ -1733,6 +1735,10 @@ public class StepDefinitions extends Base {
 	@When("^user fill up the all required fields for married status with spouse email$")
 	public void user_fill_up_the_all_required_fields_for_married_status_with_spouse_email() throws Throwable {
 		aboutPage.FillUpMandatoryFieldsMarriedWithSpouse();
+	}
+	@When("^user fill up the all required fields for married status without spouse email$")
+	public void user_fill_up_the_all_required_fields_for_married_status_without_spouse_email() throws Throwable {
+		aboutPage.FillUpMandatoryFieldsMarriedWithOutSpouseEmail();
 	}
 
 	@When("^user fill up the all required fields for married status with children$")
@@ -2516,7 +2522,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks the next button on the review and confirm page to go to add-on page$")
 	public void user_clicks_the_next_button_on_the_review_and_confirm_page_to_go_to_addon_page() throws Throwable {
-		paymentsPage = reviewConfirmPage.clickNextAddOnsButton();
+		addOnsPage = reviewConfirmPage.clickNextAddOnsButton();
 	}
 
 	@When("^user clicks the next button on the add-ons page$")
@@ -3838,6 +3844,10 @@ public class StepDefinitions extends Base {
 	public void user_click_YES_on_Do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
 		beneficiariesPage.ClickYesQuestion1();
 	}
+	@Then("^user click NO on Do you want to give the whole of your estate equally to any children you have in the future question$")
+	public void user_click_NO_on_Do_you_want_to_give_the_whole_of_your_estate_equally_to_any_children_you_have_in_the_future_question() throws Throwable {
+		beneficiariesPage.ClickNoQuestion1();
+	}
 
 	@Then("^user click NO If any of your children predecease you, do you want to divide that child's share equally among their children question$")
 	public void user_click_NO_If_any_of_your_children_predecease_you_do_you_want_to_divide_that_child_s_share_equally_among_their_children_question() throws Throwable {
@@ -3855,6 +3865,13 @@ public class StepDefinitions extends Base {
 	public void user_clicks_NO_to_do_you_want_to_leave_your_whole_estate_to_your_spouse_partner_if_they_survive_you_question() throws Throwable {
 		beneficiariesPage.ClickNoQuestion1WithSpouse();
 	}
+	
+	@Then("^user clicks YES to do you want to leave your whole estate to your spouse/partner if they survive you question$")
+	public void YES() throws Throwable {
+		beneficiariesPage.ClickYesQuestion1WithSpouse();
+	}
+	
+	//End MW - 42
 
 	@Then("^user clicks the next button for pending spouse$")
 	public void user_clicks_the_next_button_for_pending_spouse() throws Throwable {
@@ -3870,7 +3887,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user adds second back up executor$")
 	public void user_adds_second_back_up_executor() throws Throwable {
-		executorsPage.FillUpExecutorFirstBackup();
+		executorsPage.FillUpExecutorSecondBackup();
 
 	}
 
@@ -3895,5 +3912,11 @@ public class StepDefinitions extends Base {
 		beneficiariesPage.ClickYesQuestion1();
 		CommonFunctions.wait(5000, false);
 	}
+	@When("^user clicks the next button on the review and confirm page to go to pending spouse page$")
+	public void user_clicks_the_next_button_on_the_review_and_confirm_page_to_go_to_pending_spouse_page() throws Throwable {
+		pendingspousePage = reviewConfirmPage.ClickNextButtonPendingSpouse();
+		CommonFunctions.wait(5000, false);
+	}
+
 
 }

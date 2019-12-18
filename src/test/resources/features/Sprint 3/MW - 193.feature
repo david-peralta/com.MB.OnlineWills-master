@@ -65,7 +65,7 @@ Feature: MW-193	Cost Disclosure Form - How much will you pay
     And user adds medicare details
     And user adds second identification
     And user clicks next button on the ID docs page
-    Then user is on "Review and Confirm" page
+    #Then user is on "Review and Confirm" page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page

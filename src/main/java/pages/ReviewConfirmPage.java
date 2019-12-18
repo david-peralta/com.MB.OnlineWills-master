@@ -302,10 +302,10 @@ public class ReviewConfirmPage extends Base {
 		return new PaymentsPage();
 	}
 
-	public PaymentsPage clickNextAddOnsButton() {
+	public AddOnsPage clickNextAddOnsButton() {
 		CommonFunctions.clickElement(btn_Next);
 
-		return new PaymentsPage();
+		return new AddOnsPage();
 	}
 
 	public ThankYouPage clickNextThankYou() {
@@ -657,6 +657,11 @@ public class ReviewConfirmPage extends Base {
 		CommonFunctions.elementDisplayed(Label_Executors_Relationship);
 		CommonFunctions.elementDisplayed(Label_Executors_Wish);
 
+	}
+	public PendingSpousePage ClickNextButtonPendingSpouse() {
+		CommonFunctions.clickElement(btn_Next);
+
+		return new PendingSpousePage();
 	}
 
 }

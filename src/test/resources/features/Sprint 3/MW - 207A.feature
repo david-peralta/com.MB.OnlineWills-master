@@ -65,7 +65,7 @@ Feature: MW - 207: Given I am a primary user, and my spouse and I have both adde
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    And user clicks the next button on the review and confirm page to go to add-on page
+    When user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
     Then user clicks on add POA on addons page

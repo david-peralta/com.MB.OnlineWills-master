@@ -35,9 +35,13 @@ Feature: MW - 207: Given I am a primary user, and my spouse and I have both adde
     And user clicks no to all assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
-    And user clicks yes to Do you want to include any children you have in the future question
-    And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
-    And user clicks no to Do you wish to leave any gifts question
+    And user clicks YES to do you want to leave your whole estate to your spouse/partner if they survive you question
+    And user click YES on Do you want to give the whole of your estate equally to any children you have in the future question
+    And user click NO If any of your children predecease you, do you want to divide that child's share equally among their children question
+    And user clicks NO to Do you wish to leave any gifts question
+    #And user clicks yes to Do you want to include any children you have in the future question
+    #And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
+    #And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
     #Executors Page-------------------------------------------------------------------------
     Then user is on "Executors" page
@@ -65,10 +69,10 @@ Feature: MW - 207: Given I am a primary user, and my spouse and I have both adde
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    And user clicks the next button on the review and confirm page to go to add-on page
+    When user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
-    Then user clicks on add POA on addons page
+    Then user clicks on add couple POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page
@@ -91,11 +95,11 @@ Feature: MW - 207: Given I am a primary user, and my spouse and I have both adde
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
-    When user clicks the next button on the review and confirm page to go to payments page
+    When user clicks the next button on the review and confirm page to go to pending spouse page
     #Pending Spouse
     Then user is on "Pending Spouse" page
     #Payments
-    Then user is on "Payment" page
+    #Then user is on "Payment" page
     Then user close browser
 
     Examples: 
