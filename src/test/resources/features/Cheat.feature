@@ -2,8 +2,7 @@ Feature: CHEAT
 
   @Sprint
   Scenario Outline: 
-    # Go to site and log in-------------------------------------------------------------------------
-    Given user opens browser
+    # Go to site and log in-------------------------------------------------------------
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
     #When user clicks on new order on incomplete order popup
